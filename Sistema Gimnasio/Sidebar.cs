@@ -12,6 +12,10 @@ namespace Sistema_Gimnasio
 {
     public partial class Sidebar : UserControl
     {
+
+        //Evento que se dispara cuando se hace click en un botón del sidebar
+        public event EventHandler<string> MenuItemClicked;
+
         public Sidebar()
         {
             InitializeComponent();
@@ -54,8 +58,21 @@ namespace Sistema_Gimnasio
                     Padding = new Padding(20, 0, 0, 0)
                 };
                 btn.FlatAppearance.BorderSize = 0;
+
+                // Evento click
+                btn.Click += (s, e) =>
+                {
+                    // Disparar el evento con el ID del menú
+                    MenuItemClicked?.Invoke(this, item.id);
+                };
+
                 Controls.Add(btn);
             }
+
+        }
+
+        private void Sidebar_Load(object sender, EventArgs e)
+        {
 
         }
     }

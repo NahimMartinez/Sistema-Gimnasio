@@ -14,15 +14,68 @@ namespace Sistema_Gimnasio
     public partial class Form1 : Form
     {
 
-        //Elementos sidebar, topbar, content
-        private Panel sidebar = new Panel();
+        
+
+
+        private users usersControl;
+        
+
 
         public Form1()
         {
             InitializeComponent();
-            
 
-        }       
+        }
 
+
+        private void Sidebar_MenuItemClicked(object sender, string menuId)
+        {
+            switch (menuId)
+            {
+                case "dashboard":
+                    //ShowDashboard();
+                    break;
+
+                case "usuarios":
+                    ShowUsers();
+                    break;
+
+                case "socios":
+                    //ShowSocios();
+                    break;
+
+                case "clases":
+                    //ShowClases();
+                    break;
+
+                case "proveedores":
+                    //ShowProveedores();
+                    break;
+
+                case "membresias":
+                    //ShowMembresias();
+                    break;
+
+                case "reportes":
+                    //ShowReportes();
+                    break;
+            }
+        }
+
+        //UserControl crear users
+        private void ShowUsers()
+        {
+            contentPanel.Controls.Clear();
+            usersControl = new users();
+            usersControl.Dock = DockStyle.Fill;
+            usersControl.BackColor = Color.White;
+            contentPanel.Controls.Add(usersControl);
+            this.Text = "Sistema Gimnasio - Usuarios";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            sidebar1.MenuItemClicked += Sidebar_MenuItemClicked;
+        }
     }
 }

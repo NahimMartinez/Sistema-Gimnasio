@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "Sidebar";
             this.Size = new System.Drawing.Size(773, 404);
+            this.Load += new System.EventHandler(this.Sidebar_Load);
             this.ResumeLayout(false);
 
         }
