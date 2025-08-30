@@ -46,6 +46,9 @@
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LTablaUsuarios = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.LEditarUsuario = new System.Windows.Forms.Label();
+            this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
+            this.BBuscarUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,7 +197,7 @@
             // 
             this.LTablaUsuarios.AutoSize = true;
             this.LTablaUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LTablaUsuarios.Location = new System.Drawing.Point(56, 259);
+            this.LTablaUsuarios.Location = new System.Drawing.Point(56, 267);
             this.LTablaUsuarios.Name = "LTablaUsuarios";
             this.LTablaUsuarios.Size = new System.Drawing.Size(144, 20);
             this.LTablaUsuarios.TabIndex = 15;
@@ -207,11 +210,43 @@
             this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 0;
             // 
+            // LEditarUsuario
+            // 
+            this.LEditarUsuario.AutoSize = true;
+            this.LEditarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LEditarUsuario.Location = new System.Drawing.Point(452, 32);
+            this.LEditarUsuario.Name = "LEditarUsuario";
+            this.LEditarUsuario.Size = new System.Drawing.Size(116, 20);
+            this.LEditarUsuario.TabIndex = 16;
+            this.LEditarUsuario.Text = "Editar Usuario";
+            // 
+            // txtBuscarUsuario
+            // 
+            this.txtBuscarUsuario.AccessibleDescription = "";
+            this.txtBuscarUsuario.Location = new System.Drawing.Point(456, 67);
+            this.txtBuscarUsuario.Name = "txtBuscarUsuario";
+            this.txtBuscarUsuario.Size = new System.Drawing.Size(131, 20);
+            this.txtBuscarUsuario.TabIndex = 17;
+            this.txtBuscarUsuario.Tag = "";
+            this.txtBuscarUsuario.Text = "nombre usuario";
+            // 
+            // BBuscarUsuario
+            // 
+            this.BBuscarUsuario.Location = new System.Drawing.Point(456, 102);
+            this.BBuscarUsuario.Name = "BBuscarUsuario";
+            this.BBuscarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.BBuscarUsuario.TabIndex = 18;
+            this.BBuscarUsuario.Text = "Buscar";
+            this.BBuscarUsuario.UseVisualStyleBackColor = true;
+            // 
             // users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.BBuscarUsuario);
+            this.Controls.Add(this.txtBuscarUsuario);
+            this.Controls.Add(this.LEditarUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LTablaUsuarios);
             this.Controls.Add(this.DGVUsuarios);
@@ -256,5 +291,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Label LTablaUsuarios;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label LEditarUsuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBuscarUsuario;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.Button BBuscarUsuario;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
