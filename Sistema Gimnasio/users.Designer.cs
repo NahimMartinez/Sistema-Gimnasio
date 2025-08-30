@@ -32,25 +32,29 @@
             this.LUserPass = new System.Windows.Forms.Label();
             this.LUserRol = new System.Windows.Forms.Label();
             this.LUserPass2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.CBUserRol = new System.Windows.Forms.ComboBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.txtContraseña2 = new System.Windows.Forms.TextBox();
+            this.CBRol = new System.Windows.Forms.ComboBox();
+            this.LNewUser = new System.Windows.Forms.Label();
+            this.BCrear = new System.Windows.Forms.Button();
+            this.BLimpiar = new System.Windows.Forms.Button();
+            this.CBVerContraseña = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LUserName
             // 
             this.LUserName.AutoSize = true;
-            this.LUserName.Location = new System.Drawing.Point(38, 88);
+            this.LUserName.Location = new System.Drawing.Point(56, 65);
             this.LUserName.Name = "LUserName";
-            this.LUserName.Size = new System.Drawing.Size(44, 13);
+            this.LUserName.Size = new System.Drawing.Size(43, 13);
             this.LUserName.TabIndex = 0;
-            this.LUserName.Text = "Nombre";
+            this.LUserName.Text = "Usuario";
             // 
             // LUserPass
             // 
             this.LUserPass.AutoSize = true;
-            this.LUserPass.Location = new System.Drawing.Point(38, 111);
+            this.LUserPass.Location = new System.Drawing.Point(56, 91);
             this.LUserPass.Name = "LUserPass";
             this.LUserPass.Size = new System.Drawing.Size(61, 13);
             this.LUserPass.TabIndex = 1;
@@ -59,7 +63,7 @@
             // LUserRol
             // 
             this.LUserRol.AutoSize = true;
-            this.LUserRol.Location = new System.Drawing.Point(38, 164);
+            this.LUserRol.Location = new System.Drawing.Point(56, 145);
             this.LUserRol.Name = "LUserRol";
             this.LUserRol.Size = new System.Drawing.Size(23, 13);
             this.LUserRol.TabIndex = 2;
@@ -68,53 +72,100 @@
             // LUserPass2
             // 
             this.LUserPass2.AutoSize = true;
-            this.LUserPass2.Location = new System.Drawing.Point(38, 135);
+            this.LUserPass2.Location = new System.Drawing.Point(56, 121);
             this.LUserPass2.Name = "LUserPass2";
             this.LUserPass2.Size = new System.Drawing.Size(97, 13);
             this.LUserPass2.TabIndex = 3;
             this.LUserPass2.Text = "Repetir contraseña";
             // 
-            // textBox1
+            // txtUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtUsuario.Location = new System.Drawing.Point(159, 62);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuario.TabIndex = 4;
             // 
-            // textBox2
+            // txtContraseña
             // 
-            this.textBox2.Location = new System.Drawing.Point(141, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtContraseña.Location = new System.Drawing.Point(159, 88);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '●';
+            this.txtContraseña.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseña.TabIndex = 5;
             // 
-            // textBox3
+            // txtContraseña2
             // 
-            this.textBox3.Location = new System.Drawing.Point(141, 135);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtContraseña2.Location = new System.Drawing.Point(159, 116);
+            this.txtContraseña2.Name = "txtContraseña2";
+            this.txtContraseña2.PasswordChar = '●';
+            this.txtContraseña2.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseña2.TabIndex = 6;
             // 
-            // CBUserRol
+            // CBRol
             // 
-            this.CBUserRol.FormattingEnabled = true;
-            this.CBUserRol.Items.AddRange(new object[] {
+            this.CBRol.FormattingEnabled = true;
+            this.CBRol.Items.AddRange(new object[] {
             "Administrador",
             "Coach",
             "Recepcionista"});
-            this.CBUserRol.Location = new System.Drawing.Point(141, 161);
-            this.CBUserRol.Name = "CBUserRol";
-            this.CBUserRol.Size = new System.Drawing.Size(121, 21);
-            this.CBUserRol.TabIndex = 7;
+            this.CBRol.Location = new System.Drawing.Point(159, 142);
+            this.CBRol.Name = "CBRol";
+            this.CBRol.Size = new System.Drawing.Size(100, 21);
+            this.CBRol.TabIndex = 7;
+            // 
+            // LNewUser
+            // 
+            this.LNewUser.AutoSize = true;
+            this.LNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LNewUser.Location = new System.Drawing.Point(107, 20);
+            this.LNewUser.Name = "LNewUser";
+            this.LNewUser.Size = new System.Drawing.Size(119, 20);
+            this.LNewUser.TabIndex = 8;
+            this.LNewUser.Text = "Nuevo Usuario";
+            this.LNewUser.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // BCrear
+            // 
+            this.BCrear.Location = new System.Drawing.Point(59, 180);
+            this.BCrear.Name = "BCrear";
+            this.BCrear.Size = new System.Drawing.Size(75, 23);
+            this.BCrear.TabIndex = 9;
+            this.BCrear.Text = "Crear";
+            this.BCrear.UseVisualStyleBackColor = true;
+            // 
+            // BLimpiar
+            // 
+            this.BLimpiar.Location = new System.Drawing.Point(184, 180);
+            this.BLimpiar.Name = "BLimpiar";
+            this.BLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.BLimpiar.TabIndex = 10;
+            this.BLimpiar.Text = "Limpiar";
+            this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
+            // 
+            // CBVerContraseña
+            // 
+            this.CBVerContraseña.AutoSize = true;
+            this.CBVerContraseña.Location = new System.Drawing.Point(265, 100);
+            this.CBVerContraseña.Name = "CBVerContraseña";
+            this.CBVerContraseña.Size = new System.Drawing.Size(38, 17);
+            this.CBVerContraseña.TabIndex = 13;
+            this.CBVerContraseña.Text = "👁️";
+            this.CBVerContraseña.UseVisualStyleBackColor = true;
+            this.CBVerContraseña.CheckedChanged += new System.EventHandler(this.CBVerContraseña1_CheckedChanged);
             // 
             // users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CBUserRol);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CBVerContraseña);
+            this.Controls.Add(this.BLimpiar);
+            this.Controls.Add(this.BCrear);
+            this.Controls.Add(this.LNewUser);
+            this.Controls.Add(this.CBRol);
+            this.Controls.Add(this.txtContraseña2);
+            this.Controls.Add(this.txtContraseña);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.LUserPass2);
             this.Controls.Add(this.LUserRol);
             this.Controls.Add(this.LUserPass);
@@ -132,9 +183,13 @@
         private System.Windows.Forms.Label LUserPass;
         private System.Windows.Forms.Label LUserRol;
         private System.Windows.Forms.Label LUserPass2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox CBUserRol;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtContraseña;
+        private System.Windows.Forms.TextBox txtContraseña2;
+        private System.Windows.Forms.ComboBox CBRol;
+        private System.Windows.Forms.Label LNewUser;
+        private System.Windows.Forms.Button BCrear;
+        private System.Windows.Forms.Button BLimpiar;
+        private System.Windows.Forms.CheckBox CBVerContraseña;
     }
 }

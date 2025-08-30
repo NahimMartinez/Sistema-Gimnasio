@@ -16,5 +16,32 @@ namespace Sistema_Gimnasio
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BLimpiar_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Clear();
+            txtContraseña.Clear();
+            txtContraseña2.Clear();
+            CBRol.SelectedIndex = -1;
+        }
+
+        private void CBVerContraseña1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CBVerContraseña.Checked)
+            {
+                txtContraseña.PasswordChar = '\0'; // Mostrar texto
+                txtContraseña2.PasswordChar = '\0';
+            }
+            else
+            {
+                txtContraseña.PasswordChar = '●'; // Ocultar con puntos
+                txtContraseña2.PasswordChar = '●'; 
+            }
+        }
     }
 }
