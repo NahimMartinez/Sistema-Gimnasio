@@ -36,16 +36,23 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtContraseña2 = new System.Windows.Forms.TextBox();
             this.CBRol = new System.Windows.Forms.ComboBox();
-            this.LNewUser = new System.Windows.Forms.Label();
+            this.LGestionUsuarios = new System.Windows.Forms.Label();
             this.BCrear = new System.Windows.Forms.Button();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.CBVerContraseña = new System.Windows.Forms.CheckBox();
+            this.DGVUsuarios = new System.Windows.Forms.DataGridView();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LTablaUsuarios = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // LUserName
             // 
             this.LUserName.AutoSize = true;
-            this.LUserName.Location = new System.Drawing.Point(56, 65);
+            this.LUserName.Location = new System.Drawing.Point(58, 67);
             this.LUserName.Name = "LUserName";
             this.LUserName.Size = new System.Drawing.Size(43, 13);
             this.LUserName.TabIndex = 0;
@@ -54,7 +61,7 @@
             // LUserPass
             // 
             this.LUserPass.AutoSize = true;
-            this.LUserPass.Location = new System.Drawing.Point(56, 91);
+            this.LUserPass.Location = new System.Drawing.Point(58, 93);
             this.LUserPass.Name = "LUserPass";
             this.LUserPass.Size = new System.Drawing.Size(61, 13);
             this.LUserPass.TabIndex = 1;
@@ -63,7 +70,7 @@
             // LUserRol
             // 
             this.LUserRol.AutoSize = true;
-            this.LUserRol.Location = new System.Drawing.Point(56, 145);
+            this.LUserRol.Location = new System.Drawing.Point(58, 147);
             this.LUserRol.Name = "LUserRol";
             this.LUserRol.Size = new System.Drawing.Size(23, 13);
             this.LUserRol.TabIndex = 2;
@@ -72,7 +79,7 @@
             // LUserPass2
             // 
             this.LUserPass2.AutoSize = true;
-            this.LUserPass2.Location = new System.Drawing.Point(56, 121);
+            this.LUserPass2.Location = new System.Drawing.Point(58, 123);
             this.LUserPass2.Name = "LUserPass2";
             this.LUserPass2.Size = new System.Drawing.Size(97, 13);
             this.LUserPass2.TabIndex = 3;
@@ -80,14 +87,14 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(159, 62);
+            this.txtUsuario.Location = new System.Drawing.Point(161, 64);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 4;
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(159, 88);
+            this.txtContraseña.Location = new System.Drawing.Point(161, 90);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '●';
             this.txtContraseña.Size = new System.Drawing.Size(100, 20);
@@ -95,7 +102,7 @@
             // 
             // txtContraseña2
             // 
-            this.txtContraseña2.Location = new System.Drawing.Point(159, 116);
+            this.txtContraseña2.Location = new System.Drawing.Point(161, 118);
             this.txtContraseña2.Name = "txtContraseña2";
             this.txtContraseña2.PasswordChar = '●';
             this.txtContraseña2.Size = new System.Drawing.Size(100, 20);
@@ -108,25 +115,25 @@
             "Administrador",
             "Coach",
             "Recepcionista"});
-            this.CBRol.Location = new System.Drawing.Point(159, 142);
+            this.CBRol.Location = new System.Drawing.Point(161, 144);
             this.CBRol.Name = "CBRol";
             this.CBRol.Size = new System.Drawing.Size(100, 21);
             this.CBRol.TabIndex = 7;
             // 
-            // LNewUser
+            // LGestionUsuarios
             // 
-            this.LNewUser.AutoSize = true;
-            this.LNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.LNewUser.Location = new System.Drawing.Point(107, 20);
-            this.LNewUser.Name = "LNewUser";
-            this.LNewUser.Size = new System.Drawing.Size(119, 20);
-            this.LNewUser.TabIndex = 8;
-            this.LNewUser.Text = "Nuevo Usuario";
-            this.LNewUser.Click += new System.EventHandler(this.label1_Click);
+            this.LGestionUsuarios.AutoSize = true;
+            this.LGestionUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LGestionUsuarios.Location = new System.Drawing.Point(56, 32);
+            this.LGestionUsuarios.Name = "LGestionUsuarios";
+            this.LGestionUsuarios.Size = new System.Drawing.Size(119, 20);
+            this.LGestionUsuarios.TabIndex = 8;
+            this.LGestionUsuarios.Text = "Nuevo Usuario";
+            this.LGestionUsuarios.Click += new System.EventHandler(this.label1_Click);
             // 
             // BCrear
             // 
-            this.BCrear.Location = new System.Drawing.Point(59, 180);
+            this.BCrear.Location = new System.Drawing.Point(61, 182);
             this.BCrear.Name = "BCrear";
             this.BCrear.Size = new System.Drawing.Size(75, 23);
             this.BCrear.TabIndex = 9;
@@ -135,7 +142,7 @@
             // 
             // BLimpiar
             // 
-            this.BLimpiar.Location = new System.Drawing.Point(184, 180);
+            this.BLimpiar.Location = new System.Drawing.Point(186, 182);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(75, 23);
             this.BLimpiar.TabIndex = 10;
@@ -146,7 +153,7 @@
             // CBVerContraseña
             // 
             this.CBVerContraseña.AutoSize = true;
-            this.CBVerContraseña.Location = new System.Drawing.Point(265, 100);
+            this.CBVerContraseña.Location = new System.Drawing.Point(267, 102);
             this.CBVerContraseña.Name = "CBVerContraseña";
             this.CBVerContraseña.Size = new System.Drawing.Size(38, 17);
             this.CBVerContraseña.TabIndex = 13;
@@ -154,14 +161,64 @@
             this.CBVerContraseña.UseVisualStyleBackColor = true;
             this.CBVerContraseña.CheckedChanged += new System.EventHandler(this.CBVerContraseña1_CheckedChanged);
             // 
+            // DGVUsuarios
+            // 
+            this.DGVUsuarios.AllowUserToOrderColumns = true;
+            this.DGVUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DGVUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Usuario,
+            this.Rol,
+            this.Estado});
+            this.DGVUsuarios.Location = new System.Drawing.Point(60, 304);
+            this.DGVUsuarios.Name = "DGVUsuarios";
+            this.DGVUsuarios.Size = new System.Drawing.Size(344, 150);
+            this.DGVUsuarios.TabIndex = 14;
+            // 
+            // Usuario
+            // 
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            // 
+            // Rol
+            // 
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            // 
+            // LTablaUsuarios
+            // 
+            this.LTablaUsuarios.AutoSize = true;
+            this.LTablaUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.LTablaUsuarios.Location = new System.Drawing.Point(56, 259);
+            this.LTablaUsuarios.Name = "LTablaUsuarios";
+            this.LTablaUsuarios.Size = new System.Drawing.Size(144, 20);
+            this.LTablaUsuarios.TabIndex = 15;
+            this.LTablaUsuarios.Text = "Usuarios Creados";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 0;
+            // 
             // users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LTablaUsuarios);
+            this.Controls.Add(this.DGVUsuarios);
             this.Controls.Add(this.CBVerContraseña);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BCrear);
-            this.Controls.Add(this.LNewUser);
+            this.Controls.Add(this.LGestionUsuarios);
             this.Controls.Add(this.CBRol);
             this.Controls.Add(this.txtContraseña2);
             this.Controls.Add(this.txtContraseña);
@@ -171,7 +228,8 @@
             this.Controls.Add(this.LUserPass);
             this.Controls.Add(this.LUserName);
             this.Name = "users";
-            this.Size = new System.Drawing.Size(667, 410);
+            this.Size = new System.Drawing.Size(667, 480);
+            ((System.ComponentModel.ISupportInitialize)(this.DGVUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,9 +245,16 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtContraseña2;
         private System.Windows.Forms.ComboBox CBRol;
-        private System.Windows.Forms.Label LNewUser;
+        private System.Windows.Forms.Label LGestionUsuarios;
         private System.Windows.Forms.Button BCrear;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.CheckBox CBVerContraseña;
+        private System.Windows.Forms.DataGridView DGVUsuarios;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.Label LTablaUsuarios;
+        private System.Windows.Forms.Label label2;
     }
 }

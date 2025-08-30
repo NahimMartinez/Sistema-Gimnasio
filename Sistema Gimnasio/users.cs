@@ -43,5 +43,6 @@ namespace Sistema_Gimnasio
                 txtContraseña2.PasswordChar = '●'; 
             }
         }
+
     }
 }
