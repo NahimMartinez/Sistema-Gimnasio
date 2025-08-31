@@ -41,7 +41,7 @@ namespace Sistema_Gimnasio
                     break;
 
                 case "socios":
-                    //ShowSocios();
+                    ShowPartners();
                     break;
 
                 case "clases":
@@ -71,6 +71,16 @@ namespace Sistema_Gimnasio
             usersControl.BackColor = Color.White;
             contentPanel.Controls.Add(usersControl);
             this.Text = "Sistema Gimnasio - Usuarios";
+        }
+
+        private void ShowPartners()
+        {
+            contentPanel.Controls.Clear();
+            PartnersView partnersView = new PartnersView();
+            partnersView.Dock = DockStyle.Fill;
+            partnersView.BackColor = Color.White;
+            contentPanel.Controls.Add(partnersView);
+            this.Text = "Sistema Gimnasio - Socios";
         }
 
         private void Form1_Load(object sender, EventArgs e)
