@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.sidebar1 = new Sistema_Gimnasio.Sidebar();
-            this.contentPanel = new System.Windows.Forms.Panel(); // <-- Añade esta línea
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // sidebar1
@@ -43,20 +43,20 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.BackColor = System.Drawing.Color.White;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(150, 0); // Empieza donde termina el sidebar
+            this.contentPanel.Location = new System.Drawing.Point(150, 0);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(748, 574);
             this.contentPanel.TabIndex = 1;
-            this.contentPanel.BackColor = System.Drawing.Color.White;
-            //
+            // 
             // Form1
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 574);
-            this.Controls.Add(this.contentPanel); // <-- Añade primero el contentPanel
-            this.Controls.Add(this.sidebar1);     // <-- Luego el sidebar
+            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.sidebar1);
             this.Name = "Form1";
             this.Text = "Sistema de gestión de Gym";
             this.Load += new System.EventHandler(this.Form1_Load);
