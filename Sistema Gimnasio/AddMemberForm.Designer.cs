@@ -167,6 +167,7 @@
             this.BSave.TabIndex = 14;
             this.BSave.Text = "Guardar";
             this.BSave.UseVisualStyleBackColor = true;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click);
             // 
             // BClean
             // 
@@ -176,6 +177,7 @@
             this.BClean.TabIndex = 15;
             this.BClean.Text = "Limpiar";
             this.BClean.UseVisualStyleBackColor = true;
+            this.BClean.Click += new System.EventHandler(this.BClean_Click);
             // 
             // AddMemberForm
             // 
