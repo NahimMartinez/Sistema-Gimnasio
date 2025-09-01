@@ -34,6 +34,7 @@ namespace Sistema_Gimnasio
                 ("usuarios",  "Usuarios"),
                 ("socios",    "Socios"),
                 ("clases",    "Clases"),
+                ("inventario","Inventario"),
                 ("proveedores","Proveedores"),
                 ("membresias","Membresías"),
                 ("reportes",  "Reportes"),
