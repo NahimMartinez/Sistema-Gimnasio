@@ -34,8 +34,8 @@
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membership = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HighDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.CBMembership = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
@@ -51,24 +51,27 @@
             // LTiltePartne
             // 
             this.LTiltePartne.AutoSize = true;
+            this.LTiltePartne.Font = new System.Drawing.Font("Marlett", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LTiltePartne.Location = new System.Drawing.Point(11, 13);
             this.LTiltePartne.Name = "LTiltePartne";
-            this.LTiltePartne.Size = new System.Drawing.Size(93, 13);
+            this.LTiltePartne.Size = new System.Drawing.Size(179, 22);
             this.LTiltePartne.TabIndex = 0;
             this.LTiltePartne.Text = "Gestión de Socios";
-            
             // 
             // BoardMember
             // 
+            this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BoardMember.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.dni,
             this.contact,
             this.membership,
-            this.HighDate,
-            this.status});
+            this.status,
+            this.Actions});
             this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BoardMember.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.BoardMember.Location = new System.Drawing.Point(0, 100);
             this.BoardMember.Name = "BoardMember";
             this.BoardMember.Size = new System.Drawing.Size(762, 450);
@@ -98,17 +101,17 @@
             this.membership.HeaderText = "Membresia";
             this.membership.Name = "membership";
             // 
-            // HighDate
-            // 
-            this.HighDate.DataPropertyName = "HighDate";
-            this.HighDate.HeaderText = "Fecha Alta";
-            this.HighDate.Name = "HighDate";
-            // 
             // status
             // 
             this.status.DataPropertyName = "status";
             this.status.HeaderText = "Estado";
             this.status.Name = "status";
+            // 
+            // Actions
+            // 
+            this.Actions.DataPropertyName = "Actions";
+            this.Actions.HeaderText = "Acciones";
+            this.Actions.Name = "Actions";
             // 
             // CBStatus
             // 
@@ -131,12 +134,16 @@
             // 
             // BFilter
             // 
+            this.BFilter.BackColor = System.Drawing.Color.DodgerBlue;
+            this.BFilter.FlatAppearance.BorderSize = 0;
+            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BFilter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BFilter.Location = new System.Drawing.Point(419, 67);
             this.BFilter.Name = "BFilter";
             this.BFilter.Size = new System.Drawing.Size(84, 20);
             this.BFilter.TabIndex = 4;
             this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = true;
+            this.BFilter.UseVisualStyleBackColor = false;
             // 
             // TSearch
             // 
@@ -166,12 +173,16 @@
             // 
             // BNewMember
             // 
-            this.BNewMember.Location = new System.Drawing.Point(654, 67);
+            this.BNewMember.BackColor = System.Drawing.Color.Coral;
+            this.BNewMember.FlatAppearance.BorderSize = 0;
+            this.BNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewMember.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BNewMember.Location = new System.Drawing.Point(635, 66);
             this.BNewMember.Name = "BNewMember";
             this.BNewMember.Size = new System.Drawing.Size(92, 23);
             this.BNewMember.TabIndex = 8;
             this.BNewMember.Text = "Nuevo Socio";
-            this.BNewMember.UseVisualStyleBackColor = true;
+            this.BNewMember.UseVisualStyleBackColor = false;
             this.BNewMember.Click += new System.EventHandler(this.BNewMember_Click);
             // 
             // panel1
@@ -221,7 +232,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn membership;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HighDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Actions;
     }
 }
