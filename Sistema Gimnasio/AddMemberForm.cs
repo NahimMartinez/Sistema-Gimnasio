@@ -10,18 +10,13 @@ using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class PartnersView : UserControl
+    public partial class AddMemberForm : Form
     {
-        public PartnersView()
+        public AddMemberForm()
         {
             InitializeComponent();
         }
 
-       
-
-        private void BNewMember_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
