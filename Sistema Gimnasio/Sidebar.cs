@@ -22,6 +22,7 @@ namespace Sistema_Gimnasio
             BuildSideBar();
         }
 
+        
         private void BuildSideBar()
         {
             BackColor = Color.FromArgb(41, 39, 40);
@@ -73,6 +74,11 @@ namespace Sistema_Gimnasio
         }
 
         private void Sidebar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

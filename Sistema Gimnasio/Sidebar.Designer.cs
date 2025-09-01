@@ -32,10 +32,11 @@
             // 
             // Sidebar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Sidebar";
-            this.Size = new System.Drawing.Size(773, 404);
+            this.Size = new System.Drawing.Size(1031, 497);
             this.Load += new System.EventHandler(this.Sidebar_Load);
             this.ResumeLayout(false);
 

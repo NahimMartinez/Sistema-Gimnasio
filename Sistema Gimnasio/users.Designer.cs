@@ -285,19 +285,13 @@
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.CheckBox CBVerContraseña;
         private System.Windows.Forms.DataGridView DGVUsuarios;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Label LTablaUsuarios;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label LEditarUsuario;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarUsuario;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.Button BBuscarUsuario;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
     }
 }
