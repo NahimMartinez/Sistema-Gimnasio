@@ -29,7 +29,7 @@ namespace Sistema_Gimnasio
         {
             if (!ValidateInputs())
             {
-                return; // Si la validación falla, no continuar
+                return; // Si la validación falla, no continua
             }          
             MessageBox.Show("Socio agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

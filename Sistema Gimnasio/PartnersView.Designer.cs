@@ -116,6 +116,9 @@
             // CBStatus
             // 
             this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(165, 67);
             this.CBStatus.Name = "CBStatus";
             this.CBStatus.Size = new System.Drawing.Size(121, 21);
@@ -125,6 +128,10 @@
             // CBMembership
             // 
             this.CBMembership.FormattingEnabled = true;
+            this.CBMembership.Items.AddRange(new object[] {
+            "Mensual",
+            "Semanal",
+            "Dia"});
             this.CBMembership.Location = new System.Drawing.Point(292, 67);
             this.CBMembership.Name = "CBMembership";
             this.CBMembership.Size = new System.Drawing.Size(121, 21);
@@ -147,6 +154,7 @@
             // 
             // TSearch
             // 
+            this.TSearch.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.TSearch.Location = new System.Drawing.Point(14, 67);
             this.TSearch.Name = "TSearch";
             this.TSearch.Size = new System.Drawing.Size(145, 20);
@@ -187,6 +195,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.LTiltePartne);
             this.panel1.Controls.Add(this.BNewMember);
             this.panel1.Controls.Add(this.TSearch);
