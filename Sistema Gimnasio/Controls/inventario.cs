@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Gimnasio.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,19 @@ namespace Sistema_Gimnasio
         public inventario()
         {
             InitializeComponent();
+        }
+
+        private void BNewItem_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new AddItemForm())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }

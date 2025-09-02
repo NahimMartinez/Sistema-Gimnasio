@@ -14,12 +14,6 @@ namespace Sistema_Gimnasio
     public partial class Form1 : Form
     {
 
-        
-
-
-        
-
-
         public Form1()
         {
             InitializeComponent();
@@ -47,6 +41,10 @@ namespace Sistema_Gimnasio
                     //ShowClases();
                     break;
 
+                case "inventario":
+                    ShowInventario();
+                    break;
+
                 case "proveedores":
                     //ShowProveedores();
                     break;
@@ -70,6 +68,16 @@ namespace Sistema_Gimnasio
             usersmanagnent.BackColor = Color.White;
             contentPanel.Controls.Add(usersmanagnent);
             this.Text = "Sistema Gimnasio - Usuarios";
+        }
+
+        private void ShowInventario()
+        {
+            contentPanel.Controls.Clear();
+            inventario vinventario = new inventario();
+            vinventario.Dock = DockStyle.Fill;
+            vinventario.BackColor = Color.White;
+            contentPanel.Controls.Add(vinventario);
+            this.Text = "Sistema Gimnasio - Inventario";
         }
 
         private void ShowPartners()
