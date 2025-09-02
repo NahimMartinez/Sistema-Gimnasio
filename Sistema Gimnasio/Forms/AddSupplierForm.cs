@@ -6,23 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class AddMemberForm : Form
+    public partial class AddSupplierForm : Form
     {
-        public AddMemberForm()
+        public AddSupplierForm()
         {
             InitializeComponent();
-            // Asignar los controladores de eventos KeyPress
             TName.KeyPress += TName_KeyPress;
             TLastName.KeyPress += TLastName_KeyPress;
-            TDni.KeyPress += TDni_KeyPress;
+            TCuit.KeyPress += TCuit_KeyPress;
             TPhone.KeyPress += TPhone_KeyPress;
-
         }
 
         private void BSave_Click(object sender, EventArgs e)
@@ -30,7 +27,7 @@ namespace Sistema_Gimnasio
             if (!ValidateInputs())
             {
                 return; // Si la validación falla, no continua
-            }          
+            }
             MessageBox.Show("Socio agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -38,11 +35,11 @@ namespace Sistema_Gimnasio
         {
             TName.Clear();
             TLastName.Clear();
-            TDni.Clear();
+            TCuit.Clear();
             TPhone.Clear();
             TEmail.Clear();
-            TContactE.Clear();
-            TObservation.Clear();
+            TCuit.Clear();
+            
         }
 
         private bool ValidEmail(string email)
@@ -59,7 +56,7 @@ namespace Sistema_Gimnasio
                 return false;
             }
         }
-        
+
         private void TName_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir solo letras, espacios y teclas de control (como retroceso)
@@ -78,7 +75,7 @@ namespace Sistema_Gimnasio
             }
         }
 
-        private void TDni_KeyPress(object sender, KeyPressEventArgs e)
+        private void TCuit_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir solo dígitos y teclas de control (como retroceso)
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -101,11 +98,11 @@ namespace Sistema_Gimnasio
             // Validar que los campos obligatorios no estén vacíos
             if (string.IsNullOrWhiteSpace(TName.Text) ||
                 string.IsNullOrWhiteSpace(TLastName.Text) ||
-                string.IsNullOrWhiteSpace(TDni.Text))
+                string.IsNullOrWhiteSpace(TCuit.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }  
+            }
             // Validar formato de correo electrónico si no está vacío
             if (!string.IsNullOrWhiteSpace(TEmail.Text) && !ValidEmail(TEmail.Text))
             {
@@ -114,7 +111,5 @@ namespace Sistema_Gimnasio
             }
             return true;
         }
-
-       
     }
 }
