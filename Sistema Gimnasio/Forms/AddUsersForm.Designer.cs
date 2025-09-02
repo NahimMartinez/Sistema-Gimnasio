@@ -120,7 +120,8 @@
             this.CBRol.Items.AddRange(new object[] {
             "Administrador",
             "Coach",
-            "Recepcionista"});
+            "Recepcionista",
+            "Coach / Recepcionista"});
             this.CBRol.Location = new System.Drawing.Point(555, 142);
             this.CBRol.Name = "CBRol";
             this.CBRol.Size = new System.Drawing.Size(149, 21);

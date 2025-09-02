@@ -34,8 +34,10 @@
             this.LCategoria = new System.Windows.Forms.Label();
             this.LName = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.DTFechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.CBCategoria = new System.Windows.Forms.ComboBox();
+            this.BCrear = new System.Windows.Forms.Button();
+            this.BLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -88,33 +90,55 @@
             this.txtNombre.Size = new System.Drawing.Size(184, 20);
             this.txtNombre.TabIndex = 13;
             // 
-            // dateTimePicker1
+            // DTFechaIngreso
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(106, 130);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(184, 20);
-            this.dateTimePicker1.TabIndex = 25;
+            this.DTFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTFechaIngreso.Location = new System.Drawing.Point(106, 130);
+            this.DTFechaIngreso.Name = "DTFechaIngreso";
+            this.DTFechaIngreso.Size = new System.Drawing.Size(184, 20);
+            this.DTFechaIngreso.TabIndex = 25;
             // 
-            // comboBox1
+            // CBCategoria
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CBCategoria.FormattingEnabled = true;
+            this.CBCategoria.Items.AddRange(new object[] {
             "Mancuerna",
             "Maquina",
             "Barra"});
-            this.comboBox1.Location = new System.Drawing.Point(392, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 26;
+            this.CBCategoria.Location = new System.Drawing.Point(392, 61);
+            this.CBCategoria.Name = "CBCategoria";
+            this.CBCategoria.Size = new System.Drawing.Size(121, 21);
+            this.CBCategoria.TabIndex = 26;
+            // 
+            // BCrear
+            // 
+            this.BCrear.Location = new System.Drawing.Point(106, 192);
+            this.BCrear.Name = "BCrear";
+            this.BCrear.Size = new System.Drawing.Size(75, 23);
+            this.BCrear.TabIndex = 27;
+            this.BCrear.Text = "Crear";
+            this.BCrear.UseVisualStyleBackColor = true;
+            this.BCrear.Click += new System.EventHandler(this.BCrear_Click);
+            // 
+            // BLimpiar
+            // 
+            this.BLimpiar.Location = new System.Drawing.Point(335, 192);
+            this.BLimpiar.Name = "BLimpiar";
+            this.BLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.BLimpiar.TabIndex = 28;
+            this.BLimpiar.Text = "Limpiar";
+            this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
             // 
             // AddItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.BLimpiar);
+            this.Controls.Add(this.BCrear);
+            this.Controls.Add(this.CBCategoria);
+            this.Controls.Add(this.DTFechaIngreso);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.LFechaIngresoItem);
             this.Controls.Add(this.LCantidad);
@@ -136,7 +160,9 @@
         private System.Windows.Forms.Label LCategoria;
         private System.Windows.Forms.Label LName;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker DTFechaIngreso;
+        private System.Windows.Forms.ComboBox CBCategoria;
+        private System.Windows.Forms.Button BCrear;
+        private System.Windows.Forms.Button BLimpiar;
     }
 }
