@@ -61,11 +61,13 @@ namespace Sistema_Gimnasio
                 };
                 btn.FlatAppearance.BorderSize = 0;
 
-                // Evento click
                 btn.Click += (s, e) =>
                 {
-                    // Disparar el evento con el ID del menú
-                    MenuItemClicked?.Invoke(this, item.id);
+                    // Disparar el evento solo si hay suscriptores
+                    if (MenuItemClicked != null)
+                    {
+                        MenuItemClicked(this, item.id);
+                    }
                 };
 
                 Controls.Add(btn);

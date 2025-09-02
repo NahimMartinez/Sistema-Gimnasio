@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Gimnasio
 {
-    partial class usersManagnent
+    partial class usersManagment
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -34,13 +34,13 @@
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
-            this.BNewMember = new System.Windows.Forms.Button();
+            this.BNewUser = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +97,11 @@
             this.status.HeaderText = "Estado";
             this.status.Name = "status";
             // 
+            // usuario
+            // 
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.Name = "usuario";
+            // 
             // CBStatus
             // 
             this.CBStatus.FormattingEnabled = true;
@@ -140,24 +145,25 @@
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
-            // BNewMember
+            // BNewUser
             // 
-            this.BNewMember.BackColor = System.Drawing.Color.Coral;
-            this.BNewMember.FlatAppearance.BorderSize = 0;
-            this.BNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewMember.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BNewMember.Location = new System.Drawing.Point(635, 66);
-            this.BNewMember.Name = "BNewMember";
-            this.BNewMember.Size = new System.Drawing.Size(92, 23);
-            this.BNewMember.TabIndex = 8;
-            this.BNewMember.Text = "Nuevo Usuario";
-            this.BNewMember.UseVisualStyleBackColor = false;
+            this.BNewUser.BackColor = System.Drawing.Color.Coral;
+            this.BNewUser.FlatAppearance.BorderSize = 0;
+            this.BNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BNewUser.Location = new System.Drawing.Point(635, 66);
+            this.BNewUser.Name = "BNewUser";
+            this.BNewUser.Size = new System.Drawing.Size(92, 23);
+            this.BNewUser.TabIndex = 8;
+            this.BNewUser.Text = "Nuevo Usuario";
+            this.BNewUser.UseVisualStyleBackColor = false;
+            this.BNewUser.Click += new System.EventHandler(this.BNewUser_Click_1);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.LTituloUserManagment);
-            this.panel1.Controls.Add(this.BNewMember);
+            this.panel1.Controls.Add(this.BNewUser);
             this.panel1.Controls.Add(this.TSearch);
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
@@ -168,18 +174,13 @@
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 9;
             // 
-            // usuario
-            // 
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            // 
-            // usersManagnent
+            // usersManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.BoardMember);
             this.Controls.Add(this.panel1);
-            this.Name = "usersManagnent";
+            this.Name = "usersManagment";
             this.Size = new System.Drawing.Size(762, 550);
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -197,7 +198,7 @@
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Label LMembership;
-        private System.Windows.Forms.Button BNewMember;
+        private System.Windows.Forms.Button BNewUser;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;

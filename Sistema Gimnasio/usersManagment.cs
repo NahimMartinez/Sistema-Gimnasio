@@ -10,21 +10,20 @@ using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class usersManagnent : UserControl
+    public partial class usersManagment : UserControl
     {
-        public usersManagnent()
+        public usersManagment()
         {
             InitializeComponent();
         }
 
-
-        private void BNewMember_Click(object sender, EventArgs e)
+        private void BNewUser_Click_1(object sender, EventArgs e)
         {
             //creo una instancia del formulario
-            using (var fNewMember = new AddUsersForm())
+            using (var fNewUser = new AddUsersForm())
             {
                 //muestro el formulario como un cuadro de dialogo
-                if (fNewMember.ShowDialog() == DialogResult.OK)
+                if (fNewUser.ShowDialog() == DialogResult.OK)
                 {
 
                 }

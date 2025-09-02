@@ -134,6 +134,7 @@
             this.BCrear.TabIndex = 9;
             this.BCrear.Text = "Crear";
             this.BCrear.UseVisualStyleBackColor = true;
+            this.BCrear.Click += new System.EventHandler(this.BCrear_Click_1);
             // 
             // BLimpiar
             // 
@@ -143,6 +144,7 @@
             this.BLimpiar.TabIndex = 10;
             this.BLimpiar.Text = "Limpiar";
             this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click_1);
             // 
             // CBVerContraseña
             // 

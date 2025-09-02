@@ -74,20 +74,6 @@ namespace Sistema_Gimnasio
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
-            {
-                MessageBox.Show("Por favor ingrese el teléfono", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTelefono.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
-            {
-                MessageBox.Show("Por favor ingrese el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtUsuario.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("Por favor ingrese el email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -102,6 +88,19 @@ namespace Sistema_Gimnasio
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                MessageBox.Show("Por favor ingrese el teléfono", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTelefono.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                MessageBox.Show("Por favor ingrese el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsuario.Focus();
+                return false;
+            }
 
             if (string.IsNullOrWhiteSpace(txtContraseña.Text))
             {
@@ -125,19 +124,6 @@ namespace Sistema_Gimnasio
             }
 
             return true; // Todos los campos son válidos
-        }
-
-        private void BLimpiar_Click(object sender, EventArgs e)
-        {
-            txtUsuario.Clear();
-            txtContraseña.Clear();
-            txtContraseña2.Clear();
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtDni.Clear();
-            txtTelefono.Clear();
-            txtEmail.Clear();
-            CBRol.SelectedIndex = -1;
         }
 
         private void CBVerContraseña1_CheckedChanged(object sender, EventArgs e)
@@ -167,8 +153,20 @@ namespace Sistema_Gimnasio
             }
         }
 
+        private void BLimpiar_Click_1(object sender, EventArgs e)
+        {
+            txtUsuario.Clear();
+            txtContraseña.Clear();
+            txtContraseña2.Clear();
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtDni.Clear();
+            txtTelefono.Clear();
+            txtEmail.Clear();
+            CBRol.SelectedIndex = -1;
+        }
 
-        private void BCrear_Click(object sender, EventArgs e)
+        private void BCrear_Click_1(object sender, EventArgs e)
         {
             // Validar antes de guardar
             if (!ValidarCampos())
@@ -177,8 +175,6 @@ namespace Sistema_Gimnasio
             }
 
             MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
         }
     }
 }

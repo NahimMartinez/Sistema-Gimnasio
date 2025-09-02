@@ -17,7 +17,6 @@ namespace Sistema_Gimnasio
         
 
 
-        private users usersControl;
         
 
 
@@ -66,10 +65,10 @@ namespace Sistema_Gimnasio
         private void ShowUsers()
         {
             contentPanel.Controls.Clear();
-            usersControl = new users();
-            usersControl.Dock = DockStyle.Fill;
-            usersControl.BackColor = Color.White;
-            contentPanel.Controls.Add(usersControl);
+            usersManagment usersmanagnent = new usersManagment();
+            usersmanagnent.Dock = DockStyle.Fill;
+            usersmanagnent.BackColor = Color.White;
+            contentPanel.Controls.Add(usersmanagnent);
             this.Text = "Sistema Gimnasio - Usuarios";
         }
 

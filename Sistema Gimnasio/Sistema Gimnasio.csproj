@@ -90,17 +90,11 @@
     <Compile Include="Sidebar.Designer.cs">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="users.cs">
+    <Compile Include="usersManagment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="users.Designer.cs">
-      <DependentUpon>users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="usersManagnent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="usersManagnent.Designer.cs">
-      <DependentUpon>usersManagnent.cs</DependentUpon>
+    <Compile Include="usersManagment.Designer.cs">
+      <DependentUpon>usersManagment.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddMemberForm.resx">
       <DependentUpon>AddMemberForm.cs</DependentUpon>
@@ -132,11 +126,8 @@
     <EmbeddedResource Include="Sidebar.resx">
       <DependentUpon>Sidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="users.resx">
-      <DependentUpon>users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="usersManagnent.resx">
-      <DependentUpon>usersManagnent.cs</DependentUpon>
+    <EmbeddedResource Include="usersManagment.resx">
+      <DependentUpon>usersManagment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
