@@ -52,6 +52,12 @@
     <Compile Include="AddMemberForm.Designer.cs">
       <DependentUpon>AddMemberForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUsersForm.Designer.cs">
+      <DependentUpon>AddUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,12 @@
     <Compile Include="users.Designer.cs">
       <DependentUpon>users.cs</DependentUpon>
     </Compile>
+    <Compile Include="usersManagnent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usersManagnent.Designer.cs">
+      <DependentUpon>usersManagnent.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddMemberForm.resx">
       <DependentUpon>AddMemberForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="users.resx">
       <DependentUpon>users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usersManagnent.resx">
+      <DependentUpon>usersManagnent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

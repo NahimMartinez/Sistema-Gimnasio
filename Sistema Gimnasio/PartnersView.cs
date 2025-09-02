@@ -32,6 +32,9 @@ namespace Sistema_Gimnasio
             }
         }
 
-        
+        private void LMembership_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
