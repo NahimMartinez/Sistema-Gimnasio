@@ -17,5 +17,18 @@ namespace Sistema_Gimnasio
             InitializeComponent();
         }
 
+
+        private void BNewMember_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewMember = new AddUsersForm())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewMember.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
     }
 }
