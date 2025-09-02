@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.CBCategoria = new System.Windows.Forms.ComboBox();
+            this.txtCupo = new System.Windows.Forms.TextBox();
             this.LDiasClases = new System.Windows.Forms.Label();
             this.LCupo = new System.Windows.Forms.Label();
             this.LCategoria = new System.Windows.Forms.Label();
@@ -39,26 +39,28 @@
             this.CBJueves = new System.Windows.Forms.CheckBox();
             this.CBViernes = new System.Windows.Forms.CheckBox();
             this.CBSabado = new System.Windows.Forms.CheckBox();
+            this.BCrear = new System.Windows.Forms.Button();
+            this.BLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // CBCategoria
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CBCategoria.FormattingEnabled = true;
+            this.CBCategoria.Items.AddRange(new object[] {
             "Musculacion",
             "Crossfit",
             "Funcional"});
-            this.comboBox1.Location = new System.Drawing.Point(169, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 34;
+            this.CBCategoria.Location = new System.Drawing.Point(169, 69);
+            this.CBCategoria.Name = "CBCategoria";
+            this.CBCategoria.Size = new System.Drawing.Size(121, 21);
+            this.CBCategoria.TabIndex = 34;
             // 
-            // txtCantidad
+            // txtCupo
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(169, 106);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(121, 20);
-            this.txtCantidad.TabIndex = 32;
+            this.txtCupo.Location = new System.Drawing.Point(169, 106);
+            this.txtCupo.Name = "txtCupo";
+            this.txtCupo.Size = new System.Drawing.Size(121, 20);
+            this.txtCupo.TabIndex = 32;
             // 
             // LDiasClases
             // 
@@ -68,6 +70,7 @@
             this.LDiasClases.Size = new System.Drawing.Size(28, 13);
             this.LDiasClases.TabIndex = 31;
             this.LDiasClases.Text = "Dias";
+            this.LDiasClases.Click += new System.EventHandler(this.LDiasClases_Click);
             // 
             // LCupo
             // 
@@ -147,19 +150,41 @@
             this.CBSabado.Text = "Sabado";
             this.CBSabado.UseVisualStyleBackColor = true;
             // 
+            // BCrear
+            // 
+            this.BCrear.Location = new System.Drawing.Point(129, 186);
+            this.BCrear.Name = "BCrear";
+            this.BCrear.Size = new System.Drawing.Size(75, 23);
+            this.BCrear.TabIndex = 41;
+            this.BCrear.Text = "Crear";
+            this.BCrear.UseVisualStyleBackColor = true;
+            this.BCrear.Click += new System.EventHandler(this.BCrear_Click);
+            // 
+            // BLimpiar
+            // 
+            this.BLimpiar.Location = new System.Drawing.Point(287, 186);
+            this.BLimpiar.Name = "BLimpiar";
+            this.BLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.BLimpiar.TabIndex = 42;
+            this.BLimpiar.Text = "Limpiar";
+            this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
+            // 
             // AddClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 221);
+            this.Controls.Add(this.BLimpiar);
+            this.Controls.Add(this.BCrear);
             this.Controls.Add(this.CBSabado);
             this.Controls.Add(this.CBViernes);
             this.Controls.Add(this.CBJueves);
             this.Controls.Add(this.CBMiercoles);
             this.Controls.Add(this.CBMartes);
             this.Controls.Add(this.CBLunes);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.CBCategoria);
+            this.Controls.Add(this.txtCupo);
             this.Controls.Add(this.LDiasClases);
             this.Controls.Add(this.LCupo);
             this.Controls.Add(this.LCategoria);
@@ -172,8 +197,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.ComboBox CBCategoria;
+        private System.Windows.Forms.TextBox txtCupo;
         private System.Windows.Forms.Label LDiasClases;
         private System.Windows.Forms.Label LCupo;
         private System.Windows.Forms.Label LCategoria;
@@ -183,5 +208,7 @@
         private System.Windows.Forms.CheckBox CBJueves;
         private System.Windows.Forms.CheckBox CBViernes;
         private System.Windows.Forms.CheckBox CBSabado;
+        private System.Windows.Forms.Button BCrear;
+        private System.Windows.Forms.Button BLimpiar;
     }
 }

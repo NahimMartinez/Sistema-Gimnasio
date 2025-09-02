@@ -1,6 +1,6 @@
-﻿namespace Sistema_Gimnasio.Forms
+﻿namespace Sistema_Gimnasio.Controls
 {
-    partial class Class
+    partial class Clases
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -30,17 +30,17 @@
         {
             this.LTituloClases = new System.Windows.Forms.Label();
             this.BoardMember = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BNewClass = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,33 @@
             this.BoardMember.Name = "BoardMember";
             this.BoardMember.Size = new System.Drawing.Size(762, 450);
             this.BoardMember.TabIndex = 1;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "nombre";
+            this.name.HeaderText = "Nombre";
+            this.name.Name = "name";
+            // 
+            // cupo
+            // 
+            this.cupo.HeaderText = "Cupo";
+            this.cupo.Name = "cupo";
+            // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.Name = "dia";
+            // 
+            // hora
+            // 
+            this.hora.HeaderText = "Hora";
+            this.hora.Name = "hora";
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "estado";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
             // 
             // CBStatus
             // 
@@ -143,41 +170,15 @@
             this.BNewClass.TabIndex = 9;
             this.BNewClass.Text = "Nuevo Clase";
             this.BNewClass.UseVisualStyleBackColor = false;
+            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
             // 
-            // name
-            // 
-            this.name.DataPropertyName = "nombre";
-            this.name.HeaderText = "Nombre";
-            this.name.Name = "name";
-            // 
-            // cupo
-            // 
-            this.cupo.HeaderText = "Cupo";
-            this.cupo.Name = "cupo";
-            // 
-            // dia
-            // 
-            this.dia.HeaderText = "Dia";
-            this.dia.Name = "dia";
-            // 
-            // hora
-            // 
-            this.hora.HeaderText = "Hora";
-            this.hora.Name = "hora";
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "estado";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            // 
-            // Class
+            // Clases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.BoardMember);
             this.Controls.Add(this.panel1);
-            this.Name = "Class";
+            this.Name = "Clases";
             this.Size = new System.Drawing.Size(762, 550);
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
             this.panel1.ResumeLayout(false);

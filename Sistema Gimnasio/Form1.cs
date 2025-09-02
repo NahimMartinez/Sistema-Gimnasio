@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Gimnasio.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,7 +39,7 @@ namespace Sistema_Gimnasio
                     break;
 
                 case "clases":
-                    //ShowClases();
+                    ShowClases();
                     break;
 
                 case "inventario":
@@ -78,6 +79,16 @@ namespace Sistema_Gimnasio
             vinventario.BackColor = Color.White;
             contentPanel.Controls.Add(vinventario);
             this.Text = "Sistema Gimnasio - Inventario";
+        }
+
+        private void ShowClases()
+        {
+            contentPanel.Controls.Clear();
+            Clases clase = new Clases();
+            clase.Dock = DockStyle.Fill;
+            clase.BackColor = Color.White;
+            contentPanel.Controls.Add(clase);
+            this.Text = "Sistema Gimnasio - Clases";
         }
 
         private void ShowPartners()

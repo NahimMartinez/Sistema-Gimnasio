@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Class.cs">
+    <Compile Include="Controls\Clases.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Class.Designer.cs">
-      <DependentUpon>Class.cs</DependentUpon>
+    <Compile Include="Controls\Clases.Designer.cs">
+      <DependentUpon>Clases.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddClass.cs">
       <SubType>Form</SubType>
@@ -114,8 +114,8 @@
     <Compile Include="Controls\usersManagment.Designer.cs">
       <DependentUpon>usersManagment.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\Class.resx">
-      <DependentUpon>Class.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Clases.resx">
+      <DependentUpon>Clases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddClass.resx">
       <DependentUpon>AddClass.cs</DependentUpon>
