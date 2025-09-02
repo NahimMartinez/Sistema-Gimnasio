@@ -142,7 +142,7 @@
             this.BNewSupplier.TabIndex = 8;
             this.BNewSupplier.Text = "Nuevo Proveedor";
             this.BNewSupplier.UseVisualStyleBackColor = false;
-            this.BNewSupplier.Click += new System.EventHandler(this.BNewMember_Click);
+            this.BNewSupplier.Click += new System.EventHandler(this.BNewSupplier_Click);
             // 
             // panel1
             // 

@@ -22,13 +22,13 @@ namespace Sistema_Gimnasio
 
         }
 
-        private void BNewMember_Click(object sender, EventArgs e)
+        private void BNewSupplier_Click(object sender, EventArgs e)
         {
             //creo una instancia del formulario
-            using (var fNewMember = new AddMemberForm())
+            using (var fNewSupllier = new AddSupplierForm())
             {
                 //muestro el formulario como un cuadro de dialogo
-                if (fNewMember.ShowDialog() == DialogResult.OK)
+                if (fNewSupllier.ShowDialog() == DialogResult.OK)
                 {
 
                 }

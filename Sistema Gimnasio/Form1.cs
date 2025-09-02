@@ -46,7 +46,7 @@ namespace Sistema_Gimnasio
                     break;
 
                 case "proveedores":
-                    //ShowProveedores();
+                    ShowSuppliers();
                     break;
 
                 case "membresias":
@@ -88,6 +88,16 @@ namespace Sistema_Gimnasio
             partnersView.BackColor = Color.White;
             contentPanel.Controls.Add(partnersView);
             this.Text = "Sistema Gimnasio - Socios";
+        }
+
+        private void ShowSuppliers()
+        {
+            contentPanel.Controls.Clear();
+            SupplierView supplierView = new SupplierView();
+            supplierView.Dock = DockStyle.Fill;
+            supplierView.BackColor = Color.White;
+            contentPanel.Controls.Add(supplierView);
+            this.Text = "Sistema Gimnasio - Proveedores";
         }
 
         private void Form1_Load(object sender, EventArgs e)
