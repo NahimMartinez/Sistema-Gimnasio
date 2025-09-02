@@ -126,20 +126,6 @@ namespace Sistema_Gimnasio
             return true; // Todos los campos son válidos
         }
 
-        private void CBVerContraseña1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CBVerContraseña.Checked)
-            {
-                txtContraseña.PasswordChar = '\0'; // Mostrar texto
-                txtContraseña2.PasswordChar = '\0';
-            }
-            else
-            {
-                txtContraseña.PasswordChar = '●'; // Ocultar con puntos
-                txtContraseña2.PasswordChar = '●';
-            }
-        }
-
         private bool ValidEmail(string email)
         {
             try
@@ -175,6 +161,20 @@ namespace Sistema_Gimnasio
             }
 
             MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void CBVerContraseña_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CBVerContraseña.Checked)
+            {
+                txtContraseña.PasswordChar = '\0'; // Mostrar texto
+                txtContraseña2.PasswordChar = '\0';
+            }
+            else
+            {
+                txtContraseña.PasswordChar = '●'; // Ocultar con puntos
+                txtContraseña2.PasswordChar = '●';
+            }
         }
     }
 }

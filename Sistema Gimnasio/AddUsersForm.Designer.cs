@@ -155,6 +155,7 @@
             this.CBVerContraseña.TabIndex = 13;
             this.CBVerContraseña.Text = "👁️";
             this.CBVerContraseña.UseVisualStyleBackColor = true;
+            this.CBVerContraseña.CheckedChanged += new System.EventHandler(this.CBVerContraseña_CheckedChanged);
             // 
             // Usuario
             // 
