@@ -68,7 +68,7 @@
             // LName
             // 
             this.LName.AutoSize = true;
-            this.LName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LName.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LName.Location = new System.Drawing.Point(30, 22);
             this.LName.Name = "LName";
             this.LName.Size = new System.Drawing.Size(51, 15);
@@ -79,7 +79,7 @@
             // 
             this.LLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LLastName.AutoSize = true;
-            this.LLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LLastName.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LLastName.Location = new System.Drawing.Point(420, 22);
             this.LLastName.Name = "LLastName";
             this.LLastName.Size = new System.Drawing.Size(51, 15);
@@ -89,7 +89,7 @@
             // LDni
             // 
             this.LDni.AutoSize = true;
-            this.LDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LDni.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LDni.Location = new System.Drawing.Point(30, 78);
             this.LDni.Name = "LDni";
             this.LDni.Size = new System.Drawing.Size(27, 15);
@@ -100,7 +100,7 @@
             // 
             this.LPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LPhone.AutoSize = true;
-            this.LPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LPhone.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LPhone.Location = new System.Drawing.Point(420, 78);
             this.LPhone.Name = "LPhone";
             this.LPhone.Size = new System.Drawing.Size(53, 15);
@@ -110,7 +110,7 @@
             // LEmail
             // 
             this.LEmail.AutoSize = true;
-            this.LEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LEmail.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LEmail.Location = new System.Drawing.Point(30, 134);
             this.LEmail.Name = "LEmail";
             this.LEmail.Size = new System.Drawing.Size(36, 15);
@@ -121,7 +121,7 @@
             // 
             this.LContactE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LContactE.AutoSize = true;
-            this.LContactE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LContactE.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LContactE.Location = new System.Drawing.Point(420, 134);
             this.LContactE.Name = "LContactE";
             this.LContactE.Size = new System.Drawing.Size(137, 15);
@@ -131,7 +131,7 @@
             // LObservation
             // 
             this.LObservation.AutoSize = true;
-            this.LObservation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LObservation.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LObservation.Location = new System.Drawing.Point(30, 190);
             this.LObservation.Name = "LObservation";
             this.LObservation.Size = new System.Drawing.Size(84, 15);
@@ -191,7 +191,7 @@
             // 
             // BSave
             // 
-            this.BSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.BSave.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
             this.BSave.FlatAppearance.BorderSize = 0;
             this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BSave.ForeColor = System.Drawing.Color.White;
@@ -205,7 +205,7 @@
             // 
             // BClean
             // 
-            this.BClean.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.BClean.BackColor = System.Drawing.Color.FromArgb(108,117, 125);
             this.BClean.FlatAppearance.BorderSize = 0;
             this.BClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BClean.ForeColor = System.Drawing.Color.White;
@@ -221,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
             this.ClientSize = new System.Drawing.Size(804, 481);
             this.Controls.Add(this.BClean);
             this.Controls.Add(this.BSave);
