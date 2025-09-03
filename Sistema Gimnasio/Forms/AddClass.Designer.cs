@@ -47,57 +47,72 @@
             // 
             // CBCategoria
             // 
+            this.CBCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBCategoria.FormattingEnabled = true;
             this.CBCategoria.Items.AddRange(new object[] {
-            "Musculacion",
+            "Musculación",
             "Crossfit",
-            "Funcional"});
+            "Funcional",
+            "Yoga",
+            "Spinning",
+            "Pilates"});
             this.CBCategoria.Location = new System.Drawing.Point(167, 46);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(121, 21);
+            this.CBCategoria.Size = new System.Drawing.Size(200, 23);
             this.CBCategoria.TabIndex = 34;
             // 
             // txtCupo
             // 
+            this.txtCupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCupo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCupo.Location = new System.Drawing.Point(167, 83);
+            this.txtCupo.MaxLength = 3;
             this.txtCupo.Name = "txtCupo";
-            this.txtCupo.Size = new System.Drawing.Size(121, 20);
+            this.txtCupo.Size = new System.Drawing.Size(100, 23);
             this.txtCupo.TabIndex = 32;
             // 
             // LDiasClases
             // 
             this.LDiasClases.AutoSize = true;
-            this.LDiasClases.Location = new System.Drawing.Point(334, 95);
+            this.LDiasClases.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LDiasClases.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LDiasClases.Location = new System.Drawing.Point(393, 25);
             this.LDiasClases.Name = "LDiasClases";
-            this.LDiasClases.Size = new System.Drawing.Size(28, 13);
+            this.LDiasClases.Size = new System.Drawing.Size(32, 15);
             this.LDiasClases.TabIndex = 31;
-            this.LDiasClases.Text = "Dias";
-            this.LDiasClases.Click += new System.EventHandler(this.LDiasClases_Click);
+            this.LDiasClases.Text = "Días:";
             // 
             // LCupo
             // 
             this.LCupo.AutoSize = true;
-            this.LCupo.Location = new System.Drawing.Point(86, 86);
+            this.LCupo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LCupo.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LCupo.Location = new System.Drawing.Point(86, 85);
             this.LCupo.Name = "LCupo";
-            this.LCupo.Size = new System.Drawing.Size(32, 13);
+            this.LCupo.Size = new System.Drawing.Size(37, 15);
             this.LCupo.TabIndex = 30;
-            this.LCupo.Text = "Cupo";
+            this.LCupo.Text = "Cupo:";
             // 
             // LCategoria
             // 
             this.LCategoria.AutoSize = true;
+            this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LCategoria.Location = new System.Drawing.Point(86, 49);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(54, 13);
+            this.LCategoria.Size = new System.Drawing.Size(61, 15);
             this.LCategoria.TabIndex = 29;
-            this.LCategoria.Text = "Categoría";
+            this.LCategoria.Text = "Categoría:";
             // 
             // CBLunes
             // 
             this.CBLunes.AutoSize = true;
-            this.CBLunes.Location = new System.Drawing.Point(396, 36);
+            this.CBLunes.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBLunes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBLunes.Location = new System.Drawing.Point(396, 45);
             this.CBLunes.Name = "CBLunes";
-            this.CBLunes.Size = new System.Drawing.Size(55, 17);
+            this.CBLunes.Size = new System.Drawing.Size(57, 19);
             this.CBLunes.TabIndex = 35;
             this.CBLunes.Text = "Lunes";
             this.CBLunes.UseVisualStyleBackColor = true;
@@ -105,9 +120,11 @@
             // CBMartes
             // 
             this.CBMartes.AutoSize = true;
-            this.CBMartes.Location = new System.Drawing.Point(396, 59);
+            this.CBMartes.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBMartes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBMartes.Location = new System.Drawing.Point(396, 70);
             this.CBMartes.Name = "CBMartes";
-            this.CBMartes.Size = new System.Drawing.Size(58, 17);
+            this.CBMartes.Size = new System.Drawing.Size(60, 19);
             this.CBMartes.TabIndex = 36;
             this.CBMartes.Text = "Martes";
             this.CBMartes.UseVisualStyleBackColor = true;
@@ -115,19 +132,23 @@
             // CBMiercoles
             // 
             this.CBMiercoles.AutoSize = true;
-            this.CBMiercoles.Location = new System.Drawing.Point(396, 82);
+            this.CBMiercoles.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBMiercoles.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBMiercoles.Location = new System.Drawing.Point(396, 95);
             this.CBMiercoles.Name = "CBMiercoles";
-            this.CBMiercoles.Size = new System.Drawing.Size(71, 17);
+            this.CBMiercoles.Size = new System.Drawing.Size(74, 19);
             this.CBMiercoles.TabIndex = 37;
-            this.CBMiercoles.Text = "Miercoles";
+            this.CBMiercoles.Text = "Miércoles";
             this.CBMiercoles.UseVisualStyleBackColor = true;
             // 
             // CBJueves
             // 
             this.CBJueves.AutoSize = true;
-            this.CBJueves.Location = new System.Drawing.Point(396, 105);
+            this.CBJueves.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBJueves.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBJueves.Location = new System.Drawing.Point(396, 120);
             this.CBJueves.Name = "CBJueves";
-            this.CBJueves.Size = new System.Drawing.Size(60, 17);
+            this.CBJueves.Size = new System.Drawing.Size(62, 19);
             this.CBJueves.TabIndex = 38;
             this.CBJueves.Text = "Jueves";
             this.CBJueves.UseVisualStyleBackColor = true;
@@ -135,9 +156,11 @@
             // CBViernes
             // 
             this.CBViernes.AutoSize = true;
-            this.CBViernes.Location = new System.Drawing.Point(396, 128);
+            this.CBViernes.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBViernes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBViernes.Location = new System.Drawing.Point(396, 145);
             this.CBViernes.Name = "CBViernes";
-            this.CBViernes.Size = new System.Drawing.Size(61, 17);
+            this.CBViernes.Size = new System.Drawing.Size(63, 19);
             this.CBViernes.TabIndex = 39;
             this.CBViernes.Text = "Viernes";
             this.CBViernes.UseVisualStyleBackColor = true;
@@ -145,54 +168,71 @@
             // CBSabado
             // 
             this.CBSabado.AutoSize = true;
-            this.CBSabado.Location = new System.Drawing.Point(396, 151);
+            this.CBSabado.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBSabado.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.CBSabado.Location = new System.Drawing.Point(396, 170);
             this.CBSabado.Name = "CBSabado";
-            this.CBSabado.Size = new System.Drawing.Size(63, 17);
+            this.CBSabado.Size = new System.Drawing.Size(65, 19);
             this.CBSabado.TabIndex = 40;
-            this.CBSabado.Text = "Sabado";
+            this.CBSabado.Text = "Sábado";
             this.CBSabado.UseVisualStyleBackColor = true;
             // 
             // BCrear
             // 
+            this.BCrear.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            this.BCrear.FlatAppearance.BorderSize = 0;
+            this.BCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCrear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BCrear.ForeColor = System.Drawing.Color.White;
             this.BCrear.Location = new System.Drawing.Point(129, 186);
             this.BCrear.Name = "BCrear";
-            this.BCrear.Size = new System.Drawing.Size(75, 23);
+            this.BCrear.Size = new System.Drawing.Size(110, 30);
             this.BCrear.TabIndex = 41;
             this.BCrear.Text = "Crear";
-            this.BCrear.UseVisualStyleBackColor = true;
+            this.BCrear.UseVisualStyleBackColor = false;
             this.BCrear.Click += new System.EventHandler(this.BCrear_Click);
             // 
             // BLimpiar
             // 
+            this.BLimpiar.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            this.BLimpiar.FlatAppearance.BorderSize = 0;
+            this.BLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BLimpiar.ForeColor = System.Drawing.Color.White;
             this.BLimpiar.Location = new System.Drawing.Point(287, 186);
             this.BLimpiar.Name = "BLimpiar";
-            this.BLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 42;
             this.BLimpiar.Text = "Limpiar";
-            this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.UseVisualStyleBackColor = false;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
             // 
             // LHora
             // 
             this.LHora.AutoSize = true;
+            this.LHora.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LHora.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LHora.Location = new System.Drawing.Point(86, 128);
             this.LHora.Name = "LHora";
-            this.LHora.Size = new System.Drawing.Size(30, 13);
+            this.LHora.Size = new System.Drawing.Size(36, 15);
             this.LHora.TabIndex = 43;
-            this.LHora.Text = "Hora";
+            this.LHora.Text = "Hora:";
             // 
             // txtHora
             // 
-            this.txtHora.Location = new System.Drawing.Point(167, 128);
+            this.txtHora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHora.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtHora.Location = new System.Drawing.Point(167, 125);
             this.txtHora.Name = "txtHora";
-            this.txtHora.Size = new System.Drawing.Size(121, 20);
+            this.txtHora.Size = new System.Drawing.Size(100, 23);
             this.txtHora.TabIndex = 44;
             // 
             // AddClass
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 221);
+            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.ClientSize = new System.Drawing.Size(600, 250);
             this.Controls.Add(this.txtHora);
             this.Controls.Add(this.LHora);
             this.Controls.Add(this.BLimpiar);
@@ -208,6 +248,8 @@
             this.Controls.Add(this.LDiasClases);
             this.Controls.Add(this.LCupo);
             this.Controls.Add(this.LCategoria);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MinimumSize = new System.Drawing.Size(616, 289);
             this.Name = "AddClass";
             this.Text = "Nueva Clase";
             this.Load += new System.EventHandler(this.AddClass_Load);

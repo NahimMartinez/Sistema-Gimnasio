@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Gimnasio
 {
-    partial class AddPurchasForm
+    partial class AddPurchaseForm
     {
         /// <summary>
         /// Required designer variable.

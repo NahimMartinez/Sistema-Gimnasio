@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class inventario : UserControl
+    public partial class Inventario : UserControl
     {
-        public inventario()
+        public Inventario()
         {
             InitializeComponent();
         }

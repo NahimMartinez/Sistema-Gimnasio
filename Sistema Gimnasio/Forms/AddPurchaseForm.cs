@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class AddPurchasForm : Form
+    public partial class AddPurchaseForm : Form
     {
-        public AddPurchasForm()
+        public AddPurchaseForm()
         {
             InitializeComponent();
         }
