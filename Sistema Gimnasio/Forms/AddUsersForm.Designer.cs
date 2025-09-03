@@ -39,10 +39,6 @@
             this.BCrear = new System.Windows.Forms.Button();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.CBVerContraseña = new System.Windows.Forms.CheckBox();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
             this.LNombre = new System.Windows.Forms.Label();
             this.LApellido = new System.Windows.Forms.Label();
             this.LDni = new System.Windows.Forms.Label();
@@ -58,214 +54,254 @@
             // LUserName
             // 
             this.LUserName.AutoSize = true;
+            this.LUserName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LUserName.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LUserName.Location = new System.Drawing.Point(452, 65);
             this.LUserName.Name = "LUserName";
-            this.LUserName.Size = new System.Drawing.Size(43, 13);
+            this.LUserName.Size = new System.Drawing.Size(49, 15);
             this.LUserName.TabIndex = 0;
-            this.LUserName.Text = "Usuario";
+            this.LUserName.Text = "Usuario:";
             // 
             // LUserPass
             // 
             this.LUserPass.AutoSize = true;
+            this.LUserPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LUserPass.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LUserPass.Location = new System.Drawing.Point(452, 91);
             this.LUserPass.Name = "LUserPass";
-            this.LUserPass.Size = new System.Drawing.Size(61, 13);
+            this.LUserPass.Size = new System.Drawing.Size(70, 15);
             this.LUserPass.TabIndex = 1;
-            this.LUserPass.Text = "Contraseña";
+            this.LUserPass.Text = "Contraseña:";
             // 
             // LUserRol
             // 
             this.LUserRol.AutoSize = true;
+            this.LUserRol.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LUserRol.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LUserRol.Location = new System.Drawing.Point(452, 145);
             this.LUserRol.Name = "LUserRol";
-            this.LUserRol.Size = new System.Drawing.Size(23, 13);
+            this.LUserRol.Size = new System.Drawing.Size(27, 15);
             this.LUserRol.TabIndex = 2;
-            this.LUserRol.Text = "Rol";
+            this.LUserRol.Text = "Rol:";
             // 
             // LUserPass2
             // 
             this.LUserPass2.AutoSize = true;
+            this.LUserPass2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LUserPass2.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LUserPass2.Location = new System.Drawing.Point(452, 119);
             this.LUserPass2.Name = "LUserPass2";
-            this.LUserPass2.Size = new System.Drawing.Size(97, 13);
+            this.LUserPass2.Size = new System.Drawing.Size(106, 15);
             this.LUserPass2.TabIndex = 3;
-            this.LUserPass2.Text = "Repetir contraseña";
+            this.LUserPass2.Text = "Repetir contraseña:";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(555, 62);
+            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUsuario.Location = new System.Drawing.Point(564, 62);
+            this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(149, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(200, 23);
             this.txtUsuario.TabIndex = 4;
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(555, 88);
+            this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContraseña.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContraseña.Location = new System.Drawing.Point(564, 88);
+            this.txtContraseña.MaxLength = 50;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '●';
-            this.txtContraseña.Size = new System.Drawing.Size(149, 20);
+            this.txtContraseña.Size = new System.Drawing.Size(200, 23);
             this.txtContraseña.TabIndex = 5;
             // 
             // txtContraseña2
             // 
-            this.txtContraseña2.Location = new System.Drawing.Point(555, 116);
+            this.txtContraseña2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContraseña2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContraseña2.Location = new System.Drawing.Point(564, 116);
+            this.txtContraseña2.MaxLength = 50;
             this.txtContraseña2.Name = "txtContraseña2";
             this.txtContraseña2.PasswordChar = '●';
-            this.txtContraseña2.Size = new System.Drawing.Size(149, 20);
+            this.txtContraseña2.Size = new System.Drawing.Size(200, 23);
             this.txtContraseña2.TabIndex = 6;
             // 
             // CBRol
             // 
+            this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBRol.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBRol.FormattingEnabled = true;
             this.CBRol.Items.AddRange(new object[] {
             "Administrador",
             "Coach",
             "Recepcionista",
             "Coach / Recepcionista"});
-            this.CBRol.Location = new System.Drawing.Point(555, 142);
+            this.CBRol.Location = new System.Drawing.Point(564, 142);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(149, 21);
+            this.CBRol.Size = new System.Drawing.Size(200, 23);
             this.CBRol.TabIndex = 7;
             // 
             // BCrear
             // 
-            this.BCrear.Location = new System.Drawing.Point(160, 258);
+            this.BCrear.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            this.BCrear.FlatAppearance.BorderSize = 0;
+            this.BCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BCrear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BCrear.ForeColor = System.Drawing.Color.White;
+            this.BCrear.Location = new System.Drawing.Point(300, 250);
             this.BCrear.Name = "BCrear";
-            this.BCrear.Size = new System.Drawing.Size(75, 23);
+            this.BCrear.Size = new System.Drawing.Size(110, 30);
             this.BCrear.TabIndex = 9;
             this.BCrear.Text = "Crear";
-            this.BCrear.UseVisualStyleBackColor = true;
+            this.BCrear.UseVisualStyleBackColor = false;
             this.BCrear.Click += new System.EventHandler(this.BCrear_Click_1);
             // 
             // BLimpiar
             // 
-            this.BLimpiar.Location = new System.Drawing.Point(506, 258);
+            this.BLimpiar.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            this.BLimpiar.FlatAppearance.BorderSize = 0;
+            this.BLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BLimpiar.ForeColor = System.Drawing.Color.White;
+            this.BLimpiar.Location = new System.Drawing.Point(450, 250);
             this.BLimpiar.Name = "BLimpiar";
-            this.BLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 10;
             this.BLimpiar.Text = "Limpiar";
-            this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.UseVisualStyleBackColor = false;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click_1);
             // 
             // CBVerContraseña
             // 
-            this.CBVerContraseña.AutoSize = true;
-            this.CBVerContraseña.Location = new System.Drawing.Point(713, 103);
+            this.CBVerContraseña.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CBVerContraseña.FlatAppearance.BorderSize = 0;
+            this.CBVerContraseña.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.CBVerContraseña.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.CBVerContraseña.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.CBVerContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBVerContraseña.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CBVerContraseña.ForeColor = System.Drawing.Color.Gray;
+            this.CBVerContraseña.Location = new System.Drawing.Point(770, 88);
             this.CBVerContraseña.Name = "CBVerContraseña";
-            this.CBVerContraseña.Size = new System.Drawing.Size(38, 17);
+            this.CBVerContraseña.Size = new System.Drawing.Size(40, 23);
             this.CBVerContraseña.TabIndex = 13;
             this.CBVerContraseña.Text = "👁️";
+            this.CBVerContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CBVerContraseña.UseVisualStyleBackColor = true;
             this.CBVerContraseña.CheckedChanged += new System.EventHandler(this.CBVerContraseña_CheckedChanged);
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            // 
-            // Rol
-            // 
-            this.Rol.HeaderText = "Rol";
-            this.Rol.Name = "Rol";
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 0;
             // 
             // LNombre
             // 
             this.LNombre.AutoSize = true;
+            this.LNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LNombre.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LNombre.Location = new System.Drawing.Point(45, 65);
             this.LNombre.Name = "LNombre";
-            this.LNombre.Size = new System.Drawing.Size(44, 13);
+            this.LNombre.Size = new System.Drawing.Size(54, 15);
             this.LNombre.TabIndex = 14;
-            this.LNombre.Text = "Nombre";
+            this.LNombre.Text = "Nombre:";
             // 
             // LApellido
             // 
             this.LApellido.AutoSize = true;
+            this.LApellido.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LApellido.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LApellido.Location = new System.Drawing.Point(45, 91);
             this.LApellido.Name = "LApellido";
-            this.LApellido.Size = new System.Drawing.Size(44, 13);
+            this.LApellido.Size = new System.Drawing.Size(54, 15);
             this.LApellido.TabIndex = 15;
-            this.LApellido.Text = "Apellido";
+            this.LApellido.Text = "Apellido:";
             // 
             // LDni
             // 
             this.LDni.AutoSize = true;
+            this.LDni.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LDni.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LDni.Location = new System.Drawing.Point(45, 119);
             this.LDni.Name = "LDni";
-            this.LDni.Size = new System.Drawing.Size(26, 13);
+            this.LDni.Size = new System.Drawing.Size(30, 15);
             this.LDni.TabIndex = 16;
-            this.LDni.Text = "DNI";
+            this.LDni.Text = "DNI:";
             // 
             // LEmail
             // 
             this.LEmail.AutoSize = true;
+            this.LEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LEmail.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
             this.LEmail.Location = new System.Drawing.Point(45, 145);
             this.LEmail.Name = "LEmail";
-            this.LEmail.Size = new System.Drawing.Size(32, 13);
+            this.LEmail.Size = new System.Drawing.Size(39, 15);
             this.LEmail.TabIndex = 17;
-            this.LEmail.Text = "Email";
+            this.LEmail.Text = "Email:";
             // 
             // LTelefono
             // 
             this.LTelefono.AutoSize = true;
-            this.LTelefono.Location = new System.Drawing.Point(45, 169);
+            this.LTelefono.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LTelefono.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LTelefono.Location = new System.Drawing.Point(45, 171);
             this.LTelefono.Name = "LTelefono";
-            this.LTelefono.Size = new System.Drawing.Size(49, 13);
+            this.LTelefono.Size = new System.Drawing.Size(55, 15);
             this.LTelefono.TabIndex = 18;
-            this.LTelefono.Text = "Teléfono";
+            this.LTelefono.Text = "Teléfono:";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(95, 62);
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNombre.Location = new System.Drawing.Point(105, 62);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(342, 20);
+            this.txtNombre.Size = new System.Drawing.Size(300, 23);
             this.txtNombre.TabIndex = 19;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(95, 88);
+            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtApellido.Location = new System.Drawing.Point(105, 88);
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(342, 20);
+            this.txtApellido.Size = new System.Drawing.Size(300, 23);
             this.txtApellido.TabIndex = 20;
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(95, 114);
+            this.txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDni.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDni.Location = new System.Drawing.Point(105, 114);
+            this.txtDni.MaxLength = 15;
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(342, 20);
+            this.txtDni.Size = new System.Drawing.Size(300, 23);
             this.txtDni.TabIndex = 21;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(95, 140);
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtEmail.Location = new System.Drawing.Point(105, 140);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(342, 20);
+            this.txtEmail.Size = new System.Drawing.Size(300, 23);
             this.txtEmail.TabIndex = 22;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(95, 166);
+            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTelefono.Location = new System.Drawing.Point(105, 166);
+            this.txtTelefono.MaxLength = 20;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(342, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(300, 23);
             this.txtTelefono.TabIndex = 23;
             // 
             // AddUsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.ClientSize = new System.Drawing.Size(850, 300);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtDni);
@@ -276,7 +312,6 @@
             this.Controls.Add(this.LDni);
             this.Controls.Add(this.LApellido);
             this.Controls.Add(this.LNombre);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.CBVerContraseña);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BCrear);
@@ -288,6 +323,8 @@
             this.Controls.Add(this.LUserRol);
             this.Controls.Add(this.LUserPass);
             this.Controls.Add(this.LUserName);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MinimumSize = new System.Drawing.Size(866, 339);
             this.Name = "AddUsersForm";
             this.Text = "Nuevo Usuario";
             this.ResumeLayout(false);
@@ -308,13 +345,6 @@
         private System.Windows.Forms.Button BCrear;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.CheckBox CBVerContraseña;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label LEditarUsuario;
-        private System.Windows.Forms.TextBox txtBuscarUsuario;
-        private System.Windows.Forms.Button BBuscarUsuario;
         private System.Windows.Forms.Label LNombre;
         private System.Windows.Forms.Label LApellido;
         private System.Windows.Forms.Label LDni;
