@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistema_Gimnasio
 {
-    public partial class usersManagment : UserControl
+    public partial class UsersManagment : UserControl
     {
-        public usersManagment()
+        public UsersManagment()
         {
             InitializeComponent();
         }

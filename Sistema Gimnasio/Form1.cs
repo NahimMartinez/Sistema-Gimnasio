@@ -64,7 +64,7 @@ namespace Sistema_Gimnasio
         private void ShowUsers()
         {
             contentPanel.Controls.Clear();
-            usersManagment usersmanagnent = new usersManagment();
+            UsersManagment usersmanagnent = new UsersManagment();
             usersmanagnent.Dock = DockStyle.Fill;
             usersmanagnent.BackColor = Color.White;
             contentPanel.Controls.Add(usersmanagnent);
@@ -74,7 +74,7 @@ namespace Sistema_Gimnasio
         private void ShowInventario()
         {
             contentPanel.Controls.Clear();
-            inventario vinventario = new inventario();
+            Inventario vinventario = new Inventario();
             vinventario.Dock = DockStyle.Fill;
             vinventario.BackColor = Color.White;
             contentPanel.Controls.Add(vinventario);
