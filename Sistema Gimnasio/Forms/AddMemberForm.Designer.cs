@@ -49,7 +49,7 @@
             // TName
             // 
             this.TName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TName.Location = new System.Drawing.Point(30, 42);
+            this.TName.Location = new System.Drawing.Point(40, 40);
             this.TName.MaxLength = 60;
             this.TName.Name = "TName";
             this.TName.Size = new System.Drawing.Size(300, 23);
@@ -59,7 +59,7 @@
             // 
             this.TLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TLastName.Location = new System.Drawing.Point(420, 42);
+            this.TLastName.Location = new System.Drawing.Point(430, 40);
             this.TLastName.MaxLength = 60;
             this.TLastName.Name = "TLastName";
             this.TLastName.Size = new System.Drawing.Size(330, 23);
@@ -68,8 +68,8 @@
             // LName
             // 
             this.LName.AutoSize = true;
-            this.LName.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LName.Location = new System.Drawing.Point(30, 22);
+            this.LName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LName.Location = new System.Drawing.Point(40, 20);
             this.LName.Name = "LName";
             this.LName.Size = new System.Drawing.Size(51, 15);
             this.LName.TabIndex = 2;
@@ -79,8 +79,8 @@
             // 
             this.LLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LLastName.AutoSize = true;
-            this.LLastName.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LLastName.Location = new System.Drawing.Point(420, 22);
+            this.LLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LLastName.Location = new System.Drawing.Point(430, 20);
             this.LLastName.Name = "LLastName";
             this.LLastName.Size = new System.Drawing.Size(51, 15);
             this.LLastName.TabIndex = 3;
@@ -89,8 +89,8 @@
             // LDni
             // 
             this.LDni.AutoSize = true;
-            this.LDni.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LDni.Location = new System.Drawing.Point(30, 78);
+            this.LDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LDni.Location = new System.Drawing.Point(40, 76);
             this.LDni.Name = "LDni";
             this.LDni.Size = new System.Drawing.Size(27, 15);
             this.LDni.TabIndex = 4;
@@ -100,8 +100,8 @@
             // 
             this.LPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LPhone.AutoSize = true;
-            this.LPhone.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LPhone.Location = new System.Drawing.Point(420, 78);
+            this.LPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LPhone.Location = new System.Drawing.Point(430, 76);
             this.LPhone.Name = "LPhone";
             this.LPhone.Size = new System.Drawing.Size(53, 15);
             this.LPhone.TabIndex = 5;
@@ -110,8 +110,8 @@
             // LEmail
             // 
             this.LEmail.AutoSize = true;
-            this.LEmail.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LEmail.Location = new System.Drawing.Point(30, 134);
+            this.LEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LEmail.Location = new System.Drawing.Point(40, 132);
             this.LEmail.Name = "LEmail";
             this.LEmail.Size = new System.Drawing.Size(36, 15);
             this.LEmail.TabIndex = 6;
@@ -121,8 +121,8 @@
             // 
             this.LContactE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LContactE.AutoSize = true;
-            this.LContactE.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LContactE.Location = new System.Drawing.Point(420, 134);
+            this.LContactE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LContactE.Location = new System.Drawing.Point(430, 132);
             this.LContactE.Name = "LContactE";
             this.LContactE.Size = new System.Drawing.Size(137, 15);
             this.LContactE.TabIndex = 7;
@@ -131,8 +131,8 @@
             // LObservation
             // 
             this.LObservation.AutoSize = true;
-            this.LObservation.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LObservation.Location = new System.Drawing.Point(30, 190);
+            this.LObservation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LObservation.Location = new System.Drawing.Point(40, 188);
             this.LObservation.Name = "LObservation";
             this.LObservation.Size = new System.Drawing.Size(84, 15);
             this.LObservation.TabIndex = 8;
@@ -141,7 +141,7 @@
             // TDni
             // 
             this.TDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TDni.Location = new System.Drawing.Point(30, 96);
+            this.TDni.Location = new System.Drawing.Point(40, 94);
             this.TDni.MaxLength = 12;
             this.TDni.Name = "TDni";
             this.TDni.Size = new System.Drawing.Size(300, 23);
@@ -151,7 +151,7 @@
             // 
             this.TPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TPhone.Location = new System.Drawing.Point(420, 96);
+            this.TPhone.Location = new System.Drawing.Point(430, 94);
             this.TPhone.MaxLength = 20;
             this.TPhone.Name = "TPhone";
             this.TPhone.Size = new System.Drawing.Size(330, 23);
@@ -160,7 +160,7 @@
             // TEmail
             // 
             this.TEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TEmail.Location = new System.Drawing.Point(30, 152);
+            this.TEmail.Location = new System.Drawing.Point(40, 150);
             this.TEmail.MaxLength = 100;
             this.TEmail.Name = "TEmail";
             this.TEmail.Size = new System.Drawing.Size(300, 23);
@@ -170,7 +170,7 @@
             // 
             this.TContactE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TContactE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TContactE.Location = new System.Drawing.Point(420, 152);
+            this.TContactE.Location = new System.Drawing.Point(430, 150);
             this.TContactE.MaxLength = 100;
             this.TContactE.Name = "TContactE";
             this.TContactE.Size = new System.Drawing.Size(330, 23);
@@ -181,7 +181,7 @@
             this.TObservation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TObservation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TObservation.Location = new System.Drawing.Point(30, 210);
+            this.TObservation.Location = new System.Drawing.Point(40, 208);
             this.TObservation.MaxLength = 1000;
             this.TObservation.Multiline = true;
             this.TObservation.Name = "TObservation";
@@ -191,11 +191,11 @@
             // 
             // BSave
             // 
-            this.BSave.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            this.BSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.BSave.FlatAppearance.BorderSize = 0;
             this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BSave.ForeColor = System.Drawing.Color.White;
-            this.BSave.Location = new System.Drawing.Point(230, 430);
+            this.BSave.Location = new System.Drawing.Point(240, 428);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 14;
@@ -205,11 +205,11 @@
             // 
             // BClean
             // 
-            this.BClean.BackColor = System.Drawing.Color.FromArgb(108,117, 125);
+            this.BClean.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.BClean.FlatAppearance.BorderSize = 0;
             this.BClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BClean.ForeColor = System.Drawing.Color.White;
-            this.BClean.Location = new System.Drawing.Point(460, 430);
+            this.BClean.Location = new System.Drawing.Point(470, 428);
             this.BClean.Name = "BClean";
             this.BClean.Size = new System.Drawing.Size(110, 30);
             this.BClean.TabIndex = 15;
@@ -221,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(804, 481);
             this.Controls.Add(this.BClean);
             this.Controls.Add(this.BSave);

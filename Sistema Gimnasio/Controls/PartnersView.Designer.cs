@@ -198,12 +198,12 @@ namespace Sistema_Gimnasio
             this.TSearch.BackColor = System.Drawing.Color.White;
             this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;                 // PlaceHolder "visual" (no nativo en WinForms)
+            this.TSearch.ForeColor = System.Drawing.Color.Gray; // PlaceHolder "visual" (no nativo en WinForms)
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
             this.TSearch.Size = new System.Drawing.Size(144, 23);
             this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar socio...";                  // Sugerencia: limpiar en Enter/Click
+            this.TSearch.Text = "Buscar socio..."; // Sugerencia: limpiar en Enter/Click
 
             // ------------------ Etiquetas ------------------
             this.LStatus.AutoSize = true;
