@@ -41,6 +41,8 @@
             this.CBSabado = new System.Windows.Forms.CheckBox();
             this.BCrear = new System.Windows.Forms.Button();
             this.BLimpiar = new System.Windows.Forms.Button();
+            this.LHora = new System.Windows.Forms.Label();
+            this.txtHora = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CBCategoria
@@ -50,14 +52,14 @@
             "Musculacion",
             "Crossfit",
             "Funcional"});
-            this.CBCategoria.Location = new System.Drawing.Point(169, 69);
+            this.CBCategoria.Location = new System.Drawing.Point(167, 46);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(121, 21);
             this.CBCategoria.TabIndex = 34;
             // 
             // txtCupo
             // 
-            this.txtCupo.Location = new System.Drawing.Point(169, 106);
+            this.txtCupo.Location = new System.Drawing.Point(167, 83);
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(121, 20);
             this.txtCupo.TabIndex = 32;
@@ -75,7 +77,7 @@
             // LCupo
             // 
             this.LCupo.AutoSize = true;
-            this.LCupo.Location = new System.Drawing.Point(88, 109);
+            this.LCupo.Location = new System.Drawing.Point(86, 86);
             this.LCupo.Name = "LCupo";
             this.LCupo.Size = new System.Drawing.Size(32, 13);
             this.LCupo.TabIndex = 30;
@@ -84,7 +86,7 @@
             // LCategoria
             // 
             this.LCategoria.AutoSize = true;
-            this.LCategoria.Location = new System.Drawing.Point(88, 72);
+            this.LCategoria.Location = new System.Drawing.Point(86, 49);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(54, 13);
             this.LCategoria.TabIndex = 29;
@@ -170,11 +172,29 @@
             this.BLimpiar.UseVisualStyleBackColor = true;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
             // 
+            // LHora
+            // 
+            this.LHora.AutoSize = true;
+            this.LHora.Location = new System.Drawing.Point(86, 128);
+            this.LHora.Name = "LHora";
+            this.LHora.Size = new System.Drawing.Size(30, 13);
+            this.LHora.TabIndex = 43;
+            this.LHora.Text = "Hora";
+            // 
+            // txtHora
+            // 
+            this.txtHora.Location = new System.Drawing.Point(167, 128);
+            this.txtHora.Name = "txtHora";
+            this.txtHora.Size = new System.Drawing.Size(121, 20);
+            this.txtHora.TabIndex = 44;
+            // 
             // AddClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 221);
+            this.Controls.Add(this.txtHora);
+            this.Controls.Add(this.LHora);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BCrear);
             this.Controls.Add(this.CBSabado);
@@ -190,6 +210,7 @@
             this.Controls.Add(this.LCategoria);
             this.Name = "AddClass";
             this.Text = "Nueva Clase";
+            this.Load += new System.EventHandler(this.AddClass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +231,7 @@
         private System.Windows.Forms.CheckBox CBSabado;
         private System.Windows.Forms.Button BCrear;
         private System.Windows.Forms.Button BLimpiar;
+        private System.Windows.Forms.Label LHora;
+        private System.Windows.Forms.TextBox txtHora;
     }
 }

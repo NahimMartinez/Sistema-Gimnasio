@@ -50,6 +50,13 @@ namespace Sistema_Gimnasio.Forms
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtHora.Text))
+            {
+                MessageBox.Show("Por favor ingrese el Horario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHora.Focus();
+                return false;
+            }
+
             // Nueva validación: al menos un día seleccionado
             if (!CBLunes.Checked && !CBMartes.Checked && !CBMiercoles.Checked &&
                 !CBJueves.Checked && !CBViernes.Checked && !CBSabado.Checked)
@@ -82,12 +89,18 @@ namespace Sistema_Gimnasio.Forms
         {
             txtCupo.Clear();
             CBCategoria.SelectedIndex = -1;
+            txtHora.Clear();
             CBLunes.Checked = false;
             CBMartes.Checked = false;
             CBMiercoles.Checked = false;
             CBJueves.Checked = false;
             CBViernes.Checked = false;
             CBSabado.Checked = false;
+        }
+
+        private void AddClass_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
