@@ -120,7 +120,7 @@ namespace Sistema_Gimnasio
         private void ShowUsers()
         {
             contentPanel.Controls.Clear();
-            var view = new usersManagment
+            var view = new UsersManagment
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White
@@ -156,7 +156,7 @@ namespace Sistema_Gimnasio
         private void ShowInventario()
         {
             contentPanel.Controls.Clear();
-            var view = new inventario
+            var view = new Inventory
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White
