@@ -58,6 +58,19 @@
     <Compile Include="Forms\AddClass.Designer.cs">
       <DependentUpon>AddClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddPurchasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddPurchasForm.Designer.cs">
+      <DependentUpon>AddPurchasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddSupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddSupplierForm.Designer.cs">
+      <DependentUpon>AddSupplierForm.cs</DependentUpon>
+    </Compile>
+    </Compile>
     <Compile Include="Forms\AddItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,11 +133,20 @@
     <EmbeddedResource Include="Forms\AddClass.resx">
       <DependentUpon>AddClass.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Controls\SupplierView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SupplierView.Designer.cs">
+      <DependentUpon>SupplierView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AddItemForm.resx">
       <DependentUpon>AddItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddMemberForm.resx">
       <DependentUpon>AddMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddSupplierForm.resx">
+      <DependentUpon>AddSupplierForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddUsersForm.resx">
       <DependentUpon>AddUsersForm.cs</DependentUpon>
@@ -155,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\usersManagment.resx">
       <DependentUpon>usersManagment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SupplierView.resx">
+      <DependentUpon>SupplierView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
