@@ -220,8 +220,7 @@
             "Miércoles",
             "Jueves",
             "Viernes",
-            "Sábado",
-            "Domingo"});
+            "Sábado",});
             this.CBDia.Location = new System.Drawing.Point(304, 66);
             this.CBDia.Name = "CBDia";
             this.CBDia.Size = new System.Drawing.Size(130, 23);

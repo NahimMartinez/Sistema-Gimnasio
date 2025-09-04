@@ -76,8 +76,8 @@
             // 
             this.LDiasClases.AutoSize = true;
             this.LDiasClases.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LDiasClases.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.LDiasClases.Location = new System.Drawing.Point(393, 25);
+            this.LDiasClases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LDiasClases.Location = new System.Drawing.Point(419, 17);
             this.LDiasClases.Name = "LDiasClases";
             this.LDiasClases.Size = new System.Drawing.Size(32, 15);
             this.LDiasClases.TabIndex = 31;
@@ -87,10 +87,10 @@
             // 
             this.LCupo.AutoSize = true;
             this.LCupo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LCupo.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LCupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCupo.Location = new System.Drawing.Point(86, 85);
             this.LCupo.Name = "LCupo";
-            this.LCupo.Size = new System.Drawing.Size(37, 15);
+            this.LCupo.Size = new System.Drawing.Size(39, 15);
             this.LCupo.TabIndex = 30;
             this.LCupo.Text = "Cupo:";
             // 
@@ -98,7 +98,7 @@
             // 
             this.LCategoria.AutoSize = true;
             this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(86, 49);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(61, 15);
@@ -109,8 +109,8 @@
             // 
             this.CBLunes.AutoSize = true;
             this.CBLunes.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBLunes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBLunes.Location = new System.Drawing.Point(396, 45);
+            this.CBLunes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBLunes.Location = new System.Drawing.Point(422, 37);
             this.CBLunes.Name = "CBLunes";
             this.CBLunes.Size = new System.Drawing.Size(57, 19);
             this.CBLunes.TabIndex = 35;
@@ -121,10 +121,10 @@
             // 
             this.CBMartes.AutoSize = true;
             this.CBMartes.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBMartes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBMartes.Location = new System.Drawing.Point(396, 70);
+            this.CBMartes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBMartes.Location = new System.Drawing.Point(422, 62);
             this.CBMartes.Name = "CBMartes";
-            this.CBMartes.Size = new System.Drawing.Size(60, 19);
+            this.CBMartes.Size = new System.Drawing.Size(62, 19);
             this.CBMartes.TabIndex = 36;
             this.CBMartes.Text = "Martes";
             this.CBMartes.UseVisualStyleBackColor = true;
@@ -133,10 +133,10 @@
             // 
             this.CBMiercoles.AutoSize = true;
             this.CBMiercoles.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBMiercoles.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBMiercoles.Location = new System.Drawing.Point(396, 95);
+            this.CBMiercoles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBMiercoles.Location = new System.Drawing.Point(422, 87);
             this.CBMiercoles.Name = "CBMiercoles";
-            this.CBMiercoles.Size = new System.Drawing.Size(74, 19);
+            this.CBMiercoles.Size = new System.Drawing.Size(77, 19);
             this.CBMiercoles.TabIndex = 37;
             this.CBMiercoles.Text = "Miércoles";
             this.CBMiercoles.UseVisualStyleBackColor = true;
@@ -145,10 +145,10 @@
             // 
             this.CBJueves.AutoSize = true;
             this.CBJueves.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBJueves.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBJueves.Location = new System.Drawing.Point(396, 120);
+            this.CBJueves.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBJueves.Location = new System.Drawing.Point(422, 112);
             this.CBJueves.Name = "CBJueves";
-            this.CBJueves.Size = new System.Drawing.Size(62, 19);
+            this.CBJueves.Size = new System.Drawing.Size(60, 19);
             this.CBJueves.TabIndex = 38;
             this.CBJueves.Text = "Jueves";
             this.CBJueves.UseVisualStyleBackColor = true;
@@ -157,10 +157,10 @@
             // 
             this.CBViernes.AutoSize = true;
             this.CBViernes.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBViernes.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBViernes.Location = new System.Drawing.Point(396, 145);
+            this.CBViernes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBViernes.Location = new System.Drawing.Point(422, 137);
             this.CBViernes.Name = "CBViernes";
-            this.CBViernes.Size = new System.Drawing.Size(63, 19);
+            this.CBViernes.Size = new System.Drawing.Size(64, 19);
             this.CBViernes.TabIndex = 39;
             this.CBViernes.Text = "Viernes";
             this.CBViernes.UseVisualStyleBackColor = true;
@@ -169,8 +169,8 @@
             // 
             this.CBSabado.AutoSize = true;
             this.CBSabado.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBSabado.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
-            this.CBSabado.Location = new System.Drawing.Point(396, 170);
+            this.CBSabado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.CBSabado.Location = new System.Drawing.Point(422, 162);
             this.CBSabado.Name = "CBSabado";
             this.CBSabado.Size = new System.Drawing.Size(65, 19);
             this.CBSabado.TabIndex = 40;
@@ -179,12 +179,12 @@
             // 
             // BCrear
             // 
-            this.BCrear.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            this.BCrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.BCrear.FlatAppearance.BorderSize = 0;
             this.BCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BCrear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BCrear.ForeColor = System.Drawing.Color.White;
-            this.BCrear.Location = new System.Drawing.Point(129, 186);
+            this.BCrear.Location = new System.Drawing.Point(126, 208);
             this.BCrear.Name = "BCrear";
             this.BCrear.Size = new System.Drawing.Size(110, 30);
             this.BCrear.TabIndex = 41;
@@ -194,12 +194,12 @@
             // 
             // BLimpiar
             // 
-            this.BLimpiar.BackColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            this.BLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.BLimpiar.FlatAppearance.BorderSize = 0;
             this.BLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BLimpiar.ForeColor = System.Drawing.Color.White;
-            this.BLimpiar.Location = new System.Drawing.Point(287, 186);
+            this.BLimpiar.Location = new System.Drawing.Point(284, 208);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 42;
@@ -211,7 +211,7 @@
             // 
             this.LHora.AutoSize = true;
             this.LHora.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LHora.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LHora.Location = new System.Drawing.Point(86, 128);
             this.LHora.Name = "LHora";
             this.LHora.Size = new System.Drawing.Size(36, 15);
@@ -231,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(600, 250);
             this.Controls.Add(this.txtHora);
             this.Controls.Add(this.LHora);
