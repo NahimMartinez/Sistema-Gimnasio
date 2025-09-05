@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.LPurcharseOrder = new System.Windows.Forms.Label();
+            this.LOrderPurcharse = new System.Windows.Forms.Label();
             this.BoardSupplier = new System.Windows.Forms.DataGridView();
             this.BFilter = new System.Windows.Forms.Button();
             this.TOrdPurcharse = new System.Windows.Forms.TextBox();
@@ -46,16 +46,16 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LPurcharseOrder
+            // LOrderPurcharse
             // 
-            this.LPurcharseOrder.AutoSize = true;
-            this.LPurcharseOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.LPurcharseOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.LPurcharseOrder.Location = new System.Drawing.Point(15, 12);
-            this.LPurcharseOrder.Name = "LPurcharseOrder";
-            this.LPurcharseOrder.Size = new System.Drawing.Size(118, 25);
-            this.LPurcharseOrder.TabIndex = 0;
-            this.LPurcharseOrder.Text = "Proveedores";
+            this.LOrderPurcharse.AutoSize = true;
+            this.LOrderPurcharse.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.LOrderPurcharse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.LOrderPurcharse.Location = new System.Drawing.Point(15, 12);
+            this.LOrderPurcharse.Name = "LOrderPurcharse";
+            this.LOrderPurcharse.Size = new System.Drawing.Size(172, 25);
+            this.LOrderPurcharse.TabIndex = 0;
+            this.LOrderPurcharse.Text = "Orden de Compras";
             // 
             // BoardSupplier
             // 
@@ -144,7 +144,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.LPurcharseOrder);
+            this.panel1.Controls.Add(this.LOrderPurcharse);
             this.panel1.Controls.Add(this.BNewSupplier);
             this.panel1.Controls.Add(this.TOrdPurcharse);
             this.panel1.Controls.Add(this.BFilter);
@@ -198,7 +198,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LPurcharseOrder;
+        private System.Windows.Forms.Label LOrderPurcharse;
         private System.Windows.Forms.DataGridView BoardSupplier;
         private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TOrdPurcharse;

@@ -26,7 +26,7 @@ namespace Sistema_Gimnasio
            {
                 //muestro el formulario como un cuadro de dialogo
                 if (fNewMember.ShowDialog() == DialogResult.OK)
-               {
+                {
                     
                 }
             }

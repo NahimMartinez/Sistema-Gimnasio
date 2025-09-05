@@ -49,30 +49,44 @@ namespace Sistema_Gimnasio
             this.LBrand2 = new System.Windows.Forms.Label();
             this.LogoDot = new System.Windows.Forms.Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.MenuFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.Sidebar.SuspendLayout();
             this.PanelUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PUser)).BeginInit();
             this.PanelBrand.SuspendLayout();
-            this.SuspendLayout();
+            this.SuspendLayout();            
             // 
             // Sidebar
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.Sidebar.Controls.Add(this.PanelUser);
-            this.Sidebar.Controls.Add(this.BReports);
-            this.Sidebar.Controls.Add(this.BInventory);
-            this.Sidebar.Controls.Add(this.BActivity);
-            this.Sidebar.Controls.Add(this.BSupplier);
-            this.Sidebar.Controls.Add(this.BMemberships);
-            this.Sidebar.Controls.Add(this.BtnPartners);
-            this.Sidebar.Controls.Add(this.BtnUsers);
-            this.Sidebar.Controls.Add(this.BDashboard);
-            this.Sidebar.Controls.Add(this.PanelBrand);
+            this.Sidebar.Controls.Clear();
+            this.PanelBrand.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelUser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Sidebar.Controls.Add(this.MenuFlow);   // Fill
+            this.Sidebar.Controls.Add(this.PanelUser);  // Bottom
+            this.Sidebar.Controls.Add(this.PanelBrand); // Top
             this.Sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.Sidebar.Location = new System.Drawing.Point(0, 0);
             this.Sidebar.Name = "Sidebar";
             this.Sidebar.Size = new System.Drawing.Size(202, 624);
             this.Sidebar.TabIndex = 0;
+            //
+            //MenuFLow
+            //
+            this.MenuFlow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MenuFlow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.MenuFlow.WrapContents = false;
+            this.MenuFlow.AutoScroll = true;
+            this.MenuFlow.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.MenuFlow.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.MenuFlow.Controls.Add(this.BDashboard);
+            this.MenuFlow.Controls.Add(this.BtnUsers);
+            this.MenuFlow.Controls.Add(this.BtnPartners);
+            this.MenuFlow.Controls.Add(this.BMemberships);
+            this.MenuFlow.Controls.Add(this.BSupplier);
+            this.MenuFlow.Controls.Add(this.BActivity);
+            this.MenuFlow.Controls.Add(this.BInventory);
+            this.MenuFlow.Controls.Add(this.BReports);
             // 
             // PanelUser
             // 
@@ -372,6 +386,7 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.Label LBrand2;
         private System.Windows.Forms.ImageList MenuIcons;
         private Panel contentPanel;
+        private System.Windows.Forms.FlowLayoutPanel MenuFlow;
     }
 }
 
