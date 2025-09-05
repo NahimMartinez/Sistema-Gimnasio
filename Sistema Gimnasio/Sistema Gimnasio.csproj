@@ -121,6 +121,12 @@
     <Compile Include="Controls\SupplierView.Designer.cs">
       <DependentUpon>SupplierView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PurcharseOrderView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PurcharseOrderView.Designer.cs">
+      <DependentUpon>PurcharseOrderView.cs</DependentUpon>
+    </Compile>
     <!-- Resources -->
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
