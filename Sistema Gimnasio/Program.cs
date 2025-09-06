@@ -16,7 +16,17 @@ namespace Sistema_Gimnasio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
+
+            using (var login = new LoginView())
+            {
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    var main = new Form1();
+                    main.SetRoleAndRefresh(login.UserRole); 
+                    Application.Run(main);
+                }
+            }
         }
     }
 }

@@ -22,10 +22,11 @@ namespace Sistema_Gimnasio
             None = 0,
             Admin = 1,
             Recep = 2,
-            Coach = 4
+            Coach = 4,
+       
         }
 
-        private Roles CurrentRole = Roles.Coach;
+        private Roles CurrentRole = Roles.Admin;
 
         // ACL por botón (se llena después de InitializeComponent)
         private readonly Dictionary<Button, Roles> Acl = new Dictionary<Button, Roles>();
@@ -94,6 +95,11 @@ namespace Sistema_Gimnasio
             ApplyAcl(CurrentRole);
         }
 
+        public void SetRoleAndRefresh(Roles newRole)
+        {
+            CurrentRole = newRole;
+            ApplyAcl(CurrentRole);
+        }
         private void WireSidebar()
         {
             // Tags que usa Navigate() SOLO para navegación
