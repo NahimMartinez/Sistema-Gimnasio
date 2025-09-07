@@ -23,7 +23,7 @@ namespace Sistema_Gimnasio
                 if (login.ShowDialog() == DialogResult.OK)
                 {
                     var main = new Form1();
-                    main.SetRoleAndRefresh(login.UserRole); 
+                    main.SetRoleAndRefresh(login.UserRole, login.Username); 
                     Application.Run(main);
                 }
             }

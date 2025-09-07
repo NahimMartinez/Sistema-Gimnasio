@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Sistema_Gimnasio
 {
@@ -26,7 +27,8 @@ namespace Sistema_Gimnasio
        
         }
 
-        private Roles CurrentRole = Roles.Admin;
+        private Roles CurrentRole;
+        private string CurrentUser;
 
         // ACL por botón (se llena después de InitializeComponent)
         private readonly Dictionary<Button, Roles> Acl = new Dictionary<Button, Roles>();
@@ -45,8 +47,7 @@ namespace Sistema_Gimnasio
             WireSidebar();          // setea Tag de navegación y eventos
             BuildAcl();             // define permisos por botón
 
-            Navigate("dashboard");  // pantalla inicial
-            SetActive(BDashboard);  // botón inicial activo
+      
 
             MenuFlow.SuspendLayout();
             foreach (var b in MenuButtons)
@@ -93,13 +94,28 @@ namespace Sistema_Gimnasio
         private void Form1_Load(object sender, EventArgs e)
         {
             ApplyAcl(CurrentRole);
+            var first = MenuButtons.FirstOrDefault(b => b.Visible);
+            if (first != null)
+            {
+                SetActive(first);
+                Navigate((string)first.Tag);
+            }
         }
 
-        public void SetRoleAndRefresh(Roles newRole)
+        public void SetRoleAndRefresh(Roles newRole, string username)
         {
             CurrentRole = newRole;
+            CurrentUser = username;
             ApplyAcl(CurrentRole);
+            UpdateLabels();
         }
+
+        private void UpdateLabels()
+        {
+            LUser.Text = CurrentUser;
+            LRole.Text = CurrentRole.ToString();
+        }
+
         private void WireSidebar()
         {
             // Tags que usa Navigate() SOLO para navegación

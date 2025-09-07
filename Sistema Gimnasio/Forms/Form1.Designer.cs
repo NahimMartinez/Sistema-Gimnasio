@@ -50,6 +50,9 @@ namespace Sistema_Gimnasio
             this.LogoDot = new System.Windows.Forms.Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.MenuFlow = new System.Windows.Forms.FlowLayoutPanel();
+
+
+
             this.Sidebar.SuspendLayout();
             this.PanelUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PUser)).BeginInit();
@@ -76,7 +79,7 @@ namespace Sistema_Gimnasio
             this.MenuFlow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuFlow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.MenuFlow.WrapContents = false;
-            this.MenuFlow.AutoScroll = true;
+            this.MenuFlow.AutoScroll = false;
             this.MenuFlow.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.MenuFlow.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
             this.MenuFlow.Controls.Add(this.BDashboard);
@@ -87,6 +90,7 @@ namespace Sistema_Gimnasio
             this.MenuFlow.Controls.Add(this.BActivity);
             this.MenuFlow.Controls.Add(this.BInventory);
             this.MenuFlow.Controls.Add(this.BReports);
+
             // 
             // PanelUser
             // 

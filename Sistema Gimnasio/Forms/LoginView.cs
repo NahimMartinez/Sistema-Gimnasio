@@ -15,7 +15,7 @@ namespace Sistema_Gimnasio
 
         
         public Form1.Roles UserRole { get; private set; } = Form1.Roles.None;
-
+        public string Username { get; private set; }
         public LoginView()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace Sistema_Gimnasio
                 UserRole = Form1.Roles.Coach;
             else
             {
-                MessageBox.Show("Invalid credentials");
+                MessageBox.Show("Usuario/Contraseña invalida");
                 return;
             }
 
