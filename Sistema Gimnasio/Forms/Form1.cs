@@ -149,7 +149,7 @@ namespace Sistema_Gimnasio
                 case "classes": ShowClases(); break;
                 case "inventory": ShowInventario(); break;
                 case "memberships": ShowMemberships(); break;
-                case "supplier": ShowSuppliers(); break;
+                //case "supplier": ShowSuppliers(); break;
                 case "reports": ShowReports(); break;
             }
         }
@@ -228,6 +228,67 @@ namespace Sistema_Gimnasio
             this.Text = "GymManager Pro - Proveedores";
 
 
+        }
+
+        private void BSupplier_MouseHover(object sender, EventArgs e)
+        {
+            PSubMenuSupplier.Visible = true;
+            hideTimer.Stop();
+        }
+
+        private void BSupplier_MouseLeave(object sender, EventArgs e)
+        {
+            hideTimer.Start();
+        }
+
+        private void PSubMenuSupplier_MouseLeave(object sender, EventArgs e)
+        {
+            hideTimer.Start();
+        }
+
+        private void hideTimer_Tick(object sender, EventArgs e)
+        {
+            OcultarSiCursorFuera();
+        }
+
+        // hit-testing entre botón y panel usando coordenadas de pantalla
+        private void OcultarSiCursorFuera()
+        {
+            var cursor = Cursor.Position;
+
+            var btnRect = BSupplier.RectangleToScreen(BSupplier.ClientRectangle);
+            var subRect = PSubMenuSupplier.RectangleToScreen(PSubMenuSupplier.ClientRectangle);
+
+            if (!btnRect.Contains(cursor) && !subRect.Contains(cursor))
+            {
+                PSubMenuSupplier.Visible = false;
+                hideTimer.Stop();
+            }
+        }
+
+        // clics de submenú
+        private void BProvList_Click(object sender, EventArgs e)
+        {
+            
+            ShowSuppliers();
+            SetActive(BSupplier); // mantiene resaltado el botón padre
+            PSubMenuSupplier.Visible = false;
+        }
+
+        private void BPurchaseOrders_Click(object sender, EventArgs e)
+        {
+            ShowPurchaseOrders();
+            SetActive(BSupplier);
+            PSubMenuSupplier.Visible = false;
+        }
+
+        
+        private void ShowPurchaseOrders()
+        {
+            contentPanel.Controls.Clear();
+            var view = new PurcharseOrderView { Dock = DockStyle.Fill, BackColor = Color.White };
+            contentPanel.Controls.Add(view);
+            this.Text = "GymManager Pro - Órdenes de compra";
         }
 
     }

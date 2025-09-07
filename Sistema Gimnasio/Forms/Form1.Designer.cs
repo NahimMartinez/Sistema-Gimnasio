@@ -50,9 +50,10 @@ namespace Sistema_Gimnasio
             this.LogoDot = new System.Windows.Forms.Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.MenuFlow = new System.Windows.Forms.FlowLayoutPanel();
-
-
-
+            this.PSubMenuSupplier = new System.Windows.Forms.Panel();
+            this.BProvList = new System.Windows.Forms.Button();
+            this.BPurchaseOrders = new System.Windows.Forms.Button();
+            this.hideTimer = new System.Windows.Forms.Timer(this.components);
             this.Sidebar.SuspendLayout();
             this.PanelUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PUser)).BeginInit();
@@ -87,6 +88,7 @@ namespace Sistema_Gimnasio
             this.MenuFlow.Controls.Add(this.BtnPartners);
             this.MenuFlow.Controls.Add(this.BMemberships);
             this.MenuFlow.Controls.Add(this.BSupplier);
+            this.MenuFlow.Controls.Add(this.PSubMenuSupplier);
             this.MenuFlow.Controls.Add(this.BActivity);
             this.MenuFlow.Controls.Add(this.BInventory);
             this.MenuFlow.Controls.Add(this.BReports);
@@ -225,6 +227,54 @@ namespace Sistema_Gimnasio
             this.BSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSupplier.UseVisualStyleBackColor = true;
+            // PSubMenuSupplier
+            this.PSubMenuSupplier.SuspendLayout();
+            this.PSubMenuSupplier.BackColor = System.Drawing.Color.FromArgb(21, 31, 56);
+            this.PSubMenuSupplier.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.PSubMenuSupplier.Padding = new System.Windows.Forms.Padding(36, 0, 0, 0); // sangría
+            this.PSubMenuSupplier.Size = new System.Drawing.Size(202, 84);
+            this.PSubMenuSupplier.Visible = false;
+            this.PSubMenuSupplier.MouseLeave += new System.EventHandler(this.PSubMenuSupplier_MouseLeave);
+
+            // BProvList
+            this.BProvList.FlatAppearance.BorderSize = 0;
+            this.BProvList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BProvList.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BProvList.ForeColor = System.Drawing.Color.White;
+            this.BProvList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BProvList.Location = new System.Drawing.Point(0, 0);
+            this.BProvList.Size = new System.Drawing.Size(202, 40);
+            this.BProvList.Text = "Lista de proveedores";
+            this.BProvList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BProvList.Click += new System.EventHandler(this.BProvList_Click);
+
+            // BPurchaseOrders
+            this.BPurchaseOrders.FlatAppearance.BorderSize = 0;
+            this.BPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BPurchaseOrders.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BPurchaseOrders.ForeColor = System.Drawing.Color.White;
+            this.BPurchaseOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BPurchaseOrders.Location = new System.Drawing.Point(0, 42);
+            this.BPurchaseOrders.Size = new System.Drawing.Size(202, 40);
+            this.BPurchaseOrders.Text = "Órdenes de compra";
+            this.BPurchaseOrders.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BPurchaseOrders.Click += new System.EventHandler(this.BPurchaseOrders_Click);
+
+            // add hijos al panel
+            this.PSubMenuSupplier.Controls.Add(this.BProvList);
+            this.PSubMenuSupplier.Controls.Add(this.BPurchaseOrders);
+            this.PSubMenuSupplier.ResumeLayout(false);
+
+            // hideTimer
+            this.hideTimer.Interval = 150;
+            this.hideTimer.Tick += new System.EventHandler(this.hideTimer_Tick);
+
+            // eventos hover del botón principal
+            this.BSupplier.MouseHover += new System.EventHandler(this.BSupplier_MouseHover);
+            this.BSupplier.MouseLeave += new System.EventHandler(this.BSupplier_MouseLeave);
+
+            
+
             // 
             // BMemberships
             // 
@@ -391,6 +441,10 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.ImageList MenuIcons;
         private Panel contentPanel;
         private System.Windows.Forms.FlowLayoutPanel MenuFlow;
+        private System.Windows.Forms.Panel PSubMenuSupplier;
+        private System.Windows.Forms.Button BProvList;
+        private System.Windows.Forms.Button BPurchaseOrders;
+        private System.Windows.Forms.Timer hideTimer;
     }
 }
 
