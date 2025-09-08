@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,16 +17,28 @@ namespace Sistema_Gimnasio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
 
-            using (var login = new LoginView())
+            bool flag = true;
+            while (flag)
             {
-                if (login.ShowDialog() == DialogResult.OK)
+                using (var login = new LoginView())
                 {
-                    var main = new Form1();
-                    main.SetRoleAndRefresh(login.UserRole, login.Username); 
-                    Application.Run(main);
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        using (var main = new Form1())
+                        {
+                            main.SetRoleAndRefresh(login.UserRole, login.Username);
+                            Application.Run(main);
+                        }
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+
                 }
+
+
             }
         }
     }
