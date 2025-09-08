@@ -16,7 +16,7 @@ namespace Sistema_Gimnasio
     public partial class Form1 : Form
     {
 
-        // --- Roles con flags correctos
+        // [Flags] permite tratar los valores del enum como bits combinables con OR (|)
         [Flags]
         public enum Roles
         {
@@ -44,21 +44,19 @@ namespace Sistema_Gimnasio
         {
             InitializeComponent();
 
-            WireSidebar();          // setea Tag de navegación y eventos
-            BuildAcl();             // define permisos por botón
+            WireSidebar(); // setea Tag de navegación y eventos
+            BuildAcl(); // define permisos por botón
 
-      
-
-            MenuFlow.SuspendLayout();
+            //ajustes de los botones del sidebar
+            MenuFlow.SuspendLayout(); //pausa el layout para hacer varios cambios
             foreach (var b in MenuButtons)
-            {
-                // b.Visible = true; // REDUNDANTE: lo maneja ApplyAcl
+            {          
                 b.Dock = DockStyle.None; // Flow ignora Dock, pero evitá Top
                 b.AutoSize = false;
                 b.Height = 42;
                 b.Margin = new Padding(0, 0, 0, 6);
             }
-            MenuFlow.ResumeLayout();
+            MenuFlow.ResumeLayout(); //reanuda el layout
 
             // mantener 100% de ancho
             MenuFlow.SizeChanged += (_, __) =>
@@ -69,10 +67,10 @@ namespace Sistema_Gimnasio
 
             this.Load += Form1_Load;
         }
-
+        // Define permisos por botón en el diccionario Acl diciendo que roles pueden verlo
         private void BuildAcl()
         {
-            // Usá solo roles acá. Tag queda para navegación.
+            // manejamos por roles, no por usuarios
             Acl[BDashboard] = Roles.Admin;
             Acl[BtnUsers] = Roles.Admin;
             Acl[BtnPartners] = Roles.Admin | Roles.Recep;
@@ -82,26 +80,26 @@ namespace Sistema_Gimnasio
             Acl[BInventory] = Roles.Admin | Roles.Recep;
             Acl[BReports] = Roles.Admin;
         }
-
+        //recorremos todos los botones y los mostramos u ocultamos según el rol actual
         private void ApplyAcl(Roles role)
         {
             foreach (var b in MenuButtons)
                 b.Visible = (Acl.TryGetValue(b, out var allowed) && (allowed & role) != 0);
 
-            MenuFlow?.PerformLayout();
+            MenuFlow?.PerformLayout();//fueza el layout para recalcular tras actualizar visibilidad
         }
-
+        //aplicamos permisos al cargar el formulario
         private void Form1_Load(object sender, EventArgs e)
         {
             ApplyAcl(CurrentRole);
             var first = MenuButtons.FirstOrDefault(b => b.Visible);
             if (first != null)
             {
-                SetActive(first);
-                Navigate((string)first.Tag);
+                SetActive(first); // resalta el botón visible
+                Navigate((string)first.Tag); // abre la vista
             }
         }
-
+        //actualiza rol y usuario, reaplica permisos y actualiza etiquetas
         public void SetRoleAndRefresh(Roles newRole, string username)
         {
             CurrentRole = newRole;
@@ -109,16 +107,16 @@ namespace Sistema_Gimnasio
             ApplyAcl(CurrentRole);
             UpdateLabels();
         }
-
+        //escribe en los label el usuario y rol actuales
         private void UpdateLabels()
         {
             LUser.Text = CurrentUser;
             LRole.Text = CurrentRole.ToString();
         }
-
+        //asigna tags y eventos a los botones del sidebar
         private void WireSidebar()
         {
-            // Tags que usa Navigate() SOLO para navegación
+            // Tags que usa Navigate() 
             BDashboard.Tag = "dashboard";
             BtnUsers.Tag = "users";
             BtnPartners.Tag = "partners";
@@ -138,7 +136,7 @@ namespace Sistema_Gimnasio
             Navigate((string)btn.Tag);
             SetActive(btn);
         }
-
+        //enruta al metodo de carga cada vista segun el tag del recibido
         private void Navigate(string menuId)
         {
             switch (menuId)
@@ -229,18 +227,18 @@ namespace Sistema_Gimnasio
 
 
         }
-
+        //al pasar el mouse sobre el botón, muestra el submenú y detiene el timer
         private void BSupplier_MouseHover(object sender, EventArgs e)
         {
             PSubMenuSupplier.Visible = true;
             hideTimer.Stop();
         }
-
+        // al salir con el mouse del botón o del panel, inicia el timer
         private void BSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
         }
-
+        // al entrar con el mouse en el panel, detiene el timer
         private void PSubMenuSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
@@ -255,10 +253,10 @@ namespace Sistema_Gimnasio
         private void OcultarSiCursorFuera()
         {
             var cursor = Cursor.Position;
-
+            //rectángulos en coordenadas de pantalla
             var btnRect = BSupplier.RectangleToScreen(BSupplier.ClientRectangle);
             var subRect = PSubMenuSupplier.RectangleToScreen(PSubMenuSupplier.ClientRectangle);
-
+            // si el cursor no está en ninguno, oculta el submenú y detiene el timer
             if (!btnRect.Contains(cursor) && !subRect.Contains(cursor))
             {
                 PSubMenuSupplier.Visible = false;
