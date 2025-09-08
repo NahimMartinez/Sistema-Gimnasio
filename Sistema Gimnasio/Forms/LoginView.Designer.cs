@@ -50,7 +50,7 @@
             // BLogin
             // 
             this.BLogin.Location = new System.Drawing.Point(89, 162);
-            this.BLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BLogin.Margin = new System.Windows.Forms.Padding(2);
             this.BLogin.Name = "BLogin";
             this.BLogin.Size = new System.Drawing.Size(86, 19);
             this.BLogin.TabIndex = 1;
@@ -72,7 +72,7 @@
             // TUser
             // 
             this.TUser.Location = new System.Drawing.Point(171, 52);
-            this.TUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TUser.Margin = new System.Windows.Forms.Padding(2);
             this.TUser.Name = "TUser";
             this.TUser.Size = new System.Drawing.Size(150, 20);
             this.TUser.TabIndex = 3;
@@ -80,7 +80,7 @@
             // TPass
             // 
             this.TPass.Location = new System.Drawing.Point(171, 110);
-            this.TPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TPass.Margin = new System.Windows.Forms.Padding(2);
             this.TPass.Name = "TPass";
             this.TPass.PasswordChar = '*';
             this.TPass.Size = new System.Drawing.Size(150, 20);
@@ -89,7 +89,7 @@
             // BCleanup
             // 
             this.BCleanup.Location = new System.Drawing.Point(218, 162);
-            this.BCleanup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BCleanup.Margin = new System.Windows.Forms.Padding(2);
             this.BCleanup.Name = "BCleanup";
             this.BCleanup.Size = new System.Drawing.Size(82, 19);
             this.BCleanup.TabIndex = 5;
@@ -108,8 +108,9 @@
             this.Controls.Add(this.LPass);
             this.Controls.Add(this.BLogin);
             this.Controls.Add(this.LUsuer);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoginView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesion";
             this.ResumeLayout(false);
             this.PerformLayout();

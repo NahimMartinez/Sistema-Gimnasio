@@ -248,7 +248,7 @@ namespace Sistema_Gimnasio
             hideTimer.Start();
         }
 
-        private void hideTimer_Tick(object sender, EventArgs e)
+        private void HideTimer_Tick(object sender, EventArgs e)
         {
             OcultarSiCursorFuera();
         }

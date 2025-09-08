@@ -267,7 +267,7 @@ namespace Sistema_Gimnasio
 
             // hideTimer
             this.hideTimer.Interval = 150;
-            this.hideTimer.Tick += new System.EventHandler(this.hideTimer_Tick);
+            this.hideTimer.Tick += new System.EventHandler(this.HideTimer_Tick);
 
             // eventos hover del botón principal
             this.BSupplier.MouseHover += new System.EventHandler(this.BSupplier_MouseHover);
