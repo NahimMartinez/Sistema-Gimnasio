@@ -47,6 +47,9 @@ namespace Sistema_Gimnasio
             WireSidebar(); // setea Tag de navegación y eventos
             BuildAcl(); // define permisos por botón
 
+
+            this.WindowState = FormWindowState.Maximized;
+
             //ajustes de los botones del sidebar
             MenuFlow.SuspendLayout(); //pausa el layout para hacer varios cambios
             foreach (var b in MenuButtons)
