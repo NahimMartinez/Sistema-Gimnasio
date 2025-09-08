@@ -175,6 +175,8 @@ namespace Sistema_Gimnasio
         private void ShowDashboard()
         {
             contentPanel.Controls.Clear();
+            var view = new Dashboard { Dock = DockStyle.Fill, BackColor = Color.White };
+            contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Dashboard";
         }
 
