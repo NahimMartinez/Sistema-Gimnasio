@@ -166,7 +166,7 @@
             this.BFilter.UseVisualStyleBackColor = false;
             // 
             // TSearchSupplier
-            // 
+            //
             this.TSearchSupplier.BackColor = System.Drawing.Color.White;
             this.TSearchSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TSearchSupplier.Font = new System.Drawing.Font("Segoe UI", 9F);

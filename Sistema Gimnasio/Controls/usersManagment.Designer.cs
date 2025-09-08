@@ -31,15 +31,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-
             this.LTituloUserManagment = new System.Windows.Forms.Label();
             this.BoardMember = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
@@ -48,20 +47,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBRol = new System.Windows.Forms.ComboBox();
             this.LRol = new System.Windows.Forms.Label();
-
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-
             // 
             // LTituloUserManagment
             // 
             this.LTituloUserManagment.AutoSize = true;
             this.LTituloUserManagment.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
+            this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(191, 25);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -70,25 +67,21 @@
             this.BoardMember.AllowUserToAddRows = false;
             this.BoardMember.AllowUserToDeleteRows = false;
             this.BoardMember.AllowUserToResizeRows = false;
-
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-
             this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardMember.BackgroundColor = System.Drawing.Color.White;
             this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-
             this.BoardMember.ColumnHeadersHeight = 38;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -98,19 +91,17 @@
             this.usuario,
             this.rol,
             this.status});
-
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(227, 242, 253);
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.BoardMember.DefaultCellStyle = dataGridViewCellStyle3;
-
             this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardMember.EnableHeadersVisualStyles = false;
-            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(241, 243, 245);
+            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.BoardMember.Location = new System.Drawing.Point(0, 100);
             this.BoardMember.MultiSelect = false;
             this.BoardMember.Name = "BoardMember";
@@ -142,13 +133,6 @@
             this.contact.Name = "contact";
             this.contact.ReadOnly = true;
             // 
-            // status
-            // 
-            this.status.DataPropertyName = "estado";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
             // usuario
             // 
             this.usuario.DataPropertyName = "usuario";
@@ -162,6 +146,13 @@
             this.rol.HeaderText = "Rol";
             this.rol.Name = "rol";
             this.rol.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "estado";
+            this.status.HeaderText = "Estado";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
             // 
             // CBStatus
             // 
@@ -180,12 +171,12 @@
             // BFilter
             // 
             this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
+            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.BFilter.FlatAppearance.BorderSize = 0;
             this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(480, 64);
+            this.BFilter.Location = new System.Drawing.Point(560, 64);
             this.BFilter.Name = "BFilter";
             this.BFilter.Size = new System.Drawing.Size(84, 26);
             this.BFilter.TabIndex = 4;
@@ -194,8 +185,6 @@
             // 
             // TSearch
             // 
-            this.TSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TSearch.BackColor = System.Drawing.Color.White;
             this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -210,7 +199,7 @@
             // 
             this.LStatus.AutoSize = true;
             this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
             this.LStatus.Size = new System.Drawing.Size(42, 15);
@@ -220,7 +209,7 @@
             // BNewUser
             // 
             this.BNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewUser.BackColor = System.Drawing.Color.FromArgb(255, 112, 67);
+            this.BNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
             this.BNewUser.FlatAppearance.BorderSize = 0;
             this.BNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
@@ -270,7 +259,7 @@
             // 
             this.LRol.AutoSize = true;
             this.LRol.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LRol.ForeColor = System.Drawing.Color.FromArgb(73, 80, 87);
+            this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LRol.Location = new System.Drawing.Point(301, 48);
             this.LRol.Name = "LRol";
             this.LRol.Size = new System.Drawing.Size(24, 15);
@@ -281,13 +270,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(245, 247, 250);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardMember);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "UsersManagment";
             this.Size = new System.Drawing.Size(762, 550);
-            this.DoubleBuffered = true;
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
