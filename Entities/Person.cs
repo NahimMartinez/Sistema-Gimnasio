@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    internal class Person
+    public class Person
     {
         public int IdPersona { get; set; }   // PK autoincremental
         public string Nombre { get; set; }
