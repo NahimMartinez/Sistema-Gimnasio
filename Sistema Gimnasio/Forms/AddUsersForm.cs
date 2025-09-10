@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using Entities;
+using FontAwesome.Sharp;
 
 namespace Sistema_Gimnasio
 {
@@ -155,6 +156,7 @@ namespace Sistema_Gimnasio
 
         private void BCrear_Click_1(object sender, EventArgs e)
         {
+            var userService = new Business.UserService();
             // Validar antes de guardar
             if (!ValidarCampos())
             {
@@ -169,12 +171,15 @@ namespace Sistema_Gimnasio
                 Email = txtEmail.Text.Trim(),
                 Estado = true // Activo por defecto
             };
+
             var newUser = new User() { 
                 Username = txtUsuario.Text.Trim(),
                 Password = txtContraseña.Text,
                 RolId = (int)CBRol.SelectedValue
-            };
-                MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };         
+            
+            userService.UserCreate(newPerson, newUser);
+            MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CBVerContraseña_CheckedChanged(object sender, EventArgs e)
