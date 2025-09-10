@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
+using Entities;
 
 namespace Sistema_Gimnasio
 {
@@ -159,8 +160,21 @@ namespace Sistema_Gimnasio
             {
                 return; // Detener si hay errores
             }
-
-            MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var newPerson = new Person()
+            {
+                Nombre = txtNombre.Text.Trim(),
+                Apellido = txtApellido.Text.Trim(),
+                Dni = txtDni.Text.Trim(),
+                Telefono = txtTelefono.Text.Trim(),
+                Email = txtEmail.Text.Trim(),
+                Estado = true // Activo por defecto
+            };
+            var newUser = new User() { 
+                Username = txtUsuario.Text.Trim(),
+                Password = txtContraseña.Text,
+                RolId = (int)CBRol.SelectedValue
+            };
+                MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void CBVerContraseña_CheckedChanged(object sender, EventArgs e)
