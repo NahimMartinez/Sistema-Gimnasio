@@ -190,5 +190,14 @@ namespace Sistema_Gimnasio
                 txtContraseña2.PasswordChar = '●';
             }
         }
+
+        private void AddUsersForm_Load(object sender, EventArgs e)
+        {
+            var rolService = new Business.RolService();
+            CBRol.DataSource = rolService.GetAll();
+            CBRol.DisplayMember = "Nombre";
+            CBRol.ValueMember = "IdRol";
+            CBRol.SelectedIndex = -1; // Ningún rol seleccionado por defecto
+        }
     }
 }
