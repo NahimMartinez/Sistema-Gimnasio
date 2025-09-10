@@ -132,11 +132,7 @@
             this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBRol.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBRol.FormattingEnabled = true;
-            this.CBRol.Items.AddRange(new object[] {
-            "Administrador",
-            "Coach",
-            "Recepcionista",
-            "Coach / Recepcionista"});
+            this.CBRol.Items.AddRange(new object[] {});
             this.CBRol.Location = new System.Drawing.Point(564, 142);
             this.CBRol.Name = "CBRol";
             this.CBRol.Size = new System.Drawing.Size(200, 23);

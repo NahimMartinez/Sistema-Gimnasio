@@ -8,10 +8,10 @@ namespace Data
 {
     public class PersonRepository
     {
-        public List<Person> GetAllActivas()
+        public List<Person> GetAll()
         {
             const string sql = @"SELECT id_persona AS IdPersona, nombre, apellido, dni, telefono, email, estado
-                                 FROM persona WHERE estado = 1;";
+                                 FROM persona;";
             using (var cn = new SqlConnection(Connection.chain))
                 return cn.Query<Person>(sql).ToList();
         }
@@ -37,9 +37,9 @@ namespace Data
         public void Update(Person p)
         {
             const string sql = @"
-UPDATE persona
-SET nombre=@Nombre, apellido=@Apellido, dni=@Dni, telefono=@Telefono, email=@Email
-WHERE id_persona=@IdPersona;";
+            UPDATE persona
+            SET nombre=@Nombre, apellido=@Apellido, dni=@Dni, telefono=@Telefono, email=@Email
+            WHERE id_persona=@IdPersona;";
             using (var cn = new SqlConnection(Connection.chain))
                 cn.Execute(sql, p);
         }
