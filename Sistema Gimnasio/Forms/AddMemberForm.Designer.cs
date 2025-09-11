@@ -42,8 +42,8 @@
             this.TEmail = new System.Windows.Forms.TextBox();
             this.TContactE = new System.Windows.Forms.TextBox();
             this.TObservation = new System.Windows.Forms.TextBox();
-            this.BSave = new System.Windows.Forms.Button();
-            this.BClean = new System.Windows.Forms.Button();
+            this.BSave = new FontAwesome.Sharp.IconButton();
+            this.BClean = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // TName
@@ -194,12 +194,20 @@
             this.BSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.BSave.FlatAppearance.BorderSize = 0;
             this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSave.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.BSave.ForeColor = System.Drawing.Color.White;
-            this.BSave.Location = new System.Drawing.Point(240, 428);
+            this.BSave.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.BSave.IconColor = System.Drawing.Color.White;
+            this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BSave.IconSize = 24;
+            this.BSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BSave.Location = new System.Drawing.Point(232, 428);
             this.BSave.Name = "BSave";
+            this.BSave.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BSave.Size = new System.Drawing.Size(110, 30);
-            this.BSave.TabIndex = 14;
+            this.BSave.TabIndex = 16;
             this.BSave.Text = "Guardar";
+            this.BSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSave.UseVisualStyleBackColor = false;
             this.BSave.Click += new System.EventHandler(this.BSave_Click);
             // 
@@ -208,12 +216,20 @@
             this.BClean.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.BClean.FlatAppearance.BorderSize = 0;
             this.BClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BClean.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.BClean.ForeColor = System.Drawing.Color.White;
-            this.BClean.Location = new System.Drawing.Point(470, 428);
+            this.BClean.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.BClean.IconColor = System.Drawing.Color.White;
+            this.BClean.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BClean.IconSize = 24;
+            this.BClean.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BClean.Location = new System.Drawing.Point(430, 428);
             this.BClean.Name = "BClean";
+            this.BClean.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BClean.Size = new System.Drawing.Size(110, 30);
             this.BClean.TabIndex = 15;
             this.BClean.Text = "Limpiar";
+            this.BClean.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BClean.UseVisualStyleBackColor = false;
             this.BClean.Click += new System.EventHandler(this.BClean_Click);
             // 
@@ -264,7 +280,7 @@
         private System.Windows.Forms.TextBox TEmail;
         private System.Windows.Forms.TextBox TContactE;
         private System.Windows.Forms.TextBox TObservation;
-        private System.Windows.Forms.Button BSave;
-        private System.Windows.Forms.Button BClean;
+        private FontAwesome.Sharp.IconButton BSave;
+        private FontAwesome.Sharp.IconButton BClean;
     }
 }

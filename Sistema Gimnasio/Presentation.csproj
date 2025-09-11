@@ -158,6 +158,7 @@
     <Compile Include="Controls\PurcharseOrderView.Designer.cs">
       <DependentUpon>PurcharseOrderView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UITheme.cs" />
     <EmbeddedResource Include="Controls\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
