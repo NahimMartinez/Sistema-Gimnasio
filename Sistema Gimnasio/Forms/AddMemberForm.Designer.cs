@@ -258,6 +258,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MinimumSize = new System.Drawing.Size(820, 520);
             this.Name = "AddMemberForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Socio";
             this.ResumeLayout(false);
             this.PerformLayout();

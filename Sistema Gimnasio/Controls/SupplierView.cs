@@ -15,6 +15,8 @@ namespace Sistema_Gimnasio
         public SupplierView()
         {
             InitializeComponent();
+            SetupAcciones();
+            LoadFakeData();  
         }
 
         private void SupplierView_Load(object sender, EventArgs e)
@@ -34,5 +36,41 @@ namespace Sistema_Gimnasio
                 }
             }
         }
+
+            private void SetupAcciones()
+        {
+            // Asegurar columna Id oculta
+            if (!BoardSupplier.Columns.Contains("IdSupplier"))
+                BoardSupplier.Columns.Insert(0, new DataGridViewTextBoxColumn
+                {
+                    Name = "IdSupplier",
+                    Visible = false
+                });
+
+            // Si no existe la columna de Actions, la crea
+            if (!BoardSupplier.Columns.Contains("Actions"))
+                BoardSupplier.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Actions",
+                    HeaderText = "Acciones",
+                    ReadOnly = true
+                });
+
+            // Vincular la clase ActionColumn
+            var acciones = new ActionColumn(BoardSupplier, "IdSupplier", "Actions");
+            acciones.OnEdit += id => MessageBox.Show($"Editar proveedor {id}");
+            acciones.OnView += id => MessageBox.Show($"Ver proveedor {id}");
+            acciones.OnDelete += id => MessageBox.Show($"Borrar proveedor {id}");
+        }
+
+        private void LoadFakeData()
+        {
+            
+            // IdSupplier, name, cuit, typeSupplier, email, phone, status, Actions
+            BoardSupplier.Rows.Add(1, "Proveedor A", "20-12345678-9", "Servicios", "proveedorA@mail.com", "3794-111111", "Activo", null);
+            BoardSupplier.Rows.Add(2, "Proveedor B", "23-87654321-0", "Insumos", "proveedorB@mail.com", "3794-222222", "Inactivo", null);
+            BoardSupplier.Rows.Add(3, "Proveedor C", "27-11223344-5", "Equipos", "proveedorC@mail.com", "3794-333333", "Activo", null);
+        }
     }
+    
 }

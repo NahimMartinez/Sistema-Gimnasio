@@ -12,39 +12,58 @@ namespace Sistema_Gimnasio
 {
     public class ActionColumn
     {
-        private readonly DataGridView _dgv;
-        private readonly string _colName;
-        private readonly string _colId;
+        private readonly DataGridView dgv; // grilla destino
+        private readonly string colName; // nombre de la col de acciones
+        private readonly string colId; // nombre de la col ID (oculta o no)
 
+        // Eventos que exponés hacia afuera. Enviás el ID de la fila.
         public event Action<object> OnEdit;
         public event Action<object> OnView;
         public event Action<object> OnDelete;
 
+        // Métricas de layout de los botones dibujados.
         private readonly Padding P = new Padding(6, 4, 6, 4);
         private const int BtnW = 28, BtnH = 24, Gap = 6;
 
+        // Íconos cacheados en bitmaps para no dibujar FontAwesome cada vez.
         private static Bitmap ICON_EDIT;
         private static Bitmap ICON_VIEW;
         private static Bitmap ICON_DELETE;
 
 
-        public ActionColumn(DataGridView dgv, string idColumnName, string accionesColumnName = "Actions")
+        public ActionColumn(DataGridView pDgv, string idColumnName, string accionesColumnName = "Actions")
         {
-            _dgv = dgv ?? throw new ArgumentNullException(nameof(dgv));
-            _colId = idColumnName ?? throw new ArgumentNullException(nameof(idColumnName));
-            _colName = accionesColumnName ?? "Actions";
+            dgv = pDgv ?? throw new ArgumentNullException(nameof(pDgv));
+            colId = idColumnName ?? throw new ArgumentNullException(nameof(idColumnName));
+            colName = accionesColumnName ?? "Actions";
 
-            if (!_dgv.Columns.Contains(_colId))
-                throw new ArgumentException("Falta columna de ID oculta: " + _colId);
+            if (!dgv.Columns.Contains(colId))
+                throw new ArgumentException("Falta columna de ID oculta: " + colId);
 
-            if (!_dgv.Columns.Contains(_colName))
-                _dgv.Columns.Add(new DataGridViewTextBoxColumn { Name = _colName, HeaderText = "Acciones", ReadOnly = true });
+            // Crea la columna de acciones si no existe.
+            if (!dgv.Columns.Contains(colName))
+                dgv.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = colName,
+                    HeaderText = "Acciones",
+                    ReadOnly = true,
+                    SortMode = DataGridViewColumnSortMode.NotSortable, // no ordenable
+                    Width = 3 * BtnW + 2 * Gap + P.Horizontal           // ancho justo
+                });
 
-            _dgv.CellPainting += Dgv_CellPainting;
-            _dgv.CellMouseClick += Dgv_CellMouseClick;
-            _dgv.CellMouseMove += Dgv_CellMouseMove;
+            // Cachea íconos una sola vez.
+            EnsureIcons();
+
+            // Suscripción a eventos de dibujo y mouse.
+            dgv.CellPainting += Dgv_CellPainting;
+            dgv.CellMouseClick += Dgv_CellMouseClick;
+            dgv.CellMouseMove += Dgv_CellMouseMove;
+
+            // Libera bitmaps cuando se dispose la grilla.
+            dgv.Disposed += (_, __) => DisposeIcons();
         }
 
+        // Calcula 3 rectángulos para Edit, View, Delete dentro de la celda.
         private Rectangle[] GetRects(Rectangle cellBounds)
         {
             int x = cellBounds.X + P.Left;
@@ -54,9 +73,10 @@ namespace Sistema_Gimnasio
             new Rectangle(x, y, BtnW, BtnH),
             new Rectangle(x + BtnW + Gap, y, BtnW, BtnH),
             new Rectangle(x + 2 * (BtnW + Gap), y, BtnW, BtnH)
-        };
+            };
         }
 
+        // Crea un camino con bordes redondeados para el chip.
         private GraphicsPath Rounded(Rectangle r, int radius)
         {
             var p = new GraphicsPath();
@@ -69,6 +89,7 @@ namespace Sistema_Gimnasio
             return p;
         }
 
+        // Dibuja un “chip” con fondo, borde e ícono centrado
         private void DrawChip(Graphics g, Rectangle r, Color back, Bitmap icon)
         {
             using (var b = new SolidBrush(back))
@@ -85,58 +106,63 @@ namespace Sistema_Gimnasio
                 g.DrawImage(icon, x, y, icon.Width, icon.Height);
             }
         }
-
+        // Dibujo custom de la celda de acciones.
         private void Dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-            if (_dgv.Columns[e.ColumnIndex].Name != _colName) return;
+            if (e.RowIndex < 0) return; // fila de encabezado
+            if (e.ColumnIndex < 0) return; 
+            if (dgv.Columns[e.ColumnIndex].Name != colName) return;
 
-            e.Handled = true;
-            e.PaintBackground(e.ClipBounds, true);
-            e.Paint(e.CellBounds, DataGridViewPaintParts.Border);
+            e.Handled = true; // indicamos que manejamos el pintado
+            e.PaintBackground(e.ClipBounds, true); // pinta fondo (incluye selección)
+            e.Paint(e.CellBounds, DataGridViewPaintParts.Border); // pinta borde
 
-            ICON_EDIT = ICON_VIEW = ICON_DELETE = null;
-
-            EnsureIcons(); // <-- inicializa los bitmaps una sola vez
 
             var rects = GetRects(e.CellBounds);
-            DrawChip(e.Graphics, rects[0], Color.FromArgb(219, 234, 254), ICON_EDIT);
-            DrawChip(e.Graphics, rects[1], Color.FromArgb(220, 252, 231), ICON_VIEW);
-            DrawChip(e.Graphics, rects[2], Color.FromArgb(254, 226, 226), ICON_DELETE);
+            DrawChip(e.Graphics, rects[0], Color.FromArgb(219, 234, 254), ICON_EDIT);   // azul claro
+            DrawChip(e.Graphics, rects[1], Color.FromArgb(220, 252, 231), ICON_VIEW);   // verde claro
+            DrawChip(e.Graphics, rects[2], Color.FromArgb(254, 226, 226), ICON_DELETE); // rojo claro
         }
 
         private void Dgv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (_dgv.Columns[e.ColumnIndex].Name != _colName) return;
+            if (e.ColumnIndex < 0) return; // FIX: evita Columns[-1]
+            if (dgv.Columns[e.ColumnIndex].Name != colName) return;
 
-            var cellRect = _dgv.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+            var cellRect = dgv.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
             var rects = GetRects(cellRect);
+
+            // e.X/Y son relativos a la celda. Ajustamos con el origen del rect de pantalla.
             var clickPoint = new Point(e.X + cellRect.X, e.Y + cellRect.Y);
 
-            var id = _dgv.Rows[e.RowIndex].Cells[_colId].Value;
+            var id = dgv.Rows[e.RowIndex].Cells[colId].Value; // obtiene ID de la fila
 
             if (rects[0].Contains(clickPoint)) OnEdit?.Invoke(id);
             else if (rects[1].Contains(clickPoint)) OnView?.Invoke(id);
             else if (rects[2].Contains(clickPoint)) OnDelete?.Invoke(id);
         }
 
+        // Cambia el cursor a “mano” cuando pasa por la columna de acciones.
         private void Dgv_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
-            _dgv.Cursor = (e.RowIndex >= 0 && _dgv.Columns[e.ColumnIndex].Name == _colName) ? Cursors.Hand : Cursors.Default;
+            bool hand = e.RowIndex >= 0 && e.ColumnIndex >= 0                     
+                 && dgv.Columns[e.ColumnIndex].Name == colName;
+            dgv.Cursor = hand ? Cursors.Hand : Cursors.Default;
         }
-
+        // Genera un bitmap desde FontAwesome.Sharp con transparencia real.
         private Bitmap GetIconBitmap(IconChar icon, int size, Color color)
         {
             var bmp = new Bitmap(size, size, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             using (var iconPicture = new IconPictureBox())
             {
-                iconPicture.IconChar = icon;
-                iconPicture.IconColor = color;
-                iconPicture.IconSize = size - 2;
+                iconPicture.IconChar = icon;                      // ícono a renderizar
+                iconPicture.IconColor = color;                    // color del ícono
+                iconPicture.IconSize = size - 2;                  // leve padding interno
                 iconPicture.BackColor = Color.Magenta;            // color clave
                 iconPicture.Size = new Size(size, size);
+                // Renderiza el control al bitmap.
                 iconPicture.DrawToBitmap(bmp, new Rectangle(Point.Empty, bmp.Size));
             }
 
@@ -144,6 +170,7 @@ namespace Sistema_Gimnasio
             return bmp;
         }
 
+        // Crea los bitmaps una sola vez.
         private void EnsureIcons()
         {
             if (ICON_EDIT == null)
@@ -152,6 +179,14 @@ namespace Sistema_Gimnasio
                 ICON_VIEW = GetIconBitmap(IconChar.Eye, 16, Color.Black);
                 ICON_DELETE = GetIconBitmap(IconChar.Trash, 16, Color.Black);
             }
+        }
+
+        // Libera recursos gráficos.
+        private static void DisposeIcons()
+        {
+            ICON_EDIT?.Dispose(); ICON_EDIT = null;
+            ICON_VIEW?.Dispose(); ICON_VIEW = null;
+            ICON_DELETE?.Dispose(); ICON_DELETE = null;
         }
     }
 }

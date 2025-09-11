@@ -32,17 +32,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LOrderPurcharse = new System.Windows.Forms.Label();
-            this.BoardSupplier = new System.Windows.Forms.DataGridView();
-            this.BFilter = new System.Windows.Forms.Button();
-            this.TOrdPurcharse = new System.Windows.Forms.TextBox();
-            this.BNewSupplier = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.BoardOrderP = new System.Windows.Forms.DataGridView();
             this.Id_Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actions = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).BeginInit();
+            this.BFilter = new System.Windows.Forms.Button();
+            this.TOrdPurcharse = new System.Windows.Forms.TextBox();
+            this.BNewSupplier = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardOrderP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,26 +57,26 @@
             this.LOrderPurcharse.TabIndex = 0;
             this.LOrderPurcharse.Text = "Orden de Compras";
             // 
-            // BoardSupplier
+            // BoardOrderP
             // 
-            this.BoardSupplier.AllowUserToAddRows = false;
-            this.BoardSupplier.AllowUserToDeleteRows = false;
-            this.BoardSupplier.AllowUserToResizeRows = false;
+            this.BoardOrderP.AllowUserToAddRows = false;
+            this.BoardOrderP.AllowUserToDeleteRows = false;
+            this.BoardOrderP.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardSupplier.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.BoardSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.BoardSupplier.BackgroundColor = System.Drawing.Color.White;
-            this.BoardSupplier.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BoardSupplier.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.BoardSupplier.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.BoardOrderP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.BoardOrderP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BoardOrderP.BackgroundColor = System.Drawing.Color.White;
+            this.BoardOrderP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BoardOrderP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.BoardOrderP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.BoardSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.BoardSupplier.ColumnHeadersHeight = 38;
-            this.BoardSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BoardSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BoardOrderP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.BoardOrderP.ColumnHeadersHeight = 38;
+            this.BoardOrderP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.BoardOrderP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Orden,
             this.Supplier,
             this.Date,
@@ -89,17 +89,43 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardSupplier.DefaultCellStyle = dataGridViewCellStyle3;
-            this.BoardSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BoardSupplier.EnableHeadersVisualStyles = false;
-            this.BoardSupplier.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
-            this.BoardSupplier.Location = new System.Drawing.Point(0, 100);
-            this.BoardSupplier.Name = "BoardSupplier";
-            this.BoardSupplier.RowHeadersVisible = false;
-            this.BoardSupplier.RowTemplate.Height = 36;
-            this.BoardSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BoardSupplier.Size = new System.Drawing.Size(762, 450);
-            this.BoardSupplier.TabIndex = 1;
+            this.BoardOrderP.DefaultCellStyle = dataGridViewCellStyle3;
+            this.BoardOrderP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BoardOrderP.EnableHeadersVisualStyles = false;
+            this.BoardOrderP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.BoardOrderP.Location = new System.Drawing.Point(0, 100);
+            this.BoardOrderP.Name = "BoardOrderP";
+            this.BoardOrderP.RowHeadersVisible = false;
+            this.BoardOrderP.RowTemplate.Height = 36;
+            this.BoardOrderP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BoardOrderP.Size = new System.Drawing.Size(762, 450);
+            this.BoardOrderP.TabIndex = 1;
+            // 
+            // Id_Orden
+            // 
+            this.Id_Orden.HeaderText = "Id Orden";
+            this.Id_Orden.Name = "Id_Orden";
+            // 
+            // Supplier
+            // 
+            this.Supplier.HeaderText = "Proveedor";
+            this.Supplier.Name = "Supplier";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Fecha ";
+            this.Date.Name = "Date";
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Estado";
+            this.Status.Name = "Status";
+            // 
+            // Actions
+            // 
+            this.Actions.DataPropertyName = "Actions";
+            this.Actions.HeaderText = "Acciones";
+            this.Actions.Name = "Actions";
             // 
             // BFilter
             // 
@@ -154,40 +180,14 @@
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 2;
             // 
-            // Id_Orden
-            // 
-            this.Id_Orden.HeaderText = "Id Orden";
-            this.Id_Orden.Name = "Id_Orden";
-            // 
-            // Supplier
-            // 
-            this.Supplier.HeaderText = "Proveedor";
-            this.Supplier.Name = "Supplier";
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Fecha ";
-            this.Date.Name = "Date";
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Estado";
-            this.Status.Name = "Status";
-            // 
-            // Actions
-            // 
-            this.Actions.DataPropertyName = "Actions";
-            this.Actions.HeaderText = "Acciones";
-            this.Actions.Name = "Actions";
-            // 
             // PurcharseOrderView
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.Controls.Add(this.BoardSupplier);
+            this.Controls.Add(this.BoardOrderP);
             this.Controls.Add(this.panel1);
             this.Name = "PurcharseOrderView";
             this.Size = new System.Drawing.Size(762, 550);
-            ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardOrderP)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -199,7 +199,7 @@
         #endregion
 
         private System.Windows.Forms.Label LOrderPurcharse;
-        private System.Windows.Forms.DataGridView BoardSupplier;
+        private System.Windows.Forms.DataGridView BoardOrderP;
         private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TOrdPurcharse;
         private System.Windows.Forms.Button BNewSupplier;
