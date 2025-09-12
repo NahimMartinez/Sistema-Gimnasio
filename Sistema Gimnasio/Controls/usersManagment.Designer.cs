@@ -33,12 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloUserManagment = new System.Windows.Forms.Label();
             this.BoardMember = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
@@ -47,6 +41,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBRol = new System.Windows.Forms.ComboBox();
             this.LRol = new System.Windows.Forms.Label();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +55,7 @@
             this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(231, 32);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -67,98 +64,48 @@
             this.BoardMember.AllowUserToAddRows = false;
             this.BoardMember.AllowUserToDeleteRows = false;
             this.BoardMember.AllowUserToResizeRows = false;
-
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-
             this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardMember.BackgroundColor = System.Drawing.Color.White;
             this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(224, 224, 224); // Gris claro
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black; // Texto negro
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-
             this.BoardMember.ColumnHeadersHeight = 38;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-    this.name,
-    this.dni,
-    this.contact,
-    this.usuario,
-    this.rol,
-    this.status});
-
+            this.usuario,
+            this.rol,
+            this.status});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(227, 242, 253);
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.BoardMember.DefaultCellStyle = dataGridViewCellStyle3;
-
             this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardMember.EnableHeadersVisualStyles = false;
-            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(241, 243, 245);
+            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.BoardMember.Location = new System.Drawing.Point(0, 100);
             this.BoardMember.MultiSelect = false;
             this.BoardMember.Name = "BoardMember";
             this.BoardMember.ReadOnly = true;
             this.BoardMember.RowHeadersVisible = false;
+            this.BoardMember.RowHeadersWidth = 51;
             this.BoardMember.RowTemplate.Height = 36;
             this.BoardMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardMember.Size = new System.Drawing.Size(762, 450);
             this.BoardMember.TabIndex = 1;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "nombre";
-            this.name.HeaderText = "Nombre";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // dni
-            // 
-            this.dni.DataPropertyName = "dni";
-            this.dni.HeaderText = "DNI";
-            this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
-            // 
-            // contact
-            // 
-            this.contact.DataPropertyName = "telefono";
-            this.contact.HeaderText = "Teléfono";
-            this.contact.Name = "contact";
-            this.contact.ReadOnly = true;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "usuario";
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            // 
-            // rol
-            // 
-            this.rol.DataPropertyName = "rol";
-            this.rol.HeaderText = "Rol";
-            this.rol.Name = "rol";
-            this.rol.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "estado";
-            this.status.HeaderText = "Estado";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
             // 
             // CBStatus
             // 
@@ -171,7 +118,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // BFilter
@@ -197,7 +144,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.Size = new System.Drawing.Size(144, 27);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar usuario...";
             // 
@@ -208,7 +155,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -258,7 +205,7 @@
             "Recepcionista"});
             this.CBRol.Location = new System.Drawing.Point(304, 66);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(130, 23);
+            this.CBRol.Size = new System.Drawing.Size(130, 28);
             this.CBRol.TabIndex = 10;
             // 
             // LRol
@@ -268,13 +215,37 @@
             this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LRol.Location = new System.Drawing.Point(301, 48);
             this.LRol.Name = "LRol";
-            this.LRol.Size = new System.Drawing.Size(24, 15);
+            this.LRol.Size = new System.Drawing.Size(31, 20);
             this.LRol.TabIndex = 11;
             this.LRol.Text = "Rol";
             // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "usuario";
+            this.usuario.HeaderText = "Usuario";
+            this.usuario.MinimumWidth = 6;
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            // 
+            // rol
+            // 
+            this.rol.DataPropertyName = "rol";
+            this.rol.HeaderText = "Rol";
+            this.rol.MinimumWidth = 6;
+            this.rol.Name = "rol";
+            this.rol.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "estado";
+            this.status.HeaderText = "Estado";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // UsersManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardMember);
@@ -300,13 +271,10 @@
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Button BNewUser;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.ComboBox CBRol;
         private System.Windows.Forms.Label LRol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }

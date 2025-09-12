@@ -61,5 +61,10 @@ namespace Business
                 }
             }
         }
+
+        public List<Entities.Rol> GetAll()
+        {
+            return rol.GetAll();
+        }
     }
 }
