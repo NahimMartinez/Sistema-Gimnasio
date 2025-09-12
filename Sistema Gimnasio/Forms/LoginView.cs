@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Sistema_Gimnasio
 {
     public partial class LoginView : Form
     {
-
+        private readonly AuthService auth = new AuthService();
+        public User UserAuth { get; private set; }
         
-        public Form1.Roles UserRole { get; private set; } = Form1.Roles.None;
-        public string Username { get; private set; }
+        //public string Username { get; private set; }
         public LoginView()
         {
             InitializeComponent();
@@ -25,9 +28,22 @@ namespace Sistema_Gimnasio
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            var Username = TUser.Text.Trim();
-            var password = TPass.Text;
-
+            
+            var u = auth.Login(TUser.Text.Trim(), TPass.Text);
+            if (u == null)
+            {
+                MessageBox.Show("Usuario/Contraseña invalida");
+                return;
+            }
+            if (!u.Estado)
+            {
+                MessageBox.Show("Usuario inactivo");
+                return;
+            }
+            UserAuth = u;
+            DialogResult = DialogResult.OK;
+            Close();
+            /*
             // usuarios y roles hardcodeados para demo
             if (Username == "admin" && password == "123")
                 UserRole = Form1.Roles.Admin;
@@ -43,6 +59,7 @@ namespace Sistema_Gimnasio
 
             DialogResult = DialogResult.OK;
             Close();
+            */
         }
 
         private void BCleanup_Click(object sender, EventArgs e)

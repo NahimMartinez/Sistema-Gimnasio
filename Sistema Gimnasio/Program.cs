@@ -25,11 +25,8 @@ namespace Sistema_Gimnasio
                 {
                     if (login.ShowDialog() == DialogResult.OK)
                     {
-                        using (var main = new Form1())
-                        {
-                            main.SetRoleAndRefresh(login.UserRole, login.Username);
-                            Application.Run(main);
-                        }
+                        var user = login.UserAuth;
+                        Application.Run(new Form1(user));
                     }
                     else
                     {

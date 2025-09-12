@@ -1,4 +1,6 @@
-﻿using Sistema_Gimnasio.Controls;
+﻿using Business;
+using Entities;
+using Sistema_Gimnasio.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +27,15 @@ namespace Sistema_Gimnasio
             Recep = 2,
             Coach = 4,
        
+        }        
+
+        private Roles MapRoleByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name)) return Roles.None;
+            if (string.Equals(name, "Administrador", StringComparison.OrdinalIgnoreCase)) return Roles.Admin;
+            if (string.Equals(name, "Recepecionista", StringComparison.OrdinalIgnoreCase)) return Roles.Recep;
+            if (string.Equals(name, "Coach", StringComparison.OrdinalIgnoreCase)) return Roles.Coach;
+            return Roles.None;
         }
 
         private Roles CurrentRole;
@@ -40,13 +51,16 @@ namespace Sistema_Gimnasio
             BSupplier, BActivity, BInventory, BReports
         };
 
-        public Form1()
+        private readonly User user;
+
+        // Constructor recibe el usuario autenticado
+        public Form1(User pU)
         {
             InitializeComponent();
-
+            user = pU;
             WireSidebar(); // setea Tag de navegación y eventos
             BuildAcl(); // define permisos por botón
-
+            
             // Ajusta la pantalla para ocupar el maximo espacio disponible
             this.WindowState = FormWindowState.Maximized;
             this.MaximizeBox = false;    // Oculta botón maximizar
@@ -68,6 +82,10 @@ namespace Sistema_Gimnasio
                 int w = MenuFlow.ClientSize.Width - MenuFlow.Padding.Horizontal;
                 foreach (var b in MenuButtons) b.Width = w;
             };
+
+            var nombreCompleto = ((user?.Nombre ?? "") + " " + (user?.Apellido ?? "")).Trim();
+            var mostrado = string.IsNullOrWhiteSpace(nombreCompleto) ? (user?.Username ?? "") : nombreCompleto;
+            SetRoleAndRefresh(MapRoleByName(user?.Rol?.Nombre), mostrado);
 
             this.Load += Form1_Load;
         }

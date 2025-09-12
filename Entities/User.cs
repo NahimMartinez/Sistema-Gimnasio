@@ -13,5 +13,7 @@ namespace Entities
         public string Password { get; set; }
         public int RolId { get; set; }         // FK a Rol
         public Rol Rol { get; set; }          // Propiedad de navegación a Rol
+
+        
     }
 }
