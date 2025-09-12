@@ -35,6 +35,23 @@ namespace Data
             cn.Execute(sql, u);
         }
 
+        public List<UserView> GetAllUsersView()
+        {
+            const string sql = @"
+            SELECT 
+                p.nombre AS Nombre,
+                p.dni AS Dni,
+                u.username AS Usuario,
+                r.nombre AS Rol,
+                CASE WHEN p.estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS Status
+            FROM usuario u
+            INNER JOIN persona p ON u.id_usuario = p.id_persona
+            INNER JOIN rol r ON u.rol_id = r.id_rol;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.Query<UserView>(sql).ToList();
+        }
+
         // recuperar usuario + persona + rol
         public User GetByUsernameActivo(string username)
         {

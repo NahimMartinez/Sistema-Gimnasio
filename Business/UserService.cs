@@ -15,6 +15,11 @@ namespace Business
 
         private readonly PersonRepository persons = new PersonRepository();
         private readonly UserRepository users = new UserRepository();
+        private UserRepository userRepo;
+
+        public UserService() {
+            userRepo = new UserRepository();
+        }
 
         public int PersonCreate(Person p)
         {
@@ -62,9 +67,9 @@ namespace Business
             }
         }
 
-        public List<Entities.Rol> GetAll()
+        public List<UserView> GetAllUsersForView()
         {
-            return rol.GetAll();
+            return userRepo.GetAllUsersView();
         }
     }
 }

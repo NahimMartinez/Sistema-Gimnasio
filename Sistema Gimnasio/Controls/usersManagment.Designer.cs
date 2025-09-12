@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloUserManagment = new System.Windows.Forms.Label();
-            this.BoardMember = new System.Windows.Forms.DataGridView();
+            this.BoardUsers = new System.Windows.Forms.DataGridView();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
@@ -41,10 +41,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBRol = new System.Windows.Forms.ComboBox();
             this.LRol = new System.Windows.Forms.Label();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,18 +61,18 @@
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
-            // BoardMember
+            // BoardUsers
             // 
-            this.BoardMember.AllowUserToAddRows = false;
-            this.BoardMember.AllowUserToDeleteRows = false;
-            this.BoardMember.AllowUserToResizeRows = false;
+            this.BoardUsers.AllowUserToAddRows = false;
+            this.BoardUsers.AllowUserToDeleteRows = false;
+            this.BoardUsers.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.BoardMember.BackgroundColor = System.Drawing.Color.White;
-            this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.BoardUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.BoardUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BoardUsers.BackgroundColor = System.Drawing.Color.White;
+            this.BoardUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BoardUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.BoardUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -78,10 +80,12 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.BoardMember.ColumnHeadersHeight = 38;
-            this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.BoardUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.BoardUsers.ColumnHeadersHeight = 38;
+            this.BoardUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.BoardUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nombre,
+            this.dni,
             this.usuario,
             this.rol,
             this.status});
@@ -92,20 +96,20 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardMember.DefaultCellStyle = dataGridViewCellStyle3;
-            this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BoardMember.EnableHeadersVisualStyles = false;
-            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
-            this.BoardMember.Location = new System.Drawing.Point(0, 100);
-            this.BoardMember.MultiSelect = false;
-            this.BoardMember.Name = "BoardMember";
-            this.BoardMember.ReadOnly = true;
-            this.BoardMember.RowHeadersVisible = false;
-            this.BoardMember.RowHeadersWidth = 51;
-            this.BoardMember.RowTemplate.Height = 36;
-            this.BoardMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BoardMember.Size = new System.Drawing.Size(762, 450);
-            this.BoardMember.TabIndex = 1;
+            this.BoardUsers.DefaultCellStyle = dataGridViewCellStyle3;
+            this.BoardUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BoardUsers.EnableHeadersVisualStyles = false;
+            this.BoardUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.BoardUsers.Location = new System.Drawing.Point(0, 100);
+            this.BoardUsers.MultiSelect = false;
+            this.BoardUsers.Name = "BoardUsers";
+            this.BoardUsers.ReadOnly = true;
+            this.BoardUsers.RowHeadersVisible = false;
+            this.BoardUsers.RowHeadersWidth = 51;
+            this.BoardUsers.RowTemplate.Height = 36;
+            this.BoardUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BoardUsers.Size = new System.Drawing.Size(762, 450);
+            this.BoardUsers.TabIndex = 1;
             // 
             // CBStatus
             // 
@@ -219,9 +223,25 @@
             this.LRol.TabIndex = 11;
             this.LRol.Text = "Rol";
             // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "Nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // dni
+            // 
+            this.dni.DataPropertyName = "Dni";
+            this.dni.HeaderText = "DNI";
+            this.dni.MinimumWidth = 6;
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            // 
             // usuario
             // 
-            this.usuario.DataPropertyName = "usuario";
+            this.usuario.DataPropertyName = "Usuario";
             this.usuario.HeaderText = "Usuario";
             this.usuario.MinimumWidth = 6;
             this.usuario.Name = "usuario";
@@ -229,7 +249,7 @@
             // 
             // rol
             // 
-            this.rol.DataPropertyName = "rol";
+            this.rol.DataPropertyName = "Rol";
             this.rol.HeaderText = "Rol";
             this.rol.MinimumWidth = 6;
             this.rol.Name = "rol";
@@ -237,7 +257,7 @@
             // 
             // status
             // 
-            this.status.DataPropertyName = "estado";
+            this.status.DataPropertyName = "Status";
             this.status.HeaderText = "Estado";
             this.status.MinimumWidth = 6;
             this.status.Name = "status";
@@ -248,13 +268,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.Controls.Add(this.BoardMember);
+            this.Controls.Add(this.BoardUsers);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "UsersManagment";
             this.Size = new System.Drawing.Size(762, 550);
-            ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -264,7 +284,7 @@
         #endregion
 
         private System.Windows.Forms.Label LTituloUserManagment;
-        private System.Windows.Forms.DataGridView BoardMember;
+        private System.Windows.Forms.DataGridView BoardUsers;
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
@@ -273,6 +293,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox CBRol;
         private System.Windows.Forms.Label LRol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;

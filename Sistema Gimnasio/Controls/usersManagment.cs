@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business;
+using Entities;
 
 namespace Sistema_Gimnasio
 {
@@ -15,6 +17,8 @@ namespace Sistema_Gimnasio
         public UsersManagment()
         {
             InitializeComponent();
+            //BoardUsers.DataSource = typeof(List<UserView>);
+            LoadUsers();
         }
 
         private void BNewUser_Click_1(object sender, EventArgs e)
@@ -28,6 +32,16 @@ namespace Sistema_Gimnasio
 
                 }
             }
+        }
+
+        private void LoadUsers()
+        {
+            var userService = new UserService();
+
+            // DESACTIVAR la auto-generación de columnas
+            BoardUsers.AutoGenerateColumns = false;
+
+            BoardUsers.DataSource = userService.GetAllUsersForView();
         }
     }
 }
