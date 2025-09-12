@@ -25,7 +25,7 @@ namespace Sistema_Gimnasio
                 {
                     if (login.ShowDialog() == DialogResult.OK)
                     {
-                        var user = login.UsuarioAutenticado;
+                        var user = login.UserAuth;
                         Application.Run(new Form1(user));
                     }
                     else

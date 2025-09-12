@@ -16,9 +16,8 @@ namespace Sistema_Gimnasio
     public partial class LoginView : Form
     {
         private readonly AuthService auth = new AuthService();
-        public User UsuarioAutenticado { get; private set; }
-
-        public Form1.Roles UserRole { get; private set; } = Form1.Roles.None;
+        public User UserAuth { get; private set; }
+        
         //public string Username { get; private set; }
         public LoginView()
         {
@@ -29,15 +28,19 @@ namespace Sistema_Gimnasio
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            var username = TUser.Text.Trim();
-            var password = TPass.Text;
-            var u = auth.Login(username, password);
+            
+            var u = auth.Login(TUser.Text.Trim(), TPass.Text);
             if (u == null)
             {
                 MessageBox.Show("Usuario/Contraseña invalida");
                 return;
             }
-            UsuarioAutenticado = u;
+            if (!u.Estado)
+            {
+                MessageBox.Show("Usuario inactivo");
+                return;
+            }
+            UserAuth = u;
             DialogResult = DialogResult.OK;
             Close();
             /*
