@@ -15,10 +15,10 @@ namespace Sistema_Gimnasio
 {
     public partial class LoginView : Form
     {
+         // Servicio que hace la autenticación (DB, API, etc.).
         private readonly AuthService auth = new AuthService();
-        public User UserAuth { get; private set; }
+        public User UserAuth { get; private set; }       
         
-        //public string Username { get; private set; }
         public LoginView()
         {
             InitializeComponent();
@@ -28,38 +28,52 @@ namespace Sistema_Gimnasio
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            
-            var u = auth.Login(TUser.Text.Trim(), TPass.Text);
-            if (u == null)
+            // 1) Leer y validar entradas.
+            var username = TUser.Text.Trim();
+            var password = TPass.Text; // No trim a password por seguridad. porque contraseñas es un campo exacto y trim lo puede cambiar
+
+            if (string.IsNullOrWhiteSpace(username))
             {
-                MessageBox.Show("Usuario/Contraseña invalida");
+                MessageBox.Show("Ingresá el usuario.");
+                TUser.Focus();
                 return;
             }
-            if (!u.Estado)
+            if (string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Usuario inactivo");
-                return;
-            }
-            UserAuth = u;
-            DialogResult = DialogResult.OK;
-            Close();
-            /*
-            // usuarios y roles hardcodeados para demo
-            if (Username == "admin" && password == "123")
-                UserRole = Form1.Roles.Admin;
-            else if (Username == "recep" && password == "123")
-                UserRole = Form1.Roles.Recep;
-            else if (Username == "coach" && password == "123")
-                UserRole = Form1.Roles.Coach;
-            else
-            {
-                MessageBox.Show("Usuario/Contraseña invalida");
+                MessageBox.Show("Ingresá la contraseña.");
+                TPass.Focus();
                 return;
             }
 
-            DialogResult = DialogResult.OK;
-            Close();
-            */
+            // 2) Intentar autenticar. Manejar credenciales inválidas e inactivo.
+            User u;
+            try
+            {
+                u = auth.Login(username, password); // Devuelve null si falla credencial.
+            }
+            catch (Exception)
+            {
+                // Error técnico (DB caída, etc.). No revelar detalles al usuario final.
+                MessageBox.Show("No se pudo iniciar sesión. Intentá de nuevo.");                
+                return;
+            }
+
+            if (u == null)
+            {
+                MessageBox.Show("Usuario o contraseña inválidos.");
+                return;
+            }
+
+            if (!u.Estado) // Campo booleano: activo/inactivo.
+            {
+                MessageBox.Show("Usuario inactivo.");
+                return;
+            }
+
+            // 3) Éxito: exponer el usuario autenticado y cerrar el diálogo.
+            UserAuth = u;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void BCleanup_Click(object sender, EventArgs e)

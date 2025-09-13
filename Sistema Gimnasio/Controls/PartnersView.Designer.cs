@@ -40,7 +40,9 @@ namespace Sistema_Gimnasio
             this.contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membership = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.CBMembership = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
@@ -69,50 +71,43 @@ namespace Sistema_Gimnasio
             this.BoardMember.AllowUserToAddRows = false;
             this.BoardMember.AllowUserToDeleteRows = false;
             this.BoardMember.AllowUserToResizeRows = false;
-
-            // Alternado de filas gris muy claro
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-
             this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardMember.BackgroundColor = System.Drawing.Color.White;
             this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-
-            // Encabezado gris claro
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(224, 224, 224); // gris claro
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-
             this.BoardMember.ColumnHeadersHeight = 38;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-    this.name,
-    this.dni,
-    this.contact,
-    this.membership,
-    this.status,
-    this.Actions});
-
-            // Estilo de celdas
+                this.name,
+                this.dni,
+                this.contact,
+                this.membership,
+                this.status,
+                this.colEdit,
+                this.colView,
+                this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(227, 242, 253);
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.BoardMember.DefaultCellStyle = dataGridViewCellStyle3;
-
             this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardMember.EnableHeadersVisualStyles = false;
-            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(241, 243, 245);
+            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.BoardMember.Location = new System.Drawing.Point(0, 100);
             this.BoardMember.MultiSelect = false;
             this.BoardMember.Name = "BoardMember";
@@ -158,12 +153,30 @@ namespace Sistema_Gimnasio
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
-            // Actions
+            // colEdit
             // 
-            this.Actions.DataPropertyName = "Actions";
-            this.Actions.HeaderText = "Acciones";
-            this.Actions.Name = "Actions";
-            this.Actions.ReadOnly = true;
+            this.colEdit.HeaderText = "";
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "";
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.Width = 50;
+            
             // 
             // CBStatus
             // 
@@ -211,8 +224,6 @@ namespace Sistema_Gimnasio
             // 
             // TSearch
             // 
-            this.TSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top |
-                System.Windows.Forms.AnchorStyles.Left)));
             this.TSearch.BackColor = System.Drawing.Color.White;
             this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -314,6 +325,10 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.DataGridViewTextBoxColumn contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn membership;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Actions;
+
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn colView;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
+
     }
 }

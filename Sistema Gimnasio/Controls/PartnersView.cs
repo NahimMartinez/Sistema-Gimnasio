@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,9 @@ namespace Sistema_Gimnasio
         public PartnersView()
         {
             InitializeComponent();
-            SetupAcciones();
+            this.Load += PartnersView_Load;            
             LoadFakeData();   // solo para prueba
+            BoardMember.CellClick += BoardMember_CellClick;
         }
 
        
@@ -33,43 +35,64 @@ namespace Sistema_Gimnasio
                 }
             }
         }
-
-        private void SetupAcciones()
+        private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Insertar columna de Id oculta si no está
-            if (!BoardMember.Columns.Contains("IdPersona"))
-                BoardMember.Columns.Insert(0, new DataGridViewTextBoxColumn
-                {
-                    Name = "IdPersona",
-                    Visible = false
-                });
+            if (e.RowIndex < 0) return;
 
-            // Si ya existe "Actions" en el Designer no se duplica
-            if (!BoardMember.Columns.Contains("Actions"))
-                BoardMember.Columns.Add(new DataGridViewTextBoxColumn
-                {
-                    Name = "Actions",
-                    HeaderText = "Acciones",
-                    ReadOnly = true
-                });
+            var id = BoardMember.Rows[e.RowIndex].Cells["dni"].Value; // o PK real
+            var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
+            var col = BoardMember.Columns[e.ColumnIndex].Name;
 
-            // Enlazar helper reutilizable
-            var acciones = new ActionColumn(BoardMember, "IdPersona", "Actions");
-            acciones.OnEdit += id => MessageBox.Show($"Editar {id}");
-            acciones.OnView += id => MessageBox.Show($"Ver {id}");
-            acciones.OnDelete += id => MessageBox.Show($"Borrar {id}");
+            if (col == "colEdit")
+            {
+                MessageBox.Show($"Editar socio {name}");
+            }
+            else if (col == "colView")
+            {
+                MessageBox.Show($"Ver socio {name}");
+            }
+            else if (col == "colDelete")
+            {
+                MessageBox.Show($"Eliminar socio {name}");
+            }
         }
+        
 
         // Datos de prueba hardcodeados
         private void LoadFakeData()
         {
-            BoardMember.Rows.Add(1, "Juan Pérez", "12345678", "3794-111111", "Mensual", "Activo", null);
-            BoardMember.Rows.Add(2, "María López", "87654321", "3794-222222", "Semanal", "Inactivo", null);
-            BoardMember.Rows.Add(3, "Carlos Gómez", "45678912", "3794-333333", "Diaria", "Activo", null);
+            BoardMember.Rows.Add("Juan Pérez", "12345678", "3794-111111", "Mensual", "Activo");
+            BoardMember.Rows.Add("María López", "87654321", "3794-222222", "Semanal", "Inactivo");
+            BoardMember.Rows.Add("Carlos Gómez", "45678912", "3794-333333", "Diaria", "Activo");
         }
 
-       
+        private void PartnersView_Load(object sender, EventArgs e)
+        {
+            BoardMember.AutoGenerateColumns = false;
 
+            colEdit.DataPropertyName = null;
+            colView.DataPropertyName = null;
+            colDelete.DataPropertyName = null;
+
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+
+            colEdit.Image = bmpEdit;    // se usa cuando el valor es null
+            colView.Image = bmpView;
+            colDelete.Image = bmpDelete;
+
+            // Forzar que cada celda use la imagen
+            BoardMember.CellFormatting += (s, ev) =>
+            {
+                if (ev.RowIndex < 0) return;
+                string col = BoardMember.Columns[ev.ColumnIndex].Name;
+
+                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
+                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
+                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+            };
+        }
 
     }
 }
