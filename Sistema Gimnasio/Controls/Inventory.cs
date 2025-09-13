@@ -17,8 +17,9 @@ namespace Sistema_Gimnasio
         public Inventory()
         {
             InitializeComponent();
-            BoardMember.CellClick += BoardMember_CellClick;
+            BoardInventory.CellClick += BoardMember_CellClick;
             SetupActionIcons();
+            LoadFakeData();
         }
 
         private void SetupActionIcons()
@@ -31,10 +32,10 @@ namespace Sistema_Gimnasio
             colView.Image = bmpView;
             colDelete.Image = bmpDelete;
 
-            BoardMember.CellFormatting += (s, ev) =>
+            BoardInventory.CellFormatting += (s, ev) =>
             {
                 if (ev.RowIndex < 0) return;
-                string col = BoardMember.Columns[ev.ColumnIndex].Name;
+                string col = BoardInventory.Columns[ev.ColumnIndex].Name;
                 if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
                 if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
@@ -44,8 +45,8 @@ namespace Sistema_Gimnasio
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
-            var col = BoardMember.Columns[e.ColumnIndex].Name;
+            var name = BoardInventory.Rows[e.RowIndex].Cells["name"].Value;
+            var col = BoardInventory.Columns[e.ColumnIndex].Name;
             if (col == "colEdit")
             {
                 MessageBox.Show($"Editar item {name}");
@@ -71,6 +72,16 @@ namespace Sistema_Gimnasio
 
                 }
             }
+        }
+
+        private void LoadFakeData()
+        {
+            //nombre, cantidad, fecha ingreso, categoria
+            BoardInventory.Rows.Add("Mancuernas", "20", "2023-10-01", "Pesas");
+            BoardInventory.Rows.Add("Colchonetas", "15", "2023-09-15", "Yoga");
+            BoardInventory.Rows.Add("Bicicletas Estáticas", "10", "2023-08-20", "Cardio");
+            BoardInventory.Rows.Add("Balones Medicinales", "25", "2023-07-30", "Rehabilitación");
+            BoardInventory.Rows.Add("Cuerdas para Saltar", "30", "2023-06-10", "Cardio");
         }
     }
 }

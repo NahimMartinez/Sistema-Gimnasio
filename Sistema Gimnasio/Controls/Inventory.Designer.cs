@@ -32,12 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloInventaryManagment = new System.Windows.Forms.Label();
-            this.BoardMember = new System.Windows.Forms.DataGridView();
+            this.BoardInventory = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
@@ -46,10 +49,7 @@
             this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.LCategoria = new System.Windows.Forms.Label();
             this.BNewItem = new System.Windows.Forms.Button();
-            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardInventory)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,72 +60,68 @@
             this.LTituloInventaryManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloInventaryManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloInventaryManagment.Name = "LTituloInventaryManagment";
-            this.LTituloInventaryManagment.Size = new System.Drawing.Size(196, 25);
+            this.LTituloInventaryManagment.Size = new System.Drawing.Size(249, 32);
             this.LTituloInventaryManagment.TabIndex = 0;
             this.LTituloInventaryManagment.Text = "Gestión de Inventario";
             // 
-            // BoardMember
+            // BoardInventory
             // 
-            this.BoardMember.AllowUserToAddRows = false;
-            this.BoardMember.AllowUserToDeleteRows = false;
-            this.BoardMember.AllowUserToResizeRows = false;
-
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
-            this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-
-            this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.BoardMember.BackgroundColor = System.Drawing.Color.White;
-            this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-
+            this.BoardInventory.AllowUserToAddRows = false;
+            this.BoardInventory.AllowUserToDeleteRows = false;
+            this.BoardInventory.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardInventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.BoardInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BoardInventory.BackgroundColor = System.Drawing.Color.White;
+            this.BoardInventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BoardInventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.BoardInventory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(224, 224, 224); // Gris claro
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black; // Texto negro
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-
-            this.BoardMember.ColumnHeadersHeight = 38;
-            this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-this.name,
-this.cantidad,
-this.fecha_ingreso,
-this.categoria,
-this.status,
-this.colEdit,
-this.colView,
-this.colDelete});
-
+            this.BoardInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.BoardInventory.ColumnHeadersHeight = 38;
+            this.BoardInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.BoardInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.name,
+            this.cantidad,
+            this.fecha_ingreso,
+            this.categoria,
+            this.status,
+            this.colEdit,
+            this.colView,
+            this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(227, 242, 253);
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardMember.DefaultCellStyle = dataGridViewCellStyle3;
-
-            this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BoardMember.EnableHeadersVisualStyles = false;
-            this.BoardMember.GridColor = System.Drawing.Color.FromArgb(241, 243, 245);
-            this.BoardMember.Location = new System.Drawing.Point(0, 100);
-            this.BoardMember.MultiSelect = false;
-            this.BoardMember.Name = "BoardMember";
-            this.BoardMember.ReadOnly = true;
-            this.BoardMember.RowHeadersVisible = false;
-            this.BoardMember.RowTemplate.Height = 36;
-            this.BoardMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BoardMember.Size = new System.Drawing.Size(762, 450);
-            this.BoardMember.TabIndex = 1;
+            this.BoardInventory.DefaultCellStyle = dataGridViewCellStyle3;
+            this.BoardInventory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BoardInventory.EnableHeadersVisualStyles = false;
+            this.BoardInventory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.BoardInventory.Location = new System.Drawing.Point(0, 100);
+            this.BoardInventory.MultiSelect = false;
+            this.BoardInventory.Name = "BoardInventory";
+            this.BoardInventory.ReadOnly = true;
+            this.BoardInventory.RowHeadersVisible = false;
+            this.BoardInventory.RowHeadersWidth = 51;
+            this.BoardInventory.RowTemplate.Height = 36;
+            this.BoardInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BoardInventory.Size = new System.Drawing.Size(762, 450);
+            this.BoardInventory.TabIndex = 1;
             // 
             // name
             // 
             this.name.DataPropertyName = "nombre";
             this.name.HeaderText = "Nombre";
+            this.name.MinimumWidth = 6;
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
@@ -133,6 +129,7 @@ this.colDelete});
             // 
             this.cantidad.DataPropertyName = "cantidad";
             this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.MinimumWidth = 6;
             this.cantidad.Name = "cantidad";
             this.cantidad.ReadOnly = true;
             // 
@@ -140,6 +137,7 @@ this.colDelete});
             // 
             this.fecha_ingreso.DataPropertyName = "fecha_ingreso";
             this.fecha_ingreso.HeaderText = "Fecha Ingreso";
+            this.fecha_ingreso.MinimumWidth = 6;
             this.fecha_ingreso.Name = "fecha_ingreso";
             this.fecha_ingreso.ReadOnly = true;
             // 
@@ -147,6 +145,7 @@ this.colDelete});
             // 
             this.categoria.DataPropertyName = "categoria";
             this.categoria.HeaderText = "Categoría";
+            this.categoria.MinimumWidth = 6;
             this.categoria.Name = "categoria";
             this.categoria.ReadOnly = true;
             // 
@@ -154,8 +153,36 @@ this.colDelete});
             // 
             this.status.DataPropertyName = "estado";
             this.status.HeaderText = "Estado";
+            this.status.MinimumWidth = 6;
             this.status.Name = "status";
             this.status.ReadOnly = true;
+            // 
+            // colEdit
+            // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.HeaderText = "";
+            this.colEdit.MinimumWidth = 6;
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colView.HeaderText = "";
+            this.colView.MinimumWidth = 6;
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.HeaderText = "";
+            this.colDelete.MinimumWidth = 6;
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Width = 50;
             // 
             // CBStatus
             // 
@@ -168,7 +195,7 @@ this.colDelete});
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // BFilter
@@ -194,7 +221,7 @@ this.colDelete});
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.Size = new System.Drawing.Size(144, 27);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar item...";
             // 
@@ -205,7 +232,7 @@ this.colDelete});
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -241,7 +268,7 @@ this.colDelete});
             "Accesorios"});
             this.CBCategoria.Location = new System.Drawing.Point(304, 66);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(130, 23);
+            this.CBCategoria.Size = new System.Drawing.Size(130, 28);
             this.CBCategoria.TabIndex = 11;
             // 
             // LCategoria
@@ -251,7 +278,7 @@ this.colDelete});
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(301, 48);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(58, 15);
+            this.LCategoria.Size = new System.Drawing.Size(74, 20);
             this.LCategoria.TabIndex = 12;
             this.LCategoria.Text = "Categoría";
             // 
@@ -271,42 +298,18 @@ this.colDelete});
             this.BNewItem.UseVisualStyleBackColor = false;
             this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
             // 
-            // colEdit
-            // 
-            this.colEdit.HeaderText = "";
-            this.colEdit.Name = "colEdit";
-            this.colEdit.ReadOnly = true;
-            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colEdit.Width = 50;
-            // 
-            // colView
-            // 
-            this.colView.HeaderText = "";
-            this.colView.Name = "colView";
-            this.colView.ReadOnly = true;
-            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colView.Width = 50;
-            // 
-            // colDelete
-            // 
-            this.colDelete.HeaderText = "";
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
-            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colDelete.Width = 50;
-            // 
             // Inventory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.Controls.Add(this.BoardMember);
+            this.Controls.Add(this.BoardInventory);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "Inventory";
             this.Size = new System.Drawing.Size(762, 550);
-            ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoardInventory)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -316,7 +319,7 @@ this.colDelete});
         #endregion
 
         private System.Windows.Forms.Label LTituloInventaryManagment;
-        private System.Windows.Forms.DataGridView BoardMember;
+        private System.Windows.Forms.DataGridView BoardInventory;
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
