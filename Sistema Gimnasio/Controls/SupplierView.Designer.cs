@@ -39,7 +39,9 @@
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.BFilter = new System.Windows.Forms.Button();
             this.TSearchSupplier = new System.Windows.Forms.TextBox();
             this.BNewSupplier = new System.Windows.Forms.Button();
@@ -89,7 +91,9 @@
             this.email,
             this.phone,
             this.status,
-            this.Actions});
+            this.colEdit,
+            this.colView,
+            this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,13 +147,31 @@
             // 
             this.status.DataPropertyName = "status";
             this.status.HeaderText = "Estado";
-            this.status.Name = "status";
+            this.status.Name = "status";            
             // 
-            // Actions
+            // colEdit
             // 
-            this.Actions.DataPropertyName = "Actions";
-            this.Actions.HeaderText = "Acciones";
-            this.Actions.Name = "Actions";
+            this.colEdit.HeaderText = "";
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "";
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.Width = 50;
             // 
             // BFilter
             // 
@@ -264,6 +286,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Actions;
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn colView;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
     }
 }

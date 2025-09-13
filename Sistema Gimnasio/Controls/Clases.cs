@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace Sistema_Gimnasio.Controls
 {
@@ -17,6 +18,8 @@ namespace Sistema_Gimnasio.Controls
         {
             InitializeComponent();
             LoadFakeData();
+            BoardClass.CellClick += BoardClass_CellClick;
+            SetupActionIcons();
         }
 
         private void BNewClass_Click(object sender, EventArgs e)
@@ -41,6 +44,45 @@ namespace Sistema_Gimnasio.Controls
             BoardClass.Rows.Add("Pilates", "Carlos Gomez", "10", "Lunes, Miercoles", "8:00 - 9:00", "Inactivo");
             BoardClass.Rows.Add("Zumba", "Ana Martinez", "25", "Viernes", "18:00 - 19:00", "Activo");
             BoardClass.Rows.Add("Spinning", "Luis Rodriguez", "30", "Martes, Jueves", "19:00 - 20:00", "Activo");
+        }
+
+        private void SetupActionIcons()
+        {
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+
+            colEdit.Image = bmpEdit;
+            colView.Image = bmpView;
+            colDelete.Image = bmpDelete;
+
+            BoardClass.CellFormatting += (s, ev) =>
+            {
+                if (ev.RowIndex < 0) return;
+                string col = BoardClass.Columns[ev.ColumnIndex].Name;
+                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
+                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
+                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+            };
+        }
+
+        private void BoardClass_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var name = BoardClass.Rows[e.RowIndex].Cells["name"].Value;
+            var col = BoardClass.Columns[e.ColumnIndex].Name;
+            if (col == "colEdit")
+            {
+                MessageBox.Show($"Editar clase {name}");
+            }
+            else if (col == "colView")
+            {
+                MessageBox.Show($"Ver clase {name}");
+            }
+            else if (col == "colDelete")
+            {
+                MessageBox.Show($"Eliminar clase {name}");
+            }
         }
     }
 }

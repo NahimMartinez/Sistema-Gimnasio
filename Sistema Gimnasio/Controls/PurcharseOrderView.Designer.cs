@@ -37,11 +37,13 @@
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BFilter = new System.Windows.Forms.Button();
             this.TOrdPurcharse = new System.Windows.Forms.TextBox();
             this.BNewSupplier = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardOrderP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +83,9 @@
             this.Supplier,
             this.Date,
             this.Status,
-            this.Actions});
+            this.colEdit,
+            this.colView,
+            this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -119,13 +123,7 @@
             // Status
             // 
             this.Status.HeaderText = "Estado";
-            this.Status.Name = "Status";
-            // 
-            // Actions
-            // 
-            this.Actions.DataPropertyName = "Actions";
-            this.Actions.HeaderText = "Acciones";
-            this.Actions.Name = "Actions";
+            this.Status.Name = "Status";            
             // 
             // BFilter
             // 
@@ -180,6 +178,30 @@
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 2;
             // 
+            // colEdit
+            // 
+            this.colEdit.HeaderText = "";
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "";
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.Width = 50;
+            // 
             // PurcharseOrderView
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
@@ -208,6 +230,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Actions;
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn colView;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
     }
 }

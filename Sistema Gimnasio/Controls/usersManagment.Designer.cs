@@ -46,6 +46,9 @@
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +91,10 @@
             this.dni,
             this.usuario,
             this.rol,
-            this.status});
+            this.status,
+            this.colEdit,
+            this.colView,
+            this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -263,6 +269,30 @@
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
+            // colEdit
+            // 
+            this.colEdit.HeaderText = "";
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "";
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.Width = 50;
+            // 
             // UsersManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -298,5 +328,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn colView;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
     }
 }

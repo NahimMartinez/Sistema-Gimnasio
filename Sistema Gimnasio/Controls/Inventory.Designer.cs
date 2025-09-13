@@ -46,6 +46,9 @@
             this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.LCategoria = new System.Windows.Forms.Label();
             this.BNewItem = new System.Windows.Forms.Button();
+            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +95,10 @@ this.name,
 this.cantidad,
 this.fecha_ingreso,
 this.categoria,
-this.status});
+this.status,
+this.colEdit,
+this.colView,
+this.colDelete});
 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -265,6 +271,30 @@ this.status});
             this.BNewItem.UseVisualStyleBackColor = false;
             this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
             // 
+            // colEdit
+            // 
+            this.colEdit.HeaderText = "";
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEdit.Width = 50;
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "";
+            this.colView.Name = "colView";
+            this.colView.ReadOnly = true;
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colView.Width = 50;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDelete.Width = 50;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -300,5 +330,8 @@ this.status});
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_ingreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewImageColumn colEdit;
+        private System.Windows.Forms.DataGridViewImageColumn colView;
+        private System.Windows.Forms.DataGridViewImageColumn colDelete;
     }
 }
