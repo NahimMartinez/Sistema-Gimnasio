@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace Sistema_Gimnasio
 {
@@ -18,7 +19,7 @@ namespace Sistema_Gimnasio
             if (disposing && (components != null))
             {
                 components.Dispose();
-            }
+            }   
             base.Dispose(disposing);
         }
 
@@ -36,15 +37,15 @@ namespace Sistema_Gimnasio
             this.LRole = new System.Windows.Forms.Label();
             this.LUser = new System.Windows.Forms.Label();
             this.PUser = new System.Windows.Forms.PictureBox();
-            this.BReports = new System.Windows.Forms.Button();
+            this.BReports = new FontAwesome.Sharp.IconButton();
             this.MenuIcons = new System.Windows.Forms.ImageList(this.components);
-            this.BInventory = new System.Windows.Forms.Button();
-            this.BActivity = new System.Windows.Forms.Button();
-            this.BSupplier = new System.Windows.Forms.Button();
-            this.BMemberships = new System.Windows.Forms.Button();
-            this.BtnPartners = new System.Windows.Forms.Button();
-            this.BtnUsers = new System.Windows.Forms.Button();
-            this.BDashboard = new System.Windows.Forms.Button();
+            this.BInventory = new FontAwesome.Sharp.IconButton();
+            this.BActivity = new FontAwesome.Sharp.IconButton();
+            this.BSupplier = new FontAwesome.Sharp.IconButton();
+            this.BMemberships = new FontAwesome.Sharp.IconButton();
+            this.BtnPartners = new FontAwesome.Sharp.IconButton();
+            this.BtnUsers = new FontAwesome.Sharp.IconButton();
+            this.BDashboard = new FontAwesome.Sharp.IconButton();
             this.PanelBrand = new System.Windows.Forms.Panel();
             this.LBrand2 = new System.Windows.Forms.Label();
             this.LogoDot = new System.Windows.Forms.Panel();
@@ -425,14 +426,14 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.Panel Sidebar;
         private System.Windows.Forms.Panel PanelBrand;
         private System.Windows.Forms.Panel LogoDot;
-        private System.Windows.Forms.Button BDashboard;
-        private System.Windows.Forms.Button BtnUsers;
-        private System.Windows.Forms.Button BtnPartners;
-        private System.Windows.Forms.Button BMemberships;
-        private System.Windows.Forms.Button BSupplier;
-        private System.Windows.Forms.Button BActivity;
-        private System.Windows.Forms.Button BInventory;
-        private System.Windows.Forms.Button BReports;
+        private FontAwesome.Sharp.IconButton BDashboard;
+        private FontAwesome.Sharp.IconButton BtnUsers;
+        private FontAwesome.Sharp.IconButton BtnPartners;
+        private FontAwesome.Sharp.IconButton BMemberships;
+        private FontAwesome.Sharp.IconButton BSupplier;
+        private FontAwesome.Sharp.IconButton BActivity;
+        private FontAwesome.Sharp.IconButton BInventory;
+        private FontAwesome.Sharp.IconButton BReports;
         private System.Windows.Forms.Panel PanelUser;
         private System.Windows.Forms.PictureBox PUser;
         private System.Windows.Forms.Label LUser;

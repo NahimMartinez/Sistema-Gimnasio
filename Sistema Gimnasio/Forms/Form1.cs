@@ -3,22 +3,16 @@ using Entities;
 using Sistema_Gimnasio.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using FontAwesome.Sharp;
 
 namespace Sistema_Gimnasio
 {
     public partial class Form1 : Form
     {
-
-        // [Flags] permite tratar los valores del enum como bits combinables con OR (|)
         [Flags]
         public enum Roles
         {
@@ -26,8 +20,7 @@ namespace Sistema_Gimnasio
             Admin = 1,
             Recep = 2,
             Coach = 4,
-       
-        }        
+        }
 
         private Roles MapRoleByName(string name)
         {
@@ -41,11 +34,11 @@ namespace Sistema_Gimnasio
         private Roles CurrentRole;
         private string CurrentUser;
 
-        // ACL por botón (se llena después de InitializeComponent)
-        private readonly Dictionary<Button, Roles> Acl = new Dictionary<Button, Roles>();
+        // ACL
+        private readonly Dictionary<IconButton, Roles> Acl = new Dictionary<IconButton, Roles>();
 
-        // Instanciamos un array de botones para manejar el sidebar
-        private Button[] MenuButtons => new[]
+        // Array de botones del sidebar
+        private IconButton[] MenuButtons => new[]
         {
             BDashboard, BtnUsers, BtnPartners, BMemberships,
             BSupplier, BActivity, BInventory, BReports
@@ -53,30 +46,33 @@ namespace Sistema_Gimnasio
 
         private readonly User user;
 
-        // Constructor recibe el usuario autenticado
         public Form1(User pU)
         {
             InitializeComponent();
             user = pU;
-            WireSidebar(); // setea Tag de navegación y eventos
-            BuildAcl(); // define permisos por botón
-            
-            // Ajusta la pantalla para ocupar el maximo espacio disponible
-            this.WindowState = FormWindowState.Maximized;
-            this.MaximizeBox = false;    // Oculta botón maximizar
+            WireSidebar();
+            BuildAcl();
 
-            //ajustes de los botones del sidebar
-            MenuFlow.SuspendLayout(); //pausa el layout para hacer varios cambios
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = false;
+
+            // Ajustes visuales de los botones
+            MenuFlow.SuspendLayout();
             foreach (var b in MenuButtons)
-            {          
-                b.Dock = DockStyle.None; // Flow ignora Dock, pero evitá Top
+            {
+                b.Dock = DockStyle.None;
                 b.AutoSize = false;
                 b.Height = 42;
                 b.Margin = new Padding(0, 0, 0, 6);
-            }
-            MenuFlow.ResumeLayout(); //reanuda el layout
 
-            // mantener 100% de ancho
+                // Ajuste común para íconos
+                b.IconColor = Color.White;
+                b.IconSize = 22;
+                b.TextImageRelation = TextImageRelation.ImageBeforeText;
+                b.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+            MenuFlow.ResumeLayout();
+
             MenuFlow.SizeChanged += (_, __) =>
             {
                 int w = MenuFlow.ClientSize.Width - MenuFlow.Padding.Horizontal;
@@ -89,10 +85,9 @@ namespace Sistema_Gimnasio
 
             this.Load += Form1_Load;
         }
-        // Define permisos por botón en el diccionario Acl diciendo que roles pueden verlo
+
         private void BuildAcl()
         {
-            // manejamos por roles, no por usuarios
             Acl[BDashboard] = Roles.Admin;
             Acl[BtnUsers] = Roles.Admin;
             Acl[BtnPartners] = Roles.Admin | Roles.Recep;
@@ -102,26 +97,26 @@ namespace Sistema_Gimnasio
             Acl[BInventory] = Roles.Admin | Roles.Recep;
             Acl[BReports] = Roles.Admin;
         }
-        //recorremos todos los botones y los mostramos u ocultamos según el rol actual
+
         private void ApplyAcl(Roles role)
         {
             foreach (var b in MenuButtons)
                 b.Visible = (Acl.TryGetValue(b, out var allowed) && (allowed & role) != 0);
 
-            MenuFlow?.PerformLayout();//fueza el layout para recalcular tras actualizar visibilidad
+            MenuFlow?.PerformLayout();
         }
-        //aplicamos permisos al cargar el formulario
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ApplyAcl(CurrentRole);
             var first = MenuButtons.FirstOrDefault(b => b.Visible);
             if (first != null)
             {
-                SetActive(first); // resalta el botón visible
-                Navigate((string)first.Tag); // abre la vista
+                SetActive(first);
+                Navigate((string)first.Tag);
             }
         }
-        //actualiza rol y usuario, reaplica permisos y actualiza etiquetas
+
         public void SetRoleAndRefresh(Roles newRole, string username)
         {
             CurrentRole = newRole;
@@ -129,16 +124,16 @@ namespace Sistema_Gimnasio
             ApplyAcl(CurrentRole);
             UpdateLabels();
         }
-        //escribe en los label el usuario y rol actuales
+
         private void UpdateLabels()
         {
             LUser.Text = CurrentUser;
             LRole.Text = CurrentRole.ToString();
         }
-        //asigna tags y eventos a los botones del sidebar
+
         private void WireSidebar()
         {
-            // Tags que usa Navigate() 
+            // Asignar tags
             BDashboard.Tag = "dashboard";
             BtnUsers.Tag = "users";
             BtnPartners.Tag = "partners";
@@ -148,17 +143,41 @@ namespace Sistema_Gimnasio
             BInventory.Tag = "inventory";
             BReports.Tag = "reports";
 
+            // Asignar íconos FontAwesome
+            BDashboard.IconChar = IconChar.ChartPie;
+            BDashboard.Text = "Dashboard";
+
+            BtnUsers.IconChar = IconChar.UsersCog;
+            BtnUsers.Text = "Usuarios";
+
+            BtnPartners.IconChar = IconChar.AddressBook;
+            BtnPartners.Text = "Socios";
+
+            BMemberships.IconChar = IconChar.IdCard;
+            BMemberships.Text = "Membresías";
+
+            BSupplier.IconChar = IconChar.TruckLoading;
+            BSupplier.Text = "Proveedores";
+
+            BActivity.IconChar = IconChar.Dumbbell;
+            BActivity.Text = "Clases";
+
+            BInventory.IconChar = IconChar.Boxes;
+            BInventory.Text = "Inventario";
+
+            BReports.IconChar = IconChar.ChartBar;
+            BReports.Text = "Reportes";
+
             foreach (var b in MenuButtons) b.Click += MenuButton_Click;
         }
 
-        // Evento click de los botones del sidebar
         private void MenuButton_Click(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+            var btn = (IconButton)sender;
             Navigate((string)btn.Tag);
             SetActive(btn);
         }
-        //enruta al metodo de carga cada vista segun el tag del recibido
+
         private void Navigate(string menuId)
         {
             switch (menuId)
@@ -169,13 +188,11 @@ namespace Sistema_Gimnasio
                 case "classes": ShowClases(); break;
                 case "inventory": ShowInventario(); break;
                 case "memberships": ShowMemberships(); break;
-                //case "supplier": ShowSuppliers(); break;
                 case "reports": ShowReports(); break;
             }
         }
 
-        // Estilo para activo/inactivo de los botones del sidebar
-        private void SetActive(Button active)
+        private void SetActive(IconButton active)
         {
             var orange = Color.FromArgb(249, 115, 22);
             var dark = Color.FromArgb(15, 23, 42);
@@ -189,7 +206,6 @@ namespace Sistema_Gimnasio
             active.Font = new Font(active.Font, FontStyle.Bold);
         }
 
-        // Vistas
         private void ShowDashboard()
         {
             contentPanel.Controls.Clear();
@@ -248,21 +264,19 @@ namespace Sistema_Gimnasio
             var view = new SupplierView { Dock = DockStyle.Fill, BackColor = Color.White };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Proveedores";
-
-
         }
-        //al pasar el mouse sobre el botón, muestra el submenú y detiene el timer
+
         private void BSupplier_MouseHover(object sender, EventArgs e)
         {
             PSubMenuSupplier.Visible = true;
             hideTimer.Stop();
         }
-        // al salir con el mouse del botón o del panel, inicia el timer
+
         private void BSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
         }
-        // al entrar con el mouse en el panel, detiene el timer
+
         private void PSubMenuSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
@@ -273,14 +287,11 @@ namespace Sistema_Gimnasio
             OcultarSiCursorFuera();
         }
 
-        // hit-testing entre botón y panel usando coordenadas de pantalla
         private void OcultarSiCursorFuera()
         {
             var cursor = Cursor.Position;
-            //rectángulos en coordenadas de pantalla
             var btnRect = BSupplier.RectangleToScreen(BSupplier.ClientRectangle);
             var subRect = PSubMenuSupplier.RectangleToScreen(PSubMenuSupplier.ClientRectangle);
-            // si el cursor no está en ninguno, oculta el submenú y detiene el timer
             if (!btnRect.Contains(cursor) && !subRect.Contains(cursor))
             {
                 PSubMenuSupplier.Visible = false;
@@ -288,12 +299,10 @@ namespace Sistema_Gimnasio
             }
         }
 
-        // clics de submenú
         private void BProvList_Click(object sender, EventArgs e)
         {
-            
             ShowSuppliers();
-            SetActive(BSupplier); // mantiene resaltado el botón padre
+            SetActive(BSupplier);
             PSubMenuSupplier.Visible = false;
         }
 
@@ -304,7 +313,6 @@ namespace Sistema_Gimnasio
             PSubMenuSupplier.Visible = false;
         }
 
-        
         private void ShowPurchaseOrders()
         {
             contentPanel.Controls.Clear();
@@ -312,6 +320,5 @@ namespace Sistema_Gimnasio
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Órdenes de compra";
         }
-
     }
 }
