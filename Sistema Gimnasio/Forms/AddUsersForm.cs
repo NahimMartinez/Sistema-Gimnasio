@@ -15,10 +15,28 @@ namespace Sistema_Gimnasio
 {
     public partial class AddUsersForm : Form
     {
-        public AddUsersForm()
+        private User editingUser = null;
+        public AddUsersForm() : this((User)null) { }
+        public AddUsersForm(User userToEdit)
         {
             InitializeComponent();
             ConfigureValidations();
+            editingUser = userToEdit;
+            if (editingUser != null)
+            {
+                // Modo edición: cargar datos en los campos
+                txtNombre.Text = editingUser.Nombre;
+                txtApellido.Text = editingUser.Apellido;
+                txtDni.Text = editingUser.Dni;
+                txtTelefono.Text = editingUser.Telefono;
+                txtEmail.Text = editingUser.Email;
+                txtUsuario.Text = editingUser.Username;
+                txtContraseña.Text = editingUser.Password;
+                txtContraseña2.Text = editingUser.Password;
+                CBRol.SelectedValue = editingUser.RolId;
+                BLimpiar.Enabled = false; // Deshabilitar botón limpiar en modo edición
+                this.Text = "Editar usuario"; // Cambia el título de la ventana
+            }
         }
 
         private void ConfigureValidations()
@@ -157,29 +175,51 @@ namespace Sistema_Gimnasio
         private void BCrear_Click_1(object sender, EventArgs e)
         {
             var userService = new Business.UserService();
-            // Validar antes de guardar
             if (!ValidarCampos())
             {
-                return; // Detener si hay errores
+                return;
             }
-            var newPerson = new Person()
+            if (editingUser == null)
             {
-                Nombre = txtNombre.Text.Trim(),
-                Apellido = txtApellido.Text.Trim(),
-                Dni = txtDni.Text.Trim(),
-                Telefono = txtTelefono.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
-                Estado = true // Activo por defecto
-            };
-
-            var newUser = new User() { 
-                Username = txtUsuario.Text.Trim(),
-                Password = txtContraseña.Text,
-                RolId = (int)CBRol.SelectedValue
-            };         
-            
-            userService.UserCreate(newPerson, newUser);
-            MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Crear nuevo usuario
+                var newPerson = new Person()
+                {
+                    Nombre = txtNombre.Text.Trim(),
+                    Apellido = txtApellido.Text.Trim(),
+                    Dni = txtDni.Text.Trim(),
+                    Telefono = txtTelefono.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Estado = true
+                };
+                var newUser = new User()
+                {
+                    Username = txtUsuario.Text.Trim(),
+                    Password = txtContraseña.Text,
+                    RolId = (int)CBRol.SelectedValue
+                };
+                userService.UserCreate(newPerson, newUser);
+                MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Editar usuario existente
+                editingUser.Nombre = txtNombre.Text.Trim();
+                editingUser.Apellido = txtApellido.Text.Trim();
+                editingUser.Dni = txtDni.Text.Trim();
+                editingUser.Telefono = txtTelefono.Text.Trim();
+                editingUser.Email = txtEmail.Text.Trim();
+                editingUser.Username = txtUsuario.Text.Trim();
+                editingUser.Password = txtContraseña.Text;
+                editingUser.RolId = (int)CBRol.SelectedValue;
+                editingUser.IdUsuario = editingUser.IdPersona; // Asignar correctamente el IdUsuario
+                var userRepo = new Data.UserRepository();
+                var personRepo = new Data.PersonRepository();
+                userRepo.UpdateUser(editingUser);
+                personRepo.Update(editingUser); // Actualiza la tabla persona
+                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void CBVerContraseña_CheckedChanged(object sender, EventArgs e)

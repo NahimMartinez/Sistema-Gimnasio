@@ -70,18 +70,33 @@ namespace Sistema_Gimnasio
         private void BoardUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value;
             var col = BoardUsers.Columns[e.ColumnIndex].Name;
             if (col == "colEdit")
             {
-                MessageBox.Show($"Editar usuario {name}");
+                // Obtener el username del usuario seleccionado
+                var username = BoardUsers.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
+                var userService = new UserService();
+                var userRepo = new Data.UserRepository();
+                // Obtener el usuario completo
+                var user = userRepo.GetByUsernameActivo(username);
+                // Abrir el formulario en modo edición
+                using (var fEditUser = new AddUsersForm(user))
+                {
+                    if (fEditUser.ShowDialog() == DialogResult.OK)
+                    {
+                        // Recargar la grilla después de editar
+                        LoadUsers();
+                    }
+                }
             }
             else if (col == "colView")
             {
+                var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value;
                 MessageBox.Show($"Ver usuario {name}");
             }
             else if (col == "colDelete")
             {
+                var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value;
                 MessageBox.Show($"Eliminar usuario {name}");
             }
         }
