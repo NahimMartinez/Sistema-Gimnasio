@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,20 +50,23 @@
             this.labelRevenueTitle = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelCharts = new System.Windows.Forms.Panel();
+            this.chartIngresosMensuales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelChartTitle = new System.Windows.Forms.Label();
             this.panelRecentActivity = new System.Windows.Forms.Panel();
-            this.labelActivityTitle = new System.Windows.Forms.Label();
-            this.listViewActivity = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BoardRecent = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelActivityTitle = new System.Windows.Forms.Label();
+            this.listViewActivity = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.chartIngresosMensuales = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.NewCategoryInventory = new FontAwesome.Sharp.IconButton();
+            this.NewCategoryMember = new FontAwesome.Sharp.IconButton();
+            this.NewCategoryClass = new FontAwesome.Sharp.IconButton();
             this.panelHeader.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.cardMembers.SuspendLayout();
@@ -73,9 +76,9 @@
             this.cardRevenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelCharts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosMensuales)).BeginInit();
             this.panelRecentActivity.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BoardRecent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosMensuales)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -252,11 +255,27 @@
             this.panelCharts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCharts.Controls.Add(this.chartIngresosMensuales);
             this.panelCharts.Controls.Add(this.labelChartTitle);
-            this.panelCharts.Location = new System.Drawing.Point(20, 220);
+            this.panelCharts.Location = new System.Drawing.Point(24, 220);
             this.panelCharts.Name = "panelCharts";
             this.panelCharts.Padding = new System.Windows.Forms.Padding(15);
-            this.panelCharts.Size = new System.Drawing.Size(459, 354);
+            this.panelCharts.Size = new System.Drawing.Size(1297, 354);
             this.panelCharts.TabIndex = 2;
+            // 
+            // chartIngresosMensuales
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartIngresosMensuales.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartIngresosMensuales.Legends.Add(legend1);
+            this.chartIngresosMensuales.Location = new System.Drawing.Point(18, 46);
+            this.chartIngresosMensuales.Name = "chartIngresosMensuales";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartIngresosMensuales.Series.Add(series1);
+            this.chartIngresosMensuales.Size = new System.Drawing.Size(784, 300);
+            this.chartIngresosMensuales.TabIndex = 1;
+            this.chartIngresosMensuales.Text = "chart1";
             // 
             // labelChartTitle
             // 
@@ -278,54 +297,11 @@
             this.panelRecentActivity.Controls.Add(this.BoardRecent);
             this.panelRecentActivity.Controls.Add(this.labelActivityTitle);
             this.panelRecentActivity.Controls.Add(this.listViewActivity);
-            this.panelRecentActivity.Location = new System.Drawing.Point(485, 220);
+            this.panelRecentActivity.Location = new System.Drawing.Point(20, 671);
             this.panelRecentActivity.Name = "panelRecentActivity";
             this.panelRecentActivity.Padding = new System.Windows.Forms.Padding(15);
-            this.panelRecentActivity.Size = new System.Drawing.Size(819, 354);
+            this.panelRecentActivity.Size = new System.Drawing.Size(1301, 354);
             this.panelRecentActivity.TabIndex = 3;
-            // 
-            // labelActivityTitle
-            // 
-            this.labelActivityTitle.AutoSize = true;
-            this.labelActivityTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelActivityTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.labelActivityTitle.Location = new System.Drawing.Point(15, 15);
-            this.labelActivityTitle.Name = "labelActivityTitle";
-            this.labelActivityTitle.Size = new System.Drawing.Size(178, 28);
-            this.labelActivityTitle.TabIndex = 1;
-            this.labelActivityTitle.Text = "Actividad Reciente";
-            // 
-            // listViewActivity
-            // 
-            this.listViewActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewActivity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewActivity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewActivity.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listViewActivity.HideSelection = false;
-            this.listViewActivity.Location = new System.Drawing.Point(15, 45);
-            this.listViewActivity.Name = "listViewActivity";
-            this.listViewActivity.Size = new System.Drawing.Size(787, 284);
-            this.listViewActivity.TabIndex = 0;
-            this.listViewActivity.UseCompatibleStateImageBehavior = false;
-            this.listViewActivity.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Width = 80;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Width = 45;
             // 
             // BoardRecent
             // 
@@ -372,7 +348,7 @@
             this.BoardRecent.RowHeadersWidth = 51;
             this.BoardRecent.RowTemplate.Height = 36;
             this.BoardRecent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BoardRecent.Size = new System.Drawing.Size(787, 322);
+            this.BoardRecent.Size = new System.Drawing.Size(1269, 322);
             this.BoardRecent.TabIndex = 2;
             this.BoardRecent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BoardClass_CellContentClick);
             // 
@@ -400,46 +376,112 @@
             this.Fecha_alta.MinimumWidth = 6;
             this.Fecha_alta.Name = "Fecha_alta";
             // 
+            // labelActivityTitle
+            // 
+            this.labelActivityTitle.AutoSize = true;
+            this.labelActivityTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActivityTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.labelActivityTitle.Location = new System.Drawing.Point(15, 15);
+            this.labelActivityTitle.Name = "labelActivityTitle";
+            this.labelActivityTitle.Size = new System.Drawing.Size(178, 28);
+            this.labelActivityTitle.TabIndex = 1;
+            this.labelActivityTitle.Text = "Actividad Reciente";
+            // 
+            // listViewActivity
+            // 
+            this.listViewActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewActivity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewActivity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewActivity.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listViewActivity.HideSelection = false;
+            this.listViewActivity.Location = new System.Drawing.Point(15, 45);
+            this.listViewActivity.Name = "listViewActivity";
+            this.listViewActivity.Size = new System.Drawing.Size(1269, 284);
+            this.listViewActivity.TabIndex = 0;
+            this.listViewActivity.UseCompatibleStateImageBehavior = false;
+            this.listViewActivity.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 80;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 100;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Width = 45;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.label1.Location = new System.Drawing.Point(845, 170);
+            this.label1.Location = new System.Drawing.Point(734, 619);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 28);
             this.label1.TabIndex = 4;
             this.label1.Text = "Socios Recientes";
             // 
-            // chartIngresosMensuales
+            // NewCategoryInventory
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartIngresosMensuales.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartIngresosMensuales.Legends.Add(legend1);
-            this.chartIngresosMensuales.Location = new System.Drawing.Point(18, 46);
-            this.chartIngresosMensuales.Name = "chartIngresosMensuales";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartIngresosMensuales.Series.Add(series1);
-            this.chartIngresosMensuales.Size = new System.Drawing.Size(394, 300);
-            this.chartIngresosMensuales.TabIndex = 1;
-            this.chartIngresosMensuales.Text = "chart1";
+            this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.NewCategoryInventory.IconColor = System.Drawing.Color.Black;
+            this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NewCategoryInventory.Location = new System.Drawing.Point(671, 88);
+            this.NewCategoryInventory.Name = "NewCategoryInventory";
+            this.NewCategoryInventory.Size = new System.Drawing.Size(135, 110);
+            this.NewCategoryInventory.TabIndex = 3;
+            this.NewCategoryInventory.Text = "Nueva Categoría Inventario";
+            this.NewCategoryInventory.UseVisualStyleBackColor = true;
+            // 
+            // NewCategoryMember
+            // 
+            this.NewCategoryMember.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.NewCategoryMember.IconColor = System.Drawing.Color.Black;
+            this.NewCategoryMember.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NewCategoryMember.Location = new System.Drawing.Point(927, 88);
+            this.NewCategoryMember.Name = "NewCategoryMember";
+            this.NewCategoryMember.Size = new System.Drawing.Size(135, 110);
+            this.NewCategoryMember.TabIndex = 5;
+            this.NewCategoryMember.Text = "Nueva Categoría Membresia";
+            this.NewCategoryMember.UseVisualStyleBackColor = true;
+            // 
+            // NewCategoryClass
+            // 
+            this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.NewCategoryClass.IconColor = System.Drawing.Color.Black;
+            this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NewCategoryClass.Location = new System.Drawing.Point(1170, 88);
+            this.NewCategoryClass.Name = "NewCategoryClass";
+            this.NewCategoryClass.Size = new System.Drawing.Size(135, 110);
+            this.NewCategoryClass.TabIndex = 6;
+            this.NewCategoryClass.Text = "Nueva Categoría Clase";
+            this.NewCategoryClass.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.NewCategoryClass);
+            this.Controls.Add(this.NewCategoryMember);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.NewCategoryInventory);
             this.Controls.Add(this.panelRecentActivity);
             this.Controls.Add(this.panelCharts);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.panelHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Dashboard";
-            this.Size = new System.Drawing.Size(1324, 621);
+            this.Size = new System.Drawing.Size(1324, 765);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.flowLayoutPanel.ResumeLayout(false);
@@ -454,10 +496,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelCharts.ResumeLayout(false);
             this.panelCharts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosMensuales)).EndInit();
             this.panelRecentActivity.ResumeLayout(false);
             this.panelRecentActivity.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BoardRecent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartIngresosMensuales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,5 +537,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_alta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresosMensuales;
+        private FontAwesome.Sharp.IconButton NewCategoryInventory;
+        private FontAwesome.Sharp.IconButton NewCategoryMember;
+        private FontAwesome.Sharp.IconButton NewCategoryClass;
     }
 }

@@ -42,7 +42,7 @@ namespace Sistema_Gimnasio.Controls
         {
             // Configurar el gráfico
             chartIngresosMensuales.Titles.Add("Ingresos Mensuales 2025");
-            chartIngresosMensuales.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            
             chartIngresosMensuales.ChartAreas[0].AxisX.Interval = 1;
 
             // Datos fake de ingresos por mes (en miles)
@@ -59,8 +59,8 @@ namespace Sistema_Gimnasio.Controls
 
             // Crear nueva serie
             Series serie = new Series("Ingresos");
-            serie.ChartType = SeriesChartType.Column; // Tipo de gráfico de columnas
-            serie.IsValueShownAsLabel = false; // ← CAMBIO AQUÍ: false en lugar de true
+            serie.ChartType = SeriesChartType.Column;
+            serie.IsValueShownAsLabel = false;
 
             // Agregar datos
             foreach (var ingreso in ingresos)
@@ -77,10 +77,12 @@ namespace Sistema_Gimnasio.Controls
 
             // Personalizar colores
             serie.Color = Color.FromArgb(65, 105, 225); // Color azul
-                                                        // serie.LabelForeColor = Color.White; ← ESTA LÍNEA YA NO ES NECESARIA
 
             // Formato de números en los ejes
             chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
+
+            // Ajustar el ancho de las barras
+            chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
         }
     }
 }
