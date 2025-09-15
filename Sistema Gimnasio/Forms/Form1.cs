@@ -40,7 +40,7 @@ namespace Sistema_Gimnasio
         // Array de botones del sidebar
         private IconButton[] MenuButtons => new[]
         {
-            BDashboard, BtnUsers, BtnPartners, BMemberships,
+            BDashboard, BtnUsers, BtnPartners,
             BSupplier, BActivity, BInventory, BReports
         };
 
@@ -91,7 +91,6 @@ namespace Sistema_Gimnasio
             Acl[BDashboard] = Roles.Admin;
             Acl[BtnUsers] = Roles.Admin;
             Acl[BtnPartners] = Roles.Admin | Roles.Recep;
-            Acl[BMemberships] = Roles.Admin | Roles.Recep;
             Acl[BSupplier] = Roles.Admin | Roles.Recep;
             Acl[BActivity] = Roles.Admin | Roles.Recep | Roles.Coach;
             Acl[BInventory] = Roles.Admin | Roles.Recep;
@@ -137,7 +136,6 @@ namespace Sistema_Gimnasio
             BDashboard.Tag = "dashboard";
             BtnUsers.Tag = "users";
             BtnPartners.Tag = "partners";
-            BMemberships.Tag = "memberships";
             BSupplier.Tag = "supplier";
             BActivity.Tag = "classes";
             BInventory.Tag = "inventory";
@@ -152,9 +150,6 @@ namespace Sistema_Gimnasio
 
             BtnPartners.IconChar = IconChar.AddressBook;
             BtnPartners.Text = "Socios";
-
-            BMemberships.IconChar = IconChar.IdCard;
-            BMemberships.Text = "Membresías";
 
             BSupplier.IconChar = IconChar.TruckLoading;
             BSupplier.Text = "Proveedores";
@@ -187,7 +182,6 @@ namespace Sistema_Gimnasio
                 case "partners": ShowPartners(); break;
                 case "classes": ShowClases(); break;
                 case "inventory": ShowInventario(); break;
-                case "memberships": ShowMemberships(); break;
                 case "reports": ShowReports(); break;
             }
         }
@@ -245,13 +239,7 @@ namespace Sistema_Gimnasio
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Inventario";
         }
-
-        private void ShowMemberships()
-        {
-            contentPanel.Controls.Clear();
-            this.Text = "GymManager Pro - Membresías";
-        }
-
+        
         private void ShowReports()
         {
             contentPanel.Controls.Clear();
