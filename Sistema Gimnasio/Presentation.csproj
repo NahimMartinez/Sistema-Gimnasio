@@ -153,18 +153,18 @@
     <Compile Include="Controls\SupplierView.Designer.cs">
       <DependentUpon>SupplierView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PurcharseOrderView.cs">
+    <Compile Include="Controls\PurchaseOrderView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PurcharseOrderView.Designer.cs">
-      <DependentUpon>PurcharseOrderView.cs</DependentUpon>
+    <Compile Include="Controls\PurchaseOrderView.Designer.cs">
+      <DependentUpon>PurchaseOrderView.cs</DependentUpon>
     </Compile>
     <Compile Include="UITheme.cs" />
     <EmbeddedResource Include="Controls\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PurcharseOrderView.resx">
-      <DependentUpon>PurcharseOrderView.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\PurchaseOrderView.resx">
+      <DependentUpon>PurchaseOrderView.cs</DependentUpon>
     </EmbeddedResource>
     <!-- Resources -->
     <EmbeddedResource Include="Forms\Form1.resx">

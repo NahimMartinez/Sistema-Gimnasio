@@ -13,6 +13,7 @@ namespace Sistema_Gimnasio
 {
     public partial class Form1 : Form
     {
+        // Definición de roles con Flags para combinaciones
         [Flags]
         public enum Roles
         {
@@ -21,19 +22,17 @@ namespace Sistema_Gimnasio
             Recep = 2,
             Coach = 4,
         }
-
+        // Convierte un nombre de rol legible a un valor del enum Roles.
         private Roles MapRoleByName(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) return Roles.None;
             if (string.Equals(name, "Administrador", StringComparison.OrdinalIgnoreCase)) return Roles.Admin;
-            if (string.Equals(name, "Recepecionista", StringComparison.OrdinalIgnoreCase)) return Roles.Recep;
+            if (string.Equals(name, "Recepcionista", StringComparison.OrdinalIgnoreCase)) return Roles.Recep;
             if (string.Equals(name, "Coach", StringComparison.OrdinalIgnoreCase)) return Roles.Coach;
             return Roles.None;
         }
-
-        private Roles CurrentRole;
-        private string CurrentUser;
-
+        
+        
         // ACL
         private readonly Dictionary<IconButton, Roles> Acl = new Dictionary<IconButton, Roles>();
 
@@ -44,14 +43,17 @@ namespace Sistema_Gimnasio
             BSupplier, BActivity, BInventory, BReports
         };
 
-        private readonly User user;
+        // Estado actual del usuario autenticado: rol y nombre a mostrar en la UI.
+        private Roles CurrentRole;
+        private string CurrentUser;
+        private readonly User user; // Usuario autenticado recibido desde el login.
 
         public Form1(User pU)
         {
             InitializeComponent();
-            user = pU;
-            WireSidebar();
-            BuildAcl();
+            user = pU; // Guarda el usuario logueado para usar su rol/nombre.
+            WireSidebar(); // Configura los botones del sidebar.
+            BuildAcl(); // Construye la lista de control de acceso (ACL).
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow; // evita redimensionamiento
@@ -83,11 +85,12 @@ namespace Sistema_Gimnasio
 
             var nombreCompleto = ((user?.Nombre ?? "") + " " + (user?.Apellido ?? "")).Trim();
             var mostrado = string.IsNullOrWhiteSpace(nombreCompleto) ? (user?.Username ?? "") : nombreCompleto;
+            // Setea el rol actual desde el nombre del rol proveniente de la entidad y refresca la UI.
             SetRoleAndRefresh(MapRoleByName(user?.Rol?.Nombre), mostrado);
 
             this.Load += Form1_Load;
         }
-
+        // Define la matriz de permisos: qué botón puede ver cada rol.
         private void BuildAcl()
         {
             Acl[BDashboard] = Roles.Admin;
@@ -98,32 +101,39 @@ namespace Sistema_Gimnasio
             Acl[BInventory] = Roles.Admin | Roles.Recep;
             Acl[BReports] = Roles.Admin;
         }
-
+        // Aplica la ACL al sidebar: muestra solo los botones autorizados para el rol dado.
         private void ApplyAcl(Roles role)
         {
+            //trygetvalue devuelve false si no encuentra la llave
             foreach (var b in MenuButtons)
                 b.Visible = (Acl.TryGetValue(b, out var allowed) && (allowed & role) != 0);
 
-            MenuFlow?.PerformLayout();
+            MenuFlow?.PerformLayout(); // Fuerza recalcular el layout del FlowLayoutPanel tras ocultar/mostrar.
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ApplyAcl(CurrentRole);
+            ApplyAcl(CurrentRole); // Asegura que el menú muestre lo que corresponde al rol actual.
+            // Selecciona el primer botón visible como activo e inicia la navegación a ese módulo.
             var first = MenuButtons.FirstOrDefault(b => b.Visible);
             if (first != null)
             {
                 SetActive(first);
                 Navigate((string)first.Tag);
             }
+            // Configuración inicial del submenú de Proveedores.
+            PSubMenuSupplier.Visible = false;
+            hideTimer.Interval = 120;
+            hideTimer.Tick += HideTimer_Tick;
+            BSupplier.MouseEnter += BSupplier_MouseHover;
         }
 
         public void SetRoleAndRefresh(Roles newRole, string username)
         {
             CurrentRole = newRole;
             CurrentUser = username;
-            ApplyAcl(CurrentRole);
-            UpdateLabels();
+            ApplyAcl(CurrentRole); // Recalcula qué botones se ven.
+            UpdateLabels(); // Actualiza etiquetas LUser y LRole.
         }
 
         private void UpdateLabels()
@@ -256,6 +266,14 @@ namespace Sistema_Gimnasio
             this.Text = "GymManager Pro - Proveedores";
         }
 
+        private void ShowPurchaseOrders()
+        {
+            contentPanel.Controls.Clear();
+            var view = new PurchaseOrderView { Dock = DockStyle.Fill, BackColor = Color.White };
+            contentPanel.Controls.Add(view);
+            this.Text = "GymManager Pro - Órdenes de compra";
+        }
+
         private void BSupplier_MouseHover(object sender, EventArgs e)
         {
             PSubMenuSupplier.Visible = true;
@@ -303,12 +321,6 @@ namespace Sistema_Gimnasio
             PSubMenuSupplier.Visible = false;
         }
 
-        private void ShowPurchaseOrders()
-        {
-            contentPanel.Controls.Clear();
-            var view = new PurcharseOrderView { Dock = DockStyle.Fill, BackColor = Color.White };
-            contentPanel.Controls.Add(view);
-            this.Text = "GymManager Pro - Órdenes de compra";
-        }
+        
     }
 }

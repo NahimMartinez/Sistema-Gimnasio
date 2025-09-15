@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Gimnasio
 {
-    partial class PurcharseOrderView
+    partial class PurchaseOrderView
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

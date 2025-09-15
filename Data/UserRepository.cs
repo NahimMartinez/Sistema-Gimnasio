@@ -18,8 +18,9 @@ namespace Data
             const string sql = @"
             INSERT INTO usuario (id_usuario, username, [password], rol_id)
             VALUES (@IdPersona, @Username, @Password, @RolId);";
-
-            using (var cn = new SqlConnection(Connection.chain)) 
+            // using cierra la conexión
+            using (var cn = new SqlConnection(Connection.chain))
+            // Execute devuelve filas afectadas. Aquí no se usa el retorno.            
             cn.Execute(sql, new { IdPersona = idPersona, u.Username, u.Password, u.RolId });
         }
 
@@ -29,7 +30,7 @@ namespace Data
             const string sql = @"
             UPDATE usuario
             SET username=@Username, [password]=@Password, rol_id=@RolId
-            WHERE id_usuario=@IdUsuario;";
+            WHERE id_usuario=@IdPersona;";
 
             using (var cn = new SqlConnection(Connection.chain))
             cn.Execute(sql, u);
@@ -65,7 +66,8 @@ namespace Data
             WHERE u.username = @Username AND p.estado = 1;";
 
             using (var cn = new SqlConnection(Connection.chain))
-            return cn.Query<Person, User, Rol, User>(
+                //mapeo de dapper person, user, rol y user al final
+                return cn.Query<Person, User, Rol, User>(
                 sql,
                 (p, u, r) => {
                     // copiar datos de persona a user
@@ -80,11 +82,11 @@ namespace Data
                     return u;
                 },
                 new { Username = username },
-                splitOn: "Username,IdRol"
+                splitOn: "Username,IdRol"//spliton indica donde empieza cada objeto
             ).SingleOrDefault();
         }
-
-        public User GetByUsername(string dni)
+        // Recupera un usuario por DNI activo o inactivo
+        public User GetByUser(string pDni)
         {
             const string sql = @"
                         SELECT p.id_persona AS IdPersona, p.nombre, p.apellido, p.dni, p.telefono, p.email, p.estado,
@@ -110,12 +112,12 @@ namespace Data
                         u.Rol = r;
                         return u;
                     },
-                    new { Dni = dni },
+                    new { Dni = pDni },
                     splitOn: "Username,IdRol"
                 ).SingleOrDefault();
         }
 
-        public int DisableUser(string dni)
+        public int DisableUser(string pDni)
         {
             const string sql = @"UPDATE p
                         SET p.estado = 0
@@ -123,10 +125,10 @@ namespace Data
                         JOIN usuario u ON u.id_usuario = p.id_persona  
                         WHERE p.dni = @Dni AND p.estado = 1";
             using (var cn = new SqlConnection(Connection.chain))
-                return cn.Execute(sql, new { dni = dni });
+                return cn.Execute(sql, new { dni = pDni });
         }
 
-        public int EnableUser(string dni)
+        public int EnableUser(string pDni)
         {
             const string sql = @"UPDATE p                        
                         SET p.estado = 1
@@ -134,7 +136,7 @@ namespace Data
                         JOIN usuario u ON u.id_usuario = p.id_persona  
                         WHERE p.dni = @Dni AND p.estado = 0;";
             using (var cn = new SqlConnection(Connection.chain))
-                return cn.Execute(sql, new { dni = dni });
+                return cn.Execute(sql, new { dni = pDni });
         }
 
     }

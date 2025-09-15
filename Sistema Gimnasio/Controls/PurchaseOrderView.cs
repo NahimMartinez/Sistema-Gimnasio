@@ -11,9 +11,9 @@ using FontAwesome.Sharp;
 
 namespace Sistema_Gimnasio
 {
-    public partial class PurcharseOrderView : UserControl
+    public partial class PurchaseOrderView : UserControl
     {
-        public PurcharseOrderView()
+        public PurchaseOrderView()
         {
             InitializeComponent();
             
