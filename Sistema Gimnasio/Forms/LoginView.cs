@@ -76,9 +76,9 @@ namespace Sistema_Gimnasio
             this.Close();
         }
 
-        private void BCleanup_Click(object sender, EventArgs e)
+        private void BClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 

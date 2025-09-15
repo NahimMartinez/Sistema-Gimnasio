@@ -18,6 +18,7 @@ namespace Sistema_Gimnasio.Controls
             InitializeComponent();
             LoadFakeData();
             LoadIngresosMensuales();
+            LoadCPMemberships();
         }
 
 
@@ -40,9 +41,7 @@ namespace Sistema_Gimnasio.Controls
 
         private void LoadIngresosMensuales()
         {
-            // Configurar el gráfico
-            chartIngresosMensuales.Titles.Add("Ingresos Mensuales 2025");
-            
+            // Configurar el gráfico            
             chartIngresosMensuales.ChartAreas[0].AxisX.Interval = 1;
 
             // Datos fake de ingresos por mes (en miles)
@@ -85,14 +84,33 @@ namespace Sistema_Gimnasio.Controls
             chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
         }
 
-        private void chartIngresosMensuales_Click(object sender, EventArgs e)
+        
+
+        private void LoadCPMemberships()
         {
+            // Limpiar series existentes
+            CPMemberships.Series.Clear();
 
-        }
+            // Crear nueva serie tipo Pie
+            Series serie = new Series("Socios por membresía");
+            serie.ChartType = SeriesChartType.Pie;
+            serie.IsValueShownAsLabel = true;
 
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
+            // Hardcodear datos: cantidad de socios por membresía
+            serie.Points.AddXY("Diario", 20); 
+            serie.Points.AddXY("Semanal", 49); 
+            serie.Points.AddXY("Mensual", 213); 
 
+            // Colores personalizados
+            serie.Points[0].Color = Color.FromArgb(65, 105, 225); // Azul
+            serie.Points[1].Color = Color.FromArgb(60, 179, 113); // Verde
+            serie.Points[2].Color = Color.FromArgb(255, 165, 0); // Naranja
+
+            // Agregar serie al chart
+            CPMemberships.Series.Add(serie);
+
+            // Opcional: título del gráfico
+            CPMemberships.Titles.Clear();
         }
     }
 }

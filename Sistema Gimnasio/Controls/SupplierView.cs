@@ -81,10 +81,9 @@ namespace Sistema_Gimnasio
         private void LoadFakeData()
         {
 
-            // IdSupplier, name, cuit, typeSupplier, email, phone, status, Actions
-            BoardSupplier.Rows.Add(1, "Proveedor A", "20-12345678-9", "Servicios", "proveedorA@mail.com", "3794-111111", "Activo", null);
-            BoardSupplier.Rows.Add(2, "Proveedor B", "23-87654321-0", "Insumos", "proveedorB@mail.com", "3794-222222", "Inactivo", null);
-            BoardSupplier.Rows.Add(3, "Proveedor C", "27-11223344-5", "Equipos", "proveedorC@mail.com", "3794-333333", "Activo", null);
+            BoardSupplier.Rows.Add("Proveedor A", "20-12345678-9", "Servicios", "proveedorA@mail.com", "3794-111111", "Activo");
+            BoardSupplier.Rows.Add("Proveedor B", "23-87654321-0", "Insumos", "proveedorB@mail.com", "3794-222222", "Inactivo");
+            BoardSupplier.Rows.Add("Proveedor C", "27-11223344-5", "Equipos", "proveedorC@mail.com", "3794-333333", "Activo");
         }
     }
 

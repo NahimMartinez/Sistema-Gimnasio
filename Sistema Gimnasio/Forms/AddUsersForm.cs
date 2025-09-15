@@ -44,7 +44,7 @@ namespace Sistema_Gimnasio
             SetReadOnly(this);
 
             // Ocultar acciones de edición
-            BCrear.Visible = false;
+            BSave.Visible = false;
             BLimpiar.Visible = false;
 
             // Mostrar botón Cerrar 
@@ -212,7 +212,7 @@ namespace Sistema_Gimnasio
             CBRol.SelectedIndex = -1;
         }
 
-        private void BCrear_Click_1(object sender, EventArgs e)
+        private void BSave_Click_1(object sender, EventArgs e)
         {
             var userService = new Business.UserService();
             if (!ValidarCampos())

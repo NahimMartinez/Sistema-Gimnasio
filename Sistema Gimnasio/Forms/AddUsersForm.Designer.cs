@@ -36,7 +36,7 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtContraseña2 = new System.Windows.Forms.TextBox();
             this.CBRol = new System.Windows.Forms.ComboBox();
-            this.BCrear = new System.Windows.Forms.Button();
+            this.BSave = new System.Windows.Forms.Button();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.CBVerContraseña = new System.Windows.Forms.CheckBox();
             this.LNombre = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.LUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LUserName.Location = new System.Drawing.Point(452, 65);
             this.LUserName.Name = "LUserName";
-            this.LUserName.Size = new System.Drawing.Size(50, 15);
+            this.LUserName.Size = new System.Drawing.Size(62, 20);
             this.LUserName.TabIndex = 0;
             this.LUserName.Text = "Usuario:";
             // 
@@ -69,7 +69,7 @@
             this.LUserPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LUserPass.Location = new System.Drawing.Point(452, 91);
             this.LUserPass.Name = "LUserPass";
-            this.LUserPass.Size = new System.Drawing.Size(70, 15);
+            this.LUserPass.Size = new System.Drawing.Size(86, 20);
             this.LUserPass.TabIndex = 1;
             this.LUserPass.Text = "Contraseña:";
             // 
@@ -80,7 +80,7 @@
             this.LUserRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LUserRol.Location = new System.Drawing.Point(452, 145);
             this.LUserRol.Name = "LUserRol";
-            this.LUserRol.Size = new System.Drawing.Size(27, 15);
+            this.LUserRol.Size = new System.Drawing.Size(34, 20);
             this.LUserRol.TabIndex = 2;
             this.LUserRol.Text = "Rol:";
             // 
@@ -91,7 +91,7 @@
             this.LUserPass2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LUserPass2.Location = new System.Drawing.Point(452, 119);
             this.LUserPass2.Name = "LUserPass2";
-            this.LUserPass2.Size = new System.Drawing.Size(108, 15);
+            this.LUserPass2.Size = new System.Drawing.Size(136, 20);
             this.LUserPass2.TabIndex = 3;
             this.LUserPass2.Text = "Repetir contraseña:";
             // 
@@ -102,7 +102,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(564, 62);
             this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(200, 23);
+            this.txtUsuario.Size = new System.Drawing.Size(200, 27);
             this.txtUsuario.TabIndex = 4;
             // 
             // txtContraseña
@@ -113,7 +113,7 @@
             this.txtContraseña.MaxLength = 50;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '●';
-            this.txtContraseña.Size = new System.Drawing.Size(200, 23);
+            this.txtContraseña.Size = new System.Drawing.Size(200, 27);
             this.txtContraseña.TabIndex = 5;
             // 
             // txtContraseña2
@@ -124,7 +124,7 @@
             this.txtContraseña2.MaxLength = 50;
             this.txtContraseña2.Name = "txtContraseña2";
             this.txtContraseña2.PasswordChar = '●';
-            this.txtContraseña2.Size = new System.Drawing.Size(200, 23);
+            this.txtContraseña2.Size = new System.Drawing.Size(200, 27);
             this.txtContraseña2.TabIndex = 6;
             // 
             // CBRol
@@ -134,23 +134,23 @@
             this.CBRol.FormattingEnabled = true;
             this.CBRol.Location = new System.Drawing.Point(564, 142);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(200, 23);
+            this.CBRol.Size = new System.Drawing.Size(200, 28);
             this.CBRol.TabIndex = 7;
             // 
-            // BCrear
+            // BSave
             // 
-            this.BCrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BCrear.FlatAppearance.BorderSize = 0;
-            this.BCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCrear.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BCrear.ForeColor = System.Drawing.Color.White;
-            this.BCrear.Location = new System.Drawing.Point(300, 250);
-            this.BCrear.Name = "BCrear";
-            this.BCrear.Size = new System.Drawing.Size(110, 30);
-            this.BCrear.TabIndex = 9;
-            this.BCrear.Text = "Crear";
-            this.BCrear.UseVisualStyleBackColor = false;
-            this.BCrear.Click += new System.EventHandler(this.BCrear_Click_1);
+            this.BSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.BSave.FlatAppearance.BorderSize = 0;
+            this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSave.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BSave.ForeColor = System.Drawing.Color.White;
+            this.BSave.Location = new System.Drawing.Point(300, 250);
+            this.BSave.Name = "BSave";
+            this.BSave.Size = new System.Drawing.Size(110, 30);
+            this.BSave.TabIndex = 9;
+            this.BSave.Text = "Guardar";
+            this.BSave.UseVisualStyleBackColor = false;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click_1);
             // 
             // BLimpiar
             // 
@@ -193,7 +193,7 @@
             this.LNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LNombre.Location = new System.Drawing.Point(45, 65);
             this.LNombre.Name = "LNombre";
-            this.LNombre.Size = new System.Drawing.Size(54, 15);
+            this.LNombre.Size = new System.Drawing.Size(67, 20);
             this.LNombre.TabIndex = 14;
             this.LNombre.Text = "Nombre:";
             // 
@@ -204,7 +204,7 @@
             this.LApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LApellido.Location = new System.Drawing.Point(45, 91);
             this.LApellido.Name = "LApellido";
-            this.LApellido.Size = new System.Drawing.Size(54, 15);
+            this.LApellido.Size = new System.Drawing.Size(69, 20);
             this.LApellido.TabIndex = 15;
             this.LApellido.Text = "Apellido:";
             // 
@@ -215,7 +215,7 @@
             this.LDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LDni.Location = new System.Drawing.Point(45, 119);
             this.LDni.Name = "LDni";
-            this.LDni.Size = new System.Drawing.Size(30, 15);
+            this.LDni.Size = new System.Drawing.Size(38, 20);
             this.LDni.TabIndex = 16;
             this.LDni.Text = "DNI:";
             // 
@@ -226,7 +226,7 @@
             this.LEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LEmail.Location = new System.Drawing.Point(45, 145);
             this.LEmail.Name = "LEmail";
-            this.LEmail.Size = new System.Drawing.Size(39, 15);
+            this.LEmail.Size = new System.Drawing.Size(49, 20);
             this.LEmail.TabIndex = 17;
             this.LEmail.Text = "Email:";
             // 
@@ -237,7 +237,7 @@
             this.LTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LTelefono.Location = new System.Drawing.Point(45, 171);
             this.LTelefono.Name = "LTelefono";
-            this.LTelefono.Size = new System.Drawing.Size(55, 15);
+            this.LTelefono.Size = new System.Drawing.Size(70, 20);
             this.LTelefono.TabIndex = 18;
             this.LTelefono.Text = "Teléfono:";
             // 
@@ -248,7 +248,7 @@
             this.txtNombre.Location = new System.Drawing.Point(105, 62);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(300, 23);
+            this.txtNombre.Size = new System.Drawing.Size(300, 27);
             this.txtNombre.TabIndex = 19;
             // 
             // txtApellido
@@ -258,7 +258,7 @@
             this.txtApellido.Location = new System.Drawing.Point(105, 88);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(300, 23);
+            this.txtApellido.Size = new System.Drawing.Size(300, 27);
             this.txtApellido.TabIndex = 20;
             // 
             // txtDni
@@ -268,7 +268,7 @@
             this.txtDni.Location = new System.Drawing.Point(105, 114);
             this.txtDni.MaxLength = 15;
             this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(300, 23);
+            this.txtDni.Size = new System.Drawing.Size(300, 27);
             this.txtDni.TabIndex = 21;
             // 
             // txtEmail
@@ -278,7 +278,7 @@
             this.txtEmail.Location = new System.Drawing.Point(105, 140);
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(300, 23);
+            this.txtEmail.Size = new System.Drawing.Size(300, 27);
             this.txtEmail.TabIndex = 22;
             // 
             // txtTelefono
@@ -288,12 +288,12 @@
             this.txtTelefono.Location = new System.Drawing.Point(105, 166);
             this.txtTelefono.MaxLength = 20;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(300, 23);
+            this.txtTelefono.Size = new System.Drawing.Size(300, 27);
             this.txtTelefono.TabIndex = 23;
             // 
             // AddUsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(850, 300);
@@ -309,7 +309,7 @@
             this.Controls.Add(this.LNombre);
             this.Controls.Add(this.CBVerContraseña);
             this.Controls.Add(this.BLimpiar);
-            this.Controls.Add(this.BCrear);
+            this.Controls.Add(this.BSave);
             this.Controls.Add(this.CBRol);
             this.Controls.Add(this.txtContraseña2);
             this.Controls.Add(this.txtContraseña);
@@ -338,7 +338,7 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtContraseña2;
         private System.Windows.Forms.ComboBox CBRol;
-        private System.Windows.Forms.Button BCrear;
+        private System.Windows.Forms.Button BSave;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.CheckBox CBVerContraseña;
         private System.Windows.Forms.Label LNombre;
