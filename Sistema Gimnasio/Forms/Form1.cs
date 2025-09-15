@@ -54,7 +54,9 @@ namespace Sistema_Gimnasio
             BuildAcl();
 
             this.WindowState = FormWindowState.Maximized;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow; // evita redimensionamiento
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
 
             // Ajustes visuales de los botones
             MenuFlow.SuspendLayout();
