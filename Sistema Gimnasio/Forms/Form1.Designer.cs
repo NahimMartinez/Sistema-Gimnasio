@@ -42,7 +42,6 @@ namespace Sistema_Gimnasio
             this.BInventory = new FontAwesome.Sharp.IconButton();
             this.BActivity = new FontAwesome.Sharp.IconButton();
             this.BSupplier = new FontAwesome.Sharp.IconButton();
-            this.BMemberships = new FontAwesome.Sharp.IconButton();
             this.BtnPartners = new FontAwesome.Sharp.IconButton();
             this.BtnUsers = new FontAwesome.Sharp.IconButton();
             this.BDashboard = new FontAwesome.Sharp.IconButton();
@@ -87,7 +86,6 @@ namespace Sistema_Gimnasio
             this.MenuFlow.Controls.Add(this.BDashboard);
             this.MenuFlow.Controls.Add(this.BtnUsers);
             this.MenuFlow.Controls.Add(this.BtnPartners);
-            this.MenuFlow.Controls.Add(this.BMemberships);
             this.MenuFlow.Controls.Add(this.BSupplier);
             this.MenuFlow.Controls.Add(this.PSubMenuSupplier);
             this.MenuFlow.Controls.Add(this.BActivity);
@@ -273,30 +271,8 @@ namespace Sistema_Gimnasio
             // eventos hover del botón principal
             this.BSupplier.MouseHover += new System.EventHandler(this.BSupplier_MouseHover);
             this.BSupplier.MouseLeave += new System.EventHandler(this.BSupplier_MouseLeave);
+                        
 
-            
-
-            // 
-            // BMemberships
-            // 
-            this.BMemberships.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BMemberships.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BMemberships.FlatAppearance.BorderSize = 0;
-            this.BMemberships.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BMemberships.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.BMemberships.ForeColor = System.Drawing.Color.White;
-            this.BMemberships.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BMemberships.ImageKey = "memberships";
-            this.BMemberships.ImageList = this.MenuIcons;
-            this.BMemberships.Location = new System.Drawing.Point(0, 239);
-            this.BMemberships.Name = "BMemberships";
-            this.BMemberships.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.BMemberships.Size = new System.Drawing.Size(202, 42);
-            this.BMemberships.TabIndex = 3;
-            this.BMemberships.Text = "    Membresías";
-            this.BMemberships.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BMemberships.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BMemberships.UseVisualStyleBackColor = true;
             // 
             // BtnPartners
             // 
@@ -429,7 +405,6 @@ namespace Sistema_Gimnasio
         private FontAwesome.Sharp.IconButton BDashboard;
         private FontAwesome.Sharp.IconButton BtnUsers;
         private FontAwesome.Sharp.IconButton BtnPartners;
-        private FontAwesome.Sharp.IconButton BMemberships;
         private FontAwesome.Sharp.IconButton BSupplier;
         private FontAwesome.Sharp.IconButton BActivity;
         private FontAwesome.Sharp.IconButton BInventory;
