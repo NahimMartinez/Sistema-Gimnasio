@@ -83,6 +83,60 @@ namespace Data
                 splitOn: "Username,IdRol"
             ).SingleOrDefault();
         }
+
+        public User GetByUsername(string dni)
+        {
+            const string sql = @"
+                        SELECT p.id_persona AS IdPersona, p.nombre, p.apellido, p.dni, p.telefono, p.email, p.estado,
+                               u.username   AS Username, u.[password] AS [Password], u.rol_id AS RolId,
+                               r.id_rol     AS IdRol, r.nombre AS Nombre
+                        FROM usuario u
+                        JOIN persona p ON p.id_persona = u.id_usuario
+                        JOIN rol r     ON r.id_rol = u.rol_id
+                        WHERE p.dni = @Dni";
+
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.Query<Person, User, Rol, User>(
+                    sql,
+                    (p, u, r) => {
+                        // copiar datos de persona a user
+                        u.IdPersona = p.IdPersona;
+                        u.Nombre = p.Nombre;
+                        u.Apellido = p.Apellido;
+                        u.Dni = p.Dni;
+                        u.Telefono = p.Telefono;
+                        u.Email = p.Email;
+                        u.Estado = p.Estado;
+                        u.Rol = r;
+                        return u;
+                    },
+                    new { Dni = dni },
+                    splitOn: "Username,IdRol"
+                ).SingleOrDefault();
+        }
+
+        public int DisableUser(string dni)
+        {
+            const string sql = @"UPDATE p
+                        SET p.estado = 0
+                        FROM persona p
+                        JOIN usuario u ON u.id_usuario = p.id_persona  
+                        WHERE p.dni = @Dni AND p.estado = 1";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.Execute(sql, new { dni = dni });
+        }
+
+        public int EnableUser(string dni)
+        {
+            const string sql = @"UPDATE p                        
+                        SET p.estado = 1
+                        FROM persona p
+                        JOIN usuario u ON u.id_usuario = p.id_persona  
+                        WHERE p.dni = @Dni AND p.estado = 0;";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.Execute(sql, new { dni = dni });
+        }
+
     }
 }
 

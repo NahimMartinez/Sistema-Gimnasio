@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Business;
+using Entities;
+using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Business;
-using Entities;
-using FontAwesome.Sharp;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Sistema_Gimnasio
 {
@@ -74,13 +75,13 @@ namespace Sistema_Gimnasio
             if (col == "colEdit")
             {
                 // Obtener el username del usuario seleccionado
-                var username = BoardUsers.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
-                var userService = new UserService();
+                var dniCell = BoardUsers.Rows[e.RowIndex].Cells["dni"].Value.ToString();
+                //var userService = new UserService();
                 var userRepo = new Data.UserRepository();
                 // Obtener el usuario completo
-                var user = userRepo.GetByUsernameActivo(username);
+                var user = userRepo.GetByUsername(dniCell);
                 // Abrir el formulario en modo edición
-                using (var fEditUser = new AddUsersForm(user))
+                using (var fEditUser = new AddUsersForm(user, false))
                 {
                     if (fEditUser.ShowDialog() == DialogResult.OK)
                     {
@@ -91,13 +92,46 @@ namespace Sistema_Gimnasio
             }
             else if (col == "colView")
             {
-                var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value;
-                MessageBox.Show($"Ver usuario {name}");
+                var dniCell = BoardUsers.Rows[e.RowIndex].Cells["dni"].Value.ToString();
+                var userRepo = new Data.UserRepository();
+                var user = userRepo.GetByUsername(dniCell);
+                using (var fView = new AddUsersForm(user, true)) // true = solo lectura
+                {
+                    fView.ShowDialog();
+                }
             }
             else if (col == "colDelete")
             {
-                var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value;
-                MessageBox.Show($"Eliminar usuario {name}");
+                var dniCell = BoardUsers.Rows[e.RowIndex].Cells["dni"].Value.ToString();
+                var name = BoardUsers.Rows[e.RowIndex].Cells["nombre"].Value.ToString();
+                var cell = BoardUsers.Rows[e.RowIndex].Cells["status"].Value?.ToString().Trim();
+                
+                bool s = cell == "1" || cell?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+                
+                if (s)
+                {
+                    var confirm = MessageBox.Show($"¿Dar de baja a {name}?",
+                                                                  "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        var repo = new Data.UserRepository();
+                        var rows = repo.DisableUser(dniCell);
+                        if (rows == 0) MessageBox.Show("No se realizó la baja. Puede estar ya inactivo o no existe.");
+                        LoadUsers();
+                    }
+                }
+                else
+                {
+                    var confirm = MessageBox.Show($"¿Dar de alta a {name}?",
+                                                                  "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        var repo = new Data.UserRepository();
+                        var rows = repo.EnableUser(dniCell);
+                        if (rows == 0) MessageBox.Show("No se realizó la alta. Puede estar ya activo o no existe.");
+                        LoadUsers();
+                    }
+                }
             }
         }
     }

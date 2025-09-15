@@ -1,42 +1,82 @@
-﻿using System;
+﻿using Entities;
+using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Mail;
-using Entities;
-using FontAwesome.Sharp;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Sistema_Gimnasio
 {
     public partial class AddUsersForm : Form
     {
-        private User editingUser = null;
-        public AddUsersForm() : this((User)null) { }
-        public AddUsersForm(User userToEdit)
+        private readonly User editingUser = null;
+        private readonly bool soloLectura = false;
+        public AddUsersForm() : this(null, false) { }
+
+        
+
+        public AddUsersForm(User userToEdit, bool soloLectura)
         {
             InitializeComponent();
             ConfigureValidations();
-            editingUser = userToEdit;
-            if (editingUser != null)
+            this.soloLectura = soloLectura;
+            this.editingUser = userToEdit;
+            if (userToEdit != null)
             {
-                // Modo edición: cargar datos en los campos
-                txtNombre.Text = editingUser.Nombre;
-                txtApellido.Text = editingUser.Apellido;
-                txtDni.Text = editingUser.Dni;
-                txtTelefono.Text = editingUser.Telefono;
-                txtEmail.Text = editingUser.Email;
-                txtUsuario.Text = editingUser.Username;
-                txtContraseña.Text = editingUser.Password;
-                txtContraseña2.Text = editingUser.Password;
-                CBRol.SelectedValue = editingUser.RolId;
+                editingUser = userToEdit;
+                CargarDatos(userToEdit);
                 BLimpiar.Enabled = false; // Deshabilitar botón limpiar en modo edición
                 this.Text = "Editar usuario"; // Cambia el título de la ventana
             }
+
+            if(soloLectura) ActivarSoloLectura();
+        }
+
+        private void ActivarSoloLectura()
+        {
+            SetReadOnly(this);
+
+            // Ocultar acciones de edición
+            BCrear.Visible = false;
+            BLimpiar.Visible = false;
+
+            // Mostrar botón Cerrar 
+            //BClose.Visible = true;
+            //BClose.Click += (_, __) => { this.DialogResult = DialogResult.Cancel; Close(); };
+        }
+
+        private void SetReadOnly(Control root)
+        {
+            foreach (Control c in root.Controls)
+            {
+                if (c is TextBox tb) tb.ReadOnly = true;
+                else if (c is ComboBox cb) cb.Enabled = false;
+                else if (c is CheckBox ch) ch.Enabled = false;
+                else if (c is DateTimePicker dt) dt.Enabled = false;
+                else if (c is NumericUpDown num) num.Enabled = false;
+                //else if (c is Button btn && btn != BClose) btn.Enabled = false;
+
+                if (c.HasChildren) SetReadOnly(c);
+            }
+        }
+        private void CargarDatos(User u)
+        {
+            txtNombre.Text = u.Nombre;
+            txtApellido.Text = u.Apellido;
+            txtDni.Text = u.Dni;
+            txtTelefono.Text = u.Telefono;
+            txtEmail.Text = u.Email;
+            txtUsuario.Text = u.Username;
+            txtContraseña.Text = u.Password;
+            txtContraseña2.Text = u.Password;
+            CBRol.SelectedValue = u.RolId;
         }
 
         private void ConfigureValidations()
