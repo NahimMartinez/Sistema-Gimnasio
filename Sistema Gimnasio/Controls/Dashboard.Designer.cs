@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -65,7 +65,6 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.NewCategoryInventory = new FontAwesome.Sharp.IconButton();
-            this.NewCategoryMember = new FontAwesome.Sharp.IconButton();
             this.NewCategoryClass = new FontAwesome.Sharp.IconButton();
             this.panelHeader.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
@@ -112,7 +111,7 @@
             this.flowLayoutPanel.Controls.Add(this.cardRevenue);
             this.flowLayoutPanel.Location = new System.Drawing.Point(20, 85);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(534, 120);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(744, 120);
             this.flowLayoutPanel.TabIndex = 1;
             // 
             // cardMembers
@@ -205,6 +204,8 @@
             // 
             // cardRevenue
             // 
+            this.cardRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cardRevenue.BackColor = System.Drawing.Color.White;
             this.cardRevenue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cardRevenue.Controls.Add(this.labelRevenueAmount);
@@ -263,19 +264,20 @@
             // 
             // chartIngresosMensuales
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartIngresosMensuales.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartIngresosMensuales.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chartIngresosMensuales.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartIngresosMensuales.Legends.Add(legend4);
             this.chartIngresosMensuales.Location = new System.Drawing.Point(18, 46);
             this.chartIngresosMensuales.Name = "chartIngresosMensuales";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartIngresosMensuales.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartIngresosMensuales.Series.Add(series4);
             this.chartIngresosMensuales.Size = new System.Drawing.Size(784, 300);
             this.chartIngresosMensuales.TabIndex = 1;
             this.chartIngresosMensuales.Text = "chart1";
+            this.chartIngresosMensuales.Click += new System.EventHandler(this.chartIngresosMensuales_Click);
             // 
             // labelChartTitle
             // 
@@ -308,21 +310,21 @@
             this.BoardRecent.AllowUserToAddRows = false;
             this.BoardRecent.AllowUserToDeleteRows = false;
             this.BoardRecent.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardRecent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardRecent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.BoardRecent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardRecent.BackgroundColor = System.Drawing.Color.White;
             this.BoardRecent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardRecent.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardRecent.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BoardRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.BoardRecent.ColumnHeadersHeight = 38;
             this.BoardRecent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardRecent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -330,14 +332,14 @@
             this.Apellido,
             this.Membresia,
             this.Fecha_alta});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardRecent.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardRecent.DefaultCellStyle = dataGridViewCellStyle12;
             this.BoardRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardRecent.EnableHeadersVisualStyles = false;
             this.BoardRecent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -435,33 +437,21 @@
             this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryInventory.IconColor = System.Drawing.Color.Black;
             this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.NewCategoryInventory.Location = new System.Drawing.Point(671, 88);
+            this.NewCategoryInventory.Location = new System.Drawing.Point(792, 85);
             this.NewCategoryInventory.Name = "NewCategoryInventory";
-            this.NewCategoryInventory.Size = new System.Drawing.Size(135, 110);
+            this.NewCategoryInventory.Size = new System.Drawing.Size(135, 57);
             this.NewCategoryInventory.TabIndex = 3;
             this.NewCategoryInventory.Text = "Nueva Categoría Inventario";
             this.NewCategoryInventory.UseVisualStyleBackColor = true;
-            // 
-            // NewCategoryMember
-            // 
-            this.NewCategoryMember.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.NewCategoryMember.IconColor = System.Drawing.Color.Black;
-            this.NewCategoryMember.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.NewCategoryMember.Location = new System.Drawing.Point(927, 88);
-            this.NewCategoryMember.Name = "NewCategoryMember";
-            this.NewCategoryMember.Size = new System.Drawing.Size(135, 110);
-            this.NewCategoryMember.TabIndex = 5;
-            this.NewCategoryMember.Text = "Nueva Categoría Membresia";
-            this.NewCategoryMember.UseVisualStyleBackColor = true;
             // 
             // NewCategoryClass
             // 
             this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryClass.IconColor = System.Drawing.Color.Black;
             this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.NewCategoryClass.Location = new System.Drawing.Point(1170, 88);
+            this.NewCategoryClass.Location = new System.Drawing.Point(792, 148);
             this.NewCategoryClass.Name = "NewCategoryClass";
-            this.NewCategoryClass.Size = new System.Drawing.Size(135, 110);
+            this.NewCategoryClass.Size = new System.Drawing.Size(135, 57);
             this.NewCategoryClass.TabIndex = 6;
             this.NewCategoryClass.Text = "Nueva Categoría Clase";
             this.NewCategoryClass.UseVisualStyleBackColor = true;
@@ -472,7 +462,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.NewCategoryClass);
-            this.Controls.Add(this.NewCategoryMember);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NewCategoryInventory);
             this.Controls.Add(this.panelRecentActivity);
@@ -482,6 +471,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Dashboard";
             this.Size = new System.Drawing.Size(1324, 765);
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.flowLayoutPanel.ResumeLayout(false);
@@ -538,7 +528,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresosMensuales;
         private FontAwesome.Sharp.IconButton NewCategoryInventory;
-        private FontAwesome.Sharp.IconButton NewCategoryMember;
         private FontAwesome.Sharp.IconButton NewCategoryClass;
     }
 }

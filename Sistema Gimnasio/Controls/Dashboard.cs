@@ -84,5 +84,15 @@ namespace Sistema_Gimnasio.Controls
             // Ajustar el ancho de las barras
             chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
         }
+
+        private void chartIngresosMensuales_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

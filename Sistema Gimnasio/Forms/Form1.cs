@@ -56,7 +56,7 @@ namespace Sistema_Gimnasio
             BuildAcl(); // Construye la lista de control de acceso (ACL).
 
             this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow; // evita redimensionamiento
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // evita redimensionamiento
             this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
             this.MinimizeBox = true;
 
