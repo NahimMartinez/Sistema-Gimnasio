@@ -33,14 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloUserManagment = new System.Windows.Forms.Label();
             this.BoardUsers = new System.Windows.Forms.DataGridView();
-            this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.BFilter = new System.Windows.Forms.Button();
-            this.TSearch = new System.Windows.Forms.TextBox();
-            this.LStatus = new System.Windows.Forms.Label();
-            this.BNewUser = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CBRol = new System.Windows.Forms.ComboBox();
-            this.LRol = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +41,13 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.TSearch = new System.Windows.Forms.TextBox();
+            this.LStatus = new System.Windows.Forms.Label();
+            this.BNewUser = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CBRol = new System.Windows.Forms.ComboBox();
+            this.LRol = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(231, 32);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -117,118 +116,6 @@
             this.BoardUsers.Size = new System.Drawing.Size(762, 450);
             this.BoardUsers.TabIndex = 1;
             // 
-            // CBStatus
-            // 
-            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBStatus.FormattingEnabled = true;
-            this.CBStatus.Items.AddRange(new object[] {
-            "Todos",
-            "Activo",
-            "Inactivo"});
-            this.CBStatus.Location = new System.Drawing.Point(168, 66);
-            this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
-            this.CBStatus.TabIndex = 2;
-            // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(560, 64);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
-            // 
-            // TSearch
-            // 
-            this.TSearch.BackColor = System.Drawing.Color.White;
-            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;
-            this.TSearch.Location = new System.Drawing.Point(18, 66);
-            this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
-            this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar usuario...";
-            // 
-            // LStatus
-            // 
-            this.LStatus.AutoSize = true;
-            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LStatus.Location = new System.Drawing.Point(165, 48);
-            this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
-            this.LStatus.TabIndex = 6;
-            this.LStatus.Text = "Estado";
-            // 
-            // BNewUser
-            // 
-            this.BNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewUser.FlatAppearance.BorderSize = 0;
-            this.BNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewUser.ForeColor = System.Drawing.Color.White;
-            this.BNewUser.Location = new System.Drawing.Point(650, 64);
-            this.BNewUser.Name = "BNewUser";
-            this.BNewUser.Size = new System.Drawing.Size(100, 26);
-            this.BNewUser.TabIndex = 8;
-            this.BNewUser.Text = "Nuevo usuario";
-            this.BNewUser.UseVisualStyleBackColor = false;
-            this.BNewUser.Click += new System.EventHandler(this.BNewUser_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.CBRol);
-            this.panel1.Controls.Add(this.LRol);
-            this.panel1.Controls.Add(this.LTituloUserManagment);
-            this.panel1.Controls.Add(this.BNewUser);
-            this.panel1.Controls.Add(this.TSearch);
-            this.panel1.Controls.Add(this.CBStatus);
-            this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Controls.Add(this.BFilter);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.panel1.Size = new System.Drawing.Size(762, 100);
-            this.panel1.TabIndex = 9;
-            // 
-            // CBRol
-            // 
-            this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBRol.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBRol.FormattingEnabled = true;
-            this.CBRol.Items.AddRange(new object[] {
-            "Todos",
-            "Administrador",
-            "Coach",
-            "Recepcionista"});
-            this.CBRol.Location = new System.Drawing.Point(304, 66);
-            this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(130, 28);
-            this.CBRol.TabIndex = 10;
-            // 
-            // LRol
-            // 
-            this.LRol.AutoSize = true;
-            this.LRol.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LRol.Location = new System.Drawing.Point(301, 48);
-            this.LRol.Name = "LRol";
-            this.LRol.Size = new System.Drawing.Size(31, 20);
-            this.LRol.TabIndex = 11;
-            this.LRol.Text = "Rol";
-            // 
             // nombre
             // 
             this.nombre.DataPropertyName = "Nombre";
@@ -271,31 +158,127 @@
             // 
             // colEdit
             // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.HeaderText = "";
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
-            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.Width = 50;
             // 
             // colView
             // 
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.HeaderText = "";
             this.colView.Name = "colView";
             this.colView.ReadOnly = true;
-            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.Width = 50;
             // 
             // colDelete
             // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.HeaderText = "";
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
-            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.Width = 50;
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.CBStatus.Location = new System.Drawing.Point(168, 66);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.TabIndex = 2;
+            // 
+            // TSearch
+            // 
+            this.TSearch.BackColor = System.Drawing.Color.White;
+            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearch.ForeColor = System.Drawing.Color.Gray;
+            this.TSearch.Location = new System.Drawing.Point(18, 66);
+            this.TSearch.Name = "TSearch";
+            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.TabIndex = 5;
+            this.TSearch.Text = "Buscar usuario...";
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(165, 48);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.TabIndex = 6;
+            this.LStatus.Text = "Estado";
+            // 
+            // BNewUser
+            // 
+            this.BNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewUser.FlatAppearance.BorderSize = 0;
+            this.BNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewUser.ForeColor = System.Drawing.Color.White;
+            this.BNewUser.Location = new System.Drawing.Point(650, 64);
+            this.BNewUser.Name = "BNewUser";
+            this.BNewUser.Size = new System.Drawing.Size(100, 26);
+            this.BNewUser.TabIndex = 8;
+            this.BNewUser.Text = "Nuevo usuario";
+            this.BNewUser.UseVisualStyleBackColor = false;
+            this.BNewUser.Click += new System.EventHandler(this.BNewUser_Click_1);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.CBRol);
+            this.panel1.Controls.Add(this.LRol);
+            this.panel1.Controls.Add(this.LTituloUserManagment);
+            this.panel1.Controls.Add(this.BNewUser);
+            this.panel1.Controls.Add(this.TSearch);
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.panel1.Size = new System.Drawing.Size(762, 100);
+            this.panel1.TabIndex = 9;
+            // 
+            // CBRol
+            // 
+            this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBRol.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBRol.FormattingEnabled = true;
+            this.CBRol.Items.AddRange(new object[] {
+            "Todos",
+            "Administrador",
+            "Coach",
+            "Recepcionista"});
+            this.CBRol.Location = new System.Drawing.Point(304, 66);
+            this.CBRol.Name = "CBRol";
+            this.CBRol.Size = new System.Drawing.Size(130, 23);
+            this.CBRol.TabIndex = 10;
+            // 
+            // LRol
+            // 
+            this.LRol.AutoSize = true;
+            this.LRol.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LRol.Location = new System.Drawing.Point(301, 48);
+            this.LRol.Name = "LRol";
+            this.LRol.Size = new System.Drawing.Size(24, 15);
+            this.LRol.TabIndex = 11;
+            this.LRol.Text = "Rol";
             // 
             // UsersManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardUsers);
@@ -316,7 +299,6 @@
         private System.Windows.Forms.Label LTituloUserManagment;
         private System.Windows.Forms.DataGridView BoardUsers;
         private System.Windows.Forms.ComboBox CBStatus;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Button BNewUser;
