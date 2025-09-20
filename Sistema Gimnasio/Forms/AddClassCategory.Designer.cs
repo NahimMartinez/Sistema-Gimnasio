@@ -38,17 +38,19 @@
             // 
             this.LNewClassCategory.AutoSize = true;
             this.LNewClassCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.LNewClassCategory.Location = new System.Drawing.Point(7, 43);
+            this.LNewClassCategory.Location = new System.Drawing.Point(25, 52);
+            this.LNewClassCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LNewClassCategory.Name = "LNewClassCategory";
-            this.LNewClassCategory.Size = new System.Drawing.Size(69, 17);
+            this.LNewClassCategory.Size = new System.Drawing.Size(88, 22);
             this.LNewClassCategory.TabIndex = 0;
             this.LNewClassCategory.Text = "Categoría";
             // 
             // txtNewClassCategory
             // 
-            this.txtNewClassCategory.Location = new System.Drawing.Point(82, 43);
+            this.txtNewClassCategory.Location = new System.Drawing.Point(125, 52);
+            this.txtNewClassCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNewClassCategory.Name = "txtNewClassCategory";
-            this.txtNewClassCategory.Size = new System.Drawing.Size(260, 20);
+            this.txtNewClassCategory.Size = new System.Drawing.Size(341, 22);
             this.txtNewClassCategory.TabIndex = 1;
             // 
             // BSave
@@ -63,10 +65,11 @@
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
             this.BSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BSave.Location = new System.Drawing.Point(36, 108);
+            this.BSave.Location = new System.Drawing.Point(64, 132);
+            this.BSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BSave.Name = "BSave";
-            this.BSave.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BSave.Size = new System.Drawing.Size(98, 27);
+            this.BSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BSave.Size = new System.Drawing.Size(127, 33);
             this.BSave.TabIndex = 16;
             this.BSave.Text = "Guardar";
             this.BSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -85,10 +88,11 @@
             this.BCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BCancel.IconSize = 24;
             this.BCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BCancel.Location = new System.Drawing.Point(215, 108);
+            this.BCancel.Location = new System.Drawing.Point(303, 132);
+            this.BCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BCancel.Name = "BCancel";
-            this.BCancel.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BCancel.Size = new System.Drawing.Size(100, 27);
+            this.BCancel.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BCancel.Size = new System.Drawing.Size(129, 33);
             this.BCancel.TabIndex = 15;
             this.BCancel.Text = "Cancelar";
             this.BCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -97,14 +101,16 @@
             // 
             // AddClassCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 160);
+            this.ClientSize = new System.Drawing.Size(508, 197);
             this.Controls.Add(this.BCancel);
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.txtNewClassCategory);
             this.Controls.Add(this.LNewClassCategory);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddClassCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Categoria De Clase";
             this.ResumeLayout(false);
             this.PerformLayout();

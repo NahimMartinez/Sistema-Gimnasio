@@ -27,11 +27,12 @@ namespace Sistema_Gimnasio.Forms
         
         private void BSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(BSave.Text))
+            if (string.IsNullOrWhiteSpace(txtNewClassCategory.Text))
             {
                 MessageBox.Show("El nombre de la categoría no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             MessageBox.Show("Categoría guardada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

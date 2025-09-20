@@ -46,14 +46,16 @@
             this.BCancel.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BCancel.IconSize = 24;
             this.BCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BCancel.Location = new System.Drawing.Point(232, 111);
+            this.BCancel.Location = new System.Drawing.Point(309, 137);
+            this.BCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BCancel.Name = "BCancel";
-            this.BCancel.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BCancel.Size = new System.Drawing.Size(100, 27);
+            this.BCancel.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BCancel.Size = new System.Drawing.Size(133, 33);
             this.BCancel.TabIndex = 19;
             this.BCancel.Text = "Cancelar";
             this.BCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCancel.UseVisualStyleBackColor = false;
+            this.BCancel.Click += new System.EventHandler(this.BCancel_Click_1);
             // 
             // BSave
             // 
@@ -67,42 +69,48 @@
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
             this.BSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BSave.Location = new System.Drawing.Point(53, 111);
+            this.BSave.Location = new System.Drawing.Point(71, 137);
+            this.BSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BSave.Name = "BSave";
-            this.BSave.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BSave.Size = new System.Drawing.Size(98, 27);
+            this.BSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.BSave.Size = new System.Drawing.Size(131, 33);
             this.BSave.TabIndex = 20;
             this.BSave.Text = "Guardar";
             this.BSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSave.UseVisualStyleBackColor = false;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click_1);
             // 
             // txtNewClassCategory
             // 
-            this.txtNewClassCategory.Location = new System.Drawing.Point(99, 46);
+            this.txtNewClassCategory.Location = new System.Drawing.Point(132, 57);
+            this.txtNewClassCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNewClassCategory.Name = "txtNewClassCategory";
-            this.txtNewClassCategory.Size = new System.Drawing.Size(243, 20);
+            this.txtNewClassCategory.Size = new System.Drawing.Size(323, 22);
             this.txtNewClassCategory.TabIndex = 18;
             // 
             // LNewClassCategory
             // 
             this.LNewClassCategory.AutoSize = true;
             this.LNewClassCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.LNewClassCategory.Location = new System.Drawing.Point(24, 46);
+            this.LNewClassCategory.Location = new System.Drawing.Point(32, 57);
+            this.LNewClassCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LNewClassCategory.Name = "LNewClassCategory";
-            this.LNewClassCategory.Size = new System.Drawing.Size(69, 17);
+            this.LNewClassCategory.Size = new System.Drawing.Size(88, 22);
             this.LNewClassCategory.TabIndex = 17;
             this.LNewClassCategory.Text = "Categoría";
             // 
             // AddInventoryCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 160);
+            this.ClientSize = new System.Drawing.Size(508, 197);
             this.Controls.Add(this.BCancel);
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.txtNewClassCategory);
             this.Controls.Add(this.LNewClassCategory);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddInventoryCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Categoria de Inventario";
             this.ResumeLayout(false);
             this.PerformLayout();
