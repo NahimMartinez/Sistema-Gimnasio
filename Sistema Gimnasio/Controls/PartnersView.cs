@@ -37,7 +37,7 @@ namespace Sistema_Gimnasio
                 //muestro el formulario como un cuadro de dialogo
                 if (fNewMember.ShowDialog() == DialogResult.OK)
                 {
-                    
+                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
                 }
             }
         }

@@ -33,14 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloClases = new System.Windows.Forms.Label();
             this.BoardClass = new System.Windows.Forms.DataGridView();
-            this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.BFilter = new System.Windows.Forms.Button();
-            this.TSearch = new System.Windows.Forms.TextBox();
-            this.LStatus = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CBDia = new System.Windows.Forms.ComboBox();
-            this.LDia = new System.Windows.Forms.Label();
-            this.BNewClass = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +42,13 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.TSearch = new System.Windows.Forms.TextBox();
+            this.LStatus = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CBDia = new System.Windows.Forms.ComboBox();
+            this.LDia = new System.Windows.Forms.Label();
+            this.BNewClass = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +60,7 @@
             this.LTituloClases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloClases.Location = new System.Drawing.Point(14, 12);
             this.LTituloClases.Name = "LTituloClases";
-            this.LTituloClases.Size = new System.Drawing.Size(205, 32);
+            this.LTituloClases.Size = new System.Drawing.Size(161, 25);
             this.LTituloClases.TabIndex = 0;
             this.LTituloClases.Text = "Gestión de Clases";
             // 
@@ -119,122 +118,6 @@
             this.BoardClass.Size = new System.Drawing.Size(762, 450);
             this.BoardClass.TabIndex = 1;
             // 
-            // CBStatus
-            // 
-            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBStatus.FormattingEnabled = true;
-            this.CBStatus.Items.AddRange(new object[] {
-            "Todos",
-            "Activo",
-            "Inactivo",
-            "Completo"});
-            this.CBStatus.Location = new System.Drawing.Point(168, 66);
-            this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
-            this.CBStatus.TabIndex = 2;
-            // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(560, 64);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
-            // 
-            // TSearch
-            // 
-            this.TSearch.BackColor = System.Drawing.Color.White;
-            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;
-            this.TSearch.Location = new System.Drawing.Point(18, 66);
-            this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
-            this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar clase...";
-            // 
-            // LStatus
-            // 
-            this.LStatus.AutoSize = true;
-            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LStatus.Location = new System.Drawing.Point(165, 48);
-            this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
-            this.LStatus.TabIndex = 6;
-            this.LStatus.Text = "Estado";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.CBDia);
-            this.panel1.Controls.Add(this.LDia);
-            this.panel1.Controls.Add(this.LTituloClases);
-            this.panel1.Controls.Add(this.BNewClass);
-            this.panel1.Controls.Add(this.TSearch);
-            this.panel1.Controls.Add(this.CBStatus);
-            this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Controls.Add(this.BFilter);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.panel1.Size = new System.Drawing.Size(762, 100);
-            this.panel1.TabIndex = 9;
-            // 
-            // CBDia
-            // 
-            this.CBDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBDia.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBDia.FormattingEnabled = true;
-            this.CBDia.Items.AddRange(new object[] {
-            "Todos",
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado"});
-            this.CBDia.Location = new System.Drawing.Point(304, 66);
-            this.CBDia.Name = "CBDia";
-            this.CBDia.Size = new System.Drawing.Size(130, 28);
-            this.CBDia.TabIndex = 11;
-            // 
-            // LDia
-            // 
-            this.LDia.AutoSize = true;
-            this.LDia.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LDia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LDia.Location = new System.Drawing.Point(301, 48);
-            this.LDia.Name = "LDia";
-            this.LDia.Size = new System.Drawing.Size(32, 20);
-            this.LDia.TabIndex = 12;
-            this.LDia.Text = "Día";
-            // 
-            // BNewClass
-            // 
-            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewClass.FlatAppearance.BorderSize = 0;
-            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewClass.ForeColor = System.Drawing.Color.White;
-            this.BNewClass.Location = new System.Drawing.Point(650, 64);
-            this.BNewClass.Name = "BNewClass";
-            this.BNewClass.Size = new System.Drawing.Size(100, 26);
-            this.BNewClass.TabIndex = 9;
-            this.BNewClass.Text = "Nueva clase";
-            this.BNewClass.UseVisualStyleBackColor = false;
-            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
-            // 
             // name
             // 
             this.name.DataPropertyName = "nombre";
@@ -284,31 +167,137 @@
             // 
             // colEdit
             // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.HeaderText = "";
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
-            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.Width = 50;
             // 
             // colView
             // 
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.HeaderText = "";
             this.colView.Name = "colView";
             this.colView.ReadOnly = true;
-            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.Width = 50;
             // 
             // colDelete
             // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.HeaderText = "";
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
-            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.Width = 50;
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo",
+            "Completo"});
+            this.CBStatus.Location = new System.Drawing.Point(168, 66);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.TabIndex = 2;
+            // 
+            // TSearch
+            // 
+            this.TSearch.BackColor = System.Drawing.Color.White;
+            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearch.ForeColor = System.Drawing.Color.Gray;
+            this.TSearch.Location = new System.Drawing.Point(18, 66);
+            this.TSearch.Name = "TSearch";
+            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.TabIndex = 5;
+            this.TSearch.Text = "Buscar clase...";
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(165, 48);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.TabIndex = 6;
+            this.LStatus.Text = "Estado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.CBDia);
+            this.panel1.Controls.Add(this.LDia);
+            this.panel1.Controls.Add(this.LTituloClases);
+            this.panel1.Controls.Add(this.BNewClass);
+            this.panel1.Controls.Add(this.TSearch);
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.panel1.Size = new System.Drawing.Size(762, 100);
+            this.panel1.TabIndex = 9;
+            // 
+            // CBDia
+            // 
+            this.CBDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBDia.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBDia.FormattingEnabled = true;
+            this.CBDia.Items.AddRange(new object[] {
+            "Todos",
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado"});
+            this.CBDia.Location = new System.Drawing.Point(304, 66);
+            this.CBDia.Name = "CBDia";
+            this.CBDia.Size = new System.Drawing.Size(130, 23);
+            this.CBDia.TabIndex = 11;
+            // 
+            // LDia
+            // 
+            this.LDia.AutoSize = true;
+            this.LDia.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LDia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LDia.Location = new System.Drawing.Point(301, 48);
+            this.LDia.Name = "LDia";
+            this.LDia.Size = new System.Drawing.Size(24, 15);
+            this.LDia.TabIndex = 12;
+            this.LDia.Text = "Día";
+            // 
+            // BNewClass
+            // 
+            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewClass.FlatAppearance.BorderSize = 0;
+            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewClass.ForeColor = System.Drawing.Color.White;
+            this.BNewClass.Location = new System.Drawing.Point(650, 64);
+            this.BNewClass.Name = "BNewClass";
+            this.BNewClass.Size = new System.Drawing.Size(100, 26);
+            this.BNewClass.TabIndex = 9;
+            this.BNewClass.Text = "Nueva clase";
+            this.BNewClass.UseVisualStyleBackColor = false;
+            this.BNewClass.ForeColor = System.Drawing.Color.White;
+            this.BNewClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewClass.IconColor = System.Drawing.Color.White;
+            this.BNewClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewClass.IconSize = 20;
+            this.BNewClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
             // 
             // Clases
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardClass);
@@ -329,11 +318,10 @@
         private System.Windows.Forms.Label LTituloClases;
         private System.Windows.Forms.DataGridView BoardClass;
         private System.Windows.Forms.ComboBox CBStatus;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button BNewClass;
+        private FontAwesome.Sharp.IconButton BNewClass;
         private System.Windows.Forms.ComboBox CBDia;
         private System.Windows.Forms.Label LDia;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;

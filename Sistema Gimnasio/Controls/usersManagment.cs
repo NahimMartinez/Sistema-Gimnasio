@@ -129,9 +129,10 @@ namespace Sistema_Gimnasio
         private void SetupActionIcons()
         {
             // Asegurarse de que las columnas de imagen existen 
-            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
-            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
-            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
+            Bitmap bmpEnable = IconChar.UserCheck.ToBitmap(Color.Black, 30); // alta
             //set inicial de los iconos
             colEdit.Image = bmpEdit;
             colView.Image = bmpView;
@@ -143,7 +144,15 @@ namespace Sistema_Gimnasio
                 string col = BoardUsers.Columns[ev.ColumnIndex].Name;
                 if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
-                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+                if (col == "colDelete") {
+                    // cambiar el icono segun el estado del usuario
+                    // mirar la columna de estado de la misma fila
+                    var status = BoardUsers.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
+                    bool activo = status?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+
+                    ev.Value = activo ? bmpDelete : bmpEnable;
+                    ev.FormattingApplied = true;
+                }  
             };
         }
 

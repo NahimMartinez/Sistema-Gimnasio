@@ -45,11 +45,10 @@ namespace Sistema_Gimnasio
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.CBMembership = new System.Windows.Forms.ComboBox();
-            this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.LMembership = new System.Windows.Forms.Label();
-            this.BNewMember = new System.Windows.Forms.Button();
+            this.BNewMember = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
@@ -89,14 +88,14 @@ namespace Sistema_Gimnasio
             this.BoardMember.ColumnHeadersHeight = 38;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                this.name,
-                this.dni,
-                this.contact,
-                this.membership,
-                this.status,
-                this.colEdit,
-                this.colView,
-                this.colDelete});
+            this.name,
+            this.dni,
+            this.contact,
+            this.membership,
+            this.status,
+            this.colEdit,
+            this.colView,
+            this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -155,28 +154,27 @@ namespace Sistema_Gimnasio
             // 
             // colEdit
             // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.HeaderText = "";
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
-            this.colEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             this.colEdit.Width = 50;
             // 
             // colView
             // 
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.HeaderText = "";
             this.colView.Name = "colView";
             this.colView.ReadOnly = true;
-            this.colView.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             this.colView.Width = 50;
             // 
             // colDelete
             // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.HeaderText = "";
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
-            this.colDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             this.colDelete.Width = 50;
-            
             // 
             // CBStatus
             // 
@@ -206,21 +204,6 @@ namespace Sistema_Gimnasio
             this.CBMembership.Name = "CBMembership";
             this.CBMembership.Size = new System.Drawing.Size(130, 23);
             this.CBMembership.TabIndex = 3;
-            // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(560, 64);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
             // 
             // TSearch
             // 
@@ -264,11 +247,16 @@ namespace Sistema_Gimnasio
             this.BNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewMember.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewMember.ForeColor = System.Drawing.Color.White;
-            this.BNewMember.Location = new System.Drawing.Point(650, 64);
+            this.BNewMember.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewMember.IconColor = System.Drawing.Color.White;
+            this.BNewMember.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewMember.IconSize = 20;
+            this.BNewMember.Location = new System.Drawing.Point(634, 64);
             this.BNewMember.Name = "BNewMember";
-            this.BNewMember.Size = new System.Drawing.Size(100, 26);
+            this.BNewMember.Size = new System.Drawing.Size(116, 26);
             this.BNewMember.TabIndex = 8;
             this.BNewMember.Text = "Nuevo socio";
+            this.BNewMember.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BNewMember.UseVisualStyleBackColor = false;
             this.BNewMember.Click += new System.EventHandler(this.BNewMember_Click);
             // 
@@ -282,7 +270,6 @@ namespace Sistema_Gimnasio
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
             this.panel1.Controls.Add(this.CBMembership);
-            this.panel1.Controls.Add(this.BFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -314,18 +301,16 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.DataGridView BoardMember;
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.ComboBox CBMembership;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Label LMembership;
-        private System.Windows.Forms.Button BNewMember;
+        private FontAwesome.Sharp.IconButton BNewMember;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn membership;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LOrderPurcharse = new System.Windows.Forms.Label();
             this.BoardOrderP = new System.Windows.Forms.DataGridView();
             this.Id_Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,9 +40,8 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BFilter = new System.Windows.Forms.Button();
             this.TOrdPurcharse = new System.Windows.Forms.TextBox();
-            this.BNewSupplier = new System.Windows.Forms.Button();
+            this.BNewOrderP = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.BoardOrderP)).BeginInit();
             this.panel1.SuspendLayout();
@@ -55,7 +54,7 @@
             this.LOrderPurcharse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LOrderPurcharse.Location = new System.Drawing.Point(15, 12);
             this.LOrderPurcharse.Name = "LOrderPurcharse";
-            this.LOrderPurcharse.Size = new System.Drawing.Size(219, 32);
+            this.LOrderPurcharse.Size = new System.Drawing.Size(172, 25);
             this.LOrderPurcharse.TabIndex = 0;
             this.LOrderPurcharse.Text = "Orden de Compras";
             // 
@@ -64,18 +63,18 @@
             this.BoardOrderP.AllowUserToAddRows = false;
             this.BoardOrderP.AllowUserToDeleteRows = false;
             this.BoardOrderP.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardOrderP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardOrderP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.BoardOrderP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardOrderP.BackgroundColor = System.Drawing.Color.White;
             this.BoardOrderP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardOrderP.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardOrderP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.BoardOrderP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.BoardOrderP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.BoardOrderP.ColumnHeadersHeight = 38;
             this.BoardOrderP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardOrderP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -86,14 +85,14 @@
             this.colEdit,
             this.colView,
             this.colDelete});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardOrderP.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardOrderP.DefaultCellStyle = dataGridViewCellStyle3;
             this.BoardOrderP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardOrderP.EnableHeadersVisualStyles = false;
             this.BoardOrderP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -157,21 +156,6 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(451, 65);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
-            // 
             // TOrdPurcharse
             // 
             this.TOrdPurcharse.BackColor = System.Drawing.Color.White;
@@ -180,32 +164,37 @@
             this.TOrdPurcharse.ForeColor = System.Drawing.Color.Gray;
             this.TOrdPurcharse.Location = new System.Drawing.Point(15, 66);
             this.TOrdPurcharse.Name = "TOrdPurcharse";
-            this.TOrdPurcharse.Size = new System.Drawing.Size(145, 27);
+            this.TOrdPurcharse.Size = new System.Drawing.Size(145, 23);
             this.TOrdPurcharse.TabIndex = 2;
             this.TOrdPurcharse.Text = "Buscar orden de compra...";
             // 
-            // BNewSupplier
+            // BNewOrderP
             // 
-            this.BNewSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewSupplier.FlatAppearance.BorderSize = 0;
-            this.BNewSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewSupplier.ForeColor = System.Drawing.Color.White;
-            this.BNewSupplier.Location = new System.Drawing.Point(541, 65);
-            this.BNewSupplier.Name = "BNewSupplier";
-            this.BNewSupplier.Size = new System.Drawing.Size(214, 26);
-            this.BNewSupplier.TabIndex = 1;
-            this.BNewSupplier.Text = "Nueva Orden de Compra";
-            this.BNewSupplier.UseVisualStyleBackColor = false;
+            this.BNewOrderP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewOrderP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewOrderP.FlatAppearance.BorderSize = 0;
+            this.BNewOrderP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewOrderP.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewOrderP.ForeColor = System.Drawing.Color.White;
+            this.BNewOrderP.Location = new System.Drawing.Point(578, 65);
+            this.BNewOrderP.Name = "BNewOrderP";
+            this.BNewOrderP.Size = new System.Drawing.Size(177, 26);
+            this.BNewOrderP.TabIndex = 1;
+            this.BNewOrderP.Text = "Nueva Orden de Compra";
+            this.BNewOrderP.UseVisualStyleBackColor = false;
+            this.BNewOrderP.ForeColor = System.Drawing.Color.White;
+            this.BNewOrderP.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewOrderP.IconColor = System.Drawing.Color.White;
+            this.BNewOrderP.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewOrderP.IconSize = 20;
+            this.BNewOrderP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.LOrderPurcharse);
-            this.panel1.Controls.Add(this.BNewSupplier);
+            this.panel1.Controls.Add(this.BNewOrderP);
             this.panel1.Controls.Add(this.TOrdPurcharse);
-            this.panel1.Controls.Add(this.BFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -232,9 +221,7 @@
 
         private System.Windows.Forms.Label LOrderPurcharse;
         private System.Windows.Forms.DataGridView BoardOrderP;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TOrdPurcharse;
-        private System.Windows.Forms.Button BNewSupplier;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Orden;
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
@@ -243,5 +230,6 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private FontAwesome.Sharp.IconButton BNewOrderP;
     }
 }

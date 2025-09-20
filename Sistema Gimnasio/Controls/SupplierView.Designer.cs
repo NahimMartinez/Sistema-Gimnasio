@@ -42,13 +42,10 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.BFilter = new System.Windows.Forms.Button();
             this.TSearchSupplier = new System.Windows.Forms.TextBox();
-            this.BNewSupplier = new System.Windows.Forms.Button();
+            this.BNewSupplier = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BNewPurchase = new System.Windows.Forms.Button();
             this.BSearchPurcharse = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +57,7 @@
             this.LTilteSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTilteSupplier.Location = new System.Drawing.Point(15, 12);
             this.LTilteSupplier.Name = "LTilteSupplier";
-            this.LTilteSupplier.Size = new System.Drawing.Size(149, 32);
+            this.LTilteSupplier.Size = new System.Drawing.Size(118, 25);
             this.LTilteSupplier.TabIndex = 0;
             this.LTilteSupplier.Text = "Proveedores";
             // 
@@ -183,21 +180,6 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(503, 65);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
-            // 
             // TSearchSupplier
             // 
             this.TSearchSupplier.BackColor = System.Drawing.Color.White;
@@ -206,7 +188,7 @@
             this.TSearchSupplier.ForeColor = System.Drawing.Color.Gray;
             this.TSearchSupplier.Location = new System.Drawing.Point(15, 66);
             this.TSearchSupplier.Name = "TSearchSupplier";
-            this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
+            this.TSearchSupplier.Size = new System.Drawing.Size(145, 23);
             this.TSearchSupplier.TabIndex = 2;
             this.TSearchSupplier.Text = "Buscar Proveedor...";
             // 
@@ -218,11 +200,16 @@
             this.BNewSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewSupplier.ForeColor = System.Drawing.Color.White;
-            this.BNewSupplier.Location = new System.Drawing.Point(593, 65);
+            this.BNewSupplier.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewSupplier.IconColor = System.Drawing.Color.White;
+            this.BNewSupplier.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewSupplier.IconSize = 20;
+            this.BNewSupplier.Location = new System.Drawing.Point(614, 65);
             this.BNewSupplier.Name = "BNewSupplier";
-            this.BNewSupplier.Size = new System.Drawing.Size(155, 26);
+            this.BNewSupplier.Size = new System.Drawing.Size(134, 26);
             this.BNewSupplier.TabIndex = 1;
             this.BNewSupplier.Text = "Nuevo Proveedor";
+            this.BNewSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BNewSupplier.UseVisualStyleBackColor = false;
             this.BNewSupplier.Click += new System.EventHandler(this.BNewSupplier_Click_1);
             // 
@@ -232,41 +219,20 @@
             this.panel1.Controls.Add(this.LTilteSupplier);
             this.panel1.Controls.Add(this.BNewSupplier);
             this.panel1.Controls.Add(this.TSearchSupplier);
-            this.panel1.Controls.Add(this.BFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 2;
             // 
-            // BNewPurchase
-            // 
-            this.BNewPurchase.BackColor = System.Drawing.Color.Coral;
-            this.BNewPurchase.FlatAppearance.BorderSize = 0;
-            this.BNewPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewPurchase.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BNewPurchase.Location = new System.Drawing.Point(607, 325);
-            this.BNewPurchase.Name = "BNewPurchase";
-            this.BNewPurchase.Size = new System.Drawing.Size(120, 23);
-            this.BNewPurchase.TabIndex = 9;
-            this.BNewPurchase.Text = "Orden de compra";
-            this.BNewPurchase.UseVisualStyleBackColor = false;
-            // 
             // BSearchPurcharse
             // 
             this.BSearchPurcharse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BSearchPurcharse.Location = new System.Drawing.Point(15, 330);
             this.BSearchPurcharse.Name = "BSearchPurcharse";
-            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 22);
+            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 20);
             this.BSearchPurcharse.TabIndex = 9;
             this.BSearchPurcharse.Text = "Buscar Orden de Compra...";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
             // 
             // SupplierView
             // 
@@ -286,13 +252,10 @@
 
         private System.Windows.Forms.Label LTilteSupplier;
         private System.Windows.Forms.DataGridView BoardSupplier;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearchSupplier;
-        private System.Windows.Forms.Button BNewSupplier;
+        private FontAwesome.Sharp.IconButton BNewSupplier;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button BNewPurchase;
         private System.Windows.Forms.TextBox BSearchPurcharse;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeSupplier;

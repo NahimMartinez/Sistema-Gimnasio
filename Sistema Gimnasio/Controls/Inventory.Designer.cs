@@ -42,13 +42,12 @@
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.BFilter = new System.Windows.Forms.Button();
             this.TSearch = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.LCategoria = new System.Windows.Forms.Label();
-            this.BNewItem = new System.Windows.Forms.Button();
+            this.BNewItem = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardInventory)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             this.LTituloInventaryManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloInventaryManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloInventaryManagment.Name = "LTituloInventaryManagment";
-            this.LTituloInventaryManagment.Size = new System.Drawing.Size(249, 32);
+            this.LTituloInventaryManagment.Size = new System.Drawing.Size(196, 25);
             this.LTituloInventaryManagment.TabIndex = 0;
             this.LTituloInventaryManagment.Text = "Gestión de Inventario";
             // 
@@ -195,23 +194,8 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
             this.CBStatus.TabIndex = 2;
-            // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(560, 64);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 4;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
             // 
             // TSearch
             // 
@@ -221,7 +205,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
+            this.TSearch.Size = new System.Drawing.Size(144, 23);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar item...";
             // 
@@ -232,7 +216,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -246,7 +230,6 @@
             this.panel1.Controls.Add(this.TSearch);
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Controls.Add(this.BFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -268,7 +251,7 @@
             "Accesorios"});
             this.CBCategoria.Location = new System.Drawing.Point(304, 66);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(130, 28);
+            this.CBCategoria.Size = new System.Drawing.Size(130, 23);
             this.CBCategoria.TabIndex = 11;
             // 
             // LCategoria
@@ -278,7 +261,7 @@
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(301, 48);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(74, 20);
+            this.LCategoria.Size = new System.Drawing.Size(58, 15);
             this.LCategoria.TabIndex = 12;
             this.LCategoria.Text = "Categoría";
             // 
@@ -296,11 +279,17 @@
             this.BNewItem.TabIndex = 9;
             this.BNewItem.Text = "Nuevo item";
             this.BNewItem.UseVisualStyleBackColor = false;
+            this.BNewItem.ForeColor = System.Drawing.Color.White;
+            this.BNewItem.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewItem.IconColor = System.Drawing.Color.White;
+            this.BNewItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewItem.IconSize = 20;
+            this.BNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
             // 
             // Inventory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardInventory);
@@ -321,11 +310,10 @@
         private System.Windows.Forms.Label LTituloInventaryManagment;
         private System.Windows.Forms.DataGridView BoardInventory;
         private System.Windows.Forms.ComboBox CBStatus;
-        private System.Windows.Forms.Button BFilter;
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button BNewItem;
+        private FontAwesome.Sharp.IconButton BNewItem;
         private System.Windows.Forms.ComboBox CBCategoria;
         private System.Windows.Forms.Label LCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;

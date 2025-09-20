@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloUserManagment = new System.Windows.Forms.Label();
             this.BoardUsers = new System.Windows.Forms.DataGridView();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,11 +44,10 @@
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.TSearch = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
-            this.BNewUser = new System.Windows.Forms.Button();
+            this.BNewUser = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBRol = new System.Windows.Forms.ComboBox();
             this.LRol = new System.Windows.Forms.Label();
-            this.BFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(231, 32);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -69,21 +68,21 @@
             this.BoardUsers.AllowUserToAddRows = false;
             this.BoardUsers.AllowUserToDeleteRows = false;
             this.BoardUsers.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.BoardUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardUsers.BackgroundColor = System.Drawing.Color.White;
             this.BoardUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BoardUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.BoardUsers.ColumnHeadersHeight = 38;
             this.BoardUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -95,14 +94,14 @@
             this.colEdit,
             this.colView,
             this.colDelete});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardUsers.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardUsers.DefaultCellStyle = dataGridViewCellStyle3;
             this.BoardUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardUsers.EnableHeadersVisualStyles = false;
             this.BoardUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -195,7 +194,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
             this.CBStatus.TabIndex = 2;
             // 
             // TSearch
@@ -206,7 +205,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
+            this.TSearch.Size = new System.Drawing.Size(144, 23);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar usuario...";
             // 
@@ -217,7 +216,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -229,18 +228,22 @@
             this.BNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewUser.ForeColor = System.Drawing.Color.White;
-            this.BNewUser.Location = new System.Drawing.Point(650, 64);
+            this.BNewUser.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewUser.IconColor = System.Drawing.Color.White;
+            this.BNewUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewUser.IconSize = 20;
+            this.BNewUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewUser.Location = new System.Drawing.Point(633, 64);
             this.BNewUser.Name = "BNewUser";
-            this.BNewUser.Size = new System.Drawing.Size(100, 26);
+            this.BNewUser.Size = new System.Drawing.Size(117, 26);
             this.BNewUser.TabIndex = 8;
-            this.BNewUser.Text = "Nuevo usuario";
+            this.BNewUser.Text = "Nuevo usuario";            
             this.BNewUser.UseVisualStyleBackColor = false;
             this.BNewUser.Click += new System.EventHandler(this.BNewUser_Click_1);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.BFilter);
             this.panel1.Controls.Add(this.CBRol);
             this.panel1.Controls.Add(this.LRol);
             this.panel1.Controls.Add(this.LTituloUserManagment);
@@ -267,7 +270,7 @@
             "Recepcionista"});
             this.CBRol.Location = new System.Drawing.Point(304, 66);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(130, 28);
+            this.CBRol.Size = new System.Drawing.Size(130, 23);
             this.CBRol.TabIndex = 10;
             // 
             // LRol
@@ -277,28 +280,13 @@
             this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LRol.Location = new System.Drawing.Point(301, 48);
             this.LRol.Name = "LRol";
-            this.LRol.Size = new System.Drawing.Size(31, 20);
+            this.LRol.Size = new System.Drawing.Size(24, 15);
             this.LRol.TabIndex = 11;
             this.LRol.Text = "Rol";
             // 
-            // BFilter
-            // 
-            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BFilter.FlatAppearance.BorderSize = 0;
-            this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(560, 64);
-            this.BFilter.Name = "BFilter";
-            this.BFilter.Size = new System.Drawing.Size(84, 26);
-            this.BFilter.TabIndex = 12;
-            this.BFilter.Text = "Filtrar";
-            this.BFilter.UseVisualStyleBackColor = false;
-            // 
             // UsersManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardUsers);
@@ -321,7 +309,7 @@
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.TextBox TSearch;
         private System.Windows.Forms.Label LStatus;
-        private System.Windows.Forms.Button BNewUser;
+        private FontAwesome.Sharp.IconButton BNewUser;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox CBRol;
         private System.Windows.Forms.Label LRol;
@@ -333,6 +321,5 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
-        private System.Windows.Forms.Button BFilter;
     }
 }
