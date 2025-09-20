@@ -224,6 +224,7 @@
             this.BNewSupplier.TabIndex = 1;
             this.BNewSupplier.Text = "Nuevo Proveedor";
             this.BNewSupplier.UseVisualStyleBackColor = false;
+            this.BNewSupplier.Click += new System.EventHandler(this.BNewSupplier_Click_1);
             // 
             // panel1
             // 

@@ -32,19 +32,6 @@ namespace Sistema_Gimnasio
             ApplyAcl();
         }
 
-        private void BNewSupplier_Click(object sender, EventArgs e)
-        {
-            //creo una instancia del formulario
-            using (var fNewSupllier = new AddSupplierForm())
-            {
-                //muestro el formulario como un cuadro de dialogo
-                if (fNewSupllier.ShowDialog() == DialogResult.OK)
-                {
-                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo socio(cuando sea dinamico)
-                }
-            }
-        }
-
         private void SetupActionIcons()
         {
             Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
@@ -105,6 +92,19 @@ namespace Sistema_Gimnasio
         {
             foreach (var keyValue in Acl)
                 keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0;
+        }
+
+        private void BNewSupplier_Click_1(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewSupllier = new AddSupplierForm())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewSupllier.ShowDialog() == DialogResult.OK)
+                {
+                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
+                }
+            }
         }
     }
 
