@@ -37,9 +37,10 @@
             // LNewClassCategory
             // 
             this.LNewClassCategory.AutoSize = true;
-            this.LNewClassCategory.Location = new System.Drawing.Point(12, 46);
+            this.LNewClassCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.LNewClassCategory.Location = new System.Drawing.Point(7, 43);
             this.LNewClassCategory.Name = "LNewClassCategory";
-            this.LNewClassCategory.Size = new System.Drawing.Size(54, 13);
+            this.LNewClassCategory.Size = new System.Drawing.Size(69, 17);
             this.LNewClassCategory.TabIndex = 0;
             this.LNewClassCategory.Text = "Categoría";
             // 
@@ -47,7 +48,7 @@
             // 
             this.txtNewClassCategory.Location = new System.Drawing.Point(82, 43);
             this.txtNewClassCategory.Name = "txtNewClassCategory";
-            this.txtNewClassCategory.Size = new System.Drawing.Size(243, 20);
+            this.txtNewClassCategory.Size = new System.Drawing.Size(260, 20);
             this.txtNewClassCategory.TabIndex = 1;
             // 
             // BSave
