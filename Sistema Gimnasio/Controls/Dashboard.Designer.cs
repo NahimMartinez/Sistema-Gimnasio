@@ -489,6 +489,8 @@ namespace Sistema_Gimnasio.Controls
             // 
             // NewCategoryInventory
             // 
+            this.NewCategoryInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.NewCategoryInventory.ForeColor = System.Drawing.Color.Black;
             this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryInventory.IconColor = System.Drawing.Color.Black;
             this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -497,11 +499,13 @@ namespace Sistema_Gimnasio.Controls
             this.NewCategoryInventory.Size = new System.Drawing.Size(135, 57);
             this.NewCategoryInventory.TabIndex = 3;
             this.NewCategoryInventory.Text = "Nueva Categoría Inventario";
-            this.NewCategoryInventory.UseVisualStyleBackColor = true;
+            this.NewCategoryInventory.UseVisualStyleBackColor = false;
             this.NewCategoryInventory.Click += new System.EventHandler(this.NewCategoryInventory_Click);
             // 
             // NewCategoryClass
             // 
+            this.NewCategoryClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.NewCategoryClass.ForeColor = System.Drawing.Color.Black;
             this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryClass.IconColor = System.Drawing.Color.Black;
             this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -510,7 +514,7 @@ namespace Sistema_Gimnasio.Controls
             this.NewCategoryClass.Size = new System.Drawing.Size(135, 57);
             this.NewCategoryClass.TabIndex = 6;
             this.NewCategoryClass.Text = "Nueva Categoría Clase";
-            this.NewCategoryClass.UseVisualStyleBackColor = true;
+            this.NewCategoryClass.UseVisualStyleBackColor = false;
             this.NewCategoryClass.Click += new System.EventHandler(this.NewCategoryClass_Click);
             // 
             // Dashboard

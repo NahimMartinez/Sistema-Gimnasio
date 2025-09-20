@@ -73,12 +73,6 @@
     <Compile Include="Controls\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Membership.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Membership.Designer.cs">
-      <DependentUpon>Membership.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AddClassCategory.cs">
       <SubType>Form</SubType>
     </Compile>
