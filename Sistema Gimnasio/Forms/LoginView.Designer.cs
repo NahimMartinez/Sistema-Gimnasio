@@ -43,10 +43,9 @@ namespace Sistema_Gimnasio
             // 
             this.LUsuer.AutoSize = true;
             this.LUsuer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LUsuer.Location = new System.Drawing.Point(64, 52);
-            this.LUsuer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LUsuer.Location = new System.Drawing.Point(85, 64);
             this.LUsuer.Name = "LUsuer";
-            this.LUsuer.Size = new System.Drawing.Size(57, 17);
+            this.LUsuer.Size = new System.Drawing.Size(67, 20);
             this.LUsuer.TabIndex = 0;
             this.LUsuer.Text = "Usuario";
             // 
@@ -60,10 +59,11 @@ namespace Sistema_Gimnasio
             this.BLogin.IconColor = System.Drawing.Color.White;
             this.BLogin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLogin.IconSize = 20;
-            this.BLogin.Location = new System.Drawing.Point(89, 162);
-            this.BLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BLogin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BLogin.Location = new System.Drawing.Point(119, 199);
+            this.BLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BLogin.Name = "BLogin";
-            this.BLogin.Size = new System.Drawing.Size(100, 27);
+            this.BLogin.Size = new System.Drawing.Size(133, 28);
             this.BLogin.TabIndex = 1;
             this.BLogin.Text = "Iniciar Sesion";
             this.BLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -74,28 +74,27 @@ namespace Sistema_Gimnasio
             // 
             this.LPass.AutoSize = true;
             this.LPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LPass.Location = new System.Drawing.Point(64, 110);
-            this.LPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LPass.Location = new System.Drawing.Point(85, 135);
             this.LPass.Name = "LPass";
-            this.LPass.Size = new System.Drawing.Size(81, 17);
+            this.LPass.Size = new System.Drawing.Size(95, 20);
             this.LPass.TabIndex = 2;
             this.LPass.Text = "Contraseña";
             // 
             // TUser
             // 
-            this.TUser.Location = new System.Drawing.Point(171, 52);
-            this.TUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TUser.Location = new System.Drawing.Point(228, 64);
+            this.TUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TUser.Name = "TUser";
-            this.TUser.Size = new System.Drawing.Size(150, 20);
+            this.TUser.Size = new System.Drawing.Size(199, 22);
             this.TUser.TabIndex = 3;
             // 
             // TPass
             // 
-            this.TPass.Location = new System.Drawing.Point(171, 110);
-            this.TPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TPass.Location = new System.Drawing.Point(228, 135);
+            this.TPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TPass.Name = "TPass";
             this.TPass.PasswordChar = '*';
-            this.TPass.Size = new System.Drawing.Size(150, 20);
+            this.TPass.Size = new System.Drawing.Size(199, 22);
             this.TPass.TabIndex = 4;
             // 
             // BClose
@@ -108,10 +107,10 @@ namespace Sistema_Gimnasio
             this.BClose.IconColor = System.Drawing.Color.White;
             this.BClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BClose.IconSize = 20;
-            this.BClose.Location = new System.Drawing.Point(218, 162);
-            this.BClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BClose.Location = new System.Drawing.Point(291, 199);
+            this.BClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BClose.Name = "BClose";
-            this.BClose.Size = new System.Drawing.Size(93, 27);
+            this.BClose.Size = new System.Drawing.Size(124, 28);
             this.BClose.TabIndex = 5;
             this.BClose.Text = "Cerrar";
             this.BClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,17 +119,17 @@ namespace Sistema_Gimnasio
             // 
             // LoginView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(411, 238);
+            this.ClientSize = new System.Drawing.Size(548, 293);
             this.Controls.Add(this.BClose);
             this.Controls.Add(this.TPass);
             this.Controls.Add(this.TUser);
             this.Controls.Add(this.LPass);
             this.Controls.Add(this.BLogin);
             this.Controls.Add(this.LUsuer);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesion";
