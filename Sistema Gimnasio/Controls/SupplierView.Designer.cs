@@ -60,7 +60,7 @@
             this.LTilteSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTilteSupplier.Location = new System.Drawing.Point(15, 12);
             this.LTilteSupplier.Name = "LTilteSupplier";
-            this.LTilteSupplier.Size = new System.Drawing.Size(118, 25);
+            this.LTilteSupplier.Size = new System.Drawing.Size(149, 32);
             this.LTilteSupplier.TabIndex = 0;
             this.LTilteSupplier.Text = "Proveedores";
             // 
@@ -108,6 +108,7 @@
             this.BoardSupplier.Location = new System.Drawing.Point(0, 100);
             this.BoardSupplier.Name = "BoardSupplier";
             this.BoardSupplier.RowHeadersVisible = false;
+            this.BoardSupplier.RowHeadersWidth = 51;
             this.BoardSupplier.RowTemplate.Height = 36;
             this.BoardSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardSupplier.Size = new System.Drawing.Size(762, 450);
@@ -117,70 +118,80 @@
             // 
             this.name.DataPropertyName = "name";
             this.name.HeaderText = "Nombre";
+            this.name.MinimumWidth = 6;
             this.name.Name = "name";
             // 
             // cuit
             // 
             this.cuit.DataPropertyName = "cuit";
             this.cuit.HeaderText = "CUIT";
+            this.cuit.MinimumWidth = 6;
             this.cuit.Name = "cuit";
             // 
             // typeSupplier
             // 
             this.typeSupplier.DataPropertyName = "typeSupplier";
             this.typeSupplier.HeaderText = "Rubro";
+            this.typeSupplier.MinimumWidth = 6;
             this.typeSupplier.Name = "typeSupplier";
             // 
             // email
             // 
             this.email.DataPropertyName = "email";
             this.email.HeaderText = "Email";
+            this.email.MinimumWidth = 6;
             this.email.Name = "email";
             // 
             // phone
             // 
             this.phone.DataPropertyName = "phone";
             this.phone.HeaderText = "Telefono";
+            this.phone.MinimumWidth = 6;
             this.phone.Name = "phone";
             // 
             // status
             // 
             this.status.DataPropertyName = "status";
             this.status.HeaderText = "Estado";
-            this.status.Name = "status";            
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
             // 
             // colEdit
             // 
+            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.HeaderText = "";
+            this.colEdit.MinimumWidth = 6;
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
-            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.Width = 50;
             // 
             // colView
             // 
+            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.HeaderText = "";
+            this.colView.MinimumWidth = 6;
             this.colView.Name = "colView";
             this.colView.ReadOnly = true;
-            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.Width = 50;
             // 
             // colDelete
             // 
+            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.HeaderText = "";
+            this.colDelete.MinimumWidth = 6;
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
-            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.Width = 50;
             // 
             // BFilter
             // 
+            this.BFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.BFilter.FlatAppearance.BorderSize = 0;
             this.BFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BFilter.ForeColor = System.Drawing.Color.White;
-            this.BFilter.Location = new System.Drawing.Point(166, 66);
+            this.BFilter.Location = new System.Drawing.Point(503, 65);
             this.BFilter.Name = "BFilter";
             this.BFilter.Size = new System.Drawing.Size(84, 26);
             this.BFilter.TabIndex = 4;
@@ -188,27 +199,28 @@
             this.BFilter.UseVisualStyleBackColor = false;
             // 
             // TSearchSupplier
-            //
+            // 
             this.TSearchSupplier.BackColor = System.Drawing.Color.White;
             this.TSearchSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TSearchSupplier.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TSearchSupplier.ForeColor = System.Drawing.Color.Gray;
             this.TSearchSupplier.Location = new System.Drawing.Point(15, 66);
             this.TSearchSupplier.Name = "TSearchSupplier";
-            this.TSearchSupplier.Size = new System.Drawing.Size(145, 23);
+            this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
             this.TSearchSupplier.TabIndex = 2;
             this.TSearchSupplier.Text = "Buscar Proveedor...";
             // 
             // BNewSupplier
             // 
+            this.BNewSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BNewSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
             this.BNewSupplier.FlatAppearance.BorderSize = 0;
             this.BNewSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewSupplier.ForeColor = System.Drawing.Color.White;
-            this.BNewSupplier.Location = new System.Drawing.Point(607, 64);
+            this.BNewSupplier.Location = new System.Drawing.Point(593, 65);
             this.BNewSupplier.Name = "BNewSupplier";
-            this.BNewSupplier.Size = new System.Drawing.Size(120, 26);
+            this.BNewSupplier.Size = new System.Drawing.Size(155, 26);
             this.BNewSupplier.TabIndex = 1;
             this.BNewSupplier.Text = "Nuevo Proveedor";
             this.BNewSupplier.UseVisualStyleBackColor = false;
@@ -244,7 +256,7 @@
             this.BSearchPurcharse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BSearchPurcharse.Location = new System.Drawing.Point(15, 330);
             this.BSearchPurcharse.Name = "BSearchPurcharse";
-            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 20);
+            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 22);
             this.BSearchPurcharse.TabIndex = 9;
             this.BSearchPurcharse.Text = "Buscar Orden de Compra...";
             // 
