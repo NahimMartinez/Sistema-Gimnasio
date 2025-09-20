@@ -259,6 +259,8 @@ namespace Sistema_Gimnasio
         private void ShowReports()
         {
             contentPanel.Controls.Clear();
+            var view = new Reports { Dock = DockStyle.Fill, BackColor = Color.White };
+            contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Reportes";
         }
 
