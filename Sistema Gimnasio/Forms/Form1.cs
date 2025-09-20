@@ -231,7 +231,11 @@ namespace Sistema_Gimnasio
         private void ShowPartners()
         {
             contentPanel.Controls.Clear();
-            var view = new PartnersView { Dock = DockStyle.Fill, BackColor = Color.White };
+            var view = new PartnersView { 
+                Dock = DockStyle.Fill, 
+                BackColor = Color.White,
+                CurrentRole = CurrentRole
+            };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Socios";
         }
@@ -261,7 +265,7 @@ namespace Sistema_Gimnasio
         private void ShowSuppliers()
         {
             contentPanel.Controls.Clear();
-            var view = new SupplierView { Dock = DockStyle.Fill, BackColor = Color.White };
+            var view = new SupplierView { Dock = DockStyle.Fill, BackColor = Color.White, CurrentRole = CurrentRole };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Proveedores";
         }

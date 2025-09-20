@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,23 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio
 {
     public partial class SupplierView : UserControl
     {
+        public Roles CurrentRole { get; set; } = Roles.None;
+
+        private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
         public SupplierView()
         {
             InitializeComponent();
             LoadFakeData();
             BoardSupplier.CellClick += BoardSupplier_CellClick;
             SetupActionIcons();
+            this.Load += SupplierView_Load;
         }
 
         private void SupplierView_Load(object sender, EventArgs e)
         {
-
+            BuildAcl();
+            ApplyAcl();
         }
 
         private void BNewSupplier_Click(object sender, EventArgs e)
@@ -34,7 +40,7 @@ namespace Sistema_Gimnasio
                 //muestro el formulario como un cuadro de dialogo
                 if (fNewSupllier.ShowDialog() == DialogResult.OK)
                 {
-
+                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo socio(cuando sea dinamico)
                 }
             }
         }
@@ -57,6 +63,8 @@ namespace Sistema_Gimnasio
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
                 if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
             };
+
+            
         }
 
         private void BoardSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -84,6 +92,19 @@ namespace Sistema_Gimnasio
             BoardSupplier.Rows.Add("Proveedor A", "20-12345678-9", "Servicios", "proveedorA@mail.com", "3794-111111", "Activo");
             BoardSupplier.Rows.Add("Proveedor B", "23-87654321-0", "Insumos", "proveedorB@mail.com", "3794-222222", "Inactivo");
             BoardSupplier.Rows.Add("Proveedor C", "27-11223344-5", "Equipos", "proveedorC@mail.com", "3794-333333", "Activo");
+        }
+
+        private void BuildAcl()
+        {
+            Acl[colEdit] = Roles.Admin;
+            Acl[colDelete] = Roles.Admin;
+            Acl[colView] = Roles.Admin | Roles.Recep;
+        }
+
+        private void ApplyAcl()
+        {
+            foreach (var keyValue in Acl)
+                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0;
         }
     }
 

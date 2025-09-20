@@ -8,11 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio
 {
+    
+    
     public partial class PartnersView : UserControl
     {
+        public Roles CurrentRole { get; set; } = Roles.None;
+
+        private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
         public PartnersView()
         {
             InitializeComponent();
@@ -39,7 +45,7 @@ namespace Sistema_Gimnasio
         {
             if (e.RowIndex < 0) return;
 
-            var id = BoardMember.Rows[e.RowIndex].Cells["dni"].Value; // o PK real
+            var id = BoardMember.Rows[e.RowIndex].Cells["dni"].Value; 
             var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
             var col = BoardMember.Columns[e.ColumnIndex].Name;
 
@@ -92,7 +98,24 @@ namespace Sistema_Gimnasio
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
                 if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
             };
+
+            BuildAcl();
+            ApplyAcl();
         }
+
+        private void BuildAcl()
+        {
+            Acl[colEdit] = Roles.Admin | Roles.Recep;                          
+            Acl[colDelete] = Roles.Admin | Roles.Recep;                          
+            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach; 
+        }
+
+        private void ApplyAcl()
+        {
+            foreach (var keyValue in Acl)
+                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0;
+        }
+
 
     }
 }

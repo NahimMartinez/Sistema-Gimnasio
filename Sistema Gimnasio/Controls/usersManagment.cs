@@ -86,28 +86,7 @@ namespace Sistema_Gimnasio
             BoardUsers.AutoGenerateColumns = false;
             ApplyFilters(); // muestra según filtros actuales
         }
-
-        //metodo para configurar los iconos de las acciones en la grilla
-        private void SetupActionIcons()
-        {
-            // Asegurarse de que las columnas de imagen existen 
-            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
-            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
-            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
-            //set inicial de los iconos
-            colEdit.Image = bmpEdit;
-            colView.Image = bmpView;
-            colDelete.Image = bmpDelete;
-            //evento para formatear las celdas, asignar los iconos y evitar que el datasouce los sobrescriba
-            BoardUsers.CellFormatting += (s, ev) =>
-            {
-                if (ev.RowIndex < 0) return;
-                string col = BoardUsers.Columns[ev.ColumnIndex].Name;
-                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
-                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
-                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
-            };
-        }
+                
 
         private void ApplyFilters()
         {
@@ -144,6 +123,28 @@ namespace Sistema_Gimnasio
             // actualizo el datasource de la grilla
             BoardUsers.DataSource = null;           
             BoardUsers.DataSource = view;           
+        }
+
+        //metodo para configurar los iconos de las acciones en la grilla
+        private void SetupActionIcons()
+        {
+            // Asegurarse de que las columnas de imagen existen 
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+            //set inicial de los iconos
+            colEdit.Image = bmpEdit;
+            colView.Image = bmpView;
+            colDelete.Image = bmpDelete;
+            //evento para formatear las celdas, asignar los iconos y evitar que el datasouce los sobrescriba
+            BoardUsers.CellFormatting += (s, ev) =>
+            {
+                if (ev.RowIndex < 0) return;
+                string col = BoardUsers.Columns[ev.ColumnIndex].Name;
+                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
+                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
+                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+            };
         }
 
         //evento click en la grilla para manejar editar, ver y borrar
