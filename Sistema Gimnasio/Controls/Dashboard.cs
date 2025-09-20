@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_Gimnasio.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -84,7 +85,7 @@ namespace Sistema_Gimnasio.Controls
             chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
         }
 
-        
+
 
         private void LoadCPMemberships()
         {
@@ -97,9 +98,9 @@ namespace Sistema_Gimnasio.Controls
             serie.IsValueShownAsLabel = true;
 
             // Hardcodear datos: cantidad de socios por membresía
-            serie.Points.AddXY("Diario", 20); 
-            serie.Points.AddXY("Semanal", 49); 
-            serie.Points.AddXY("Mensual", 213); 
+            serie.Points.AddXY("Diario", 20);
+            serie.Points.AddXY("Semanal", 49);
+            serie.Points.AddXY("Mensual", 213);
 
             // Colores personalizados
             serie.Points[0].Color = Color.FromArgb(65, 105, 225); // Azul
@@ -112,5 +113,39 @@ namespace Sistema_Gimnasio.Controls
             // Opcional: título del gráfico
             CPMemberships.Titles.Clear();
         }
+
+        private void NewCategoryInventory_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new AddInventoryCategory())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void NewCategoryClass_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new AddClassCategory())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            iconPartner.IconChar = FontAwesome.Sharp.IconChar.AddressBook;
+            iconClass.IconChar = FontAwesome.Sharp.IconChar.Dumbbell;
+            iconIncome.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
+        }
     }
 }
+   
