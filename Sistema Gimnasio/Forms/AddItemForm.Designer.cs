@@ -51,7 +51,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtCantidad.Location = new System.Drawing.Point(120, 96);
             this.txtCantidad.MaxLength = 5;
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(200, 23);
+            this.txtCantidad.Size = new System.Drawing.Size(200, 27);
             this.txtCantidad.TabIndex = 21;
             // 
             // LFechaIngresoItem
@@ -61,7 +61,7 @@ namespace Sistema_Gimnasio.Forms
             this.LFechaIngresoItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LFechaIngresoItem.Location = new System.Drawing.Point(30, 133);
             this.LFechaIngresoItem.Name = "LFechaIngresoItem";
-            this.LFechaIngresoItem.Size = new System.Drawing.Size(97, 19);
+            this.LFechaIngresoItem.Size = new System.Drawing.Size(120, 23);
             this.LFechaIngresoItem.TabIndex = 19;
             this.LFechaIngresoItem.Text = "Fecha Ingreso:";
             // 
@@ -72,7 +72,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCantidad.Location = new System.Drawing.Point(30, 99);
             this.LCantidad.Name = "LCantidad";
-            this.LCantidad.Size = new System.Drawing.Size(67, 19);
+            this.LCantidad.Size = new System.Drawing.Size(83, 23);
             this.LCantidad.TabIndex = 17;
             this.LCantidad.Text = "Cantidad:";
             // 
@@ -83,7 +83,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(30, 172);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(71, 19);
+            this.LCategoria.Size = new System.Drawing.Size(88, 23);
             this.LCategoria.TabIndex = 16;
             this.LCategoria.Text = "Categoría:";
             // 
@@ -94,7 +94,7 @@ namespace Sistema_Gimnasio.Forms
             this.LName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LName.Location = new System.Drawing.Point(30, 65);
             this.LName.Name = "LName";
-            this.LName.Size = new System.Drawing.Size(62, 19);
+            this.LName.Size = new System.Drawing.Size(77, 23);
             this.LName.TabIndex = 15;
             this.LName.Text = "Nombre:";
             // 
@@ -107,7 +107,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtNombre.Location = new System.Drawing.Point(120, 62);
             this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(200, 23);
+            this.txtNombre.Size = new System.Drawing.Size(200, 27);
             this.txtNombre.TabIndex = 13;
             // 
             // DTFechaIngreso
@@ -116,7 +116,7 @@ namespace Sistema_Gimnasio.Forms
             this.DTFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTFechaIngreso.Location = new System.Drawing.Point(120, 130);
             this.DTFechaIngreso.Name = "DTFechaIngreso";
-            this.DTFechaIngreso.Size = new System.Drawing.Size(200, 23);
+            this.DTFechaIngreso.Size = new System.Drawing.Size(200, 27);
             this.DTFechaIngreso.TabIndex = 25;
             // 
             // CBCategoria
@@ -134,7 +134,7 @@ namespace Sistema_Gimnasio.Forms
             "Accesorios"});
             this.CBCategoria.Location = new System.Drawing.Point(120, 168);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(200, 23);
+            this.CBCategoria.Size = new System.Drawing.Size(200, 28);
             this.CBCategoria.TabIndex = 26;
             // 
             // BSave
@@ -177,7 +177,7 @@ namespace Sistema_Gimnasio.Forms
             // 
             // AddItemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(388, 327);
@@ -193,6 +193,7 @@ namespace Sistema_Gimnasio.Forms
             this.Controls.Add(this.txtNombre);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Name = "AddItemForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Item";
             this.ResumeLayout(false);
             this.PerformLayout();

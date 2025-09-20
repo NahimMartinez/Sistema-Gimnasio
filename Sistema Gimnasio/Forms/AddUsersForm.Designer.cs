@@ -144,21 +144,17 @@
             this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BSave.ForeColor = System.Drawing.Color.White;
+            this.BSave.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.BSave.IconColor = System.Drawing.Color.White;
+            this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BSave.IconSize = 24;
             this.BSave.Location = new System.Drawing.Point(300, 250);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 9;
             this.BSave.Text = "Guardar";
-            this.BSave.UseVisualStyleBackColor = false;
-            //estilo boton
-            this.BSave.BackColor = Presentation.UITheme.Buttons.Save;
-            this.BSave.ForeColor = Presentation.UITheme.Buttons.Foreground;
-            this.BSave.FlatAppearance.BorderSize = 0;
-            this.BSave.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.BSave.IconColor = Presentation.UITheme.Buttons.Foreground;
-            this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BSave.IconSize = 24;
             this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BSave.UseVisualStyleBackColor = false;
             this.BSave.Click += new System.EventHandler(this.BSave_Click_1);
             // 
             // BLimpiar
@@ -168,21 +164,17 @@
             this.BLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BLimpiar.ForeColor = System.Drawing.Color.White;
+            this.BLimpiar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.BLimpiar.IconColor = System.Drawing.Color.White;
+            this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BLimpiar.IconSize = 24;
             this.BLimpiar.Location = new System.Drawing.Point(450, 250);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 10;
             this.BLimpiar.Text = "Limpiar";
-            this.BLimpiar.UseVisualStyleBackColor = false;
-            //estilo boton
-            this.BLimpiar.BackColor = Presentation.UITheme.Buttons.Clean;
-            this.BLimpiar.ForeColor = Presentation.UITheme.Buttons.Foreground;
-            this.BLimpiar.FlatAppearance.BorderSize = 0;
-            this.BLimpiar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.BLimpiar.IconColor = Presentation.UITheme.Buttons.Foreground;
-            this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BLimpiar.IconSize = 24;
             this.BLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BLimpiar.UseVisualStyleBackColor = false;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click_1);
             // 
             // CBVerContraseña
@@ -339,6 +331,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MinimumSize = new System.Drawing.Size(866, 339);
             this.Name = "AddUsersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Usuario";
             this.Load += new System.EventHandler(this.AddUsersForm_Load);
             this.ResumeLayout(false);
