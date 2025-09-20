@@ -30,15 +30,15 @@ namespace Sistema_Gimnasio.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -106,7 +106,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelTitle.Location = new System.Drawing.Point(15, 15);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(120, 30);
+            this.labelTitle.Size = new System.Drawing.Size(150, 37);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Dashboard";
             // 
@@ -143,7 +143,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelMembersCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelMembersCount.Location = new System.Drawing.Point(15, 15);
             this.labelMembersCount.Name = "labelMembersCount";
-            this.labelMembersCount.Size = new System.Drawing.Size(54, 32);
+            this.labelMembersCount.Size = new System.Drawing.Size(69, 41);
             this.labelMembersCount.TabIndex = 2;
             this.labelMembersCount.Text = "248";
             // 
@@ -154,7 +154,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelMembersTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.labelMembersTitle.Location = new System.Drawing.Point(15, 55);
             this.labelMembersTitle.Name = "labelMembersTitle";
-            this.labelMembersTitle.Size = new System.Drawing.Size(41, 15);
+            this.labelMembersTitle.Size = new System.Drawing.Size(52, 20);
             this.labelMembersTitle.TabIndex = 1;
             this.labelMembersTitle.Text = "Socios";
             // 
@@ -193,7 +193,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelClassesCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelClassesCount.Location = new System.Drawing.Point(15, 15);
             this.labelClassesCount.Name = "labelClassesCount";
-            this.labelClassesCount.Size = new System.Drawing.Size(41, 32);
+            this.labelClassesCount.Size = new System.Drawing.Size(52, 41);
             this.labelClassesCount.TabIndex = 3;
             this.labelClassesCount.Text = "24";
             // 
@@ -204,7 +204,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelClassesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.labelClassesTitle.Location = new System.Drawing.Point(15, 55);
             this.labelClassesTitle.Name = "labelClassesTitle";
-            this.labelClassesTitle.Size = new System.Drawing.Size(40, 15);
+            this.labelClassesTitle.Size = new System.Drawing.Size(50, 20);
             this.labelClassesTitle.TabIndex = 2;
             this.labelClassesTitle.Text = "Clases";
             // 
@@ -243,7 +243,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelRevenueAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelRevenueAmount.Location = new System.Drawing.Point(8, 15);
             this.labelRevenueAmount.Name = "labelRevenueAmount";
-            this.labelRevenueAmount.Size = new System.Drawing.Size(80, 25);
+            this.labelRevenueAmount.Size = new System.Drawing.Size(96, 32);
             this.labelRevenueAmount.TabIndex = 4;
             this.labelRevenueAmount.Text = "$12,450";
             // 
@@ -254,7 +254,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelRevenueTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.labelRevenueTitle.Location = new System.Drawing.Point(10, 55);
             this.labelRevenueTitle.Name = "labelRevenueTitle";
-            this.labelRevenueTitle.Size = new System.Drawing.Size(65, 15);
+            this.labelRevenueTitle.Size = new System.Drawing.Size(81, 20);
             this.labelRevenueTitle.TabIndex = 3;
             this.labelRevenueTitle.Text = "Ingresos M";
             // 
@@ -295,7 +295,7 @@ namespace Sistema_Gimnasio.Controls
             this.LChartPie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LChartPie.Location = new System.Drawing.Point(803, 15);
             this.LChartPie.Name = "LChartPie";
-            this.LChartPie.Size = new System.Drawing.Size(173, 21);
+            this.LChartPie.Size = new System.Drawing.Size(214, 28);
             this.LChartPie.TabIndex = 3;
             this.LChartPie.Text = "Socios por membresia";
             // 
@@ -303,33 +303,33 @@ namespace Sistema_Gimnasio.Controls
             // 
             this.CPMemberships.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.CPMemberships.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.CPMemberships.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.CPMemberships.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.CPMemberships.Legends.Add(legend3);
             this.CPMemberships.Location = new System.Drawing.Point(808, 34);
             this.CPMemberships.Name = "CPMemberships";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.CPMemberships.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.CPMemberships.Series.Add(series3);
             this.CPMemberships.Size = new System.Drawing.Size(469, 300);
             this.CPMemberships.TabIndex = 2;
             this.CPMemberships.Text = "chart1";
             // 
             // chartIngresosMensuales
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartIngresosMensuales.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartIngresosMensuales.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chartIngresosMensuales.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartIngresosMensuales.Legends.Add(legend4);
             this.chartIngresosMensuales.Location = new System.Drawing.Point(18, 46);
             this.chartIngresosMensuales.Name = "chartIngresosMensuales";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartIngresosMensuales.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartIngresosMensuales.Series.Add(series4);
             this.chartIngresosMensuales.Size = new System.Drawing.Size(784, 300);
             this.chartIngresosMensuales.TabIndex = 1;
             this.chartIngresosMensuales.Text = "chart1";
@@ -341,7 +341,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelChartTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelChartTitle.Location = new System.Drawing.Point(15, 15);
             this.labelChartTitle.Name = "labelChartTitle";
-            this.labelChartTitle.Size = new System.Drawing.Size(154, 21);
+            this.labelChartTitle.Size = new System.Drawing.Size(193, 28);
             this.labelChartTitle.TabIndex = 0;
             this.labelChartTitle.Text = "Ingresos Mensuales";
             // 
@@ -365,21 +365,21 @@ namespace Sistema_Gimnasio.Controls
             this.BoardRecent.AllowUserToAddRows = false;
             this.BoardRecent.AllowUserToDeleteRows = false;
             this.BoardRecent.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardRecent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardRecent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.BoardRecent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardRecent.BackgroundColor = System.Drawing.Color.White;
             this.BoardRecent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardRecent.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardRecent.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BoardRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.BoardRecent.ColumnHeadersHeight = 38;
             this.BoardRecent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardRecent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -387,14 +387,14 @@ namespace Sistema_Gimnasio.Controls
             this.Apellido,
             this.Membresia,
             this.Fecha_alta});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardRecent.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardRecent.DefaultCellStyle = dataGridViewCellStyle6;
             this.BoardRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardRecent.EnableHeadersVisualStyles = false;
             this.BoardRecent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -440,7 +440,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelActivityTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.labelActivityTitle.Location = new System.Drawing.Point(15, 15);
             this.labelActivityTitle.Name = "labelActivityTitle";
-            this.labelActivityTitle.Size = new System.Drawing.Size(147, 21);
+            this.labelActivityTitle.Size = new System.Drawing.Size(178, 28);
             this.labelActivityTitle.TabIndex = 1;
             this.labelActivityTitle.Text = "Actividad Reciente";
             // 
@@ -483,14 +483,16 @@ namespace Sistema_Gimnasio.Controls
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.label1.Location = new System.Drawing.Point(734, 619);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 21);
+            this.label1.Size = new System.Drawing.Size(162, 28);
             this.label1.TabIndex = 4;
             this.label1.Text = "Socios Recientes";
             // 
             // NewCategoryInventory
             // 
             this.NewCategoryInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.NewCategoryInventory.ForeColor = System.Drawing.Color.Black;
+            this.NewCategoryInventory.FlatAppearance.BorderSize = 0;
+            this.NewCategoryInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewCategoryInventory.ForeColor = System.Drawing.Color.White;
             this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryInventory.IconColor = System.Drawing.Color.Black;
             this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -505,7 +507,9 @@ namespace Sistema_Gimnasio.Controls
             // NewCategoryClass
             // 
             this.NewCategoryClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.NewCategoryClass.ForeColor = System.Drawing.Color.Black;
+            this.NewCategoryClass.FlatAppearance.BorderSize = 0;
+            this.NewCategoryClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewCategoryClass.ForeColor = System.Drawing.Color.White;
             this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.None;
             this.NewCategoryClass.IconColor = System.Drawing.Color.Black;
             this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -519,7 +523,7 @@ namespace Sistema_Gimnasio.Controls
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.NewCategoryClass);
