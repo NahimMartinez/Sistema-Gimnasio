@@ -63,11 +63,9 @@ namespace Sistema_Gimnasio
 
         private void LoadFakeData()
         {
-            // El orden debe coincidir con tus columnas: 
-            // IdOrdenInterno, Id_Orden, Supplier, Date, Status, Actions
-            BoardOrderP.Rows.Add(1, "ORD-001", "Proveedor A", DateTime.Now.AddDays(-3).ToShortDateString(), "Pendiente", null);
-            BoardOrderP.Rows.Add(2, "ORD-002", "Proveedor B", DateTime.Now.AddDays(-1).ToShortDateString(), "Recibida", null);
-            BoardOrderP.Rows.Add(3, "ORD-003", "Proveedor C", DateTime.Now.ToShortDateString(), "Cancelada", null);
+            BoardOrderP.Rows.Add("ORD-001", "Proveedor A", DateTime.Now.AddDays(-3).ToShortDateString(), "Pendiente", null);
+            BoardOrderP.Rows.Add("ORD-002", "Proveedor B", DateTime.Now.AddDays(-1).ToShortDateString(), "Recibida", null);
+            BoardOrderP.Rows.Add("ORD-003", "Proveedor C", DateTime.Now.ToShortDateString(), "Cancelada", null);
         }
     }
 
