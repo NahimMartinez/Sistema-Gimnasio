@@ -321,6 +321,9 @@ namespace Sistema_Gimnasio
             PSubMenuSupplier.Visible = false;
         }
 
-        
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
