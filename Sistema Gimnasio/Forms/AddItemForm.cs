@@ -85,5 +85,7 @@ namespace Sistema_Gimnasio.Forms
             CBCategoria.SelectedIndex = -1;
             DTFechaIngreso.Value = DateTime.Now;
         }
+
+       
     }
 }

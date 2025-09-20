@@ -20,6 +20,7 @@ namespace Sistema_Gimnasio.Controls
             LoadFakeData();
             LoadIngresosMensuales();
             LoadCPMemberships();
+            Dashboard_Load();
         }
 
 
@@ -140,12 +141,14 @@ namespace Sistema_Gimnasio.Controls
             }
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void Dashboard_Load()
         {
             iconPartner.IconChar = FontAwesome.Sharp.IconChar.AddressBook;
             iconClass.IconChar = FontAwesome.Sharp.IconChar.Dumbbell;
             iconIncome.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
         }
+
+        
     }
 }
    

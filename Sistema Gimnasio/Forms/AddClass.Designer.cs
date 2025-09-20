@@ -1,4 +1,6 @@
-﻿namespace Sistema_Gimnasio.Forms
+﻿using Presentation;
+
+namespace Sistema_Gimnasio.Forms
 {
     partial class AddClass
     {
@@ -39,8 +41,8 @@
             this.CBJueves = new System.Windows.Forms.CheckBox();
             this.CBViernes = new System.Windows.Forms.CheckBox();
             this.CBSabado = new System.Windows.Forms.CheckBox();
-            this.BCrear = new System.Windows.Forms.Button();
-            this.BLimpiar = new System.Windows.Forms.Button();
+            this.BSave = new FontAwesome.Sharp.IconButton();
+            this.BLimpiar = new FontAwesome.Sharp.IconButton();
             this.LHora = new System.Windows.Forms.Label();
             this.txtHora = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -177,28 +179,36 @@
             this.CBSabado.Text = "Sábado";
             this.CBSabado.UseVisualStyleBackColor = true;
             // 
-            // BCrear
+            // BSave
             // 
-            this.BCrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.BCrear.FlatAppearance.BorderSize = 0;
-            this.BCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BCrear.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BCrear.ForeColor = System.Drawing.Color.White;
-            this.BCrear.Location = new System.Drawing.Point(126, 208);
-            this.BCrear.Name = "BCrear";
-            this.BCrear.Size = new System.Drawing.Size(110, 30);
-            this.BCrear.TabIndex = 41;
-            this.BCrear.Text = "Crear";
-            this.BCrear.UseVisualStyleBackColor = false;
-            this.BCrear.Click += new System.EventHandler(this.BCrear_Click);
+            this.BSave.BackColor = Presentation.UITheme.Buttons.Save;
+            this.BSave.ForeColor = Presentation.UITheme.Buttons.Foreground;
+            this.BSave.FlatAppearance.BorderSize = 0;
+            this.BSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BSave.IconChar = FontAwesome.Sharp.IconChar.Save; 
+            this.BSave.IconColor = Presentation.UITheme.Buttons.Foreground;
+            this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BSave.IconSize = 24;
+            this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BSave.Location = new System.Drawing.Point(126, 208);
+            this.BSave.Name = "BSave";
+            this.BSave.Size = new System.Drawing.Size(110, 30);
+            this.BSave.TabIndex = 41;
+            this.BSave.Text = "Guardar";
+            this.BSave.UseVisualStyleBackColor = false;
+            this.BSave.Click += new System.EventHandler(this.BCrear_Click);
             // 
             // BLimpiar
             // 
-            this.BLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.BLimpiar.BackColor = Presentation.UITheme.Buttons.Clean;
+            this.BLimpiar.ForeColor = Presentation.UITheme.Buttons.Foreground;
             this.BLimpiar.FlatAppearance.BorderSize = 0;
             this.BLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.BLimpiar.ForeColor = System.Drawing.Color.White;
+            this.BLimpiar.IconChar = FontAwesome.Sharp.IconChar.Eraser; 
+            this.BLimpiar.IconColor = Presentation.UITheme.Buttons.Foreground;
+            this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BLimpiar.IconSize = 24;
+            this.BLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BLimpiar.Location = new System.Drawing.Point(284, 208);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
@@ -226,6 +236,41 @@
             this.txtHora.Name = "txtHora";
             this.txtHora.Size = new System.Drawing.Size(100, 23);
             this.txtHora.TabIndex = 44;
+
+            // CheckBox
+            this.CBLunes.ForeColor = UITheme.Text.Default;
+            this.CBMartes.ForeColor = UITheme.Text.Default;
+            this.CBMiercoles.ForeColor = UITheme.Text.Default;
+            this.CBJueves.ForeColor = UITheme.Text.Default;
+            this.CBViernes.ForeColor = UITheme.Text.Default;
+            this.CBSabado.ForeColor = UITheme.Text.Default;
+
+            // ComboBox
+            this.CBCategoria.BackColor = UITheme.SurfaceAlt;
+            this.CBCategoria.ForeColor = UITheme.Text.Default;
+
+            // TextBox
+            this.txtCupo.BackColor = UITheme.SurfaceAlt;
+            this.txtCupo.ForeColor = UITheme.Text.Default;
+            this.txtCupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+            this.txtHora.BackColor = UITheme.SurfaceAlt;
+            this.txtHora.ForeColor = UITheme.Text.Default;
+            this.txtHora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+            // Labels
+            this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LCategoria.ForeColor = UITheme.Text.Muted;
+
+            this.LCupo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LCupo.ForeColor = UITheme.Text.Muted;
+
+            this.LDiasClases.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LDiasClases.ForeColor = UITheme.Text.Muted;
+
+            this.LHora.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.LHora.ForeColor = UITheme.Text.Muted;
+
             // 
             // AddClass
             // 
@@ -236,7 +281,7 @@
             this.Controls.Add(this.txtHora);
             this.Controls.Add(this.LHora);
             this.Controls.Add(this.BLimpiar);
-            this.Controls.Add(this.BCrear);
+            this.Controls.Add(this.BSave);
             this.Controls.Add(this.CBSabado);
             this.Controls.Add(this.CBViernes);
             this.Controls.Add(this.CBJueves);
@@ -255,6 +300,7 @@
             this.Load += new System.EventHandler(this.AddClass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.BackColor = Presentation.UITheme.Surface;
 
         }
 
@@ -271,8 +317,8 @@
         private System.Windows.Forms.CheckBox CBJueves;
         private System.Windows.Forms.CheckBox CBViernes;
         private System.Windows.Forms.CheckBox CBSabado;
-        private System.Windows.Forms.Button BCrear;
-        private System.Windows.Forms.Button BLimpiar;
+        private FontAwesome.Sharp.IconButton BSave;
+        private FontAwesome.Sharp.IconButton BLimpiar;
         private System.Windows.Forms.Label LHora;
         private System.Windows.Forms.TextBox txtHora;
     }
