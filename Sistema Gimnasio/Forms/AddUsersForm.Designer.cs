@@ -36,8 +36,8 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtContraseña2 = new System.Windows.Forms.TextBox();
             this.CBRol = new System.Windows.Forms.ComboBox();
-            this.BSave = new System.Windows.Forms.Button();
-            this.BLimpiar = new System.Windows.Forms.Button();
+            this.BSave = new FontAwesome.Sharp.IconButton();
+            this.BLimpiar = new FontAwesome.Sharp.IconButton();
             this.CBVerContraseña = new System.Windows.Forms.CheckBox();
             this.LNombre = new System.Windows.Forms.Label();
             this.LApellido = new System.Windows.Forms.Label();
@@ -150,6 +150,15 @@
             this.BSave.TabIndex = 9;
             this.BSave.Text = "Guardar";
             this.BSave.UseVisualStyleBackColor = false;
+            //estilo boton
+            this.BSave.BackColor = Presentation.UITheme.Buttons.Save;
+            this.BSave.ForeColor = Presentation.UITheme.Buttons.Foreground;
+            this.BSave.FlatAppearance.BorderSize = 0;
+            this.BSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.BSave.IconColor = Presentation.UITheme.Buttons.Foreground;
+            this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BSave.IconSize = 24;
+            this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSave.Click += new System.EventHandler(this.BSave_Click_1);
             // 
             // BLimpiar
@@ -165,6 +174,15 @@
             this.BLimpiar.TabIndex = 10;
             this.BLimpiar.Text = "Limpiar";
             this.BLimpiar.UseVisualStyleBackColor = false;
+            //estilo boton
+            this.BLimpiar.BackColor = Presentation.UITheme.Buttons.Clean;
+            this.BLimpiar.ForeColor = Presentation.UITheme.Buttons.Foreground;
+            this.BLimpiar.FlatAppearance.BorderSize = 0;
+            this.BLimpiar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.BLimpiar.IconColor = Presentation.UITheme.Buttons.Foreground;
+            this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BLimpiar.IconSize = 24;
+            this.BLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click_1);
             // 
             // CBVerContraseña
@@ -338,8 +356,8 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtContraseña2;
         private System.Windows.Forms.ComboBox CBRol;
-        private System.Windows.Forms.Button BSave;
-        private System.Windows.Forms.Button BLimpiar;
+        private FontAwesome.Sharp.IconButton BSave;
+        private FontAwesome.Sharp.IconButton BLimpiar;
         private System.Windows.Forms.CheckBox CBVerContraseña;
         private System.Windows.Forms.Label LNombre;
         private System.Windows.Forms.Label LApellido;
