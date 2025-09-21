@@ -54,7 +54,7 @@
             this.LOrderPurcharse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LOrderPurcharse.Location = new System.Drawing.Point(15, 12);
             this.LOrderPurcharse.Name = "LOrderPurcharse";
-            this.LOrderPurcharse.Size = new System.Drawing.Size(172, 25);
+            this.LOrderPurcharse.Size = new System.Drawing.Size(219, 32);
             this.LOrderPurcharse.TabIndex = 0;
             this.LOrderPurcharse.Text = "Orden de Compras";
             // 
@@ -164,7 +164,7 @@
             this.TOrdPurcharse.ForeColor = System.Drawing.Color.Gray;
             this.TOrdPurcharse.Location = new System.Drawing.Point(15, 66);
             this.TOrdPurcharse.Name = "TOrdPurcharse";
-            this.TOrdPurcharse.Size = new System.Drawing.Size(145, 23);
+            this.TOrdPurcharse.Size = new System.Drawing.Size(145, 27);
             this.TOrdPurcharse.TabIndex = 2;
             this.TOrdPurcharse.Text = "Buscar orden de compra...";
             // 
@@ -180,9 +180,9 @@
             this.BNewOrderP.IconColor = System.Drawing.Color.White;
             this.BNewOrderP.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BNewOrderP.IconSize = 20;
-            this.BNewOrderP.Location = new System.Drawing.Point(578, 65);
+            this.BNewOrderP.Location = new System.Drawing.Point(538, 65);
             this.BNewOrderP.Name = "BNewOrderP";
-            this.BNewOrderP.Size = new System.Drawing.Size(177, 26);
+            this.BNewOrderP.Size = new System.Drawing.Size(217, 26);
             this.BNewOrderP.TabIndex = 1;
             this.BNewOrderP.Text = "Nueva Orden de Compra";
             this.BNewOrderP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

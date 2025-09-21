@@ -57,7 +57,7 @@
             this.LTilteSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTilteSupplier.Location = new System.Drawing.Point(15, 12);
             this.LTilteSupplier.Name = "LTilteSupplier";
-            this.LTilteSupplier.Size = new System.Drawing.Size(118, 25);
+            this.LTilteSupplier.Size = new System.Drawing.Size(149, 32);
             this.LTilteSupplier.TabIndex = 0;
             this.LTilteSupplier.Text = "Proveedores";
             // 
@@ -188,7 +188,7 @@
             this.TSearchSupplier.ForeColor = System.Drawing.Color.Gray;
             this.TSearchSupplier.Location = new System.Drawing.Point(15, 66);
             this.TSearchSupplier.Name = "TSearchSupplier";
-            this.TSearchSupplier.Size = new System.Drawing.Size(145, 23);
+            this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
             this.TSearchSupplier.TabIndex = 2;
             this.TSearchSupplier.Text = "Buscar Proveedor...";
             // 
@@ -204,9 +204,9 @@
             this.BNewSupplier.IconColor = System.Drawing.Color.White;
             this.BNewSupplier.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BNewSupplier.IconSize = 20;
-            this.BNewSupplier.Location = new System.Drawing.Point(614, 65);
+            this.BNewSupplier.Location = new System.Drawing.Point(579, 65);
             this.BNewSupplier.Name = "BNewSupplier";
-            this.BNewSupplier.Size = new System.Drawing.Size(134, 26);
+            this.BNewSupplier.Size = new System.Drawing.Size(169, 26);
             this.BNewSupplier.TabIndex = 1;
             this.BNewSupplier.Text = "Nuevo Proveedor";
             this.BNewSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -230,7 +230,7 @@
             this.BSearchPurcharse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BSearchPurcharse.Location = new System.Drawing.Point(15, 330);
             this.BSearchPurcharse.Name = "BSearchPurcharse";
-            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 20);
+            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 22);
             this.BSearchPurcharse.TabIndex = 9;
             this.BSearchPurcharse.Text = "Buscar Orden de Compra...";
             // 
