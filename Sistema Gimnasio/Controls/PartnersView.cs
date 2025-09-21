@@ -19,21 +19,58 @@ namespace Sistema_Gimnasio
         public Roles CurrentRole { get; set; } = Roles.None;
 
         private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
+        private List<PartnerViewModel> partnersList = new List<PartnerViewModel>();
+
         public PartnersView()
         {
             InitializeComponent();
-            this.Load += PartnersView_Load;            
-            LoadFakeData();   // solo para prueba
             BoardMember.CellClick += BoardMember_CellClick;
+            SetupActionIcons();
+            LoadFakeData();
+
+            // Buscador y filtro
+            TSearchPartner.TextChanged += (s, e) => ApplyFilters();
+            TSearchPartner.MouseClick += (s, e) => {
+                if (TSearchPartner.Text == "Buscar socio...") {
+                    TSearchPartner.Text = "";
+                    TSearchPartner.ForeColor = Color.Black;
+                }
+            };
+            TSearchPartner.LostFocus += (s, e) => {
+                if (string.IsNullOrWhiteSpace(TSearchPartner.Text)) {
+                    TSearchPartner.Text = "Buscar socio...";
+                    TSearchPartner.ForeColor = Color.Gray;
+                }
+            };
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
+            CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters();
         }
 
-       
+        private void SetupActionIcons()
+        {
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
+
+            colEdit.Image = bmpEdit;
+            colView.Image = bmpView;
+            colDelete.Image = bmpDelete;
+
+            BoardMember.CellFormatting += (s, ev) =>
+            {
+                if (ev.RowIndex < 0) return;
+                string col = BoardMember.Columns[ev.ColumnIndex].Name;
+                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
+                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
+                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+            };
+        }
 
         private void BNewMember_Click(object sender, EventArgs e)
         {
             //creo una instancia del formulario
             using (var fNewMember = new AddMemberForm())
-           {
+            {
                 //muestro el formulario como un cuadro de dialogo
                 if (fNewMember.ShowDialog() == DialogResult.OK)
                 {
@@ -41,14 +78,12 @@ namespace Sistema_Gimnasio
                 }
             }
         }
+        
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-
-            var id = BoardMember.Rows[e.RowIndex].Cells["dni"].Value; 
             var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
             var col = BoardMember.Columns[e.ColumnIndex].Name;
-
             if (col == "colEdit")
             {
                 MessageBox.Show($"Editar socio {name}");
@@ -62,58 +97,43 @@ namespace Sistema_Gimnasio
                 MessageBox.Show($"Eliminar socio {name}");
             }
         }
-        
-
-        // Datos de prueba hardcodeados
         private void LoadFakeData()
         {
-            BoardMember.Rows.Add("Juan Pérez", "12345678", "3794-111111", "Mensual", "Activo");
-            BoardMember.Rows.Add("María López", "87654321", "3794-222222", "Semanal", "Inactivo");
-            BoardMember.Rows.Add("Carlos Gómez", "45678912", "3794-333333", "Diaria", "Activo");
-        }
-
-        private void PartnersView_Load(object sender, EventArgs e)
-        {
-            BoardMember.AutoGenerateColumns = false;
-
-            colEdit.DataPropertyName = null;
-            colView.DataPropertyName = null;
-            colDelete.DataPropertyName = null;
-
-            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
-            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
-            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
-
-            colEdit.Image = bmpEdit;    // se usa cuando el valor es null
-            colView.Image = bmpView;
-            colDelete.Image = bmpDelete;
-
-            // Forzar que cada celda use la imagen
-            BoardMember.CellFormatting += (s, ev) =>
+            partnersList = new List<PartnerViewModel>
             {
-                if (ev.RowIndex < 0) return;
-                string col = BoardMember.Columns[ev.ColumnIndex].Name;
-
-                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
-                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
-                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+                new PartnerViewModel { Name = "Juan Pérez", Dni = "12345678", Phone = "3794-111111", Plan = "Mensual", Estado = "Activo" },
+                new PartnerViewModel { Name = "María López", Dni = "87654321", Phone = "3794-222222", Plan = "Semanal", Estado = "Inactivo" },
+                new PartnerViewModel { Name = "Carlos Gómez", Dni = "45678912", Phone = "3794-333333", Plan = "Diaria", Estado = "Activo" }
             };
-
-            BuildAcl();
-            ApplyAcl();
+            ApplyFilters();
         }
 
-        private void BuildAcl()
+        private void ApplyFilters()
         {
-            Acl[colEdit] = Roles.Admin | Roles.Recep;                          
-            Acl[colDelete] = Roles.Admin | Roles.Recep;                          
-            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach; 
+            string query = TSearchPartner.Text?.Trim().ToLowerInvariant();
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "Buscar socio...";
+            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos";
+            string membresia = CBMembership.SelectedItem?.ToString() ?? "Todos";
+
+            var filtered = partnersList.Where(p =>
+                (!hasQuery || (p.Name ?? "").ToLower().Contains(query)) &&
+                (estado == "Todos" || (p.Estado ?? "").Equals(estado, StringComparison.OrdinalIgnoreCase)) &&
+                (membresia == "Todos" || (p.Plan ?? "").Equals(membresia, StringComparison.OrdinalIgnoreCase))
+            ).ToList();
+            BoardMember.Rows.Clear();
+            foreach (var p in filtered)
+            {
+                BoardMember.Rows.Add(p.Name, p.Dni, p.Phone, p.Plan, p.Estado);
+            }
         }
 
-        private void ApplyAcl()
+        private class PartnerViewModel
         {
-            foreach (var keyValue in Acl)
-                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0;
+            public string Name { get; set; }
+            public string Dni { get; set; }
+            public string Phone { get; set; }
+            public string Plan { get; set; }
+            public string Estado { get; set; }
         }
 
 

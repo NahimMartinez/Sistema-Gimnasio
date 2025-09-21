@@ -45,7 +45,7 @@ namespace Sistema_Gimnasio
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.CBMembership = new System.Windows.Forms.ComboBox();
-            this.TSearch = new System.Windows.Forms.TextBox();
+            this.TSearchPartner = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.LMembership = new System.Windows.Forms.Label();
             this.BNewMember = new FontAwesome.Sharp.IconButton();
@@ -214,17 +214,17 @@ namespace Sistema_Gimnasio
             this.CBMembership.Size = new System.Drawing.Size(130, 28);
             this.CBMembership.TabIndex = 3;
             // 
-            // TSearch
+            // TSearchPartner
             // 
-            this.TSearch.BackColor = System.Drawing.Color.White;
-            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;
-            this.TSearch.Location = new System.Drawing.Point(18, 66);
-            this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
-            this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar socio...";
+            this.TSearchPartner.BackColor = System.Drawing.Color.White;
+            this.TSearchPartner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchPartner.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchPartner.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchPartner.Location = new System.Drawing.Point(18, 66);
+            this.TSearchPartner.Name = "TSearchPartner";
+            this.TSearchPartner.Size = new System.Drawing.Size(144, 27);
+            this.TSearchPartner.TabIndex = 5;
+            this.TSearchPartner.Text = "Buscar socio...";
             // 
             // LStatus
             // 
@@ -274,7 +274,7 @@ namespace Sistema_Gimnasio
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.LTiltePartne);
             this.panel1.Controls.Add(this.BNewMember);
-            this.panel1.Controls.Add(this.TSearch);
+            this.panel1.Controls.Add(this.TSearchPartner);
             this.panel1.Controls.Add(this.LMembership);
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
@@ -310,7 +310,7 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.DataGridView BoardMember;
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.ComboBox CBMembership;
-        private System.Windows.Forms.TextBox TSearch;
+        private System.Windows.Forms.TextBox TSearchPartner;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Label LMembership;
         private FontAwesome.Sharp.IconButton BNewMember;
