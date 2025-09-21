@@ -69,9 +69,9 @@ namespace Sistema_Gimnasio.Forms
             this.LId.AutoSize = true;
             this.LId.Location = new System.Drawing.Point(12, 39);
             this.LId.Name = "LId";
-            this.LId.Size = new System.Drawing.Size(48, 13);
+            this.LId.Size = new System.Drawing.Size(71, 13);
             this.LId.TabIndex = 1;
-            this.LId.Text = "id_orden";
+            this.LId.Text = "Nro de Orden";
             // 
             // TIdOrden
             // 
@@ -86,9 +86,9 @@ namespace Sistema_Gimnasio.Forms
             this.LProveedor.AutoSize = true;
             this.LProveedor.Location = new System.Drawing.Point(130, 39);
             this.LProveedor.Name = "LProveedor";
-            this.LProveedor.Size = new System.Drawing.Size(69, 13);
+            this.LProveedor.Size = new System.Drawing.Size(56, 13);
             this.LProveedor.TabIndex = 3;
-            this.LProveedor.Text = "proveedor_id";
+            this.LProveedor.Text = "Proveedor";
             // 
             // CBProveedor
             // 
@@ -104,9 +104,9 @@ namespace Sistema_Gimnasio.Forms
             this.LFecha.AutoSize = true;
             this.LFecha.Location = new System.Drawing.Point(367, 39);
             this.LFecha.Name = "LFecha";
-            this.LFecha.Size = new System.Drawing.Size(34, 13);
+            this.LFecha.Size = new System.Drawing.Size(37, 13);
             this.LFecha.TabIndex = 7;
-            this.LFecha.Text = "fecha";
+            this.LFecha.Text = "Fecha";
             // 
             // DFecha
             // 
@@ -121,9 +121,9 @@ namespace Sistema_Gimnasio.Forms
             this.LEstado.AutoSize = true;
             this.LEstado.Location = new System.Drawing.Point(488, 39);
             this.LEstado.Name = "LEstado";
-            this.LEstado.Size = new System.Drawing.Size(39, 13);
+            this.LEstado.Size = new System.Drawing.Size(40, 13);
             this.LEstado.TabIndex = 9;
-            this.LEstado.Text = "estado";
+            this.LEstado.Text = "Estado";
             // 
             // CEstado
             // 
@@ -172,25 +172,25 @@ namespace Sistema_Gimnasio.Forms
             // item_tipo
             // 
             this.item_tipo.DataPropertyName = "item_tipo";
-            this.item_tipo.HeaderText = "item_tipo";
+            this.item_tipo.HeaderText = "Tipo de Item";
             this.item_tipo.MinimumWidth = 160;
             this.item_tipo.Name = "item_tipo";
             // 
             // cantidad
             // 
             this.cantidad.DataPropertyName = "cantidad";
-            this.cantidad.HeaderText = "cantidad";
+            this.cantidad.HeaderText = "Cantidad";
             this.cantidad.Name = "cantidad";
             // 
             // precio_compra
             // 
             this.precio_compra.DataPropertyName = "precio_compra";
-            this.precio_compra.HeaderText = "precio_compra";
+            this.precio_compra.HeaderText = "Precio de Compra";
             this.precio_compra.Name = "precio_compra";
             // 
             // subtotal
             // 
-            this.subtotal.HeaderText = "subtotal";
+            this.subtotal.HeaderText = "Subtotal";
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             // 

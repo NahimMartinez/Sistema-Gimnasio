@@ -441,7 +441,6 @@ namespace Sistema_Gimnasio
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "GymManager Pro";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.Sidebar.ResumeLayout(false);
             this.MenuFlow.ResumeLayout(false);
             this.PSubMenuSupplier.ResumeLayout(false);

@@ -285,7 +285,10 @@ namespace Sistema_Gimnasio
             CBRol.DataSource = rolService.GetAll();
             CBRol.DisplayMember = "Nombre";
             CBRol.ValueMember = "IdRol";
-            CBRol.SelectedIndex = -1; // Ningún rol seleccionado por defecto
+            if (editingUser != null)
+                CBRol.SelectedValue = editingUser.RolId;
+            else
+                CBRol.SelectedIndex = -1;
         }
     }
 }
