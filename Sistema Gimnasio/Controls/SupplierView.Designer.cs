@@ -45,6 +45,8 @@
             this.TSearchSupplier = new System.Windows.Forms.TextBox();
             this.BNewSupplier = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.LStatus = new System.Windows.Forms.Label();
             this.BSearchPurcharse = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).BeginInit();
             this.panel1.SuspendLayout();
@@ -190,7 +192,7 @@
             this.TSearchSupplier.Name = "TSearchSupplier";
             this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
             this.TSearchSupplier.TabIndex = 2;
-            this.TSearchSupplier.Text = "Buscar Proveedor...";
+            this.TSearchSupplier.Text = "Buscar proveedor...";
             // 
             // BNewSupplier
             // 
@@ -216,6 +218,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
             this.panel1.Controls.Add(this.LTilteSupplier);
             this.panel1.Controls.Add(this.BNewSupplier);
             this.panel1.Controls.Add(this.TSearchSupplier);
@@ -224,6 +228,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 2;
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.CBStatus.Location = new System.Drawing.Point(166, 65);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.TabIndex = 7;
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(163, 47);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.TabIndex = 8;
+            this.LStatus.Text = "Estado";
             // 
             // BSearchPurcharse
             // 
@@ -265,5 +294,7 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.ComboBox CBStatus;
+        private System.Windows.Forms.Label LStatus;
     }
 }

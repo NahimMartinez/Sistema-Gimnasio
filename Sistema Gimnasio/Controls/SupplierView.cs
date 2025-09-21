@@ -17,6 +17,9 @@ namespace Sistema_Gimnasio
         public Roles CurrentRole { get; set; } = Roles.None;
 
         private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
+
+        private List<SupplierViewModel> suppliersList = new List<SupplierViewModel>();
+
         public SupplierView()
         {
             InitializeComponent();
@@ -24,12 +27,35 @@ namespace Sistema_Gimnasio
             BoardSupplier.CellClick += BoardSupplier_CellClick;
             SetupActionIcons();
             this.Load += SupplierView_Load;
+
+            // Filtros
+            TSearchSupplier.TextChanged += (s, e) => ApplyFilters();
+            TSearchSupplier.GotFocus += (s, e) => {
+                if (TSearchSupplier.Text == "Buscar proveedor...") {
+                    TSearchSupplier.Text = "";
+                    TSearchSupplier.ForeColor = Color.Black;
+                }
+            };
+            TSearchSupplier.LostFocus += (s, e) => {
+                if (string.IsNullOrWhiteSpace(TSearchSupplier.Text)) {
+                    TSearchSupplier.Text = "Buscar proveedor...";
+                    TSearchSupplier.ForeColor = Color.Gray;
+                }
+            };
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
         }
 
         private void SupplierView_Load(object sender, EventArgs e)
         {
             BuildAcl();
             ApplyAcl();
+
+            // Inicializamos placeholder al cargar
+            if (string.IsNullOrWhiteSpace(TSearchSupplier.Text))
+            {
+                TSearchSupplier.Text = "Buscar proveedor...";
+                TSearchSupplier.ForeColor = Color.Gray;
+            }
         }
 
         private void SetupActionIcons()
@@ -50,8 +76,6 @@ namespace Sistema_Gimnasio
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
                 if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
             };
-
-            
         }
 
         private void BoardSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,10 +99,13 @@ namespace Sistema_Gimnasio
 
         private void LoadFakeData()
         {
-
-            BoardSupplier.Rows.Add("Proveedor A", "20-12345678-9", "Servicios", "proveedorA@mail.com", "3794-111111", "Activo");
-            BoardSupplier.Rows.Add("Proveedor B", "23-87654321-0", "Insumos", "proveedorB@mail.com", "3794-222222", "Inactivo");
-            BoardSupplier.Rows.Add("Proveedor C", "27-11223344-5", "Equipos", "proveedorC@mail.com", "3794-333333", "Activo");
+            suppliersList = new List<SupplierViewModel>
+            {
+                new SupplierViewModel { Name = "Proveedor A", Cuit = "20-12345678-9", TypeSupplier = "Servicios", Email = "proveedorA@mail.com", Phone = "3794-111111", Status = "Activo" },
+                new SupplierViewModel { Name = "Proveedor B", Cuit = "23-87654321-0", TypeSupplier = "Insumos", Email = "proveedorB@mail.com", Phone = "3794-222222", Status = "Inactivo" },
+                new SupplierViewModel { Name = "Proveedor C", Cuit = "27-11223344-5", TypeSupplier = "Equipos", Email = "proveedorC@mail.com", Phone = "3794-333333", Status = "Activo" }
+            };
+            ApplyFilters();
         }
 
         private void BuildAcl()
@@ -96,16 +123,43 @@ namespace Sistema_Gimnasio
 
         private void BNewSupplier_Click_1(object sender, EventArgs e)
         {
-            //creo una instancia del formulario
             using (var fNewSupllier = new AddSupplierForm())
             {
-                //muestro el formulario como un cuadro de dialogo
                 if (fNewSupllier.ShowDialog() == DialogResult.OK)
                 {
-                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
+                    // recargar datos
                 }
             }
         }
-    }
 
+        private void ApplyFilters()
+        {
+            string query = TSearchSupplier.Text?.Trim().ToLowerInvariant();
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar proveedor...";
+            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos";
+
+            var filtered = suppliersList.Where(s =>
+                (!hasQuery || (s.Name ?? "").ToLower().Contains(query)) &&
+                (estado == "Todos" ||
+                 (estado == "Activo" && s.Status.Equals("Activo", StringComparison.OrdinalIgnoreCase)) ||
+                 (estado == "Inactivo" && s.Status.Equals("Inactivo", StringComparison.OrdinalIgnoreCase)))
+            ).ToList();
+
+            BoardSupplier.Rows.Clear();
+            foreach (var s in filtered)
+            {
+                BoardSupplier.Rows.Add(s.Name, s.Cuit, s.TypeSupplier, s.Email, s.Phone, s.Status);
+            }
+        }
+
+        private class SupplierViewModel     
+        {
+            public string Name { get; set; }
+            public string Cuit { get; set; }
+            public string TypeSupplier { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; }
+            public string Status { get; set; }
+        }
+    }
 }

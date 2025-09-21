@@ -43,11 +43,9 @@
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.TSearch = new System.Windows.Forms.TextBox();
+            this.TSearchClass = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CBDia = new System.Windows.Forms.ComboBox();
-            this.LDia = new System.Windows.Forms.Label();
             this.BNewClass = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
             this.panel1.SuspendLayout();
@@ -200,24 +198,23 @@
             this.CBStatus.Items.AddRange(new object[] {
             "Todos",
             "Activo",
-            "Inactivo",
-            "Completo"});
+            "Inactivo",});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
             this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
-            // TSearch
+            // TSearchClass
             // 
-            this.TSearch.BackColor = System.Drawing.Color.White;
-            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;
-            this.TSearch.Location = new System.Drawing.Point(18, 66);
-            this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
-            this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar clase...";
+            this.TSearchClass.BackColor = System.Drawing.Color.White;
+            this.TSearchClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchClass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchClass.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchClass.Location = new System.Drawing.Point(18, 66);
+            this.TSearchClass.Name = "TSearchClass";
+            this.TSearchClass.Size = new System.Drawing.Size(144, 27);
+            this.TSearchClass.TabIndex = 5;
+            this.TSearchClass.Text = "Buscar clase...";
             // 
             // LStatus
             // 
@@ -233,11 +230,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.CBDia);
-            this.panel1.Controls.Add(this.LDia);
             this.panel1.Controls.Add(this.LTituloClases);
             this.panel1.Controls.Add(this.BNewClass);
-            this.panel1.Controls.Add(this.TSearch);
+            this.panel1.Controls.Add(this.TSearchClass);
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -246,35 +241,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 9;
-            // 
-            // CBDia
-            // 
-            this.CBDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBDia.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBDia.FormattingEnabled = true;
-            this.CBDia.Items.AddRange(new object[] {
-            "Todos",
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado"});
-            this.CBDia.Location = new System.Drawing.Point(304, 66);
-            this.CBDia.Name = "CBDia";
-            this.CBDia.Size = new System.Drawing.Size(130, 28);
-            this.CBDia.TabIndex = 11;
-            // 
-            // LDia
-            // 
-            this.LDia.AutoSize = true;
-            this.LDia.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LDia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LDia.Location = new System.Drawing.Point(301, 48);
-            this.LDia.Name = "LDia";
-            this.LDia.Size = new System.Drawing.Size(32, 20);
-            this.LDia.TabIndex = 12;
-            this.LDia.Text = "Día";
             // 
             // BNewClass
             // 
@@ -320,12 +286,10 @@
         private System.Windows.Forms.Label LTituloClases;
         private System.Windows.Forms.DataGridView BoardClass;
         private System.Windows.Forms.ComboBox CBStatus;
-        private System.Windows.Forms.TextBox TSearch;
+        private System.Windows.Forms.TextBox TSearchClass;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton BNewClass;
-        private System.Windows.Forms.ComboBox CBDia;
-        private System.Windows.Forms.Label LDia;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn coach;
         private System.Windows.Forms.DataGridViewTextBoxColumn cupo;

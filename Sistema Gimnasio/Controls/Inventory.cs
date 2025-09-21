@@ -14,12 +14,31 @@ namespace Sistema_Gimnasio
 {
     public partial class Inventory : UserControl
     {
+        private List<InventoryViewModel> inventoryList = new List<InventoryViewModel>();
+
         public Inventory()
         {
             InitializeComponent();
             BoardInventory.CellClick += BoardMember_CellClick;
             SetupActionIcons();
             LoadFakeData();
+
+            // Buscador y filtro
+            TSearchInventory.TextChanged += (s, e) => ApplyFilters();
+            TSearchInventory.MouseClick += (s, e) => {
+                if (TSearchInventory.Text == "Buscar item...") {
+                    TSearchInventory.Text = "";
+                    TSearchInventory.ForeColor = Color.Black;
+                }
+            };
+            TSearchInventory.LostFocus += (s, e) => {
+                if (string.IsNullOrWhiteSpace(TSearchInventory.Text)) {
+                    TSearchInventory.Text = "Buscar item...";
+                    TSearchInventory.ForeColor = Color.Gray;
+                }
+            };
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
+            CBCategoria.SelectedIndexChanged += (s, e) => ApplyFilters();
         }
 
         private void SetupActionIcons()
@@ -76,12 +95,45 @@ namespace Sistema_Gimnasio
 
         private void LoadFakeData()
         {
-            //nombre, cantidad, fecha ingreso, categoria
-            BoardInventory.Rows.Add("Mancuernas", "20", "2023-10-01", "Pesas");
-            BoardInventory.Rows.Add("Colchonetas", "15", "2023-09-15", "Yoga");
-            BoardInventory.Rows.Add("Bicicletas Estáticas", "10", "2023-08-20", "Cardio");
-            BoardInventory.Rows.Add("Balones Medicinales", "25", "2023-07-30", "Rehabilitación");
-            BoardInventory.Rows.Add("Cuerdas para Saltar", "30", "2023-06-10", "Cardio");
+            inventoryList = new List<InventoryViewModel>
+            {
+                new InventoryViewModel { Name = "Mancuernas 10kg", Cantidad = "10", FechaIngreso = "2023-10-01", Categoria = "Mancuernas", Estado = "Activo" },
+                new InventoryViewModel { Name = "Mancuernas 5kg", Cantidad = "15", FechaIngreso = "2023-09-15", Categoria = "Mancuernas", Estado = "Inactivo" },
+                new InventoryViewModel { Name = "Barra Olímpica", Cantidad = "5", FechaIngreso = "2023-08-20", Categoria = "Barras", Estado = "Activo" },
+                new InventoryViewModel { Name = "Disco 20kg", Cantidad = "8", FechaIngreso = "2023-07-30", Categoria = "Discos", Estado = "Activo" },
+                new InventoryViewModel { Name = "Máquina de Remo", Cantidad = "2", FechaIngreso = "2023-06-10", Categoria = "Maquinas", Estado = "Inactivo" },
+                new InventoryViewModel { Name = "Cuerda de saltar", Cantidad = "20", FechaIngreso = "2023-05-10", Categoria = "Accesorios", Estado = "Activo" },
+                new InventoryViewModel { Name = "Máquina de Pecho", Cantidad = "1", FechaIngreso = "2023-04-01", Categoria = "Maquinas", Estado = "Activo" }
+            };
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            string query = TSearchInventory.Text?.Trim().ToLowerInvariant();
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar item...";
+            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos";
+            string categoria = CBCategoria.SelectedItem?.ToString() ?? "Todos";
+
+            var filtered = inventoryList.Where(i =>
+                (!hasQuery || (i.Name ?? "").ToLower().Contains(query)) &&
+                (estado == "Todos" || (i.Estado ?? "").Equals(estado, StringComparison.OrdinalIgnoreCase)) &&
+                (categoria == "Todos" || (i.Categoria ?? "").Equals(categoria, StringComparison.OrdinalIgnoreCase))
+            ).ToList();
+            BoardInventory.Rows.Clear();
+            foreach (var i in filtered)
+            {
+                BoardInventory.Rows.Add(i.Name, i.Cantidad, i.FechaIngreso, i.Categoria, i.Estado);
+            }
+        }
+
+        private class InventoryViewModel
+        {
+            public string Name { get; set; }
+            public string Cantidad { get; set; }
+            public string FechaIngreso { get; set; }
+            public string Categoria { get; set; }
+            public string Estado { get; set; }
         }
     }
 }

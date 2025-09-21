@@ -14,10 +14,32 @@ namespace Sistema_Gimnasio
 {
     public partial class PurchaseOrderView : UserControl
     {
+        private List<OrderViewModel> ordersList = new List<OrderViewModel>();
+
         public PurchaseOrderView()
         {
             InitializeComponent();
-            
+
+            // Mostrar el checkbox y dejarlo desmarcado
+            DTSearchDate.ShowCheckBox = true;
+            DTSearchDate.Checked = false;
+
+            // Filtros
+            TOrdPurcharse.TextChanged += (s, e) => ApplyFilters();
+            TOrdPurcharse.Click += (s, e) => {
+                if (TOrdPurcharse.Text == "Buscar orden de compra...") {
+                    TOrdPurcharse.Text = "";
+                    TOrdPurcharse.ForeColor = Color.Black;
+                }
+            };
+            TOrdPurcharse.LostFocus += (s, e) => {
+                if (string.IsNullOrWhiteSpace(TOrdPurcharse.Text)) {
+                    TOrdPurcharse.Text = "Buscar orden de compra...";
+                    TOrdPurcharse.ForeColor = Color.Gray;
+                }
+            };
+            DTSearchDate.ValueChanged += (s, e) => ApplyFilters();
+
             LoadFakeData();
             BoardOrderP.CellClick += BoardOrderP_CellClick;
             SetupActionIcons();
@@ -64,23 +86,54 @@ namespace Sistema_Gimnasio
 
         private void LoadFakeData()
         {
-            BoardOrderP.Rows.Add("ORD-001", "Proveedor A", DateTime.Now.AddDays(-3).ToShortDateString(), "Pendiente", null);
-            BoardOrderP.Rows.Add("ORD-002", "Proveedor B", DateTime.Now.AddDays(-1).ToShortDateString(), "Recibida", null);
-            BoardOrderP.Rows.Add("ORD-003", "Proveedor C", DateTime.Now.ToShortDateString(), "Cancelada", null);
+            ordersList = new List<OrderViewModel>
+            {
+                new OrderViewModel { IdOrden = "ORD-001", Supplier = "Proveedor A", Date = DateTime.Now.AddDays(-3), Status = "Pendiente" },
+                new OrderViewModel { IdOrden = "ORD-002", Supplier = "Proveedor B", Date = DateTime.Now.AddDays(-1), Status = "Recibida" },
+                new OrderViewModel { IdOrden = "ORD-003", Supplier = "Proveedor C", Date = DateTime.Now, Status = "Cancelada" }
+            };
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            string query = TOrdPurcharse.Text?.Trim().ToLowerInvariant();
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar orden de compra...";
+            bool useDate = DTSearchDate.Checked;
+            DateTime selectedDate = DTSearchDate.Value.Date;
+
+            var filtered = ordersList.Where(o =>
+                (!hasQuery ||
+                    (o.IdOrden ?? "").ToLower().Contains(query) ||
+                    (o.Supplier ?? "").ToLower().Contains(query) ||
+                    (o.Status ?? "").ToLower().Contains(query))
+                && (!useDate || o.Date.Date == selectedDate)
+            ).ToList();
+
+            BoardOrderP.Rows.Clear();
+            foreach (var o in filtered)
+            {
+                BoardOrderP.Rows.Add(o.IdOrden, o.Supplier, o.Date.ToShortDateString(), o.Status, null, null, null);
+            }
         }
 
         private void BNewOrderP_Click(object sender, EventArgs e)
         {
             using (var fNewOrder = new AddOrderPurchase())
             {
-                //muestro el formulario como un cuadro de dialogo
                 if (fNewOrder.ShowDialog() == DialogResult.OK)
                 {
                     //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
                 }
             }
         }
-    }
 
-    
+        private class OrderViewModel
+        {
+            public string IdOrden { get; set; }
+            public string Supplier { get; set; }
+            public DateTime Date { get; set; }
+            public string Status { get; set; }
+        }
+    }
 }

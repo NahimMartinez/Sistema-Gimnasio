@@ -14,36 +14,41 @@ namespace Sistema_Gimnasio.Controls
 {
     public partial class Clases : UserControl
     {
+        private List<ClassViewModel> classList = new List<ClassViewModel>();
+
         public Clases()
         {
             InitializeComponent();
             LoadFakeData();
             BoardClass.CellClick += BoardClass_CellClick;
             SetupActionIcons();
-        }
+            this.Load += Clases_Load;
 
-        private void BNewClass_Click(object sender, EventArgs e)
-        {
-            //creo una instancia del formulario
-            using (var fNewClass = new AddClass())
-            {
-                //muestro el formulario como un cuadro de dialogo
-                if (fNewClass.ShowDialog() == DialogResult.OK)
-                {
-
+            // Filtros
+            TSearchClass.TextChanged += (s, e) => ApplyFilters();
+            TSearchClass.GotFocus += (s, e) => {
+                if (TSearchClass.Text == "Buscar clase...") {
+                    TSearchClass.Text = "";
+                    TSearchClass.ForeColor = Color.Black;
                 }
-            }
+            };
+            TSearchClass.LostFocus += (s, e) => {
+                if (string.IsNullOrWhiteSpace(TSearchClass.Text)) {
+                    TSearchClass.Text = "Buscar clase...";
+                    TSearchClass.ForeColor = Color.Gray;
+                }
+            };
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
         }
 
-        private void LoadFakeData()
+        private void Clases_Load(object sender, EventArgs e)
         {
-
-            //nombre, coach, cupo, dia, horario, estado
-            BoardClass.Rows.Add("Crossfit", "Juan Perez", "20", "Lunes, Miercoles, Viernes", "6:00 - 7:00", "Activo");
-            BoardClass.Rows.Add("Yoga", "Maria Lopez", "15", "Martes, Jueves", "7:00 - 8:00", "Activo");
-            BoardClass.Rows.Add("Pilates", "Carlos Gomez", "10", "Lunes, Miercoles", "8:00 - 9:00", "Inactivo");
-            BoardClass.Rows.Add("Zumba", "Ana Martinez", "25", "Viernes", "18:00 - 19:00", "Activo");
-            BoardClass.Rows.Add("Spinning", "Luis Rodriguez", "30", "Martes, Jueves", "19:00 - 20:00", "Activo");
+            // Inicializamos placeholder al cargar
+            if (string.IsNullOrWhiteSpace(TSearchClass.Text))
+            {
+                TSearchClass.Text = "Buscar clase...";
+                TSearchClass.ForeColor = Color.Gray;
+            }
         }
 
         private void SetupActionIcons()
@@ -83,6 +88,60 @@ namespace Sistema_Gimnasio.Controls
             {
                 MessageBox.Show($"Eliminar clase {name}");
             }
+        }
+
+        private void LoadFakeData()
+        {
+            classList = new List<ClassViewModel>
+            {
+                new ClassViewModel { Name = "Crossfit", Coach = "Juan Perez", Cupo = "20", Dia = "Lunes, Miercoles, Viernes", Horario = "6:00 - 7:00", Estado = "Activo" },
+                new ClassViewModel { Name = "Yoga", Coach = "Maria Lopez", Cupo = "15", Dia = "Martes, Jueves", Horario = "7:00 - 8:00", Estado = "Activo" },
+                new ClassViewModel { Name = "Pilates", Coach = "Carlos Gomez", Cupo = "10", Dia = "Lunes, Miercoles", Horario = "8:00 - 9:00", Estado = "Inactivo" },
+                new ClassViewModel { Name = "Zumba", Coach = "Ana Martinez", Cupo = "25", Dia = "Viernes", Horario = "18:00 - 19:00", Estado = "Activo" },
+                new ClassViewModel { Name = "Spinning", Coach = "Luis Rodriguez", Cupo = "30", Dia = "Martes, Jueves", Horario = "19:00 - 20:00", Estado = "Activo" }
+            };
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            string query = TSearchClass.Text?.Trim().ToLowerInvariant();
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar clase...";
+            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos";
+
+            var filtered = classList.Where(c =>
+                (!hasQuery || (c.Name ?? "").ToLower().Contains(query)) &&
+                (estado == "Todos" ||
+                 (estado == "Activo" && c.Estado.Equals("Activo", StringComparison.OrdinalIgnoreCase)) ||
+                 (estado == "Inactivo" && c.Estado.Equals("Inactivo", StringComparison.OrdinalIgnoreCase)))
+            ).ToList();
+
+            BoardClass.Rows.Clear();
+            foreach (var c in filtered)
+            {
+                BoardClass.Rows.Add(c.Name, c.Coach, c.Cupo, c.Dia, c.Horario, c.Estado);
+            }
+        }
+
+        private void BNewClass_Click(object sender, EventArgs e)
+        {
+            using (var fNewClass = new AddClass())
+            {
+                if (fNewClass.ShowDialog() == DialogResult.OK)
+                {
+                    // recargar datos si es necesario
+                }
+            }
+        }
+
+        private class ClassViewModel
+        {
+            public string Name { get; set; }
+            public string Coach { get; set; }
+            public string Cupo { get; set; }
+            public string Dia { get; set; }
+            public string Horario { get; set; }
+            public string Estado { get; set; }
         }
     }
 }

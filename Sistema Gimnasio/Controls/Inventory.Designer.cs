@@ -42,7 +42,7 @@
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.TSearch = new System.Windows.Forms.TextBox();
+            this.TSearchInventory = new System.Windows.Forms.TextBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBCategoria = new System.Windows.Forms.ComboBox();
@@ -197,17 +197,17 @@
             this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
-            // TSearch
+            // TSearchInventory
             // 
-            this.TSearch.BackColor = System.Drawing.Color.White;
-            this.TSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearch.ForeColor = System.Drawing.Color.Gray;
-            this.TSearch.Location = new System.Drawing.Point(18, 66);
-            this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
-            this.TSearch.TabIndex = 5;
-            this.TSearch.Text = "Buscar item...";
+            this.TSearchInventory.BackColor = System.Drawing.Color.White;
+            this.TSearchInventory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchInventory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchInventory.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchInventory.Location = new System.Drawing.Point(18, 66);
+            this.TSearchInventory.Name = "TSearchInventory";
+            this.TSearchInventory.Size = new System.Drawing.Size(144, 27);
+            this.TSearchInventory.TabIndex = 5;
+            this.TSearchInventory.Text = "Buscar item...";
             // 
             // LStatus
             // 
@@ -227,7 +227,7 @@
             this.panel1.Controls.Add(this.LCategoria);
             this.panel1.Controls.Add(this.LTituloInventaryManagment);
             this.panel1.Controls.Add(this.BNewItem);
-            this.panel1.Controls.Add(this.TSearch);
+            this.panel1.Controls.Add(this.TSearchInventory);
             this.panel1.Controls.Add(this.CBStatus);
             this.panel1.Controls.Add(this.LStatus);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -309,7 +309,7 @@
         private System.Windows.Forms.Label LTituloInventaryManagment;
         private System.Windows.Forms.DataGridView BoardInventory;
         private System.Windows.Forms.ComboBox CBStatus;
-        private System.Windows.Forms.TextBox TSearch;
+        private System.Windows.Forms.TextBox TSearchInventory;
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton BNewItem;

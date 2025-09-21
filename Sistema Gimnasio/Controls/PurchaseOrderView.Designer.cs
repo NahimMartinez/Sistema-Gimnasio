@@ -43,6 +43,7 @@
             this.TOrdPurcharse = new System.Windows.Forms.TextBox();
             this.BNewOrderP = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DTSearchDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.BoardOrderP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +193,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.DTSearchDate);
             this.panel1.Controls.Add(this.LOrderPurcharse);
             this.panel1.Controls.Add(this.BNewOrderP);
             this.panel1.Controls.Add(this.TOrdPurcharse);
@@ -200,6 +202,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 2;
+            // 
+            // DTSearchDate
+            // 
+            this.DTSearchDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTSearchDate.Location = new System.Drawing.Point(202, 69);
+            this.DTSearchDate.Name = "DTSearchDate";
+            this.DTSearchDate.Size = new System.Drawing.Size(110, 22);
+            this.DTSearchDate.TabIndex = 3;
             // 
             // PurchaseOrderView
             // 
@@ -231,5 +241,6 @@
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
         private FontAwesome.Sharp.IconButton BNewOrderP;
+        private System.Windows.Forms.DateTimePicker DTSearchDate;
     }
 }
