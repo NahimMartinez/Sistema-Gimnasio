@@ -46,14 +46,14 @@
             this.chartRadarClases.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRadarClases.Legends.Add(legend1);
-            this.chartRadarClases.Location = new System.Drawing.Point(14, 72);
+            this.chartRadarClases.Location = new System.Drawing.Point(124, 176);
             this.chartRadarClases.Name = "chartRadarClases";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Radar;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartRadarClases.Series.Add(series1);
-            this.chartRadarClases.Size = new System.Drawing.Size(675, 726);
+            this.chartRadarClases.Size = new System.Drawing.Size(450, 573);
             this.chartRadarClases.TabIndex = 0;
             this.chartRadarClases.Text = "chart1";
             // 
@@ -63,14 +63,14 @@
             this.chartRadarInventario.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartRadarInventario.Legends.Add(legend2);
-            this.chartRadarInventario.Location = new System.Drawing.Point(665, 38);
+            this.chartRadarInventario.Location = new System.Drawing.Point(697, 139);
             this.chartRadarInventario.Name = "chartRadarInventario";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Radar;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartRadarInventario.Series.Add(series2);
-            this.chartRadarInventario.Size = new System.Drawing.Size(783, 820);
+            this.chartRadarInventario.Size = new System.Drawing.Size(475, 598);
             this.chartRadarInventario.TabIndex = 1;
             this.chartRadarInventario.Text = "chart1";
             // 
