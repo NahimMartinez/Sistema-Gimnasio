@@ -61,7 +61,7 @@ namespace Sistema_Gimnasio
             this.LTiltePartne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTiltePartne.Location = new System.Drawing.Point(14, 12);
             this.LTiltePartne.Name = "LTiltePartne";
-            this.LTiltePartne.Size = new System.Drawing.Size(162, 25);
+            this.LTiltePartne.Size = new System.Drawing.Size(206, 32);
             this.LTiltePartne.TabIndex = 0;
             this.LTiltePartne.Text = "Gestión de Socios";
             // 
@@ -112,6 +112,7 @@ namespace Sistema_Gimnasio
             this.BoardMember.Name = "BoardMember";
             this.BoardMember.ReadOnly = true;
             this.BoardMember.RowHeadersVisible = false;
+            this.BoardMember.RowHeadersWidth = 51;
             this.BoardMember.RowTemplate.Height = 36;
             this.BoardMember.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardMember.Size = new System.Drawing.Size(762, 450);
@@ -121,6 +122,7 @@ namespace Sistema_Gimnasio
             // 
             this.name.DataPropertyName = "name";
             this.name.HeaderText = "Nombre";
+            this.name.MinimumWidth = 6;
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
@@ -128,6 +130,7 @@ namespace Sistema_Gimnasio
             // 
             this.dni.DataPropertyName = "dni";
             this.dni.HeaderText = "DNI";
+            this.dni.MinimumWidth = 6;
             this.dni.Name = "dni";
             this.dni.ReadOnly = true;
             // 
@@ -135,6 +138,7 @@ namespace Sistema_Gimnasio
             // 
             this.contact.DataPropertyName = "contact";
             this.contact.HeaderText = "Contacto";
+            this.contact.MinimumWidth = 6;
             this.contact.Name = "contact";
             this.contact.ReadOnly = true;
             // 
@@ -142,6 +146,7 @@ namespace Sistema_Gimnasio
             // 
             this.membership.DataPropertyName = "membership";
             this.membership.HeaderText = "Membresía";
+            this.membership.MinimumWidth = 6;
             this.membership.Name = "membership";
             this.membership.ReadOnly = true;
             // 
@@ -149,6 +154,7 @@ namespace Sistema_Gimnasio
             // 
             this.status.DataPropertyName = "status";
             this.status.HeaderText = "Estado";
+            this.status.MinimumWidth = 6;
             this.status.Name = "status";
             this.status.ReadOnly = true;
             // 
@@ -156,6 +162,7 @@ namespace Sistema_Gimnasio
             // 
             this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colEdit.HeaderText = "";
+            this.colEdit.MinimumWidth = 6;
             this.colEdit.Name = "colEdit";
             this.colEdit.ReadOnly = true;
             this.colEdit.Width = 50;
@@ -164,6 +171,7 @@ namespace Sistema_Gimnasio
             // 
             this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colView.HeaderText = "";
+            this.colView.MinimumWidth = 6;
             this.colView.Name = "colView";
             this.colView.ReadOnly = true;
             this.colView.Width = 50;
@@ -172,6 +180,7 @@ namespace Sistema_Gimnasio
             // 
             this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.colDelete.HeaderText = "";
+            this.colDelete.MinimumWidth = 6;
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
@@ -187,7 +196,7 @@ namespace Sistema_Gimnasio
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // CBMembership
@@ -202,7 +211,7 @@ namespace Sistema_Gimnasio
             "Día"});
             this.CBMembership.Location = new System.Drawing.Point(304, 66);
             this.CBMembership.Name = "CBMembership";
-            this.CBMembership.Size = new System.Drawing.Size(130, 23);
+            this.CBMembership.Size = new System.Drawing.Size(130, 28);
             this.CBMembership.TabIndex = 3;
             // 
             // TSearch
@@ -213,7 +222,7 @@ namespace Sistema_Gimnasio
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.Size = new System.Drawing.Size(144, 27);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar socio...";
             // 
@@ -224,7 +233,7 @@ namespace Sistema_Gimnasio
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -235,7 +244,7 @@ namespace Sistema_Gimnasio
             this.LMembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LMembership.Location = new System.Drawing.Point(301, 48);
             this.LMembership.Name = "LMembership";
-            this.LMembership.Size = new System.Drawing.Size(66, 15);
+            this.LMembership.Size = new System.Drawing.Size(83, 20);
             this.LMembership.TabIndex = 7;
             this.LMembership.Text = "Membresía";
             // 
@@ -251,9 +260,9 @@ namespace Sistema_Gimnasio
             this.BNewMember.IconColor = System.Drawing.Color.White;
             this.BNewMember.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BNewMember.IconSize = 20;
-            this.BNewMember.Location = new System.Drawing.Point(634, 64);
+            this.BNewMember.Location = new System.Drawing.Point(613, 64);
             this.BNewMember.Name = "BNewMember";
-            this.BNewMember.Size = new System.Drawing.Size(116, 26);
+            this.BNewMember.Size = new System.Drawing.Size(137, 26);
             this.BNewMember.TabIndex = 8;
             this.BNewMember.Text = "Nuevo socio";
             this.BNewMember.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -279,7 +288,7 @@ namespace Sistema_Gimnasio
             // 
             // PartnersView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardMember);

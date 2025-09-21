@@ -59,7 +59,7 @@
             this.LTituloInventaryManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloInventaryManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloInventaryManagment.Name = "LTituloInventaryManagment";
-            this.LTituloInventaryManagment.Size = new System.Drawing.Size(196, 25);
+            this.LTituloInventaryManagment.Size = new System.Drawing.Size(249, 32);
             this.LTituloInventaryManagment.TabIndex = 0;
             this.LTituloInventaryManagment.Text = "Gestión de Inventario";
             // 
@@ -194,7 +194,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // TSearch
@@ -205,7 +205,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.Size = new System.Drawing.Size(144, 27);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar item...";
             // 
@@ -216,7 +216,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -251,7 +251,7 @@
             "Accesorios"});
             this.CBCategoria.Location = new System.Drawing.Point(304, 66);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(130, 23);
+            this.CBCategoria.Size = new System.Drawing.Size(130, 28);
             this.CBCategoria.TabIndex = 11;
             // 
             // LCategoria
@@ -261,7 +261,7 @@
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(301, 48);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(58, 15);
+            this.LCategoria.Size = new System.Drawing.Size(74, 20);
             this.LCategoria.TabIndex = 12;
             this.LCategoria.Text = "Categoría";
             // 
@@ -273,23 +273,22 @@
             this.BNewItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewItem.ForeColor = System.Drawing.Color.White;
-            this.BNewItem.Location = new System.Drawing.Point(650, 64);
-            this.BNewItem.Name = "BNewItem";
-            this.BNewItem.Size = new System.Drawing.Size(100, 26);
-            this.BNewItem.TabIndex = 9;
-            this.BNewItem.Text = "Nuevo item";
-            this.BNewItem.UseVisualStyleBackColor = false;
-            this.BNewItem.ForeColor = System.Drawing.Color.White;
             this.BNewItem.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.BNewItem.IconColor = System.Drawing.Color.White;
             this.BNewItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BNewItem.IconSize = 20;
+            this.BNewItem.Location = new System.Drawing.Point(623, 64);
+            this.BNewItem.Name = "BNewItem";
+            this.BNewItem.Size = new System.Drawing.Size(127, 26);
+            this.BNewItem.TabIndex = 9;
+            this.BNewItem.Text = "Nuevo item";
             this.BNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewItem.UseVisualStyleBackColor = false;
             this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
             // 
             // Inventory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BoardInventory);
