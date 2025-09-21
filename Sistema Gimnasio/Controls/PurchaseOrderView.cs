@@ -24,9 +24,9 @@ namespace Sistema_Gimnasio
 
         private void SetupActionIcons()
         {
-            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
-            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
-            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
 
             colEdit.Image = bmpEdit;
             colView.Image = bmpView;

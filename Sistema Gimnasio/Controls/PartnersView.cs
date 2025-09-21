@@ -80,9 +80,9 @@ namespace Sistema_Gimnasio
             colView.DataPropertyName = null;
             colDelete.DataPropertyName = null;
 
-            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 16);
-            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 16);
-            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 16);
+            Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
+            Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
+            Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
 
             colEdit.Image = bmpEdit;    // se usa cuando el valor es null
             colView.Image = bmpView;
