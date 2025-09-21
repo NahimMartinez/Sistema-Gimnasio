@@ -52,6 +52,7 @@ namespace Sistema_Gimnasio
             Bitmap bmpEdit = IconChar.PenToSquare.ToBitmap(Color.Black, 30);
             Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30);
             Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30);
+            Bitmap bmpEnable = IconChar.UserCheck.ToBitmap(Color.Black, 30); // Icono de alta
 
             // Asigna los iconos a las columnas correspondientes.
             colEdit.Image = bmpEdit;
@@ -65,7 +66,13 @@ namespace Sistema_Gimnasio
                 string col = BoardInventory.Columns[ev.ColumnIndex].Name;
                 if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
-                if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+                if (col == "colDelete")
+                {
+                    var status = BoardInventory.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
+                    bool activo = status?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+
+                    ev.Value = activo ? bmpDelete : bmpEnable; 
+                    ev.FormattingApplied = true; }
 
                 if (col == "status")
                 {
