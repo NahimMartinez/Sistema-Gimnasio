@@ -208,7 +208,7 @@ namespace Sistema_Gimnasio
             "Todos",
             "Mensual",
             "Semanal",
-            "Día"});
+            "Diaria"});
             this.CBMembership.Location = new System.Drawing.Point(304, 66);
             this.CBMembership.Name = "CBMembership";
             this.CBMembership.Size = new System.Drawing.Size(130, 28);

@@ -24,6 +24,9 @@ namespace Sistema_Gimnasio
         public PartnersView()
         {
             InitializeComponent();
+
+           
+
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons();
             LoadFakeData();
@@ -110,7 +113,7 @@ namespace Sistema_Gimnasio
 
         private void ApplyFilters()
         {
-            string query = TSearchPartner.Text?.Trim().ToLowerInvariant();
+            string query = TSearchPartner.Text?.Trim();
             bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "Buscar socio...";
             string estado = CBStatus.SelectedItem?.ToString() ?? "Todos";
             string membresia = CBMembership.SelectedItem?.ToString() ?? "Todos";
