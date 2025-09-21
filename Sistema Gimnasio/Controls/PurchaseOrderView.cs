@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using Sistema_Gimnasio.Forms;
 
 namespace Sistema_Gimnasio
 {
@@ -66,6 +67,18 @@ namespace Sistema_Gimnasio
             BoardOrderP.Rows.Add("ORD-001", "Proveedor A", DateTime.Now.AddDays(-3).ToShortDateString(), "Pendiente", null);
             BoardOrderP.Rows.Add("ORD-002", "Proveedor B", DateTime.Now.AddDays(-1).ToShortDateString(), "Recibida", null);
             BoardOrderP.Rows.Add("ORD-003", "Proveedor C", DateTime.Now.ToShortDateString(), "Cancelada", null);
+        }
+
+        private void BNewOrderP_Click(object sender, EventArgs e)
+        {
+            using (var fNewOrder = new AddOrderPurchase())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewOrder.ShowDialog() == DialogResult.OK)
+                {
+                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
+                }
+            }
         }
     }
 

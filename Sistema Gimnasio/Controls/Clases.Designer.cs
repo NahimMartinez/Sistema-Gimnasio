@@ -280,7 +280,6 @@
             this.BNewClass.FlatAppearance.BorderSize = 0;
             this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewClass.ForeColor = System.Drawing.Color.White;
             this.BNewClass.Location = new System.Drawing.Point(650, 64);
             this.BNewClass.Name = "BNewClass";
             this.BNewClass.Size = new System.Drawing.Size(100, 26);

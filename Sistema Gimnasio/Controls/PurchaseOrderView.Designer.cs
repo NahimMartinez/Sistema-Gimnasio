@@ -176,18 +176,18 @@
             this.BNewOrderP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BNewOrderP.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.BNewOrderP.ForeColor = System.Drawing.Color.White;
+            this.BNewOrderP.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewOrderP.IconColor = System.Drawing.Color.White;
+            this.BNewOrderP.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewOrderP.IconSize = 20;
             this.BNewOrderP.Location = new System.Drawing.Point(578, 65);
             this.BNewOrderP.Name = "BNewOrderP";
             this.BNewOrderP.Size = new System.Drawing.Size(177, 26);
             this.BNewOrderP.TabIndex = 1;
             this.BNewOrderP.Text = "Nueva Orden de Compra";
-            this.BNewOrderP.UseVisualStyleBackColor = false;
-            this.BNewOrderP.ForeColor = System.Drawing.Color.White;
-            this.BNewOrderP.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.BNewOrderP.IconColor = System.Drawing.Color.White;
-            this.BNewOrderP.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BNewOrderP.IconSize = 20;
             this.BNewOrderP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewOrderP.UseVisualStyleBackColor = false;
+            this.BNewOrderP.Click += new System.EventHandler(this.BNewOrderP_Click);
             // 
             // panel1
             // 
