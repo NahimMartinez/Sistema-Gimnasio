@@ -20,6 +20,7 @@ namespace Sistema_Gimnasio.Forms
             this.MinimizeBox = true;
         }
 
+        // Botón Guardar
         private void BSave_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNewClassCategory.Text))
@@ -32,6 +33,7 @@ namespace Sistema_Gimnasio.Forms
             this.Close();
         }
 
+        // Botón Cancelar
         private void BCancel_Click_1(object sender, EventArgs e)
         {
             this.Close();

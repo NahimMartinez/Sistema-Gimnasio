@@ -20,11 +20,14 @@ namespace Sistema_Gimnasio.Forms
             this.MinimizeBox = true;
         }
 
+        // Cerrar el formulario sin guardar
         private void BCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
+
+
+        // Guardar la nueva categoría
         private void BSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNewClassCategory.Text))

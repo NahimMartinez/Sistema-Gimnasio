@@ -16,12 +16,15 @@ namespace Sistema_Gimnasio
         public AddSupplierForm()
         {
             InitializeComponent();
+
+            // Asignar los controladores de eventos KeyPress
             TName.KeyPress += TName_KeyPress;
             TLastName.KeyPress += TLastName_KeyPress;
             TCuit.KeyPress += TCuit_KeyPress;
             TPhone.KeyPress += TPhone_KeyPress;
         }
 
+        // Evento Click del botón Guardar
         private void BSave_Click(object sender, EventArgs e)
         {
             if (!ValidateInputs())
@@ -31,6 +34,7 @@ namespace Sistema_Gimnasio
             MessageBox.Show("Proveedor agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Evento Click del botón Limpiar
         private void BClean_Click(object sender, EventArgs e)
         {
             TName.Clear();
@@ -42,6 +46,7 @@ namespace Sistema_Gimnasio
             
         }
 
+        // Método para validar el formato del correo electrónico
         private bool ValidEmail(string email)
         {
             try

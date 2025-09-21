@@ -34,6 +34,8 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
+
+        // Validación de campos 
         private bool ValidarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
@@ -78,6 +80,7 @@ namespace Sistema_Gimnasio.Forms
             MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Limpiar campos
         private void BLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Clear();

@@ -34,6 +34,7 @@ namespace Sistema_Gimnasio
             MessageBox.Show("Socio agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Limpiar los campos del formulario
         private void BClean_Click(object sender, EventArgs e)
         {
             TName.Clear();

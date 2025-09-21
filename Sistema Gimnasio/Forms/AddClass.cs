@@ -16,6 +16,9 @@ namespace Sistema_Gimnasio.Forms
         {
             InitializeComponent();
             ConfigureValidations();
+
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
         }
 
         private void ConfigureValidations()
@@ -33,6 +36,7 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
+        // Método para validar los campos antes de guardar
         private bool ValidarCampos()
         {
 
@@ -57,7 +61,7 @@ namespace Sistema_Gimnasio.Forms
                 return false;
             }
 
-            // Nueva validación: al menos un día seleccionado
+            // Validar que al menos un día este seleccionado
             if (!CBLunes.Checked && !CBMartes.Checked && !CBMiercoles.Checked &&
                 !CBJueves.Checked && !CBViernes.Checked && !CBSabado.Checked)
             {
@@ -74,6 +78,7 @@ namespace Sistema_Gimnasio.Forms
 
         }
 
+        // Evento del botón Crear
         private void BCrear_Click(object sender, EventArgs e)
         {
             // Validar antes de guardar
@@ -85,6 +90,7 @@ namespace Sistema_Gimnasio.Forms
             MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Evento del botón Limpiar
         private void BLimpiar_Click(object sender, EventArgs e)
         {
             txtCupo.Clear();
