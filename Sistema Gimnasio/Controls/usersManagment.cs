@@ -152,7 +152,31 @@ namespace Sistema_Gimnasio
 
                     ev.Value = activo ? bmpDelete : bmpEnable;
                     ev.FormattingApplied = true;
-                }  
+                }
+                //marcar fila inactiva
+                if (col == "status")
+                {
+                    var st = BoardUsers.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
+                    bool activo = st?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+
+                    var row = BoardUsers.Rows[ev.RowIndex];
+                    if (!activo)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.MistyRose;
+                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+
+                        
+                        
+                    }
+                    else
+                    {
+                        // reseteo a valores por defecto
+                        row.DefaultCellStyle.BackColor = BoardUsers.DefaultCellStyle.BackColor;
+                        row.DefaultCellStyle.ForeColor = BoardUsers.DefaultCellStyle.ForeColor;
+                        row.DefaultCellStyle.SelectionBackColor = BoardUsers.DefaultCellStyle.SelectionBackColor;
+                        row.DefaultCellStyle.SelectionForeColor = BoardUsers.DefaultCellStyle.SelectionForeColor;
+                    }
+                }
             };
         }
 

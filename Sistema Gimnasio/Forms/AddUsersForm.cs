@@ -36,7 +36,12 @@ namespace Sistema_Gimnasio
                 this.Text = "Editar usuario"; // Cambia el título de la ventana
             }
 
-            if(soloLectura) ActivarSoloLectura();
+            if(soloLectura)
+            {
+                ActivarSoloLectura();
+                this.Text = "Ver usuario"; // Cambia el título de la ventana
+            }
+            
         }
 
         private void ActivarSoloLectura()
