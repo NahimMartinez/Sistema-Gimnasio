@@ -148,7 +148,18 @@ namespace Sistema_Gimnasio.Controls
             iconIncome.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
         }
 
-        
+        private void BBackup_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new BackupForm())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
     }
 }
    
