@@ -15,7 +15,7 @@ namespace Sistema_Gimnasio
 {
     public partial class LoginView : Form
     {
-         // Servicio que hace la autenticación (DB, API, etc.).
+         // Servicio que hace la autenticación (DB).
         private readonly AuthService auth = new AuthService();
         public User UserAuth { get; private set; }       
         
@@ -24,11 +24,9 @@ namespace Sistema_Gimnasio
             InitializeComponent();
         }
 
-        
-
         private void BLogin_Click(object sender, EventArgs e)
         {
-            // 1) Leer y validar entradas.
+            // Leer y validar entradas.
             var username = TUser.Text.Trim();
             var password = TPass.Text; // No trim a password por seguridad. porque contraseñas es un campo exacto y trim lo puede cambiar
 
@@ -45,7 +43,7 @@ namespace Sistema_Gimnasio
                 return;
             }
 
-            // 2) Intentar autenticar. Manejar credenciales inválidas e inactivo.
+            // Autenticar. Manejar credenciales inválidas e inactivo.
             User u;
             try
             {
@@ -70,12 +68,13 @@ namespace Sistema_Gimnasio
                 return;
             }
 
-            // 3) Éxito: exponer el usuario autenticado y cerrar el diálogo.
+            //Éxito: exponer el usuario autenticado y cerrar el diálogo.
             UserAuth = u;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
+        // Cerrar formulario.
         private void BClose_Click(object sender, EventArgs e)
         {
             this.Close();

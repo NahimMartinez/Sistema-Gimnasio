@@ -46,10 +46,6 @@ namespace Sistema_Gimnasio
             // Ocultar acciones de edición
             BSave.Visible = false;
             BLimpiar.Visible = false;
-
-            // Mostrar botón Cerrar 
-            //BClose.Visible = true;
-            //BClose.Click += (_, __) => { this.DialogResult = DialogResult.Cancel; Close(); };
         }
 
         private void SetReadOnly(Control root)
@@ -61,7 +57,6 @@ namespace Sistema_Gimnasio
                 else if (c is CheckBox ch) ch.Enabled = false;
                 else if (c is DateTimePicker dt) dt.Enabled = false;
                 else if (c is NumericUpDown num) num.Enabled = false;
-                //else if (c is Button btn && btn != BClose) btn.Enabled = false;
 
                 if (c.HasChildren) SetReadOnly(c);
             }
@@ -186,6 +181,8 @@ namespace Sistema_Gimnasio
             return true; // Todos los campos son válidos
         }
 
+
+        // Validar formato de email
         private bool ValidEmail(string email)
         {
             try
@@ -199,6 +196,7 @@ namespace Sistema_Gimnasio
             }
         }
 
+        // Limpiar todos los campos del formulario
         private void BLimpiar_Click_1(object sender, EventArgs e)
         {
             txtUsuario.Clear();
@@ -212,6 +210,7 @@ namespace Sistema_Gimnasio
             CBRol.SelectedIndex = -1;
         }
 
+        // Guardar o actualizar usuario
         private void BSave_Click_1(object sender, EventArgs e)
         {
             var userService = new Business.UserService();
@@ -252,9 +251,11 @@ namespace Sistema_Gimnasio
                 editingUser.Password = txtContraseña.Text;
                 editingUser.RolId = (int)CBRol.SelectedValue;
                 editingUser.IdUsuario = editingUser.IdPersona; // Asignar correctamente el IdUsuario
+
+                // Actualizar en la base de datos
                 var userRepo = new Data.UserRepository();
                 var personRepo = new Data.PersonRepository();
-                userRepo.UpdateUser(editingUser);
+                userRepo.UpdateUser(editingUser); // Actualiza la tabla usuario
                 personRepo.Update(editingUser); // Actualiza la tabla persona
                 MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -262,6 +263,7 @@ namespace Sistema_Gimnasio
             this.Close();
         }
 
+        // Mostrar u ocultar contraseña
         private void CBVerContraseña_CheckedChanged(object sender, EventArgs e)
         {
             if (CBVerContraseña.Checked)
@@ -276,6 +278,7 @@ namespace Sistema_Gimnasio
             }
         }
 
+        // Cargar roles en el ComboBox al cargar el formulario
         private void AddUsersForm_Load(object sender, EventArgs e)
         {
             var rolService = new Business.RolService();

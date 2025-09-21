@@ -14,14 +14,16 @@ namespace Sistema_Gimnasio
     public partial class Form1 : Form
     {
         // Definición de roles con Flags para combinaciones
+        // El atributo [Flags] permite realizar operaciones (OR, AND) con los valores del enum
         [Flags]
         public enum Roles
         {
-            None = 0,
-            Admin = 1,
-            Recep = 2,
-            Coach = 4,
+            None = 0,       // Sin permisos - valor base
+            Admin = 1,      // Administrador - acceso completo
+            Recep = 2,       
+            Coach = 4,      
         }
+
         // Convierte un nombre de rol legible a un valor del enum Roles.
         private Roles MapRoleByName(string name)
         {
@@ -31,120 +33,136 @@ namespace Sistema_Gimnasio
             if (string.Equals(name, "Coach", StringComparison.OrdinalIgnoreCase)) return Roles.Coach;
             return Roles.None;
         }
-        
-        
-        // ACL
+
+        // Diccionario que controla qué botones del menú puede ver cada rol
+        // Key: IconButton (botón del menú), Value: Combinación de roles que tienen permiso
         private readonly Dictionary<IconButton, Roles> Acl = new Dictionary<IconButton, Roles>();
 
-        // Array de botones del sidebar
+        // Array de botones del sidebar - devuelve todos los botones del menú principal
         private IconButton[] MenuButtons => new[]
         {
             BDashboard, BtnUsers, BtnPartners,
             BSupplier, BActivity, BInventory, BReports
         };
 
-        // Estado actual del usuario autenticado: rol y nombre a mostrar en la UI.
-        private Roles CurrentRole;
-        private string CurrentUser;
-        private readonly User user; // Usuario autenticado recibido desde el login.
+        // Estado actual del usuario autenticado
+        private Roles CurrentRole;     // Rol actual del usuario logueado
+        private string CurrentUser;    // username a mostrar
+        private readonly User user;    // Instancia del usuario autenticado recibido desde login
 
+        // Constructor principal del formulario
         public Form1(User pU)
         {
-            InitializeComponent();
-            user = pU; // Guarda el usuario logueado para usar su rol/nombre.
-            WireSidebar(); // Configura los botones del sidebar.
-            BuildAcl(); // Construye la lista de control de acceso (ACL).
+            InitializeComponent();     // Inicializa componentes
+            user = pU;                 // Almacena el usuario autenticado para usar sus propiedades
+            WireSidebar();             // Configura texto, íconos y eventos de los botones del sidebar
+            BuildAcl();                // Construye la matriz de control de acceso por roles
 
-            this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // evita redimensionamiento
-            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
-            this.MinimizeBox = true;
+            // Configuración de propiedades de la ventana principal
+            this.WindowState = FormWindowState.Maximized;           // Inicia maximizada
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;     // Impide redimensionamiento
+            this.MaximizeBox = false;                               // Oculta botón de maximizar
+            this.MinimizeBox = true;                                // Mantiene botón de minimizar
 
-            // Ajustes visuales de los botones
-            MenuFlow.SuspendLayout();
+            // Configuración visual de los botones del menú lateral
+            MenuFlow.SuspendLayout();  // Suspende el layout para realizar múltiples cambios
             foreach (var b in MenuButtons)
             {
-                b.Dock = DockStyle.None;
-                b.AutoSize = false;
-                b.Height = 42;
-                b.Margin = new Padding(0, 0, 0, 6);
+                b.Dock = DockStyle.None;           // Desactiva el docking automático
+                b.AutoSize = false;                // Desactiva auto-dimensionamiento
+                b.Height = 42;                     // Altura uniforme para todos los botones
+                b.Margin = new Padding(0, 0, 0, 6); // Margen inferior entre botones
 
-                // Ajuste común para íconos
-                b.IconColor = Color.White;
-                b.IconSize = 22;
-                b.TextImageRelation = TextImageRelation.ImageBeforeText;
-                b.ImageAlign = ContentAlignment.MiddleLeft;
+                // Configuración visual consistente para íconos
+                b.IconColor = Color.White;                        // Color blanco para íconos
+                b.IconSize = 22;                                 // Tamaño uniforme
+                b.TextImageRelation = TextImageRelation.ImageBeforeText; // Ícono a la izquierda del texto
+                b.ImageAlign = ContentAlignment.MiddleLeft;       // Alineación centrada verticalmente
             }
-            MenuFlow.ResumeLayout();
+            MenuFlow.ResumeLayout();   // Reanuda el layout después de las modificaciones
 
+            // Evento que ajusta el ancho de los botones cuando cambia el tamaño del contenedor
             MenuFlow.SizeChanged += (_, __) =>
             {
                 int w = MenuFlow.ClientSize.Width - MenuFlow.Padding.Horizontal;
-                foreach (var b in MenuButtons) b.Width = w;
+                foreach (var b in MenuButtons) b.Width = w;  // Ajusta ancho al espacio disponible
             };
 
+            // Construye el nombre a mostrar: nombre completo o username
             var nombreCompleto = ((user?.Nombre ?? "") + " " + (user?.Apellido ?? "")).Trim();
             var mostrado = string.IsNullOrWhiteSpace(nombreCompleto) ? (user?.Username ?? "") : nombreCompleto;
-            // Setea el rol actual desde el nombre del rol proveniente de la entidad y refresca la UI.
+
+            // Establece el rol actual y actualiza la interfaz
             SetRoleAndRefresh(MapRoleByName(user?.Rol?.Nombre), mostrado);
 
-            this.Load += Form1_Load;
+            this.Load += Form1_Load;  // Suscribe al evento Load del formulario
         }
-        // Define la matriz de permisos: qué botón puede ver cada rol.
+
+        // Construye el control de acceso (ACL)
+        // Define qué roles pueden ver cada botón del menú
         private void BuildAcl()
         {
-            Acl[BDashboard] = Roles.Admin;
-            Acl[BtnUsers] = Roles.Admin;
-            Acl[BtnPartners] = Roles.Admin | Roles.Recep;
-            Acl[BSupplier] = Roles.Admin | Roles.Recep;
-            Acl[BActivity] = Roles.Admin | Roles.Recep | Roles.Coach;
-            Acl[BInventory] = Roles.Admin | Roles.Recep;
-            Acl[BReports] = Roles.Admin;
+            Acl[BDashboard] = Roles.Admin;                              // Dashboard: Solo Admin
+            Acl[BtnUsers] = Roles.Admin;                                // Usuarios: Solo Admin  
+            Acl[BtnPartners] = Roles.Admin | Roles.Recep;               // Socios: Admin + Recep
+            Acl[BSupplier] = Roles.Admin | Roles.Recep;                 // Proveedores: Admin + Recep
+            Acl[BActivity] = Roles.Admin | Roles.Recep | Roles.Coach;   // Clases: Todos los roles
+            Acl[BInventory] = Roles.Admin | Roles.Recep;                // Inventario: Admin + Recep
+            Acl[BReports] = Roles.Admin;                                // Reportes: Solo Admin
         }
-        // Aplica la ACL al sidebar: muestra solo los botones autorizados para el rol dado.
+
+        // Aplica la ACL al sidebar: muestra/oculta botones según los permisos del rol
         private void ApplyAcl(Roles role)
         {
-            //trygetvalue devuelve false si no encuentra la llave
+            // TryGetValue devuelve false si no encuentra el botón en el diccionario ACL
             foreach (var b in MenuButtons)
                 b.Visible = (Acl.TryGetValue(b, out var allowed) && (allowed & role) != 0);
 
-            MenuFlow?.PerformLayout(); // Fuerza recalcular el layout del FlowLayoutPanel tras ocultar/mostrar.
+            MenuFlow?.PerformLayout(); // Fuerza recalcular el layout después de cambiar visibilidad
         }
 
+        // Evento Load del formulario - se ejecuta cuando el formulario se carga completamente
         private void Form1_Load(object sender, EventArgs e)
         {
-            ApplyAcl(CurrentRole); // Asegura que el menú muestre lo que corresponde al rol actual.
-            // Selecciona el primer botón visible como activo e inicia la navegación a ese módulo.
+            ApplyAcl(CurrentRole); // Asegura que el menú muestre solo lo permitido para el rol actual
+
+            // Selecciona el primer botón visible como activo e inicia la navegación
             var first = MenuButtons.FirstOrDefault(b => b.Visible);
             if (first != null)
             {
-                SetActive(first);
-                Navigate((string)first.Tag);
+                SetActive(first);            // Establece apariencia visual de activo
+                Navigate((string)first.Tag); // Navega al módulo correspondiente
             }
-            // Configuración inicial del submenú de Proveedores.
-            PSubMenuSupplier.Visible = false;
-            hideTimer.Interval = 120;
-            hideTimer.Tick += HideTimer_Tick;
+
+            // Configuración inicial del submenú de Proveedores
+            PSubMenuSupplier.Visible = false;   // Inicialmente oculto
+            hideTimer.Interval = 120;           // Intervalo del timer en milisegundos
+            hideTimer.Tick += HideTimer_Tick;   // Suscribe evento del timer
+
+            // Eventos para mostrar/ocultar submenú al interactuar con el botón
             BSupplier.MouseEnter += BSupplier_MouseHover;
         }
 
+        // Establece el rol actual y refresca la interfaz de usuario
         public void SetRoleAndRefresh(Roles newRole, string username)
         {
             CurrentRole = newRole;
             CurrentUser = username;
-            ApplyAcl(CurrentRole); // Recalcula qué botones se ven.
-            UpdateLabels(); // Actualiza etiquetas LUser y LRole.
+            ApplyAcl(CurrentRole); // Recalcula visibilidad de botones según nuevo rol
+            UpdateLabels();        // Actualiza etiquetas que muestran usuario y rol
         }
 
+        // Actualiza las etiquetas de la interfaz con información del usuario actual
         private void UpdateLabels()
         {
-            LUser.Text = CurrentUser;
-            LRole.Text = CurrentRole.ToString();
+            LUser.Text = CurrentUser;          // Muestra nombre de usuario
+            LRole.Text = CurrentRole.ToString(); // Muestra rol actual
         }
 
+        // Configura los botones del sidebar: texto, íconos, tags y eventos
         private void WireSidebar()
         {
-            // Asignar tags
+            // Asignar tags - identificadores únicos para cada módulo (usados en navegación)
             BDashboard.Tag = "dashboard";
             BtnUsers.Tag = "users";
             BtnPartners.Tag = "partners";
@@ -153,7 +171,7 @@ namespace Sistema_Gimnasio
             BInventory.Tag = "inventory";
             BReports.Tag = "reports";
 
-            // Asignar íconos FontAwesome
+            // Asignar íconos FontAwesome y texto descriptivo
             BDashboard.IconChar = IconChar.ChartPie;
             BDashboard.Text = "Dashboard";
 
@@ -175,16 +193,19 @@ namespace Sistema_Gimnasio
             BReports.IconChar = IconChar.ChartBar;
             BReports.Text = "Reportes";
 
+            // Asignar evento Click a todos los botones del menú
             foreach (var b in MenuButtons) b.Click += MenuButton_Click;
         }
 
+        // Maneja el evento Click de cualquier botón del menú
         private void MenuButton_Click(object sender, EventArgs e)
         {
             var btn = (IconButton)sender;
-            Navigate((string)btn.Tag);
-            SetActive(btn);
+            Navigate((string)btn.Tag);  // Navega al módulo según el tag del botón
+            SetActive(btn);             // Cambia apariencia visual a activo
         }
 
+        // Navega al módulo correspondiente según el identificador del menú
         private void Navigate(string menuId)
         {
             switch (menuId)
@@ -198,19 +219,26 @@ namespace Sistema_Gimnasio
             }
         }
 
+        // Cambia la apariencia visual para indicar qué botón está activo
         private void SetActive(IconButton active)
         {
-            var orange = Color.FromArgb(249, 115, 22);
-            var dark = Color.FromArgb(15, 23, 42);
+            var orange = Color.FromArgb(249, 115, 22);  // Color naranja para botón activo
+            var dark = Color.FromArgb(15, 23, 42);      // Color oscuro para botones inactivos
 
+            // Restablece todos los botones a estado inactivo
             foreach (var b in MenuButtons)
             {
                 b.BackColor = dark;
                 b.Font = new Font(b.Font, FontStyle.Regular);
             }
+
+            // Aplica estilo visual al botón activo
             active.BackColor = orange;
             active.Font = new Font(active.Font, FontStyle.Bold);
         }
+
+        // === MÉTODOS DE NAVEGACIÓN A MÓDULOS ===
+        // Cada método limpia el panel de contenido y carga el control correspondiente
 
         private void ShowDashboard()
         {
@@ -231,10 +259,11 @@ namespace Sistema_Gimnasio
         private void ShowPartners()
         {
             contentPanel.Controls.Clear();
-            var view = new PartnersView { 
-                Dock = DockStyle.Fill, 
+            var view = new PartnersView
+            {
+                Dock = DockStyle.Fill,
                 BackColor = Color.White,
-                CurrentRole = CurrentRole
+                CurrentRole = CurrentRole  // Pasa el rol actual para control interno
             };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Socios";
@@ -255,7 +284,7 @@ namespace Sistema_Gimnasio
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Inventario";
         }
-        
+
         private void ShowReports()
         {
             contentPanel.Controls.Clear();
@@ -264,10 +293,16 @@ namespace Sistema_Gimnasio
             this.Text = "GymManager Pro - Reportes";
         }
 
+        // Métodos para el submenú de Proveedores
         private void ShowSuppliers()
         {
             contentPanel.Controls.Clear();
-            var view = new SupplierView { Dock = DockStyle.Fill, BackColor = Color.White, CurrentRole = CurrentRole };
+            var view = new SupplierView
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+                CurrentRole = CurrentRole  // Pasa el rol actual para control interno
+            };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Proveedores";
         }
@@ -280,32 +315,40 @@ namespace Sistema_Gimnasio
             this.Text = "GymManager Pro - Órdenes de compra";
         }
 
+        // === MANEJO DEL SUBMENÚ DE PROVEEDORES ===
+
+        // Muestra el submenú al hacer hover sobre el botón de proveedores
         private void BSupplier_MouseHover(object sender, EventArgs e)
         {
             PSubMenuSupplier.Visible = true;
-            hideTimer.Stop();
+            hideTimer.Stop();  // Detiene el timer de ocultamiento automático
         }
 
+        // Inicia timer para ocultar submenú al salir del botón principal
         private void BSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
         }
 
+        // Inicia timer para ocultar submenú al salir del panel del submenú
         private void PSubMenuSupplier_MouseLeave(object sender, EventArgs e)
         {
             hideTimer.Start();
         }
 
+        // Evento del timer que verifica si debe ocultar el submenú
         private void HideTimer_Tick(object sender, EventArgs e)
         {
             OcultarSiCursorFuera();
         }
 
+        // Oculta el submenú si el cursor no está sobre el botón principal o el submenú
         private void OcultarSiCursorFuera()
         {
             var cursor = Cursor.Position;
             var btnRect = BSupplier.RectangleToScreen(BSupplier.ClientRectangle);
             var subRect = PSubMenuSupplier.RectangleToScreen(PSubMenuSupplier.ClientRectangle);
+
             if (!btnRect.Contains(cursor) && !subRect.Contains(cursor))
             {
                 PSubMenuSupplier.Visible = false;
@@ -313,23 +356,21 @@ namespace Sistema_Gimnasio
             }
         }
 
+        // === EVENTOS DE CLICK DEL SUBMENÚ ===
+
         private void BProvList_Click(object sender, EventArgs e)
         {
-            ShowSuppliers();
-            SetActive(BSupplier);
-            PSubMenuSupplier.Visible = false;
+            ShowSuppliers();           // Muestra vista de proveedores
+            SetActive(BSupplier);      // Marca botón principal como activo
+            PSubMenuSupplier.Visible = false;  // Oculta submenú después de la selección
         }
 
         private void BPurchaseOrders_Click(object sender, EventArgs e)
         {
-            ShowPurchaseOrders();
-            SetActive(BSupplier);
-            PSubMenuSupplier.Visible = false;
+            ShowPurchaseOrders();      // Muestra vista de órdenes de compra
+            SetActive(BSupplier);      // Marca botón principal como activo
+            PSubMenuSupplier.Visible = false;  // Oculta submenú después de la selección
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
