@@ -79,6 +79,27 @@ namespace Sistema_Gimnasio.Controls
                 if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
                 if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
                 if (col == "colDelete") { ev.Value = bmpDelete; ev.FormattingApplied = true; }
+
+                if (col == "status")
+                {
+                    var st = BoardClass.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
+                    bool activo = st?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+
+                    var row = BoardClass.Rows[ev.RowIndex];
+                    if (!activo)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.MistyRose;
+                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                    }
+                    else
+                    {
+                        // Resetea a valores por defecto
+                        row.DefaultCellStyle.BackColor = BoardClass.DefaultCellStyle.BackColor;
+                        row.DefaultCellStyle.ForeColor = BoardClass.DefaultCellStyle.ForeColor;
+                        row.DefaultCellStyle.SelectionBackColor = BoardClass.DefaultCellStyle.SelectionBackColor;
+                        row.DefaultCellStyle.SelectionForeColor = BoardClass.DefaultCellStyle.SelectionForeColor;
+                    }
+                }
             };
         }
 
