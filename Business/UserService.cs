@@ -43,7 +43,8 @@ namespace Business
             }
         }
 
-        public int UserCreate(Person pPerson, User pUser) {
+        public int UserCreate(Person pPerson, User pUser)
+        {
             using (var cn = new SqlConnection(Connection.chain))
             {
                 cn.Open();
@@ -51,12 +52,17 @@ namespace Business
                 {
                     try
                     {
-                        // insertar persona
-                        var idPersona = PersonCreate(pPerson);
-                        // insertar usuario
-                        users.InsertUser(idPersona, pUser);
+                        // Usar la sobrecarga con conexión+transacción
+                        var idPersona = persons.Insert(pPerson, cn, tr);
+                        users.InsertUser(idPersona, pUser, cn, tr);
+
                         tr.Commit();
                         return idPersona;
+                    }
+                    catch (Data.Exceptions.DuplicateKeyException dex)
+                    {
+                        tr.Rollback();
+                        throw new Business.Exceptions.DuplicateFieldException(dex.Field.ToString(), dex.Message);
                     }
                     catch (Exception ex)
                     {
@@ -66,6 +72,8 @@ namespace Business
                 }
             }
         }
+
+
 
         public List<UserView> GetAllUsersForView()
         {

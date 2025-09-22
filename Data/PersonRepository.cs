@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using Data.Exceptions;
 using Entities;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
@@ -27,11 +29,61 @@ namespace Data
         public int Insert(Person p)
         {
             const string sql = @"
-                INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
-                VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
-                SELECT CAST(SCOPE_IDENTITY() AS int);";
+        INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
+        VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
+        SELECT CAST(SCOPE_IDENTITY() AS int);";
+
             using (var cn = new SqlConnection(Connection.chain))
-                return cn.Query<int>(sql, p).Single();
+            {
+                try
+                {
+                    return cn.Query<int>(sql, p).Single();
+                }
+                catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    var constraint = SqlExceptionUtils.GetConstraintName(ex);
+                    var field = SqlExceptionUtils.MapConstraintToField(constraint);
+                    switch (field)
+                    {
+                        case DuplicateField.Dni:
+                            throw new DuplicateKeyException(field, constraint, "El DNI ya existe en el sistema.");
+                        case DuplicateField.Email:
+                            throw new DuplicateKeyException(field, constraint, "El email ya existe en el sistema.");
+                        case DuplicateField.Telefono:
+                            throw new DuplicateKeyException(field, constraint, "El teléfono ya existe en el sistema.");
+                        default:
+                            throw new DuplicateKeyException(field, constraint, "Ya existe un registro con un valor único duplicado.");
+                    }
+                }
+            }
+        }
+
+        public int Insert(Person p, IDbConnection cn, IDbTransaction tr)
+        {
+            const string sql = @"
+        INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
+        VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
+        SELECT CAST(SCOPE_IDENTITY() AS int);";
+            try
+            {
+                return cn.Query<int>(sql, p, tr).Single();
+            }
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            {
+                var constraint = SqlExceptionUtils.GetConstraintName(ex);
+                var field = SqlExceptionUtils.MapConstraintToField(constraint);
+                switch (field)
+                {
+                    case DuplicateField.Dni:
+                        throw new DuplicateKeyException(field, constraint, "El DNI ya existe en el sistema.");
+                    case DuplicateField.Email:
+                        throw new DuplicateKeyException(field, constraint, "El email ya existe en el sistema.");
+                    case DuplicateField.Telefono:
+                        throw new DuplicateKeyException(field, constraint, "El teléfono ya existe en el sistema.");
+                    default:
+                        throw new DuplicateKeyException(field, constraint, "Ya existe un registro con un valor único duplicado.");
+                }
+            }
         }
 
         public void Update(Person p)

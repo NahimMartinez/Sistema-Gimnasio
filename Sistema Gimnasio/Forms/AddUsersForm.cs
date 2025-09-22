@@ -219,53 +219,75 @@ namespace Sistema_Gimnasio
         private void BSave_Click_1(object sender, EventArgs e)
         {
             var userService = new Business.UserService();
-            if (!ValidarCampos())
-            {
-                return;
-            }
-            if (editingUser == null)
-            {
-                // Crear nuevo usuario
-                var newPerson = new Person()
-                {
-                    Nombre = txtNombre.Text.Trim(),
-                    Apellido = txtApellido.Text.Trim(),
-                    Dni = txtDni.Text.Trim(),
-                    Telefono = txtTelefono.Text.Trim(),
-                    Email = txtEmail.Text.Trim(),
-                    Estado = true
-                };
-                var newUser = new User()
-                {
-                    Username = txtUsuario.Text.Trim(),
-                    Password = txtContraseña.Text,
-                    RolId = (int)CBRol.SelectedValue
-                };
-                userService.UserCreate(newPerson, newUser);
-                MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                // Editar usuario existente
-                editingUser.Nombre = txtNombre.Text.Trim();
-                editingUser.Apellido = txtApellido.Text.Trim();
-                editingUser.Dni = txtDni.Text.Trim();
-                editingUser.Telefono = txtTelefono.Text.Trim();
-                editingUser.Email = txtEmail.Text.Trim();
-                editingUser.Username = txtUsuario.Text.Trim();
-                editingUser.Password = txtContraseña.Text;
-                editingUser.RolId = (int)CBRol.SelectedValue;
-                editingUser.IdUsuario = editingUser.IdPersona; // Asignar correctamente el IdUsuario
 
-                // Actualizar en la base de datos
-                var userRepo = new Data.UserRepository();
-                var personRepo = new Data.PersonRepository();
-                userRepo.UpdateUser(editingUser); // Actualiza la tabla usuario
-                personRepo.Update(editingUser); // Actualiza la tabla persona
-                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!ValidarCampos())
+                return;
+
+            try
+            {
+                if (editingUser == null)
+                {
+                    // Crear nuevo usuario
+                    var newPerson = new Person()
+                    {
+                        Nombre = txtNombre.Text.Trim(),
+                        Apellido = txtApellido.Text.Trim(),
+                        Dni = txtDni.Text.Trim(),
+                        Telefono = txtTelefono.Text.Trim(),
+                        Email = txtEmail.Text.Trim(),
+                        Estado = true
+                    };
+
+                    var newUser = new User()
+                    {
+                        Username = txtUsuario.Text.Trim(),
+                        Password = txtContraseña.Text,
+                        RolId = (int)CBRol.SelectedValue
+                    };
+
+                    userService.UserCreate(newPerson, newUser);
+
+                    MessageBox.Show("Usuario creado con éxito.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Editar usuario existente
+                    editingUser.Nombre = txtNombre.Text.Trim();
+                    editingUser.Apellido = txtApellido.Text.Trim();
+                    editingUser.Dni = txtDni.Text.Trim();
+                    editingUser.Telefono = txtTelefono.Text.Trim();
+                    editingUser.Email = txtEmail.Text.Trim();
+                    editingUser.Username = txtUsuario.Text.Trim();
+                    editingUser.Password = txtContraseña.Text;
+                    editingUser.RolId = (int)CBRol.SelectedValue;
+                    editingUser.IdUsuario = editingUser.IdPersona; // ojo con esto
+
+                    var userRepo = new Data.UserRepository();
+                    var personRepo = new Data.PersonRepository();
+
+                    userRepo.UpdateUser(editingUser);
+                    personRepo.Update(editingUser);
+
+                    MessageBox.Show("Usuario actualizado correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (Business.Exceptions.DuplicateFieldException ex)
+            {
+                // Captura tu excepción custom -> mensaje entendible
+                MessageBox.Show($"Error: {ex.Message}", "Dato duplicado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                // Cualquier otro error inesperado
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Mostrar u ocultar contraseña

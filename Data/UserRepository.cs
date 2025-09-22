@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Dapper;
+using Entities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using Entities;
 
 
 namespace Data
@@ -16,13 +17,47 @@ namespace Data
         public void InsertUser(int idPersona, User u)
         {
             const string sql = @"
-            INSERT INTO usuario (id_usuario, username, [password], rol_id)
-            VALUES (@IdPersona, @Username, @Password, @RolId);";
-            // using cierra la conexión
+        INSERT INTO usuario (id_usuario, username, [password], rol_id)
+        VALUES (@IdPersona, @Username, @Password, @RolId);";
+
             using (var cn = new SqlConnection(Connection.chain))
-            // Execute devuelve filas afectadas. Aquí no se usa el retorno.            
-            cn.Execute(sql, new { IdPersona = idPersona, u.Username, u.Password, u.RolId });
+            {
+                try
+                {
+                    cn.Execute(sql, new { IdPersona = idPersona, u.Username, u.Password, u.RolId });
+                }
+                catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    var constraint = SqlExceptionUtils.GetConstraintName(ex);
+                    var field = SqlExceptionUtils.MapConstraintToField(constraint);
+                    if (field == DuplicateField.Username)
+                        throw new Data.Exceptions.DuplicateKeyException(field, constraint, "El nombre de usuario ya existe.");
+                    // puede ser que la constraint apunte a persona (si tu FK está única). 
+                    throw new Data.Exceptions.DuplicateKeyException(field, constraint, "Ya existe un valor único duplicado.");
+                }
+            }
         }
+
+
+        public void InsertUser(int idPersona, User u, IDbConnection cn, IDbTransaction tr)
+        {
+            const string sql = @"
+        INSERT INTO usuario (id_usuario, username, [password], rol_id)
+        VALUES (@IdPersona, @Username, @Password, @RolId);";
+            try
+            {
+                cn.Execute(sql, new { IdPersona = idPersona, u.Username, u.Password, u.RolId }, tr);
+            }
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            {
+                var constraint = SqlExceptionUtils.GetConstraintName(ex);
+                var field = SqlExceptionUtils.MapConstraintToField(constraint);
+                if (field == DuplicateField.Username)
+                    throw new Data.Exceptions.DuplicateKeyException(field, constraint, "El nombre de usuario ya existe.");
+                throw new Data.Exceptions.DuplicateKeyException(field, constraint, "Ya existe un valor único duplicado.");
+            }
+        }
+
 
         // update solo de tabla usuario
         public void UpdateUser(User u)
