@@ -194,9 +194,12 @@ namespace Sistema_Gimnasio
         // Validar formato de email
         private bool ValidEmail(string email)
         {
+            if(!email.Contains("."))
+                return false;
             try
             {
                 var addr = new MailAddress(email);
+
                 return addr.Address == email;
             }
             catch
