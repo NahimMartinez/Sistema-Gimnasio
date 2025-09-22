@@ -26,6 +26,10 @@ namespace Sistema_Gimnasio
         {
             InitializeComponent();
             ConfigureValidations();
+
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
+
             this.soloLectura = soloLectura;
             this.editingUser = userToEdit;
             if (userToEdit != null)

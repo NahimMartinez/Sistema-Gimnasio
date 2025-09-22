@@ -16,6 +16,9 @@ namespace Sistema_Gimnasio.Forms
         {
             InitializeComponent();
             ConfigureValidations();
+
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
         }
 
 

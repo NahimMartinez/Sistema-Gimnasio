@@ -15,6 +15,9 @@ namespace Sistema_Gimnasio.Forms
         public BackupForm()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
         }
 
         private void BSave_Click(object sender, EventArgs e)

@@ -22,6 +22,9 @@ namespace Sistema_Gimnasio
         public LoginView()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
         }
 
         private void BLogin_Click(object sender, EventArgs e)

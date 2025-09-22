@@ -17,6 +17,9 @@ namespace Sistema_Gimnasio
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
+            this.MinimizeBox = true;
+
             // Asignar los controladores de eventos KeyPress
             TName.KeyPress += TName_KeyPress;
             TLastName.KeyPress += TLastName_KeyPress;
