@@ -56,7 +56,7 @@
             this.LUserName.AutoSize = true;
             this.LUserName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LUserName.Location = new System.Drawing.Point(452, 65);
+            this.LUserName.Location = new System.Drawing.Point(452, 36);
             this.LUserName.Name = "LUserName";
             this.LUserName.Size = new System.Drawing.Size(62, 20);
             this.LUserName.TabIndex = 0;
@@ -67,7 +67,7 @@
             this.LUserPass.AutoSize = true;
             this.LUserPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LUserPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LUserPass.Location = new System.Drawing.Point(452, 91);
+            this.LUserPass.Location = new System.Drawing.Point(452, 85);
             this.LUserPass.Name = "LUserPass";
             this.LUserPass.Size = new System.Drawing.Size(86, 20);
             this.LUserPass.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.LUserRol.AutoSize = true;
             this.LUserRol.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LUserRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LUserRol.Location = new System.Drawing.Point(452, 145);
+            this.LUserRol.Location = new System.Drawing.Point(452, 176);
             this.LUserRol.Name = "LUserRol";
             this.LUserRol.Size = new System.Drawing.Size(34, 20);
             this.LUserRol.TabIndex = 2;
@@ -89,7 +89,7 @@
             this.LUserPass2.AutoSize = true;
             this.LUserPass2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LUserPass2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LUserPass2.Location = new System.Drawing.Point(452, 119);
+            this.LUserPass2.Location = new System.Drawing.Point(452, 129);
             this.LUserPass2.Name = "LUserPass2";
             this.LUserPass2.Size = new System.Drawing.Size(136, 20);
             this.LUserPass2.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtUsuario.Location = new System.Drawing.Point(564, 62);
+            this.txtUsuario.Location = new System.Drawing.Point(589, 34);
             this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(200, 27);
@@ -109,7 +109,7 @@
             // 
             this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContraseña.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtContraseña.Location = new System.Drawing.Point(564, 88);
+            this.txtContraseña.Location = new System.Drawing.Point(589, 83);
             this.txtContraseña.MaxLength = 50;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '●';
@@ -120,7 +120,7 @@
             // 
             this.txtContraseña2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContraseña2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtContraseña2.Location = new System.Drawing.Point(564, 116);
+            this.txtContraseña2.Location = new System.Drawing.Point(589, 127);
             this.txtContraseña2.MaxLength = 50;
             this.txtContraseña2.Name = "txtContraseña2";
             this.txtContraseña2.PasswordChar = '●';
@@ -132,7 +132,7 @@
             this.CBRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBRol.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBRol.FormattingEnabled = true;
-            this.CBRol.Location = new System.Drawing.Point(564, 142);
+            this.CBRol.Location = new System.Drawing.Point(589, 174);
             this.CBRol.Name = "CBRol";
             this.CBRol.Size = new System.Drawing.Size(200, 28);
             this.CBRol.TabIndex = 7;
@@ -148,7 +148,7 @@
             this.BSave.IconColor = System.Drawing.Color.White;
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
-            this.BSave.Location = new System.Drawing.Point(300, 250);
+            this.BSave.Location = new System.Drawing.Point(306, 272);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 9;
@@ -168,7 +168,7 @@
             this.BLimpiar.IconColor = System.Drawing.Color.White;
             this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLimpiar.IconSize = 24;
-            this.BLimpiar.Location = new System.Drawing.Point(450, 250);
+            this.BLimpiar.Location = new System.Drawing.Point(456, 272);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 10;
@@ -187,7 +187,7 @@
             this.CBVerContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CBVerContraseña.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.CBVerContraseña.ForeColor = System.Drawing.Color.Gray;
-            this.CBVerContraseña.Location = new System.Drawing.Point(770, 88);
+            this.CBVerContraseña.Location = new System.Drawing.Point(795, 107);
             this.CBVerContraseña.Name = "CBVerContraseña";
             this.CBVerContraseña.Size = new System.Drawing.Size(40, 23);
             this.CBVerContraseña.TabIndex = 13;
@@ -201,7 +201,7 @@
             this.LNombre.AutoSize = true;
             this.LNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LNombre.Location = new System.Drawing.Point(45, 65);
+            this.LNombre.Location = new System.Drawing.Point(45, 34);
             this.LNombre.Name = "LNombre";
             this.LNombre.Size = new System.Drawing.Size(67, 20);
             this.LNombre.TabIndex = 14;
@@ -212,7 +212,7 @@
             this.LApellido.AutoSize = true;
             this.LApellido.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LApellido.Location = new System.Drawing.Point(45, 91);
+            this.LApellido.Location = new System.Drawing.Point(45, 84);
             this.LApellido.Name = "LApellido";
             this.LApellido.Size = new System.Drawing.Size(69, 20);
             this.LApellido.TabIndex = 15;
@@ -223,7 +223,7 @@
             this.LDni.AutoSize = true;
             this.LDni.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LDni.Location = new System.Drawing.Point(45, 119);
+            this.LDni.Location = new System.Drawing.Point(45, 129);
             this.LDni.Name = "LDni";
             this.LDni.Size = new System.Drawing.Size(38, 20);
             this.LDni.TabIndex = 16;
@@ -234,7 +234,7 @@
             this.LEmail.AutoSize = true;
             this.LEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LEmail.Location = new System.Drawing.Point(45, 145);
+            this.LEmail.Location = new System.Drawing.Point(45, 176);
             this.LEmail.Name = "LEmail";
             this.LEmail.Size = new System.Drawing.Size(49, 20);
             this.LEmail.TabIndex = 17;
@@ -245,7 +245,7 @@
             this.LTelefono.AutoSize = true;
             this.LTelefono.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LTelefono.Location = new System.Drawing.Point(45, 171);
+            this.LTelefono.Location = new System.Drawing.Point(45, 225);
             this.LTelefono.Name = "LTelefono";
             this.LTelefono.Size = new System.Drawing.Size(70, 20);
             this.LTelefono.TabIndex = 18;
@@ -255,7 +255,7 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNombre.Location = new System.Drawing.Point(105, 62);
+            this.txtNombre.Location = new System.Drawing.Point(124, 33);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(300, 27);
@@ -265,7 +265,7 @@
             // 
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtApellido.Location = new System.Drawing.Point(105, 88);
+            this.txtApellido.Location = new System.Drawing.Point(124, 83);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(300, 27);
@@ -275,7 +275,7 @@
             // 
             this.txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDni.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDni.Location = new System.Drawing.Point(105, 114);
+            this.txtDni.Location = new System.Drawing.Point(124, 126);
             this.txtDni.MaxLength = 15;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(300, 27);
@@ -285,7 +285,7 @@
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtEmail.Location = new System.Drawing.Point(105, 140);
+            this.txtEmail.Location = new System.Drawing.Point(124, 173);
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(300, 27);
@@ -295,7 +295,7 @@
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtTelefono.Location = new System.Drawing.Point(105, 166);
+            this.txtTelefono.Location = new System.Drawing.Point(124, 222);
             this.txtTelefono.MaxLength = 20;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(300, 27);
@@ -306,7 +306,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(850, 300);
+            this.ClientSize = new System.Drawing.Size(850, 327);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtDni);

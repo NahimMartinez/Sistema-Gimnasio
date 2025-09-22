@@ -48,7 +48,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidad.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtCantidad.Location = new System.Drawing.Point(120, 96);
+            this.txtCantidad.Location = new System.Drawing.Point(156, 99);
             this.txtCantidad.MaxLength = 5;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(200, 27);
@@ -104,7 +104,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtNombre.Location = new System.Drawing.Point(120, 62);
+            this.txtNombre.Location = new System.Drawing.Point(156, 65);
             this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(200, 27);
@@ -114,7 +114,7 @@ namespace Sistema_Gimnasio.Forms
             // 
             this.DTFechaIngreso.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DTFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTFechaIngreso.Location = new System.Drawing.Point(120, 130);
+            this.DTFechaIngreso.Location = new System.Drawing.Point(156, 133);
             this.DTFechaIngreso.Name = "DTFechaIngreso";
             this.DTFechaIngreso.Size = new System.Drawing.Size(200, 27);
             this.DTFechaIngreso.TabIndex = 25;
@@ -132,7 +132,7 @@ namespace Sistema_Gimnasio.Forms
             "Barras",
             "Discos",
             "Accesorios"});
-            this.CBCategoria.Location = new System.Drawing.Point(120, 168);
+            this.CBCategoria.Location = new System.Drawing.Point(156, 171);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(200, 28);
             this.CBCategoria.TabIndex = 26;
@@ -166,7 +166,7 @@ namespace Sistema_Gimnasio.Forms
             this.BLimpiar.IconColor = System.Drawing.Color.White;
             this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLimpiar.IconSize = 24;
-            this.BLimpiar.Location = new System.Drawing.Point(223, 257);
+            this.BLimpiar.Location = new System.Drawing.Point(246, 257);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 28;
@@ -180,7 +180,7 @@ namespace Sistema_Gimnasio.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(388, 327);
+            this.ClientSize = new System.Drawing.Size(400, 327);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.CBCategoria);
