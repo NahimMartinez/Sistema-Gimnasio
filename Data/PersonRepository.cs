@@ -26,12 +26,14 @@ namespace Data
                 return cn.QuerySingleOrDefault<Person>(sql, new { Id = id });
         }
 
+        // Inserta una nueva persona y devuelve el Id generado
+        // Para inserciones simples
         public int Insert(Person p)
         {
             const string sql = @"
-        INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
-        VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
-        SELECT CAST(SCOPE_IDENTITY() AS int);";
+            INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
+            VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
+            SELECT CAST(SCOPE_IDENTITY() AS int);";
 
             using (var cn = new SqlConnection(Connection.chain))
             {
@@ -58,12 +60,15 @@ namespace Data
             }
         }
 
+        // Sobrecarga de Insert que acepta conexión y transacción externas
+        // Para inserciones dentro de transacciones más grandes
         public int Insert(Person p, IDbConnection cn, IDbTransaction tr)
         {
             const string sql = @"
-        INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
-        VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
-        SELECT CAST(SCOPE_IDENTITY() AS int);";
+            INSERT INTO persona (nombre, apellido, dni, telefono, email, estado)
+            VALUES (@Nombre, @Apellido, @Dni, @Telefono, @Email, 1);
+            SELECT CAST(SCOPE_IDENTITY() AS int);";
+
             try
             {
                 return cn.Query<int>(sql, p, tr).Single();

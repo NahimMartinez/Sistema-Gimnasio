@@ -21,6 +21,7 @@ namespace Business
             userRepo = new UserRepository();
         }
 
+        // Crea solo la persona
         public int PersonCreate(Person p)
         {
             using (var cn = new SqlConnection(Connection.chain))
@@ -43,11 +44,14 @@ namespace Business
             }
         }
 
+        // Crea persona y usuario en una transacción
         public int UserCreate(Person pPerson, User pUser)
         {
             using (var cn = new SqlConnection(Connection.chain))
             {
+                // Abrir conexión
                 cn.Open();
+                // Iniciar una transacción
                 using (var tr = cn.BeginTransaction())
                 {
                     try
@@ -59,11 +63,13 @@ namespace Business
                         tr.Commit();
                         return idPersona;
                     }
+                    // Si hay un error de clave duplicada, hacer rollback y lanzar excepción específica
                     catch (Data.Exceptions.DuplicateKeyException dex)
                     {
                         tr.Rollback();
                         throw new Business.Exceptions.DuplicateFieldException(dex.Field.ToString(), dex.Message);
                     }
+                    // Si hay cualquier otro error, hacer rollback y lanzar excepción genérica
                     catch (Exception ex)
                     {
                         tr.Rollback();
@@ -72,8 +78,6 @@ namespace Business
                 }
             }
         }
-
-
 
         public List<UserView> GetAllUsersForView()
         {

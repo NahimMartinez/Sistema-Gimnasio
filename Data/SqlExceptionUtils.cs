@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 
+
 namespace Data
 {
     public enum DuplicateField { Dni, Email, Telefono, Username, Unknown }
+    // Unknown = no se pudo mapear a un campo conocido
 
     public static class SqlExceptionUtils
     {
+        // Extrae el nombre de la constraint o índice de un mensaje de error de violación de clave única
         public static string GetConstraintName(SqlException ex)
         {
             var m = Regex.Match(ex.Message, @"constraint '?(?<name>[^']+)'?", RegexOptions.IgnoreCase);
@@ -21,6 +24,7 @@ namespace Data
             return null;
         }
 
+        // Mapea el nombre de la constraint o índice a un campo conocido de la entidad
         public static DuplicateField MapConstraintToField(string name)
         {
             if (string.IsNullOrEmpty(name)) return DuplicateField.Unknown;

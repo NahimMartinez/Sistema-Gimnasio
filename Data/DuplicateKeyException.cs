@@ -9,8 +9,10 @@ namespace Data.Exceptions
     public class DuplicateKeyException : Exception
     {
         public Data.DuplicateField Field { get; }
+        // Nombre de la constraint que se violó
         public string ConstraintName { get; }
 
+        // Constructor que recibe el campo duplicado, el nombre de la constraint y el mensaje
         public DuplicateKeyException(Data.DuplicateField field, string constraintName, string message)
             : base(message)
         {

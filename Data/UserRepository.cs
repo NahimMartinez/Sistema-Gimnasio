@@ -13,6 +13,7 @@ namespace Data
 {
     public class UserRepository
     {
+
         // crea entrada en usuario (persona ya insertada antes)
         public void InsertUser(int idPersona, User u)
         {
@@ -22,6 +23,7 @@ namespace Data
 
             using (var cn = new SqlConnection(Connection.chain))
             {
+                // manejo de excepciones para claves duplicadas
                 try
                 {
                     cn.Execute(sql, new { IdPersona = idPersona, u.Username, u.Password, u.RolId });
@@ -38,7 +40,8 @@ namespace Data
             }
         }
 
-
+        // Sobrecarga de Insert que acepta conexión y transacción externas
+        // Para inserciones dentro de transacciones más grandes (usuario + persona)
         public void InsertUser(int idPersona, User u, IDbConnection cn, IDbTransaction tr)
         {
             const string sql = @"

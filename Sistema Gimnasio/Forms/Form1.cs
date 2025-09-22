@@ -35,7 +35,6 @@ namespace Sistema_Gimnasio
         }
 
         // Diccionario que controla qué botones del menú puede ver cada rol
-        // Key: IconButton (botón del menú), Value: Combinación de roles que tienen permiso
         private readonly Dictionary<IconButton, Roles> Acl = new Dictionary<IconButton, Roles>();
 
         // Array de botones del sidebar - devuelve todos los botones del menú principal
@@ -53,7 +52,7 @@ namespace Sistema_Gimnasio
         // Constructor principal del formulario
         public Form1(User pU)
         {
-            InitializeComponent();     // Inicializa componentes
+            InitializeComponent();     
             user = pU;                 // Almacena el usuario autenticado para usar sus propiedades
             WireSidebar();             // Configura texto, íconos y eventos de los botones del sidebar
             BuildAcl();                // Construye la matriz de control de acceso por roles
@@ -121,7 +120,7 @@ namespace Sistema_Gimnasio
             MenuFlow?.PerformLayout(); // Fuerza recalcular el layout después de cambiar visibilidad
         }
 
-        // Evento Load del formulario - se ejecuta cuando el formulario se carga completamente
+        // Evento Load del formulario
         private void Form1_Load(object sender, EventArgs e)
         {
             ApplyAcl(CurrentRole); // Asegura que el menú muestre solo lo permitido para el rol actual

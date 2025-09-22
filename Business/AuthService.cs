@@ -13,6 +13,7 @@ namespace Business
     {
         private readonly UserRepository user = new UserRepository();
 
+        // Retorna el usuario si las credenciales son correctas, sino null
         public User Login(string username, string password)
         {
             var u = user.GetByUsernameActivo(username);
