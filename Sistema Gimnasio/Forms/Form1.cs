@@ -104,7 +104,7 @@ namespace Sistema_Gimnasio
         {
             Acl[BDashboard] = Roles.Admin;                              // Dashboard: Solo Admin
             Acl[BtnUsers] = Roles.Admin;                                // Usuarios: Solo Admin  
-            Acl[BtnPartners] = Roles.Admin | Roles.Recep;               // Socios: Admin + Recep
+            Acl[BtnPartners] = Roles.Admin | Roles.Recep | Roles.Coach; // Socios: Admin + Recep + coach
             Acl[BSupplier] = Roles.Admin | Roles.Recep;                 // Proveedores: Admin + Recep
             Acl[BActivity] = Roles.Admin | Roles.Recep | Roles.Coach;   // Clases: Todos los roles
             Acl[BInventory] = Roles.Admin | Roles.Recep;                // Inventario: Admin + Recep
