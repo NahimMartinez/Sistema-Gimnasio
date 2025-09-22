@@ -33,6 +33,7 @@ namespace Sistema_Gimnasio
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
             LoadFakeData(); // Carga datos de ejemplo en la lista de socios.
+            this.Load += PartnersView_Load;
 
             // Configura los filtros de búsqueda y estado.
             TSearchPartner.TextChanged += (s, e) => ApplyFilters(); // Filtra al escribir en la caja de búsqueda.
@@ -52,6 +53,8 @@ namespace Sistema_Gimnasio
             };
             CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar el estado.
             CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar la membresía.
+
+
         }
 
         // Configura los iconos de las columnas de acción en la tabla.
@@ -119,7 +122,15 @@ namespace Sistema_Gimnasio
                 }
             }
         }
-        
+
+        private void PartnersView_Load(object sender, EventArgs e)
+        {
+            BuildAcl(); // Construye el diccionario de control de acceso (ACL)
+            ApplyAcl(); // Aplica el control de acceso según el rol actual
+
+            
+        }
+
         // Evento que se ejecuta al hacer clic en una celda de la tabla.
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -172,6 +183,22 @@ namespace Sistema_Gimnasio
                 // Agrega cada socio filtrado a la tabla
                 BoardMember.Rows.Add(p.Name, p.Dni, p.Phone, p.Plan, p.Estado);
             }
+        }
+
+        private void BuildAcl()
+        {
+            // Solo el rol Admin puede editar y eliminar
+            Acl[colEdit] = Roles.Admin | Roles.Recep; ;
+            Acl[colDelete] = Roles.Admin | Roles.Recep; ;
+            // El rol Admin y Recepcionista pueden ver
+            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;
+        }
+
+        // Aplica el control de acceso a las columnas de acción según el rol actual.
+        private void ApplyAcl()
+        {
+            foreach (var keyValue in Acl)
+                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
         }
 
         // Clase interna que representa la información de un socio.
