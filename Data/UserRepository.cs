@@ -177,6 +177,13 @@ namespace Data
                 return cn.Execute(sql, new { dni = pDni });
         }
 
+        public bool ExistsUsername(string username, int excludeId)
+        {
+            const string sql = "SELECT COUNT(1) FROM usuario WHERE username = @Username AND id_usuario <> @ExcludeId";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.QuerySingle<int>(sql, new { Username = username, ExcludeId = excludeId }) > 0;
+        }
+
     }
 }
 

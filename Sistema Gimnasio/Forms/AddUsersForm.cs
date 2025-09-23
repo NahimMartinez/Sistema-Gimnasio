@@ -273,6 +273,32 @@ namespace Sistema_Gimnasio
                     var userRepo = new Data.UserRepository();
                     var personRepo = new Data.PersonRepository();
 
+                    // Validaciones de duplicados antes de actualizar
+                    if (personRepo.ExistsDni(editingUser.Dni, editingUser.IdPersona))
+                    {
+                        MessageBox.Show("El DNI ya existe en el sistema.", "Dato duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtDni.Focus();
+                        return;
+                    }
+                    if (personRepo.ExistsEmail(editingUser.Email, editingUser.IdPersona))
+                    {
+                        MessageBox.Show("El email ya existe en el sistema.", "Dato duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtEmail.Focus();
+                        return;
+                    }
+                    if (personRepo.ExistsTelefono(editingUser.Telefono, editingUser.IdPersona))
+                    {
+                        MessageBox.Show("El teléfono ya existe en el sistema.", "Dato duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtTelefono.Focus();
+                        return;
+                    }
+                    if (userRepo.ExistsUsername(editingUser.Username, editingUser.IdPersona))
+                    {
+                        MessageBox.Show("El nombre de usuario ya existe en el sistema.", "Dato duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtUsuario.Focus();
+                        return;
+                    }
+
                     userRepo.UpdateUser(editingUser);
                     personRepo.Update(editingUser);
 
