@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Business
 {
     public class AuthService
@@ -19,10 +18,25 @@ namespace Business
             var u = user.GetByUsernameActivo(username);
             if (u == null) return null;
 
-            
-            if (u.Password != password) return null;
+            var userService = new UserService();
+            string hashedInput = userService.GetHashedPassword(password);
 
-            return u;
+            // Caso 1: hash contra hash (usuario nuevo)
+            if (u.Password == hashedInput)
+                return u;
+
+            // Caso 2: texto plano (usuario antiguo)
+            if (u.Password == password)
+            {
+                // Actualizar a hash
+                u.Password = hashedInput;
+                var userService2 = new UserService();
+                userService2.UpdateUser(u, true);
+                return u;
+            }
+
+            // Caso 3: no coincide
+            return null;
         }
     }
 }

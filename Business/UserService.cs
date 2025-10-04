@@ -1,75 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Data;
 using Entities;
-
 
 namespace Business
 {
     public class UserService
     {
-
         private readonly PersonRepository persons = new PersonRepository();
         private readonly UserRepository users = new UserRepository();
         private UserRepository userRepo;
 
-        public UserService() {
+        public UserService()
+        {
             userRepo = new UserRepository();
         }
 
-        // Crea solo la persona
-        public int PersonCreate(Person p)
+        // Hash simple (SHA256)
+        private string HashPassword(string password)
         {
-            using (var cn = new SqlConnection(Connection.chain))
+            using (var sha256 = SHA256.Create())
             {
-                cn.Open();
-                using (var tr = cn.BeginTransaction())
-                {
-                    try
-                    {
-                        var idPersona = persons.Insert(p);
-                        tr.Commit();
-                        return idPersona;
-                    }
-                    catch (Exception ex)
-                    {
-                        tr.Rollback();
-                        throw new Exception("No se pudo crear la persona", ex);
-                    }
-                }
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
             }
         }
 
-        // Crea persona y usuario en una transacción
+        // Verificar contraseña
+        private bool VerifyPassword(string password, string hashedPassword)
+        {
+            string hashedInput = HashPassword(password);
+            return hashedInput == hashedPassword;
+        }
+
+        // Crea persona y usuario con contraseña hasheada
         public int UserCreate(Person pPerson, User pUser)
         {
             using (var cn = new SqlConnection(Connection.chain))
             {
-                // Abrir conexión
                 cn.Open();
-                // Iniciar una transacción
                 using (var tr = cn.BeginTransaction())
                 {
                     try
                     {
-                        // Usar la sobrecarga con conexión+transacción
+                        // HASHEAR LA CONTRASEÑA
+                        string hashedPassword = HashPassword(pUser.Password);
+                        pUser.Password = hashedPassword;
+
                         var idPersona = persons.Insert(pPerson, cn, tr);
                         users.InsertUser(idPersona, pUser, cn, tr);
 
                         tr.Commit();
                         return idPersona;
                     }
-                    // Si hay un error de clave duplicada, hacer rollback y lanzar excepción específica
                     catch (Data.Exceptions.DuplicateKeyException dex)
                     {
                         tr.Rollback();
                         throw new Business.Exceptions.DuplicateFieldException(dex.Field.ToString(), dex.Message);
                     }
-                    // Si hay cualquier otro error, hacer rollback y lanzar excepción genérica
                     catch (Exception ex)
                     {
                         tr.Rollback();
@@ -79,9 +71,50 @@ namespace Business
             }
         }
 
+        // Método para actualizar usuario completo (incluyendo contraseña si es necesario)
+        public void UpdateUser(User user, bool passwordChanged = false)
+        {
+            try
+            {
+                // Si la contraseña cambió, hashearla
+                if (passwordChanged)
+                {
+                    user.Password = HashPassword(user.Password);
+                }
+
+                userRepo.UpdateUser(user);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar usuario", ex);
+            }
+        }
+
+        // Método para verificar credenciales
+        public bool VerifyCredentials(string username, string password)
+        {
+            try
+            {
+                var user = userRepo.GetByUsernameActivo(username);
+                if (user == null)
+                    return false;
+
+                return VerifyPassword(password, user.Password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar credenciales", ex);
+            }
+        }
+
         public List<UserView> GetAllUsersForView()
         {
             return userRepo.GetAllUsersView();
+        }
+
+        public string GetHashedPassword(string password)
+        {
+            return HashPassword(password);
         }
     }
 }

@@ -234,7 +234,7 @@ namespace Sistema_Gimnasio
             {
                 if (editingUser == null)
                 {
-                    // Crear nuevo usuario
+                    // Crear nuevo usuario (se hashea automáticamente)
                     var newPerson = new Person()
                     {
                         Nombre = txtNombre.Text.Trim(),
@@ -248,14 +248,12 @@ namespace Sistema_Gimnasio
                     var newUser = new User()
                     {
                         Username = txtUsuario.Text.Trim(),
-                        Password = txtContraseña.Text,
+                        Password = txtContraseña.Text, // Se hashea en el service
                         RolId = (int)CBRol.SelectedValue
                     };
 
                     userService.UserCreate(newPerson, newUser);
-
-                    MessageBox.Show("Usuario creado con éxito.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario creado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -266,11 +264,18 @@ namespace Sistema_Gimnasio
                     editingUser.Telefono = txtTelefono.Text.Trim();
                     editingUser.Email = txtEmail.Text.Trim();
                     editingUser.Username = txtUsuario.Text.Trim();
-                    editingUser.Password = txtContraseña.Text;
                     editingUser.RolId = (int)CBRol.SelectedValue;
-                    editingUser.IdUsuario = editingUser.IdPersona; // ojo con esto
+                    editingUser.IdUsuario = editingUser.IdPersona;
 
-                    var userRepo = new Data.UserRepository();
+                    // Determinar si la contraseña cambió
+                    bool passwordChanged = (txtContraseña.Text != "●●●●●●●●" &&
+                                          !string.IsNullOrEmpty(txtContraseña.Text));
+
+                    if (passwordChanged)
+                    {
+                        editingUser.Password = txtContraseña.Text;
+                    }
+
                     var personRepo = new Data.PersonRepository();
 
                     // Validaciones de duplicados antes de actualizar
@@ -292,6 +297,8 @@ namespace Sistema_Gimnasio
                         txtTelefono.Focus();
                         return;
                     }
+
+                    var userRepo = new Data.UserRepository();
                     if (userRepo.ExistsUsername(editingUser.Username, editingUser.IdPersona))
                     {
                         MessageBox.Show("El nombre de usuario ya existe en el sistema.", "Dato duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -299,7 +306,10 @@ namespace Sistema_Gimnasio
                         return;
                     }
 
-                    userRepo.UpdateUser(editingUser);
+                    // Usar el servicio para actualizar (maneja el hashing automáticamente)
+                    userService.UpdateUser(editingUser, passwordChanged);
+
+                    // Actualizar la persona por separado
                     personRepo.Update(editingUser);
 
                     MessageBox.Show("Usuario actualizado correctamente.", "Éxito",
@@ -311,13 +321,11 @@ namespace Sistema_Gimnasio
             }
             catch (Business.Exceptions.DuplicateFieldException ex)
             {
-                // Captura tu excepción custom -> mensaje entendible
                 MessageBox.Show($"Error: {ex.Message}", "Dato duplicado",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                // Cualquier otro error inesperado
                 MessageBox.Show($"Error inesperado: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
