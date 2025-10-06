@@ -138,6 +138,12 @@ namespace Sistema_Gimnasio
                 return false;
             }
 
+            if (txtDni.Text.Length != 8) {
+                MessageBox.Show("Por favor ingrese una cantidad correcta de numeros en el DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDni.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("Por favor ingrese el email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,6 +164,13 @@ namespace Sistema_Gimnasio
                 txtTelefono.Focus();
                 return false;
             }
+
+            if (txtTelefono.Text.Length != 10)
+            {
+                MessageBox.Show("Por favor ingrese un correcto numero de teléfono", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTelefono.Focus();
+                return false;
+            } 
 
             if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
