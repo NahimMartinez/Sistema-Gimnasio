@@ -11,20 +11,30 @@ namespace Data
 {
     public class SupplierRepository
     {
-        public void InsertSupplier(Supplier supplier)
+        
+        public int InsertSupplier(Supplier supplier)
         {
+            // validar antes de insertar
+            if (ExistsTelefono(supplier.Telefono))
+                throw new Exception("El teléfono ya está registrado.");
+            if (ExistsEmail(supplier.Email))
+                throw new Exception("El email ya está registrado.");
+            if (ExistsCuit(supplier.Cuit))
+                throw new Exception("El CUIT ya está registrado.");
+
             const string sql = @"
                         INSERT INTO proveedor (nombre, apellido, cuit, email, telefono)
+                        OUTPUT INSERTED.id_proveedor
                         VALUES (@Nombre, @Apellido, @Cuit, @Email, @Telefono);";
             try
             {
                 using (var cn = new SqlConnection(Connection.chain))
                 {
-                    cn.Execute(sql, supplier);
+                    return cn.ExecuteScalar<int>(sql, supplier);
                 }
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
-            {
+            { 
                 var constraint = SqlExceptionUtils.GetConstraintName(ex);
                 var field = SqlExceptionUtils.MapConstraintToField(constraint);
                 switch (field)
@@ -44,6 +54,14 @@ namespace Data
 
         public void UpdateSupplier(Supplier supplier)
         {
+            // validar antes de insertar
+            if (ExistsTelefono(supplier.Telefono))
+                throw new Exception("El teléfono ya está registrado.");
+            if (ExistsEmail(supplier.Email))
+                throw new Exception("El email ya está registrado.");
+            if (ExistsCuit(supplier.Cuit))
+                throw new Exception("El CUIT ya está registrado.");
+
             const string sql = @"
                         UPDATE proveedor
                         SET nombre = @Nombre,
@@ -117,7 +135,7 @@ namespace Data
             }
         }
 
-        public bool ExistsCuit(long cuit, int excludeId)
+        public bool ExistsCuit(long cuit)
         {
             const string sql = "SELECT COUNT(1) FROM proveedor WHERE cuit = @Cuit AND id_proveedor <> @ExcludeId";
             using (var cn = new SqlConnection(Connection.chain))
@@ -127,7 +145,7 @@ namespace Data
             }
         }
 
-        public bool ExistsEmail(string email, int excludeId)
+        public bool ExistsEmail(string email)
         {
             const string sql = "SELECT COUNT(1) FROM proveedor WHERE email = @Email AND id_proveedor <> @ExcludeId";
             using (var cn = new SqlConnection(Connection.chain))
@@ -137,7 +155,7 @@ namespace Data
             }
         }
 
-        public bool ExistsTelefono(int telefono, int excludeId)
+        public bool ExistsTelefono(int telefono)
         {
             const string sql = "SELECT COUNT(1) FROM proveedor WHERE telefono = @Telefono AND id_proveedor <> @ExcludeId";
             using (var cn = new SqlConnection(Connection.chain))
