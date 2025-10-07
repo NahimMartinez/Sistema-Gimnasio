@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Data
 {
-    public enum DuplicateField { Dni, Email, Telefono, Username, Unknown }
+    public enum DuplicateField { Dni, Email, Telefono, Username, Cuit, Unknown }
     // Unknown = no se pudo mapear a un campo conocido
 
     public static class SqlExceptionUtils
@@ -33,6 +33,7 @@ namespace Data
             if (n.Contains("email")) return DuplicateField.Email;
             if (n.Contains("telefono") || n.Contains("tel")) return DuplicateField.Telefono;
             if (n.Contains("user") || n.Contains("username")) return DuplicateField.Username;
+            if (n.Contains("cuit")) return DuplicateField.Cuit;
             return DuplicateField.Unknown;
         }
     }
