@@ -1,50 +1,61 @@
-﻿
-using Sistema_Gimnasio.Forms; 
+﻿using Sistema_Gimnasio.Forms;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq; 
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 using FontAwesome.Sharp;
+using Business;
 
 namespace Sistema_Gimnasio.Controls
 {
-    
     public partial class Clases : UserControl
     {
-        // Lista que almacena la información de las clases 
+        private readonly ClassService classService = new ClassService();
         private List<ClassViewModel> classList = new List<ClassViewModel>();
 
-        // Constructor: se ejecuta al crear el control.
         public Clases()
         {
-            InitializeComponent(); // Inicializa los componentes gráficos.
-            LoadFakeData(); // Carga datos de ejemplo en la lista de clases.
-            BoardClass.CellClick += BoardClass_CellClick; // Asocia el evento de clic en celda a un método.
-            SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
-            this.Load += Clases_Load; // Asocia el evento de carga del control a un método.
+            InitializeComponent();
+            LoadDataFromService(); // Carga datos reales
+            BoardClass.CellClick += BoardClass_CellClick;
+            SetupActionIcons();
+            this.Load += Clases_Load;
 
-            // Configura los filtros de búsqueda y estado.
-            TSearchClass.TextChanged += (s, e) => ApplyFilters(); // Filtra al escribir en la caja de búsqueda.
+            TSearchClass.TextChanged += (s, e) => ApplyFilters();
             TSearchClass.GotFocus += (s, e) => {
-                // Limpia el texto de placeholder al enfocar la caja de búsqueda.
                 if (TSearchClass.Text == "Buscar clase...") {
                     TSearchClass.Text = "";
                     TSearchClass.ForeColor = Color.Black;
                 }
             };
             TSearchClass.LostFocus += (s, e) => {
-                // Restaura el placeholder si la caja queda vacía al perder el foco.
                 if (string.IsNullOrWhiteSpace(TSearchClass.Text)) {
                     TSearchClass.Text = "Buscar clase...";
                     TSearchClass.ForeColor = Color.Gray;
                 }
             };
-            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar el estado.
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
+        }
+
+        private void LoadDataFromService()
+        {
+            // Obtiene la lista dinámica del servicio y la mapea a la vista
+            var data = classService.GetAllClassesForView();
+            classList = data.Select(c => new ClassViewModel
+            {
+                Name = c.NombreActividad,
+                Coach = c.NombreCoach,
+                Cupo = c.Cupo.ToString(),
+                Dia = c.Dias, // ya es string con los días
+                Horario = c.Horario,
+                Estado = (c.Estado is bool b) ? (b ? "Activo" : "Inactivo") : (c.Estado?.ToString() == "1" ? "Activo" : "Inactivo")
+            }).ToList();
+            ApplyFilters();
         }
 
         // Evento que se ejecuta al cargar el control.
@@ -128,20 +139,6 @@ namespace Sistema_Gimnasio.Controls
             {
                 MessageBox.Show($"Eliminar clase {name}");
             }
-        }
-
-        // Carga datos de ejemplo en la lista de clases.
-        private void LoadFakeData()
-        {
-            classList = new List<ClassViewModel>
-            {
-                new ClassViewModel { Name = "Crossfit", Coach = "Juan Perez", Cupo = "20", Dia = "Lunes, Miercoles, Viernes", Horario = "6:00 - 7:00", Estado = "Activo" },
-                new ClassViewModel { Name = "Yoga", Coach = "Maria Lopez", Cupo = "15", Dia = "Martes, Jueves", Horario = "7:00 - 8:00", Estado = "Activo" },
-                new ClassViewModel { Name = "Pilates", Coach = "Carlos Gomez", Cupo = "10", Dia = "Lunes, Miercoles", Horario = "8:00 - 9:00", Estado = "Inactivo" },
-                new ClassViewModel { Name = "Zumba", Coach = "Ana Martinez", Cupo = "25", Dia = "Viernes", Horario = "18:00 - 19:00", Estado = "Activo" },
-                new ClassViewModel { Name = "Spinning", Coach = "Luis Rodriguez", Cupo = "30", Dia = "Martes, Jueves", Horario = "19:00 - 20:00", Estado = "Activo" }
-            };
-            ApplyFilters(); // Aplica los filtros para mostrar los datos en la tabla.
         }
 
         // Aplica los filtros de búsqueda y estado a la lista de clases y actualiza la tabla.
