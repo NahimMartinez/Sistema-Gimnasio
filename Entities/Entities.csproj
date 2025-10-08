@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity.cs" />
+    <Compile Include="Class.cs" />
+    <Compile Include="ClassDay.cs" />
+    <Compile Include="Day.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
