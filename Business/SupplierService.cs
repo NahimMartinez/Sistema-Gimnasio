@@ -11,7 +11,7 @@ namespace Business
 {
     public class SupplierService
     {
-        private readonly SupplierRepository supplierRepo;
+        private readonly SupplierRepository supplierRepo = new SupplierRepository();
         public int SupplierCreate(Supplier pSupplier)
         {
 
