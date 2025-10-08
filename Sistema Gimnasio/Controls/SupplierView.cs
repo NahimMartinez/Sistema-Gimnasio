@@ -63,7 +63,7 @@ namespace Sistema_Gimnasio
                 Cuit = s.Cuit,
                 Email = s.Email,
                 Telefono = s.Telefono,
-                Estado = s.Estado
+                Estado = s.Estado,
             }).ToList();
 
             BoardSupplier.AutoGenerateColumns = false; // No generar columnas automáticamente
@@ -129,8 +129,7 @@ namespace Sistema_Gimnasio
                         // Resetea a valores por defecto
                         row.DefaultCellStyle.BackColor = BoardSupplier.DefaultCellStyle.BackColor;
                         row.DefaultCellStyle.ForeColor = BoardSupplier.DefaultCellStyle.ForeColor;
-                        row.DefaultCellStyle.SelectionBackColor = BoardSupplier.DefaultCellStyle.SelectionBackColor;
-                        row.DefaultCellStyle.SelectionForeColor = BoardSupplier.DefaultCellStyle.SelectionForeColor;
+                        
                     }
                 }
             };
@@ -156,9 +155,7 @@ namespace Sistema_Gimnasio
                 MessageBox.Show($"Eliminar proveedor {name}");
             }
         }
-
-        // Carga datos de ejemplo en la lista de proveedores.
-       
+               
 
         // Construye el diccionario de control de acceso (ACL) para las columnas de acción.
         private void BuildAcl()
@@ -196,22 +193,30 @@ namespace Sistema_Gimnasio
         {
             string query = TSearchSupplier.Text?.Trim().ToLowerInvariant(); // Obtiene el texto de búsqueda en minúsculas
             bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar proveedor...";
-            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos"; // Obtiene el estado seleccionado
 
-            // Filtra la lista según el texto de búsqueda y el estado
-            var filtered = suppliersList.Where(s =>
-                (!hasQuery || (s.Nombre ?? "").ToLower().Contains(query)) &&
-                (estado == "Todos" ||
-                 (estado == "Activo" && s.Estado) ||
-                 (estado == "Inactivo" && s.Estado))
+            // Estado según banderas
+            var s = CBStatus.SelectedItem?.ToString() ?? "Todos";
+            bool WantActivo = s.Equals("Activo", StringComparison.OrdinalIgnoreCase);
+            bool WantInactivo = s.Equals("Inactivo", StringComparison.OrdinalIgnoreCase);
+            bool WantAllS = s.Equals("Todos", StringComparison.OrdinalIgnoreCase);
+                                   
+            bool IsActivo(Supplier pSupplier)
+            {
+                var val = (pSupplier.Estado ?? "").Trim();
+                return val == "1" || val.Equals("Activo", StringComparison.OrdinalIgnoreCase);
+            }
+
+            // Filtro combinado: filtra por texto, estado 
+            var view = suppliersList.Where(supplier =>
+                (!hasQuery ||
+                    ((supplier.Nombre ?? "").ToLower().Contains(query) ||
+                    (supplier.Cuit.ToString() ?? "").ToLower().Contains(query))) &&
+                (WantAllS || (WantActivo && IsActivo(supplier)) || (WantInactivo && !IsActivo(supplier)))
             ).ToList();
 
-            BoardSupplier.Rows.Clear(); // Limpia la tabla
-            foreach (var s in filtered)
-            {
-                // Agrega cada proveedor filtrado a la tabla
-                BoardSupplier.Rows.Add(s.Nombre, s.Cuit, s.Email, s.Telefono, s.Estado);
-            }
+            // Actualiza el datasource de la grilla
+            BoardSupplier.DataSource = null;
+            BoardSupplier.DataSource = view;
         }
 
         

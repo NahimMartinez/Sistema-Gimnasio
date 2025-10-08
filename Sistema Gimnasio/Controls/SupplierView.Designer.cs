@@ -114,42 +114,35 @@
             // 
             // name
             // 
-            this.name.DataPropertyName = "name";
+            this.name.DataPropertyName = "Nombre";
             this.name.HeaderText = "Nombre";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
             // 
             // cuit
             // 
-            this.cuit.DataPropertyName = "cuit";
+            this.cuit.DataPropertyName = "Cuit";
             this.cuit.HeaderText = "CUIT";
             this.cuit.MinimumWidth = 6;
-            this.cuit.Name = "cuit";
-            // 
-            // typeSupplier
-            // 
-            this.typeSupplier.DataPropertyName = "typeSupplier";
-            this.typeSupplier.HeaderText = "Rubro";
-            this.typeSupplier.MinimumWidth = 6;
-            this.typeSupplier.Name = "typeSupplier";
+            this.cuit.Name = "cuit";           
             // 
             // email
             // 
-            this.email.DataPropertyName = "email";
+            this.email.DataPropertyName = "Email";
             this.email.HeaderText = "Email";
             this.email.MinimumWidth = 6;
             this.email.Name = "email";
             // 
             // phone
             // 
-            this.phone.DataPropertyName = "phone";
+            this.phone.DataPropertyName = "Telefono";
             this.phone.HeaderText = "Telefono";
             this.phone.MinimumWidth = 6;
             this.phone.Name = "phone";
             // 
             // status
             // 
-            this.status.DataPropertyName = "status";
+            this.status.DataPropertyName = "Estado";
             this.status.HeaderText = "Estado";
             this.status.MinimumWidth = 6;
             this.status.Name = "status";

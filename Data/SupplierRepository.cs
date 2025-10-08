@@ -125,7 +125,7 @@ namespace Data
                                cuit AS Cuit,
                                email AS Email,
                                telefono AS Telefono,
-                               estado AS Estado
+                               CASE WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END AS estado
                         FROM proveedor;";
             using (var cn = new SqlConnection(Connection.chain))
             {

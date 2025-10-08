@@ -13,6 +13,8 @@ namespace Entities
         public long Cuit { get; set; }
         public long Telefono { get; set; }
         public string Email { get; set; }
-        public bool Estado { get; set; }     // true = activo, false = inactivo
+        public String Estado { get; set; }     // true = activo, false = inactivo
+
+        
     }
 }
