@@ -25,5 +25,10 @@ namespace Business
                 throw new Business.Exceptions.DuplicateFieldException(dex.Field.ToString(), dex.Message);
             }
         }
+
+        public List<Supplier> GetAllSuppliers()
+        {
+            return supplierRepo.GetAllSuppliers();
+        }
     }
 }

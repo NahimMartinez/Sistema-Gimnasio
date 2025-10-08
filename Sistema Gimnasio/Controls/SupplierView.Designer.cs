@@ -86,7 +86,6 @@
             this.BoardSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.cuit,
-            this.typeSupplier,
             this.email,
             this.phone,
             this.status,
