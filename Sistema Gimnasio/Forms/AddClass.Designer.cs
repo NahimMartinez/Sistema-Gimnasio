@@ -207,6 +207,7 @@ namespace Sistema_Gimnasio.Forms
             this.BSave.Text = "Guardar";
             this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSave.UseVisualStyleBackColor = false;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click_1);
             // 
             // BLimpiar
             // 
@@ -314,7 +315,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.txtPrecio.Location = new System.Drawing.Point(195, 101);
-            this.txtPrecio.MaxLength = 3;
+            this.txtPrecio.MaxLength = 4;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 27);
             this.txtPrecio.TabIndex = 53;

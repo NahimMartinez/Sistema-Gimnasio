@@ -9,18 +9,18 @@ namespace Sistema_Gimnasio.Forms
 {
     public partial class AddClass : Form
     {
-        // NOTA: Tu clase se llama 'ActivityService' pero en otros archivos era 'ActividadService'.
-        // Asegúrate de que el nombre aquí sea el correcto.
         private readonly ActivityService _actividadService = new ActivityService();
         private readonly UserService _userService = new UserService();
         private readonly ClassService _classService = new ClassService();
-
         private List<CheckBox> checkBoxesDias = new List<CheckBox>();
 
         public AddClass()
         {
             InitializeComponent();
             checkBoxesDias.AddRange(new CheckBox[] { CBLunes, CBMartes, CBMiercoles, CBJueves, CBViernes, CBSabado, CBDomingo });
+
+            this.txtCupo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCupo_KeyPress);
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
         }
 
         private void AddClass_Load(object sender, EventArgs e)
@@ -28,89 +28,75 @@ namespace Sistema_Gimnasio.Forms
             LoadActivities();
             LoadCoaches();
             SetDayTags();
-
-            // Deja los ComboBox sin selección
             CBCategoria.SelectedIndex = -1;
             CBCoachs.SelectedIndex = -1;
         }
 
-        // --- MÉTODO PARA EL BOTÓN LIMPIAR (CORREGIDO Y COMPLETO) ---
-        private void BLimpiar_Click(object sender, EventArgs e)
+        private bool ValidateInputs()
         {
-            // Resetea los ComboBox
-            if (CBCategoria.Items.Count > 0) CBCategoria.SelectedIndex = 0;
-            if (CBCoachs.Items.Count > 0) CBCoachs.SelectedIndex = 0;
-
-            // Limpia los campos de texto
-            txtCupo.Clear();
-            txtPrecio.Clear();
-
-            // Resetea las horas a la hora actual
-            DTDesde.Value = DateTime.Now;
-            DTHasta.Value = DateTime.Now;
-
-            // Desmarca todos los checkboxes
-            foreach (var chk in checkBoxesDias)
+            // Validar ComboBox de Categoría
+            if (CBCategoria.SelectedIndex == -1)
             {
-                chk.Checked = false;
+                MessageBox.Show("Debe seleccionar una actividad.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
+
+            // Validar ComboBox de Coach
+            if (CBCoachs.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un coach.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validar que los campos de texto no estén vacíos
+            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                MessageBox.Show("Debe ingresar un precio.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCupo.Text))
+            {
+                MessageBox.Show("Debe ingresar un cupo.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validar que la hora de inicio sea menor a la de fin
+            if (DTDesde.Value >= DTHasta.Value)
+            {
+                MessageBox.Show("La hora de inicio debe ser anterior a la hora de fin.", "Error de Horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validar que se haya seleccionado al menos un día
+            if (!checkBoxesDias.Any(chk => chk.Checked))
+            {
+                MessageBox.Show("Debe seleccionar al menos un día para la clase.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Si todas las validaciones pasan, devuelve true
+            return true;
         }
 
-        private void LoadActivities()
+        private void BSave_Click_1(object sender, EventArgs e)
         {
+            if (!ValidateInputs())
+            {
+                return; // Si la validación falla, no se continúa
+            }
+
             try
             {
-                // Carga las categorías/actividades desde la DB
-                CBCategoria.DataSource = _actividadService.GetAllActividades();
-                CBCategoria.DisplayMember = "Nombre";
-                CBCategoria.ValueMember = "IdActividad";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void LoadCoaches()
-        {
-            try
-            {
-                // Carga los coaches desde la DB
-                CBCoachs.DataSource = _userService.GetAllCoaches();
-                CBCoachs.DisplayMember = "NombreCompleto";
-                CBCoachs.ValueMember = "IdUsuario";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void BSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Validar selección
-                if (CBCategoria.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debe seleccionar una actividad.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (CBCoachs.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Debe seleccionar un coach.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 var newClass = new Class
                 {
                     ActividadId = (int)CBCategoria.SelectedValue,
                     UsuarioId = (int)CBCoachs.SelectedValue,
                     HoraDesde = DTDesde.Value.TimeOfDay,
                     HoraHasta = DTHasta.Value.TimeOfDay,
-                    Precio = decimal.Parse(txtPrecio.Text),
+                    // Reemplazar la coma por un punto para asegurar la conversión decimal correcta
+                    Precio = decimal.Parse(txtPrecio.Text.Replace(',', '.')),
                     Cupo = int.Parse(txtCupo.Text),
-                    Estado = true 
+                    Estado = true
                 };
 
                 foreach (var chk in checkBoxesDias)
@@ -129,7 +115,7 @@ namespace Sistema_Gimnasio.Forms
             }
             catch (FormatException)
             {
-                MessageBox.Show("El valor del cupo o del precio no es un número válido.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El valor del cupo o del precio tiene un formato incorrecto.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -137,19 +123,71 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
-        // Método para asignar los IDs (1, 2, 3...) a cada CheckBox
-        private void SetDayTags()
+        //EVENTOS KEYPRESS
+        private void txtCupo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            CBLunes.Tag = 1;
-            CBMartes.Tag = 2;
-            CBMiercoles.Tag = 3;
-            CBJueves.Tag = 4;
-            CBViernes.Tag = 5;
-            CBSabado.Tag = 6;
-            CBDomingo.Tag = 7;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
-        // Si tienes un botón "Cancelar", este sería su evento
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.' || e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1 || (sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void BLimpiar_Click(object sender, EventArgs e)
+        {
+            if (CBCategoria.Items.Count > 0) CBCategoria.SelectedIndex = 0;
+            if (CBCoachs.Items.Count > 0) CBCoachs.SelectedIndex = 0;
+            txtCupo.Clear();
+            txtPrecio.Clear();
+            DTDesde.Value = DateTime.Now;
+            DTHasta.Value = DateTime.Now;
+            foreach (var chk in checkBoxesDias)
+            {
+                chk.Checked = false;
+            }
+        }
+        private void LoadActivities()
+        {
+            try
+            {
+                CBCategoria.DataSource = _actividadService.GetAllActividades();
+                CBCategoria.DisplayMember = "Nombre";
+                CBCategoria.ValueMember = "IdActividad";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadCoaches()
+        {
+            try
+            {
+                CBCoachs.DataSource = _userService.GetAllCoaches();
+                CBCoachs.DisplayMember = "NombreCompleto";
+                CBCoachs.ValueMember = "IdUsuario";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void SetDayTags()
+        {
+            CBLunes.Tag = 1; CBMartes.Tag = 2; CBMiercoles.Tag = 3; CBJueves.Tag = 4;
+            CBViernes.Tag = 5; CBSabado.Tag = 6; CBDomingo.Tag = 7;
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

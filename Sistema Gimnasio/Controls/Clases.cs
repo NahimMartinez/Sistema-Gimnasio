@@ -167,11 +167,13 @@ namespace Sistema_Gimnasio.Controls
         // Evento que se ejecuta al hacer clic en el botón para agregar una nueva clase.
         private void BNewClass_Click(object sender, EventArgs e)
         {
-            using (var fNewClass = new AddClass()) // Crea el formulario para agregar clase
+            using (var fNewClass = new AddClass())
             {
+                // Si el formulario AddClass se cerró con "OK" (o sea, se guardó exitosamente)...
                 if (fNewClass.ShowDialog() == DialogResult.OK)
                 {
-                    // Aquí se podría recargar los datos 
+                    // ...entonces volvemos a llamar al método que carga los datos desde la base de datos.
+                    LoadDataFromService();
                 }
             }
         }
