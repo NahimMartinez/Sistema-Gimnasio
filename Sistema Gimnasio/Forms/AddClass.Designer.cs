@@ -44,10 +44,14 @@ namespace Sistema_Gimnasio.Forms
             this.BSave = new FontAwesome.Sharp.IconButton();
             this.BLimpiar = new FontAwesome.Sharp.IconButton();
             this.LHora = new System.Windows.Forms.Label();
-            this.txtHora = new System.Windows.Forms.TextBox();
             this.CBDomingo = new System.Windows.Forms.CheckBox();
             this.CBCoachs = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DTDesde = new System.Windows.Forms.DateTimePicker();
+            this.DTHasta = new System.Windows.Forms.DateTimePicker();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CBCategoria
@@ -64,7 +68,7 @@ namespace Sistema_Gimnasio.Forms
             "Yoga",
             "Spinning",
             "Pilates"});
-            this.CBCategoria.Location = new System.Drawing.Point(167, 46);
+            this.CBCategoria.Location = new System.Drawing.Point(195, 25);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(200, 28);
             this.CBCategoria.TabIndex = 34;
@@ -75,7 +79,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtCupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCupo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtCupo.Location = new System.Drawing.Point(167, 124);
+            this.txtCupo.Location = new System.Drawing.Point(195, 134);
             this.txtCupo.MaxLength = 3;
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(100, 27);
@@ -97,7 +101,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCupo.AutoSize = true;
             this.LCupo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LCupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCupo.Location = new System.Drawing.Point(86, 126);
+            this.LCupo.Location = new System.Drawing.Point(86, 134);
             this.LCupo.Name = "LCupo";
             this.LCupo.Size = new System.Drawing.Size(55, 23);
             this.LCupo.TabIndex = 30;
@@ -108,7 +112,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCategoria.AutoSize = true;
             this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCategoria.Location = new System.Drawing.Point(86, 49);
+            this.LCategoria.Location = new System.Drawing.Point(86, 26);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(88, 23);
             this.LCategoria.TabIndex = 29;
@@ -196,14 +200,13 @@ namespace Sistema_Gimnasio.Forms
             this.BSave.IconColor = System.Drawing.Color.White;
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
-            this.BSave.Location = new System.Drawing.Point(125, 232);
+            this.BSave.Location = new System.Drawing.Point(144, 263);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 41;
             this.BSave.Text = "Guardar";
             this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSave.UseVisualStyleBackColor = false;
-            this.BSave.Click += new System.EventHandler(this.BCrear_Click);
             // 
             // BLimpiar
             // 
@@ -215,7 +218,7 @@ namespace Sistema_Gimnasio.Forms
             this.BLimpiar.IconColor = System.Drawing.Color.White;
             this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLimpiar.IconSize = 24;
-            this.BLimpiar.Location = new System.Drawing.Point(283, 232);
+            this.BLimpiar.Location = new System.Drawing.Point(302, 263);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 42;
@@ -231,20 +234,9 @@ namespace Sistema_Gimnasio.Forms
             this.LHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LHora.Location = new System.Drawing.Point(86, 169);
             this.LHora.Name = "LHora";
-            this.LHora.Size = new System.Drawing.Size(51, 23);
+            this.LHora.Size = new System.Drawing.Size(103, 23);
             this.LHora.TabIndex = 43;
-            this.LHora.Text = "Hora:";
-            // 
-            // txtHora
-            // 
-            this.txtHora.BackColor = System.Drawing.Color.White;
-            this.txtHora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHora.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtHora.Location = new System.Drawing.Point(167, 166);
-            this.txtHora.Name = "txtHora";
-            this.txtHora.Size = new System.Drawing.Size(100, 27);
-            this.txtHora.TabIndex = 44;
+            this.LHora.Text = "Hora Desde:";
             // 
             // CBDomingo
             // 
@@ -272,7 +264,7 @@ namespace Sistema_Gimnasio.Forms
             "Yoga",
             "Spinning",
             "Pilates"});
-            this.CBCoachs.Location = new System.Drawing.Point(167, 83);
+            this.CBCoachs.Location = new System.Drawing.Point(195, 62);
             this.CBCoachs.Name = "CBCoachs";
             this.CBCoachs.Size = new System.Drawing.Size(200, 28);
             this.CBCoachs.TabIndex = 47;
@@ -282,22 +274,76 @@ namespace Sistema_Gimnasio.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(86, 86);
+            this.label1.Location = new System.Drawing.Point(86, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 23);
             this.label1.TabIndex = 46;
             this.label1.Text = "Coach:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.label2.Location = new System.Drawing.Point(86, 211);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 23);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Hora Hasta:";
+            // 
+            // DTDesde
+            // 
+            this.DTDesde.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DTDesde.Location = new System.Drawing.Point(195, 169);
+            this.DTDesde.Name = "DTDesde";
+            this.DTDesde.Size = new System.Drawing.Size(89, 27);
+            this.DTDesde.TabIndex = 50;
+            // 
+            // DTHasta
+            // 
+            this.DTHasta.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DTHasta.Location = new System.Drawing.Point(195, 211);
+            this.DTHasta.Name = "DTHasta";
+            this.DTHasta.Size = new System.Drawing.Size(89, 27);
+            this.DTHasta.TabIndex = 51;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.BackColor = System.Drawing.Color.White;
+            this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.txtPrecio.Location = new System.Drawing.Point(195, 101);
+            this.txtPrecio.MaxLength = 3;
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 27);
+            this.txtPrecio.TabIndex = 53;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.label3.Location = new System.Drawing.Point(86, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 23);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "Precio x dia:";
             // 
             // AddClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(600, 289);
+            this.ClientSize = new System.Drawing.Size(600, 322);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.DTHasta);
+            this.Controls.Add(this.DTDesde);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.CBCoachs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CBDomingo);
-            this.Controls.Add(this.txtHora);
             this.Controls.Add(this.LHora);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BSave);
@@ -339,9 +385,13 @@ namespace Sistema_Gimnasio.Forms
         private FontAwesome.Sharp.IconButton BSave;
         private FontAwesome.Sharp.IconButton BLimpiar;
         private System.Windows.Forms.Label LHora;
-        private System.Windows.Forms.TextBox txtHora;
         private System.Windows.Forms.CheckBox CBDomingo;
         private System.Windows.Forms.ComboBox CBCoachs;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker DTDesde;
+        private System.Windows.Forms.DateTimePicker DTHasta;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label label3;
     }
 }

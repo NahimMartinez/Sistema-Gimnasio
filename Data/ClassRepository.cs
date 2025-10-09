@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using Entities;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+
 
 namespace Data
 {
@@ -45,6 +47,24 @@ namespace Data
                     ((IDictionary<string, object>)cls)["Dias"] = string.Join(", ", diasList);
                 }
                 return classes;
+            }
+        }
+
+        public void InsertClass(Class clase, IDbConnection connection, IDbTransaction transaction)
+        {
+            // 1. Insertar en la tabla 'clase' y obtener el ID de la nueva fila
+            const string sqlClase = @"
+            INSERT INTO clase (actividad_id, usuario_id, hora_desde, hora_hasta, precio, cupo, estado)
+            OUTPUT INSERTED.id_clase
+            VALUES (@ActividadId, @UsuarioId, @HoraDesde, @HoraHasta, @Precio, @Cupo, @Estado);";
+
+            int newClassId = connection.ExecuteScalar<int>(sqlClase, clase, transaction);
+
+            // 2. Insertar en la tabla de unión 'clase_dia' por cada día seleccionado
+            const string sqlClaseDia = "INSERT INTO clase_dia (clase_id, dia_id) VALUES (@ClaseId, @DiaId);";
+            foreach (var dia in clase.Dias)
+            {
+                connection.Execute(sqlClaseDia, new { ClaseId = newClassId, DiaId = dia.IdDia }, transaction);
             }
         }
     }
