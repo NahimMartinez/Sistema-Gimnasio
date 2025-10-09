@@ -112,6 +112,11 @@ namespace Business
             return userRepo.GetAllUsersView();
         }
 
+        public List<User> GetAllCoaches()
+        {
+            return userRepo.GetAllCoaches();
+        }
+
         public string GetHashedPassword(string password)
         {
             return HashPassword(password);

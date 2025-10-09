@@ -184,6 +184,20 @@ namespace Data
                 return cn.QuerySingle<int>(sql, new { Username = username, ExcludeId = excludeId }) > 0;
         }
 
+        public List<User> GetAllCoaches()
+        {
+            const string sql = @"
+            SELECT p.id_persona AS IdUsuario, p.nombre, p.apellido
+            FROM usuario u
+            JOIN persona p ON p.id_persona = u.id_usuario
+            JOIN rol r ON r.id_rol = u.rol_id
+            WHERE r.nombre = 'Coach' AND p.estado = 1;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<User>(sql).ToList();
+            }
+        }
     }
 }
 
