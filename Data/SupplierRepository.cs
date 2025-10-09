@@ -77,6 +77,7 @@ namespace Data
                     cn.Execute(sql, supplier);
                 }
             }
+
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 var constraint = SqlExceptionUtils.GetConstraintName(ex);
@@ -95,25 +96,25 @@ namespace Data
             }
         }
 
-        public void DisableSupplier(int supplierId)
+        public long DisableSupplier(long c)
         {
             const string sql = @"
                         UPDATE proveedor SET estado = 0
-                        WHERE id_proveedor = @IdProveedor;";
+                        WHERE cuit = @cuit;";
             using (var cn = new SqlConnection(Connection.chain))
             {
-                cn.Execute(sql, new { IdProveedor = supplierId });
+               return cn.Execute(sql, new { Cuit = c });
             }
         }
 
-        public void EnableSupplier(int supplierId)
+        public long EnableSupplier(long c)
         {
             const string sql = @"
                         UPDATE proveedor SET estado = 1
-                        WHERE id_proveedor = @IdProveedor;";
+                        WHERE cuit = @cuit;";
             using (var cn = new SqlConnection(Connection.chain))
             {
-                cn.Execute(sql, new { IdProveedor = supplierId });
+               return cn.Execute(sql, new { Cuit = c });
             }
         }
 
@@ -130,6 +131,23 @@ namespace Data
             using (var cn = new SqlConnection(Connection.chain))
             {
                 return cn.Query<Supplier>(sql).ToList();
+            }
+        }
+
+        public Supplier GetSupplierByCuit(long pCuit)
+        {
+            const string sql = @"
+                        SELECT id_proveedor AS IdProveedor,
+                               nombre AS Nombre,
+                               cuit AS Cuit,
+                               email AS Email,
+                               telefono AS Telefono,
+                               estado
+                        FROM proveedor
+                        WHERE cuit = @cuit;";
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.QuerySingleOrDefault<Supplier>(sql, new { Cuit = pCuit });
             }
         }
 

@@ -19,13 +19,25 @@ namespace Business
             {
                 return supplierRepo.InsertSupplier(pSupplier); // devuelve id_proveedor
             }
-            catch (Data.Exceptions.DuplicateKeyException dex)
+            catch (Data.Exceptions.DuplicateKeyException ex)
             {
                 // Reenvía a la capa de negocio conservando la causa
-                throw new Business.Exceptions.DuplicateFieldException(dex.Field.ToString(), dex.Message);
+                throw new Business.Exceptions.DuplicateFieldException(ex.Field.ToString(), ex.Message);
             }
         }
 
+        public void SupplierUpdate(Supplier pSupplier)
+        {
+            try
+            {
+                supplierRepo.UpdateSupplier(pSupplier);
+            }
+            catch (Data.Exceptions.DuplicateKeyException ex)
+            {
+                // Reenvía a la capa de negocio conservando la causa
+                throw new Exception("Error al actualizar el proveedor", ex);
+            }
+        }
         public List<Supplier> GetAllSuppliers()
         {
             return supplierRepo.GetAllSuppliers();

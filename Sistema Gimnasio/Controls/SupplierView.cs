@@ -1,4 +1,5 @@
 ﻿using Business;
+using Data;
 using Entities;
 using FontAwesome.Sharp;
 using System;
@@ -139,20 +140,66 @@ namespace Sistema_Gimnasio
         private void BoardSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // Ignora clics fuera de las filas de datos
-            var name = BoardSupplier.Rows[e.RowIndex].Cells["name"].Value; // Obtiene el nombre del proveedor
+            //var name = BoardSupplier.Rows[e.RowIndex].Cells["name"].Value; // Obtiene el nombre del proveedor
             var col = BoardSupplier.Columns[e.ColumnIndex].Name; // Obtiene la columna clickeada
             // Muestra un mensaje según la acción seleccionada
             if (col == "colEdit")
             {
-                MessageBox.Show($"Editar proveedor {name}");
+                // Obtener el DNI del usuario seleccionado
+                var cuitCell = BoardSupplier.Rows[e.RowIndex].Cells["Cuit"].Value;
+                var supRepo = new SupplierRepository();
+                // Obtener el usuario completo
+                var supplier = supRepo.GetSupplierByCuit((long)cuitCell);
+                // Abrir el formulario en modo edición
+                using (var fEditUser = new AddSupplierForm(supplier, false))
+                {
+                    if (fEditUser.ShowDialog() == DialogResult.OK)
+                    {
+                        // Recargar la grilla después de editar
+                        LoadSupplier();
+                    }
+                }
             }
             else if (col == "colView")
             {
-                MessageBox.Show($"Ver proveedor {name}");
+                var cuitCell = BoardSupplier.Rows[e.RowIndex].Cells["Cuit"].Value;
+                var supRepo = new SupplierRepository();
+                var supplier = supRepo.GetSupplierByCuit((long)cuitCell);
+                using (var fViewUser = new AddSupplierForm(supplier, true)) // true para modo solo lectura
+                {
+                    fViewUser.ShowDialog(); // Solo mostrar, no editar
+                }
+
             }
             else if (col == "colDelete")
             {
-                MessageBox.Show($"Eliminar proveedor {name}");
+                var cuitCell = BoardSupplier.Rows[e.RowIndex].Cells["Cuit"].Value;
+                var name = BoardSupplier.Rows[e.RowIndex].Cells["name"].Value;
+                var cell = BoardSupplier.Rows[e.RowIndex].Cells["status"].Value?.ToString().Trim();
+                bool s = cell == "1" || cell?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+                var repo = new SupplierRepository();
+                if (s)
+                {
+                    var confirm = MessageBox.Show($"¿Está seguro que desea desactivar el proveedor '{name}'?", "Confirmar desactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (confirm == DialogResult.Yes)
+                    {
+
+                        var repoD = repo.DisableSupplier((long)cuitCell);
+                        if (repoD == 0) MessageBox.Show("No se realizó la baja. Puede estar ya inactivo o no existe.");
+                        LoadSupplier();
+
+                    }                    
+                }
+                else
+                {
+                    var confirm = MessageBox.Show($"¿Está seguro que desea activar el proveedor '{name}'?", "Confirmar activación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        var repoE = repo.EnableSupplier((long)cuitCell);
+                        if (repoE == 0) MessageBox.Show("No se realizó la activación. Puede estar ya activo o no existe.");
+                        LoadSupplier();
+                    }
+                }
             }
         }
                

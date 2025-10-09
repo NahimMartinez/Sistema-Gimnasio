@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthService.cs" />
+    <Compile Include="ClassService.cs" />
     <Compile Include="DuplicateFieldException.cs" />
     <Compile Include="RolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
