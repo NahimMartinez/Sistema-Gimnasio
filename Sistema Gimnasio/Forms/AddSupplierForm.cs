@@ -18,7 +18,7 @@ namespace Sistema_Gimnasio
     {
         private readonly Supplier editingSupplier = null;
 
-        private readonly bool readOnly = false;
+        
         public AddSupplierForm() : this(null, false) { }
         public AddSupplierForm(Supplier supplierEdit, bool readOnly)
         {
