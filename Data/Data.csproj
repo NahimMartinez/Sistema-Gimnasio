@@ -61,6 +61,7 @@
     <Compile Include="ClassRepository.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DuplicateKeyException.cs" />
+    <Compile Include="PartnerRepository.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolRepository.cs" />
