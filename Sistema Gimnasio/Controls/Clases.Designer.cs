@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloClases = new System.Windows.Forms.Label();
             this.BoardClass = new System.Windows.Forms.DataGridView();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.TSearchClass = new System.Windows.Forms.TextBox();
+            this.LStatus = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.BNewClass = new FontAwesome.Sharp.IconButton();
+            this.id_clase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,11 +48,6 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.TSearchClass = new System.Windows.Forms.TextBox();
-            this.LStatus = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.BNewClass = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +86,7 @@
             this.BoardClass.ColumnHeadersHeight = 38;
             this.BoardClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_clase,
             this.name,
             this.coach,
             this.cupo,
@@ -115,6 +117,87 @@
             this.BoardClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardClass.Size = new System.Drawing.Size(762, 450);
             this.BoardClass.TabIndex = 1;
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.CBStatus.Location = new System.Drawing.Point(168, 66);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.TabIndex = 2;
+            // 
+            // TSearchClass
+            // 
+            this.TSearchClass.BackColor = System.Drawing.Color.White;
+            this.TSearchClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchClass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchClass.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchClass.Location = new System.Drawing.Point(18, 66);
+            this.TSearchClass.Name = "TSearchClass";
+            this.TSearchClass.Size = new System.Drawing.Size(144, 27);
+            this.TSearchClass.TabIndex = 5;
+            this.TSearchClass.Text = "Buscar clase...";
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(165, 48);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.TabIndex = 6;
+            this.LStatus.Text = "Estado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.LTituloClases);
+            this.panel1.Controls.Add(this.BNewClass);
+            this.panel1.Controls.Add(this.TSearchClass);
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.panel1.Size = new System.Drawing.Size(762, 100);
+            this.panel1.TabIndex = 9;
+            // 
+            // BNewClass
+            // 
+            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewClass.FlatAppearance.BorderSize = 0;
+            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewClass.ForeColor = System.Drawing.Color.White;
+            this.BNewClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewClass.IconColor = System.Drawing.Color.White;
+            this.BNewClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewClass.IconSize = 20;
+            this.BNewClass.Location = new System.Drawing.Point(614, 64);
+            this.BNewClass.Name = "BNewClass";
+            this.BNewClass.Size = new System.Drawing.Size(136, 26);
+            this.BNewClass.TabIndex = 9;
+            this.BNewClass.Text = "Nueva clase";
+            this.BNewClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewClass.UseVisualStyleBackColor = false;
+            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
+            // 
+            // id_clase
+            // 
+            this.id_clase.HeaderText = "ID";
+            this.id_clase.MinimumWidth = 6;
+            this.id_clase.Name = "id_clase";
+            this.id_clase.ReadOnly = true;
+            this.id_clase.Visible = false;
             // 
             // name
             // 
@@ -190,79 +273,6 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
-            // CBStatus
-            // 
-            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBStatus.FormattingEnabled = true;
-            this.CBStatus.Items.AddRange(new object[] {
-            "Todos",
-            "Activo",
-            "Inactivo",});
-            this.CBStatus.Location = new System.Drawing.Point(168, 66);
-            this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
-            this.CBStatus.TabIndex = 2;
-            // 
-            // TSearchClass
-            // 
-            this.TSearchClass.BackColor = System.Drawing.Color.White;
-            this.TSearchClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearchClass.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearchClass.ForeColor = System.Drawing.Color.Gray;
-            this.TSearchClass.Location = new System.Drawing.Point(18, 66);
-            this.TSearchClass.Name = "TSearchClass";
-            this.TSearchClass.Size = new System.Drawing.Size(144, 27);
-            this.TSearchClass.TabIndex = 5;
-            this.TSearchClass.Text = "Buscar clase...";
-            // 
-            // LStatus
-            // 
-            this.LStatus.AutoSize = true;
-            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LStatus.Location = new System.Drawing.Point(165, 48);
-            this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
-            this.LStatus.TabIndex = 6;
-            this.LStatus.Text = "Estado";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.LTituloClases);
-            this.panel1.Controls.Add(this.BNewClass);
-            this.panel1.Controls.Add(this.TSearchClass);
-            this.panel1.Controls.Add(this.CBStatus);
-            this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.panel1.Size = new System.Drawing.Size(762, 100);
-            this.panel1.TabIndex = 9;
-            // 
-            // BNewClass
-            // 
-            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewClass.FlatAppearance.BorderSize = 0;
-            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewClass.ForeColor = System.Drawing.Color.White;
-            this.BNewClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.BNewClass.IconColor = System.Drawing.Color.White;
-            this.BNewClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BNewClass.IconSize = 20;
-            this.BNewClass.Location = new System.Drawing.Point(614, 64);
-            this.BNewClass.Name = "BNewClass";
-            this.BNewClass.Size = new System.Drawing.Size(136, 26);
-            this.BNewClass.TabIndex = 9;
-            this.BNewClass.Text = "Nueva clase";
-            this.BNewClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BNewClass.UseVisualStyleBackColor = false;
-            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
-            // 
             // Clases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -290,6 +300,7 @@
         private System.Windows.Forms.Label LStatus;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton BNewClass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_clase;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn coach;
         private System.Windows.Forms.DataGridViewTextBoxColumn cupo;

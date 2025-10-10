@@ -67,5 +67,19 @@ namespace Data
                 connection.Execute(sqlClaseDia, new { ClaseId = newClassId, DiaId = dia.IdDia }, transaction);
             }
         }
+
+        public void ChangeStatus(int classId)
+        {
+            const string sql = @"
+            UPDATE clase 
+            SET estado = CASE WHEN estado = 1 THEN 0 ELSE 1 END 
+            WHERE id_clase = @IdClase;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                // El nombre del parámetro (@IdClase) que coincide con el objeto
+                cn.Execute(sql, new { IdClase = classId });
+            }
+        }
     }
 }

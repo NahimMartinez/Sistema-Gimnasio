@@ -25,7 +25,7 @@ namespace Business
 
         public void CreateClass(Class newClass)
         {
-            // Validaciones de negocio (ejemplos)
+            // Validaciones de negocio
             if (newClass.HoraDesde >= newClass.HoraHasta)
             {
                 throw new Exception("La hora de inicio no puede ser mayor o igual a la hora de fin.");
@@ -55,6 +55,15 @@ namespace Business
                         throw; // Vuelve a lanzar la excepción para que la UI la reciba
                     }
                 }
+            }
+        }
+
+        public void ChangeClassStatus(int classId){
+            try { 
+                classRepo.ChangeStatus(classId);
+            }
+            catch (Exception ex) {
+                throw new Exception("Error al cambiar el estado de la clase.", ex);
             }
         }
     }
