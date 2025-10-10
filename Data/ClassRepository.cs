@@ -77,8 +77,63 @@ namespace Data
 
             using (var cn = new SqlConnection(Connection.chain))
             {
-                // El nombre del parámetro (@IdClase) que coincide con el objeto
                 cn.Execute(sql, new { IdClase = classId });
+            }
+        }
+
+        public Class GetById(int idClase)
+        {
+            const string sql = @"
+                SELECT 
+                    id_clase AS IdClase,
+                    actividad_id AS ActividadId,
+                    usuario_id AS UsuarioId,
+                    hora_desde AS HoraDesde,
+                    hora_hasta AS HoraHasta,
+                    precio AS Precio,
+                    cupo AS Cupo,
+                    estado AS Estado
+                FROM clase 
+                WHERE id_clase = @IdClase";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                var clase = cn.QuerySingleOrDefault<Class>(sql, new { IdClase = idClase });
+
+                if (clase != null)
+                {
+                    const string sqlDias = "SELECT dia_id AS IdDia FROM clase_dia WHERE clase_id = @IdClase";
+                    var diasIds = cn.Query<int>(sqlDias, new { IdClase = idClase }).ToList();
+                    clase.Dias = diasIds.Select(id => new Day { IdDia = id }).ToList();
+                }
+                return clase;
+            }
+        }
+
+        public void Update(Class clase, IDbConnection connection, IDbTransaction transaction)
+        {
+            // 1. Actualiza la tabla principal 'clase'
+            const string sqlUpdate = @"
+            UPDATE clase SET
+                actividad_id = @ActividadId,
+                usuario_id = @UsuarioId,
+                hora_desde = @HoraDesde,
+                hora_hasta = @HoraHasta,
+                precio = @Precio,
+                cupo = @Cupo,
+                estado = @Estado
+            WHERE id_clase = @IdClase;";
+            connection.Execute(sqlUpdate, clase, transaction);
+
+            // 2. Borra TODOS los días anteriores asociados a esa clase para evitar duplicados
+            const string sqlDeleteDias = "DELETE FROM clase_dia WHERE clase_id = @IdClase;";
+            connection.Execute(sqlDeleteDias, new { IdClase = clase.IdClase }, transaction);
+
+            // 3. Vuelve a insertar los nuevos días seleccionados en el formulario
+            const string sqlInsertDias = "INSERT INTO clase_dia (clase_id, dia_id) VALUES (@ClaseId, @DiaId);";
+            foreach (var dia in clase.Dias)
+            {
+                connection.Execute(sqlInsertDias, new { ClaseId = clase.IdClase, DiaId = dia.IdDia }, transaction);
             }
         }
     }

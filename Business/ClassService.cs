@@ -66,5 +66,41 @@ namespace Business
                 throw new Exception("Error al cambiar el estado de la clase.", ex);
             }
         }
+
+        public Class GetClassById(int idClase)
+        {
+            return classRepo.GetById(idClase);
+        }
+
+        public void UpdateClass(Class clase)
+        {
+            // Reutilizo las validaciones de CreateClass
+            if (clase.HoraDesde >= clase.HoraHasta)
+            {
+                throw new Exception("La hora de inicio no puede ser mayor o igual a la hora de fin.");
+            }
+            if (clase.Dias == null || !clase.Dias.Any())
+            {
+                throw new Exception("Debe seleccionar al menos un día para la clase.");
+            }
+
+            using (var connection = new SqlConnection(Data.Connection.chain))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        classRepo.Update(clase, connection, transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Error al actualizar la clase.", ex);
+                    }
+                }
+            }
+        }
     }
 }

@@ -114,7 +114,16 @@ namespace Sistema_Gimnasio.Controls
                 }
                 else if (colName == "colEdit")
                 {
-                    MessageBox.Show($"Aquí abriremos el editor para la clase con ID: {classId}");
+                    // Abre el formulario AddClass usando el nuevo constructor, pasándole el ID de la clase
+                    using (var fEditClass = new AddClass(classId))
+                    {
+                        // Si el formulario se cerró con OK (es decir, se guardó correctamente)...
+                        if (fEditClass.ShowDialog() == DialogResult.OK)
+                        {
+                            // ...recargamos los datos para mostrar los cambios en la tabla.
+                            LoadDataFromService();
+                        }
+                    }
                 }
                 else if (colName == "colView")
                 {
