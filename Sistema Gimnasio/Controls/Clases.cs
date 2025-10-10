@@ -127,7 +127,12 @@ namespace Sistema_Gimnasio.Controls
                 }
                 else if (colName == "colView")
                 {
-                    MessageBox.Show($"Aquí mostraremos los detalles de la clase con ID: {classId}");
+                    // Abre el formulario AddClass usando el constructor de edición/vista,
+                    // pasándole el ID de la clase y la bandera 'isViewOnly' en 'true'.
+                    using (var fViewClass = new AddClass(classId, true))
+                    {
+                        fViewClass.ShowDialog(); // Simplemente lo mostramos, no necesitamos recargar datos después.
+                    }
                 }
             }
         }

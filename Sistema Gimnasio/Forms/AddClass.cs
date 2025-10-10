@@ -14,21 +14,28 @@ namespace Sistema_Gimnasio.Forms
         private readonly ClassService _classService = new ClassService();
         private List<CheckBox> checkBoxesDias = new List<CheckBox>();
 
-        private int? _classIdToEdit;
+        // Almacena el ID de la clase si estamos en modo Editar o Ver. Es nulo si es modo Crear.
+        private int? _classId;
+        // Bandera para determinar si el formulario es de solo lectura.
+        private bool _isViewOnly = false;
 
+        // Constructor para el modo CREAR una nueva clase.
         public AddClass()
         {
             InitializeComponent();
             InitializeForm();
         }
 
-        public AddClass(int classIdToEdit)
+        // Constructor para los modos EDITAR o VER una clase existente.
+        public AddClass(int classId, bool isViewOnly = false)
         {
             InitializeComponent();
             InitializeForm();
-            _classIdToEdit = classIdToEdit;
+            _classId = classId;
+            _isViewOnly = isViewOnly;
         }
 
+        // Realiza la inicialización común para ambos constructores.
         private void InitializeForm()
         {
             checkBoxesDias.AddRange(new CheckBox[] { CBLunes, CBMartes, CBMiercoles, CBJueves, CBViernes, CBSabado, CBDomingo });
@@ -36,19 +43,30 @@ namespace Sistema_Gimnasio.Forms
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
         }
 
+        // Se ejecuta cuando el formulario se carga. Decide qué modo de operación usar.
         private void AddClass_Load(object sender, EventArgs e)
         {
             SetDayTags();
 
-            if (_classIdToEdit.HasValue)
+            // Si se proporcionó un ID de clase, entramos en modo Editar o Ver.
+            if (_classId.HasValue)
             {
-                this.Text = "Editar Clase";
-                LoadDataForEditing(); // Llamamos al metodo para editar
+                // Si además la bandera de solo-vista está activa.
+                if (_isViewOnly)
+                {
+                    this.Text = "Ver Clase";
+                    SetViewOnlyMode(); // Bloquea los controles.
+                }
+                else
+                {
+                    this.Text = "Editar Clase";
+                }
+                LoadDataForEditing(); // Carga los datos existentes de la clase.
             }
+            // Si no se proporcionó un ID, entramos en modo Crear.
             else
             {
                 this.Text = "Nueva Clase";
-                // En modo creación, solo cargamos las listas y dejamos sin selección
                 LoadActivities();
                 LoadCoaches();
                 CBCategoria.SelectedIndex = -1;
@@ -56,23 +74,44 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
+        // Configura el formulario para que sea de solo lectura.
+        private void SetViewOnlyMode()
+        {
+            // Deshabilita todos los controles de entrada de datos.
+            CBCategoria.Enabled = false;
+            CBCoachs.Enabled = false;
+            txtPrecio.ReadOnly = true;
+            txtCupo.ReadOnly = true;
+            DTDesde.Enabled = false;
+            DTHasta.Enabled = false;
+            foreach (var chk in checkBoxesDias)
+            {
+                chk.Enabled = false;
+            }
+
+            // Oculta los botones de acción y ajusta el botón de cancelar.
+            BSave.Visible = false;
+            BLimpiar.Visible = false;
+        }
+
+        // Carga los datos de una clase existente en los controles del formulario.
         private void LoadDataForEditing()
         {
             try
             {
-                // 1. OBTENEMOS los datos de la clase que vamos a editar
-                var clase = _classService.GetClassById(_classIdToEdit.Value);
+                var clase = _classService.GetClassById(_classId.Value);
                 if (clase == null)
                 {
-                    MessageBox.Show("Error: No se encontró la clase para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: No se encontró la clase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
 
-                // 2. CARGAMOS las listas de opciones en los ComboBox
+                // Carga las listas de opciones ANTES de asignar los valores.
                 LoadActivities();
                 LoadCoaches();
 
+                // Asigna los valores de la clase a cada control.
                 CBCategoria.SelectedValue = clase.ActividadId;
                 CBCoachs.SelectedValue = clase.UsuarioId;
                 txtPrecio.Text = clase.Precio.ToString("0.00");
@@ -80,6 +119,7 @@ namespace Sistema_Gimnasio.Forms
                 DTDesde.Value = DateTime.Today + clase.HoraDesde;
                 DTHasta.Value = DateTime.Today + clase.HoraHasta;
 
+                // Marca los checkboxes de los días correspondientes.
                 foreach (var dia in clase.Dias)
                 {
                     var chk = checkBoxesDias.FirstOrDefault(c => Convert.ToInt32(c.Tag) == dia.IdDia);
@@ -96,6 +136,7 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
+        // Se ejecuta al hacer clic en el botón Guardar.
         private void BSave_Click_1(object sender, EventArgs e)
         {
             if (!ValidateInputs())
@@ -124,9 +165,10 @@ namespace Sistema_Gimnasio.Forms
                     }
                 }
 
-                if (_classIdToEdit.HasValue)
+                // Decide si debe actualizar una clase existente o crear una nueva.
+                if (_classId.HasValue)
                 {
-                    clase.IdClase = _classIdToEdit.Value;
+                    clase.IdClase = _classId.Value;
                     _classService.UpdateClass(clase);
                     MessageBox.Show("¡Clase actualizada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -149,6 +191,7 @@ namespace Sistema_Gimnasio.Forms
             }
         }
 
+        // Valida que todos los campos del formulario estén correctos antes de guardar.
         private bool ValidateInputs()
         {
             if (CBCategoria.SelectedIndex == -1) { MessageBox.Show("Debe seleccionar una actividad.", "Campo Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning); return false; }
@@ -160,20 +203,23 @@ namespace Sistema_Gimnasio.Forms
             return true;
         }
 
+        // Impide que se ingresen caracteres que no sean números en el campo de Cupo.
         private void txtCupo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) { e.Handled = true; }
         }
 
+        // Impide que se ingresen caracteres que no sean números o un separador decimal en el campo de Precio.
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ',')) { e.Handled = true; }
             if ((e.KeyChar == '.' || e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1 || (sender as TextBox).Text.IndexOf(',') > -1)) { e.Handled = true; }
         }
 
+        // Limpia o resetea los campos del formulario.
         private void BLimpiar_Click(object sender, EventArgs e)
         {
-            if (_classIdToEdit.HasValue)
+            if (_classId.HasValue)
             {
                 LoadDataForEditing();
             }
@@ -188,6 +234,8 @@ namespace Sistema_Gimnasio.Forms
                 foreach (var chk in checkBoxesDias) { chk.Checked = false; }
             }
         }
+
+        // Carga la lista de actividades desde la base de datos y la asigna al ComboBox.
         private void LoadActivities()
         {
             try
@@ -198,6 +246,8 @@ namespace Sistema_Gimnasio.Forms
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+
+        // Carga la lista de coaches desde la base de datos y la asigna al ComboBox.
         private void LoadCoaches()
         {
             try
@@ -208,11 +258,15 @@ namespace Sistema_Gimnasio.Forms
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+
+        // Asigna los IDs numéricos (1 para Lunes, 2 para Martes, etc.) a la propiedad Tag de cada CheckBox.
         private void SetDayTags()
         {
             CBLunes.Tag = 1; CBMartes.Tag = 2; CBMiercoles.Tag = 3; CBJueves.Tag = 4;
             CBViernes.Tag = 5; CBSabado.Tag = 6; CBDomingo.Tag = 7;
         }
+
+        // Cierra el formulario.
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
