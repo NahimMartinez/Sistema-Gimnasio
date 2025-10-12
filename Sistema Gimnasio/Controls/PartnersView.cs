@@ -1,4 +1,6 @@
-﻿using FontAwesome.Sharp;
+﻿using Business;
+using Entities;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +24,7 @@ namespace Sistema_Gimnasio
         // Diccionario que asocia columnas de la tabla con roles para control de acceso (ACL)
         private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
         // Lista que almacena la información de los socios (simulada en este ejemplo)
-        private List<PartnerViewModel> partnersList = new List<PartnerViewModel>();
+        private List<Partner> partnersList = new List<Partner>();
 
         // Constructor: se ejecuta al crear el control.
         public PartnersView()
@@ -32,7 +34,7 @@ namespace Sistema_Gimnasio
             // Asocia el evento de clic en celda a un método.
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
-            LoadFakeData(); // Carga datos de ejemplo en la lista de socios.
+            LoadPartners(); // Carga datos de ejemplo en la lista de socios.
             this.Load += PartnersView_Load;
 
             // Configura los filtros de búsqueda y estado.
@@ -55,6 +57,24 @@ namespace Sistema_Gimnasio
             CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar la membresía.
 
 
+        }
+
+        private void LoadPartners()
+        {
+            var partnerSup = new PartnerService(); // Servicio para obtener proveedores
+            var allPartner = partnerSup.GetAllPartnerView(); // Obtiene todos los proveedores en formato lista
+            // Convierte a lista local para filtrar
+            partnersList = allPartner.Select(p => new Partner
+            {
+                Nombre = p.Nombre,
+                Dni = p.Dni,                
+                Telefono = p.Telefono,
+                //Membresia = m.Membresia,
+                Estado = p.Estado,
+            }).ToList();
+
+            BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente
+            ApplyFilters(); // Muestra según filtros actuales
         }
 
         // Configura los iconos de las columnas de acción en la tabla.
@@ -152,37 +172,38 @@ namespace Sistema_Gimnasio
             }
         }
         // Carga datos de ejemplo en la lista de socios.
-        private void LoadFakeData()
-        {
-            partnersList = new List<PartnerViewModel>
-            {
-                new PartnerViewModel { Name = "Juan Pérez", Dni = "12345678", Phone = "3794-111111", Plan = "Mensual", Estado = "Activo" },
-                new PartnerViewModel { Name = "María López", Dni = "87654321", Phone = "3794-222222", Plan = "Semanal", Estado = "Inactivo" },
-                new PartnerViewModel { Name = "Carlos Gómez", Dni = "45678912", Phone = "3794-333333", Plan = "Diaria", Estado = "Activo" }
-            };
-            ApplyFilters(); // Aplica los filtros para mostrar los datos en la tabla.
-        }
+        
 
         // Aplica los filtros de búsqueda, estado y membresía a la lista de socios y actualiza la tabla.
         private void ApplyFilters()
         {
-            string query = TSearchPartner.Text?.Trim(); // Obtiene el texto de búsqueda
-            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "Buscar socio...";
-            string estado = CBStatus.SelectedItem?.ToString() ?? "Todos"; // Obtiene el estado seleccionado
-            string membresia = CBMembership.SelectedItem?.ToString() ?? "Todos"; // Obtiene la membresía seleccionada
+            string query = TSearchPartner.Text?.Trim().ToLowerInvariant(); // Obtiene el texto de búsqueda en minúsculas
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar proveedor...";
+
+            // Estado según banderas
+            var s = CBStatus.SelectedItem?.ToString() ?? "Todos";
+            bool WantActivo = s.Equals("Activo", StringComparison.OrdinalIgnoreCase);
+            bool WantInactivo = s.Equals("Inactivo", StringComparison.OrdinalIgnoreCase);
+            bool WantAllS = s.Equals("Todos", StringComparison.OrdinalIgnoreCase);
+
+            bool IsActivo(Partner pP)
+            {
+                var val = pP.Estado;
+                return val == true;
+            }
 
             // Filtra la lista según el texto de búsqueda, estado y membresía
-            var filtered = partnersList.Where(p =>
-                (!hasQuery || (p.Name ?? "").ToLower().Contains(query)) &&
-                (estado == "Todos" || (p.Estado ?? "").Equals(estado, StringComparison.OrdinalIgnoreCase)) &&
-                (membresia == "Todos" || (p.Plan ?? "").Equals(membresia, StringComparison.OrdinalIgnoreCase))
-            ).ToList();
-            BoardMember.Rows.Clear(); // Limpia la tabla
-            foreach (var p in filtered)
-            {
-                // Agrega cada socio filtrado a la tabla
-                BoardMember.Rows.Add(p.Name, p.Dni, p.Phone, p.Plan, p.Estado);
-            }
+            var view = partnersList.Where(p =>
+               (!hasQuery ||
+                   (p.Nombre ?? "").ToLower().Contains(query) ||
+                   (p.Dni ?? "").ToLower().Contains(query)  &&
+               (WantAllS || (WantActivo && IsActivo(p)) || (WantInactivo && !IsActivo(p))))
+           ).ToList();
+
+            // Actualiza el datasource de la grilla
+            BoardMember.DataSource = null;
+            BoardMember.DataSource = view;
+
         }
 
         private void BuildAcl()

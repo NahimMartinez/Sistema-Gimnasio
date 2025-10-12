@@ -48,6 +48,7 @@ namespace Business
             try
             {
                 partners.UpdatePartner(pPartner);
+                persons.Update(pPartner);
 
             }
             catch (Exception ex)

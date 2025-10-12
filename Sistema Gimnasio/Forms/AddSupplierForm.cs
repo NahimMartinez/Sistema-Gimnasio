@@ -37,13 +37,13 @@ namespace Sistema_Gimnasio
                 editingSupplier = supplierEdit;
                 LoadData(supplierEdit);
                 BClean.Enabled = false; // Deshabilitar botón limpiar en modo edición
-                this.Text = "Editar usuario"; // Cambia el título de la ventana
+                this.Text = "Editar Proveedor"; // Cambia el título de la ventana
             }
 
             if(readOnly)
             {
                 ActivateReadOnly();
-                this.Text = "Ver usuario"; // Cambia el título de la ventana
+                this.Text = "Ver Proveedor"; // Cambia el título de la ventana
             }
         }
 

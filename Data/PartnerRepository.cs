@@ -16,7 +16,7 @@ namespace Data
         public void InsertPartner(int idPersona, Partner p, IDbConnection cn, IDbTransaction tr)
         {
             const string sql = @" 
-                            INSERT INTO partner (id_partner, contacto_emergencia, observaciones)
+                            INSERT INTO socio (id_socio, contacto_emergencia, observaciones)
                             VALUES (@IdPersona, @ContactoEmergencia, @Observaciones);";
             try
             {
@@ -33,9 +33,9 @@ namespace Data
         public void UpdatePartner(Partner p)
         {
             const string sql = @"
-                UPDATE partner
+                UPDATE socio
                 SET contacto_emergencia=@ContactoEmergencia, observaciones=@Observaciones
-                WHERE id_partner=@IdPersona;";
+                WHERE id_socio=@IdPersona;";
             using (var cn = new SqlConnection(Connection.chain))
                 cn.Execute(sql, p);
         }
@@ -43,11 +43,11 @@ namespace Data
         public List<Partner> GetAllPartner()
         {
             const string sql = @"
-                SELECT p.id_partner AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, p.direccion AS Direccion, 
-                       p.telefono AS Telefono, p.email AS Email, p.fecha_nacimiento AS FechaNacimiento,
-                       pr.contacto_emergencia AS ContactoEmergencia, pr.observaciones AS Observaciones
+                SELECT p.id_persona AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, 
+                       p.telefono AS Telefono, p.email AS Email,
+                       s.contacto_emergencia AS ContactoEmergencia, s.observaciones AS Observaciones
                 FROM persona p
-                JOIN partner pr ON p.id_persona = pr.id_partner;";
+                JOIN socio s ON p.id_persona = s.id_socio;";
             using (var cn = new SqlConnection(Connection.chain))
             {
                 return cn.Query<Partner>(sql).ToList();
@@ -59,9 +59,9 @@ namespace Data
             const string sql = @"
                 SELECT p.id_partner AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, p.direccion AS Direccion, 
                        p.telefono AS Telefono, p.email AS Email, p.fecha_nacimiento AS FechaNacimiento,
-                       pr.contacto_emergencia AS ContactoEmergencia, pr.observaciones AS Observaciones
+                       s.contacto_emergencia AS ContactoEmergencia, s.observaciones AS Observaciones
                 FROM persona p
-                JOIN partner pr ON pr.id_partner = p.id_persona
+                JOIN socio s ON s.id_socio = p.id_persona
                 WHERE p.dni = @dni;";
             using (var cn = new SqlConnection(Connection.chain))
             {
