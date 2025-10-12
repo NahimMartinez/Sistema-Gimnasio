@@ -13,7 +13,7 @@ namespace Data
     public class PartnerRepository
     {
 
-        public void insertPartner(int idPersona, Partner p, IDbConnection cn, IDbTransaction tr)
+        public void InsertPartner(int idPersona, Partner p, IDbConnection cn, IDbTransaction tr)
         {
             const string sql = @" 
                             INSERT INTO partner (id_partner, contacto_emergencia, observaciones)
@@ -30,7 +30,7 @@ namespace Data
             }
         }
 
-        public void updatePartner(Partner p)
+        public void UpdatePartner(Partner p)
         {
             const string sql = @"
                 UPDATE partner
@@ -40,7 +40,7 @@ namespace Data
                 cn.Execute(sql, p);
         }
 
-        public List<Partner> GetAllPartnerView()
+        public List<Partner> GetAllPartner()
         {
             const string sql = @"
                 SELECT p.id_partner AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, p.direccion AS Direccion, 
@@ -53,6 +53,7 @@ namespace Data
                 return cn.Query<Partner>(sql).ToList();
             }
         }
+
         public Partner GetByDni(long pDni)
         {
             const string sql = @"
@@ -92,6 +93,6 @@ namespace Data
             }
         }
 
-
+        
     }
 }
