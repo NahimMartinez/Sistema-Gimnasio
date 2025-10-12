@@ -48,7 +48,7 @@
             // txtNewClassCategory
             // 
             this.txtNewClassCategory.Location = new System.Drawing.Point(125, 52);
-            this.txtNewClassCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewClassCategory.Margin = new System.Windows.Forms.Padding(4);
             this.txtNewClassCategory.Name = "txtNewClassCategory";
             this.txtNewClassCategory.Size = new System.Drawing.Size(341, 22);
             this.txtNewClassCategory.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.BSave.IconSize = 24;
             this.BSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BSave.Location = new System.Drawing.Point(64, 132);
-            this.BSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BSave.Margin = new System.Windows.Forms.Padding(4);
             this.BSave.Name = "BSave";
             this.BSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.BSave.Size = new System.Drawing.Size(127, 33);
@@ -108,7 +108,7 @@
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.txtNewClassCategory);
             this.Controls.Add(this.LNewClassCategory);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddClassCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Categoria De Clase";
