@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Gimnasio
 {
-    partial class Inventory
+    partial class InventoryView
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

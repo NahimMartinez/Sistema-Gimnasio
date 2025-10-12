@@ -1,97 +1,178 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business;
+using Business.Exceptions;
+using Entities;
+using System;
 using System.Windows.Forms;
 
 namespace Sistema_Gimnasio.Forms
 {
     public partial class AddItemForm : Form
     {
+        private readonly InventoryService _inventoryService = new InventoryService();
+        private readonly InventoryCategoryService _categoryService = new InventoryCategoryService();
+
+        private Inventory _editableItem;
+
         public AddItemForm()
         {
             InitializeComponent();
             ConfigureValidations();
-
-            this.MaximizeBox = false;  // Esto quita el botón del cuadrado (maximizar)
-            this.MinimizeBox = true;
+            LoadCategories();
+            this.Text = "Nuevo Artículo"; // Cambia el título de la ventana
         }
 
-
-        private void ConfigureValidations()
+        // NUEVO CONSTRUCTOR PARA EDITAR
+        public AddItemForm(int idToEdit)
         {
-            // Validar solo números 
-            txtCantidad.KeyPress += TxtSoloNumeros_KeyPress;
-        }
+            InitializeComponent();
+            ConfigureValidations();
+            LoadCategories();
+            this.Text = "Editar Artículo"; // Cambia el título de la ventana
 
-        private void TxtSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir solo números, backspace y borrar
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            // Buscamos el artículo en la BD y lo cargamos en el formulario
+            try
             {
-                e.Handled = true; // Bloquear el carácter
+                _editableItem = _inventoryService.GetInventoryById(idToEdit);
+                if (_editableItem != null)
+                {
+                    LoadDataForEdit();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el artículo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
+        // MÉTODO para llenar el form con datos
+        private void LoadDataForEdit()
+        {
+            txtNombre.Text = _editableItem.Nombre;
+            txtCantidad.Text = _editableItem.Cantidad.ToString();
 
-        // Validación de campos 
+            // Seleccionamos la categoría correcta en el ComboBox
+            CBCategoria.SelectedValue = _editableItem.IdInventarioCategoria;
+
+            // La fecha de ingreso no se suele editar, la dejamos como está.
+            DTFechaIngreso.Value = _editableItem.FechaIngreso;
+            DTFechaIngreso.Enabled = false; // Deshabilitamos para que no se pueda cambiar
+        }
+
+        private void LoadCategories()
+        {
+            try
+            {
+                CBCategoria.DataSource = _categoryService.GetAllCategories();
+                CBCategoria.DisplayMember = "Nombre";
+                CBCategoria.ValueMember = "IdInventarioCategoria";
+                CBCategoria.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar las categorías: {ex.Message}", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BCrear_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos())
+            {
+                return;
+            }
+
+            try
+            {
+                // Si _editableItem es NULL, estamos creando uno nuevo
+                if (_editableItem == null)
+                {
+                    var newItem = new Inventory
+                    {
+                        Nombre = txtNombre.Text.Trim(),
+                        Cantidad = int.Parse(txtCantidad.Text),
+                        IdInventarioCategoria = (int)CBCategoria.SelectedValue
+                    };
+                    _inventoryService.CreateInventory(newItem);
+                    MessageBox.Show("Artículo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                // Si NO es NULL, estamos actualizando el existente
+                else
+                {
+                    // Actualizamos el objeto que ya teníamos
+                    _editableItem.Nombre = txtNombre.Text.Trim();
+                    _editableItem.Cantidad = int.Parse(txtCantidad.Text);
+                    _editableItem.IdInventarioCategoria = (int)CBCategoria.SelectedValue;
+
+                    _inventoryService.UpdateInventory(_editableItem);
+                    MessageBox.Show("Artículo actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (DuplicateFieldException ex)
+            {
+                MessageBox.Show(ex.Message, "Error: Nombre Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private bool ValidarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 MessageBox.Show("Por favor ingrese el nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNombre.Focus();
                 return false;
             }
-
             if (string.IsNullOrWhiteSpace(txtCantidad.Text))
             {
                 MessageBox.Show("Por favor ingrese una Cantidad", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtCantidad.Focus();
                 return false;
             }
-
-            if (DTFechaIngreso.Value.Date > DateTime.Now.Date)
-            {
-                MessageBox.Show("La fecha de ingreso no puede ser futura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DTFechaIngreso.Focus();
-                return false;
-            }
-
-            if (CBCategoria.SelectedIndex == -1)
+            if (CBCategoria.SelectedValue == null)
             {
                 MessageBox.Show("Por favor seleccione una categoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CBCategoria.Focus();
                 return false;
             }
-
-            return true; // Todos los campos son válidos
+            return true;
         }
-
-        private void BCrear_Click(object sender, EventArgs e)
+        private void ConfigureValidations()
         {
-            // Validar antes de guardar
-            if (!ValidarCampos())
-            {
-                return; // Detener si hay errores
-            }
-
-            MessageBox.Show("Datos validados correctamente. Guardando...", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtCantidad.KeyPress += TxtSoloNumeros_KeyPress;
         }
-
-        // Limpiar campos
+        private void TxtSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo dígitos (del 0 al 9) y teclas de control (como Backspace).
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un número ni una tecla de control, se cancela el evento.
+                e.Handled = true;
+            }
+        }
         private void BLimpiar_Click(object sender, EventArgs e)
         {
+            // Limpia el contenido del TextBox de nombre.
             txtNombre.Clear();
-            txtCantidad.Clear();
-            CBCategoria.SelectedIndex = -1;
-            DTFechaIngreso.Value = DateTime.Now;
-        }
 
-       
+            // Limpia el contenido del TextBox de cantidad.
+            txtCantidad.Clear();
+
+            // Deselecciona cualquier categoría en el ComboBox.
+            CBCategoria.SelectedIndex = -1;
+
+            // Restaura la fecha actual en el selector de fecha.
+            DTFechaIngreso.Value = DateTime.Now;
+
+            // Pone el foco (el cursor) de nuevo en el campo de nombre.
+            txtNombre.Focus();
+        }
     }
 }
