@@ -240,7 +240,7 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                CBCategoria.DataSource = _actividadService.GetAllActividades();
+                CBCategoria.DataSource = _actividadService.GetActivities();
                 CBCategoria.DisplayMember = "Nombre";
                 CBCategoria.ValueMember = "IdActividad";
             }
