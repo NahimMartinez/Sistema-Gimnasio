@@ -45,6 +45,8 @@
     <Compile Include="Class.cs" />
     <Compile Include="ClassDay.cs" />
     <Compile Include="Day.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="InventoryCategory.cs" />
     <Compile Include="Partner.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Rol.cs" />

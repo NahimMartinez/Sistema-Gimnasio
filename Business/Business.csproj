@@ -57,6 +57,8 @@
     <Compile Include="AuthService.cs" />
     <Compile Include="ClassService.cs" />
     <Compile Include="DuplicateFieldException.cs" />
+    <Compile Include="InventoryCategoryService.cs" />
+    <Compile Include="InventoryService.cs" />
     <Compile Include="PartnerService.cs" />
     <Compile Include="RolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
