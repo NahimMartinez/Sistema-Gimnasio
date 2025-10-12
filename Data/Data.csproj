@@ -61,6 +61,8 @@
     <Compile Include="ClassRepository.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DuplicateKeyException.cs" />
+    <Compile Include="InventoryCategoryRepository.cs" />
+    <Compile Include="InventoryRepository.cs" />
     <Compile Include="PartnerRepository.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
