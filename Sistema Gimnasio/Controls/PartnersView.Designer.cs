@@ -120,7 +120,7 @@ namespace Sistema_Gimnasio
             // 
             // name
             // 
-            this.name.DataPropertyName = "name";
+            this.name.DataPropertyName = "Nombre";
             this.name.HeaderText = "Nombre";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
@@ -136,15 +136,15 @@ namespace Sistema_Gimnasio
             // 
             // contact
             // 
-            this.contact.DataPropertyName = "contact";
-            this.contact.HeaderText = "Contacto";
+            this.contact.DataPropertyName = "Telefono";
+            this.contact.HeaderText = "Telefono";
             this.contact.MinimumWidth = 6;
-            this.contact.Name = "contact";
+            this.contact.Name = "Telefono";
             this.contact.ReadOnly = true;
             // 
             // membership
             // 
-            this.membership.DataPropertyName = "membership";
+            this.membership.DataPropertyName = "Membresia";
             this.membership.HeaderText = "Membresía";
             this.membership.MinimumWidth = 6;
             this.membership.Name = "membership";
@@ -152,7 +152,7 @@ namespace Sistema_Gimnasio
             // 
             // status
             // 
-            this.status.DataPropertyName = "status";
+            this.status.DataPropertyName = "Estado";
             this.status.HeaderText = "Estado";
             this.status.MinimumWidth = 6;
             this.status.Name = "status";

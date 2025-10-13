@@ -30,43 +30,47 @@ namespace Sistema_Gimnasio
         public PartnersView()
         {
             InitializeComponent(); // Inicializa los componentes gráficos.
-
-            // Asocia el evento de clic en celda a un método.
+            WireFilters(); // Configura los filtros de búsqueda y estado.
+            LoadPartners(); // Carga datos de socio
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
-            LoadPartners(); // Carga datos de ejemplo en la lista de socios.
             this.Load += PartnersView_Load;
+   
 
-            // Configura los filtros de búsqueda y estado.
+        }
+        private void WireFilters()
+        {
+            // Valores por defecto en los ComboBox
+            CBStatus.SelectedIndex = 0; // Todos
+            CBMembership.SelectedIndex = 0; // Todos
+
+            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar el estado.
+            CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar la membresía.
             TSearchPartner.TextChanged += (s, e) => ApplyFilters(); // Filtra al escribir en la caja de búsqueda.
-            TSearchPartner.MouseClick += (s, e) => {
-                // Limpia el texto de placeholder al hacer clic en la caja de búsqueda.
-                if (TSearchPartner.Text == "Buscar socio...") {
-                    TSearchPartner.Text = "";
-                    TSearchPartner.ForeColor = Color.Black;
+
+            TSearchPartner.GotFocus += (s, e) => {
+                if (TSearchPartner.Text == "Buscar socio...")
+                {
+                    TSearchPartner.Text = ""; TSearchPartner.ForeColor = Color.Black;
                 }
             };
             TSearchPartner.LostFocus += (s, e) => {
-                // Restaura el placeholder si la caja queda vacía al perder el foco.
-                if (string.IsNullOrWhiteSpace(TSearchPartner.Text)) {
-                    TSearchPartner.Text = "Buscar socio...";
-                    TSearchPartner.ForeColor = Color.Gray;
+                if (string.IsNullOrWhiteSpace(TSearchPartner.Text))
+                {
+                    TSearchPartner.Text = "Buscar socio..."; TSearchPartner.ForeColor = Color.Gray;
                 }
             };
-            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar el estado.
-            CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar la membresía.
-
 
         }
 
         private void LoadPartners()
         {
-            var partnerSup = new PartnerService(); // Servicio para obtener proveedores
-            var allPartner = partnerSup.GetAllPartnerView(); // Obtiene todos los proveedores en formato lista
+            var partnerSup = new PartnerService(); // Servicio para obtener socios
+            var allPartner = partnerSup.GetAllPartnerView(); // Obtiene todos los socios en formato lista
             // Convierte a lista local para filtrar
             partnersList = allPartner.Select(p => new Partner
             {
-                Nombre = p.Nombre,
+                Nombre = p.Nombre, 
                 Dni = p.Dni,                
                 Telefono = p.Telefono,
                 //Membresia = m.Membresia,
@@ -74,6 +78,7 @@ namespace Sistema_Gimnasio
             }).ToList();
 
             BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente
+            
             ApplyFilters(); // Muestra según filtros actuales
         }
 
@@ -92,26 +97,35 @@ namespace Sistema_Gimnasio
             colDelete.Image = bmpDelete;
 
             // Evento para mostrar los iconos en las celdas de acción.
-            BoardMember.CellFormatting += (s, ev) =>
+            BoardMember.CellFormatting += (s, e) =>
             {
-                if (ev.RowIndex < 0) return; // Ignora encabezados
-                string col = BoardMember.Columns[ev.ColumnIndex].Name;
-                if (col == "colEdit") { ev.Value = bmpEdit; ev.FormattingApplied = true; }
-                if (col == "colView") { ev.Value = bmpView; ev.FormattingApplied = true; }
-                if (col == "colDelete") {
-                    var status = BoardMember.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
-                    bool activo = status?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+                if (e.RowIndex < 0) return;
+                var colName = BoardMember.Columns[e.ColumnIndex].Name;
 
-                    ev.Value = activo ? bmpDelete : bmpEnable; 
-                    ev.FormattingApplied = true; }
+                // Íconos fijos
+                if (colName == "colEdit") { e.Value = bmpEdit; e.FormattingApplied = true; return; }
+                if (colName == "colView") { e.Value = bmpView; e.FormattingApplied = true; return; }
 
+                // Obtengo el bool desde el objeto enlazado
+                var item = BoardMember.Rows[e.RowIndex].DataBoundItem as Partner;
+                bool activo = item?.Estado == true;
 
-                if (col == "status")
+                // Botón eliminar/alta según estado real
+                if (colName == "colDelete")
                 {
-                    var st = BoardMember.Rows[ev.RowIndex].Cells["status"].Value?.ToString();
-                    bool activo = st?.Equals("Activo", StringComparison.OrdinalIgnoreCase) == true;
+                    e.Value = activo ? bmpDelete : bmpEnable;
+                    e.FormattingApplied = true;
+                    return;
+                }
 
-                    var row = BoardMember.Rows[ev.RowIndex];
+                // Columna de estado: mostrar texto
+                if (colName == "status") // <-- cuidado: en minúsculas
+                {
+                    e.Value = activo ? "Activo" : "Inactivo";
+                    e.FormattingApplied = true;
+
+                    // Pintado de fila según estado
+                    var row = BoardMember.Rows[e.RowIndex];
                     if (!activo)
                     {
                         row.DefaultCellStyle.BackColor = Color.MistyRose;
@@ -119,14 +133,12 @@ namespace Sistema_Gimnasio
                     }
                     else
                     {
-                        // Resetea a valores por defecto
                         row.DefaultCellStyle.BackColor = BoardMember.DefaultCellStyle.BackColor;
                         row.DefaultCellStyle.ForeColor = BoardMember.DefaultCellStyle.ForeColor;
                         row.DefaultCellStyle.SelectionBackColor = BoardMember.DefaultCellStyle.SelectionBackColor;
                         row.DefaultCellStyle.SelectionForeColor = BoardMember.DefaultCellStyle.SelectionForeColor;
                     }
                 }
-
             };
         }
         // Evento que se ejecuta al hacer clic en el botón para agregar un nuevo socio.
@@ -138,7 +150,7 @@ namespace Sistema_Gimnasio
                 // Muestra el formulario como un cuadro de diálogo
                 if (fNewMember.ShowDialog() == DialogResult.OK)
                 {
-                    //aca tenemos que volver a cargar los datos cuando se guarde el nuevo proveedor(cuando sea dinamico)
+                   LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
                 }
             }
         }
@@ -178,7 +190,7 @@ namespace Sistema_Gimnasio
         private void ApplyFilters()
         {
             string query = TSearchPartner.Text?.Trim().ToLowerInvariant(); // Obtiene el texto de búsqueda en minúsculas
-            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar proveedor...";
+            bool hasQuery = !string.IsNullOrWhiteSpace(query) && query != "buscar socio...";
 
             // Estado según banderas
             var s = CBStatus.SelectedItem?.ToString() ?? "Todos";
@@ -220,16 +232,6 @@ namespace Sistema_Gimnasio
         {
             foreach (var keyValue in Acl)
                 keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
-        }
-
-        // Clase interna que representa la información de un socio.
-        private class PartnerViewModel
-        {
-            public string Name { get; set; } // Nombre del socio
-            public string Dni { get; set; } // DNI del socio
-            public string Phone { get; set; } // Teléfono del socio
-            public string Plan { get; set; } // Tipo de membresía
-            public string Estado { get; set; } // Estado del socio (Activo/Inactivo)
         }
 
 

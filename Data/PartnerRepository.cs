@@ -44,7 +44,7 @@ namespace Data
         {
             const string sql = @"
                 SELECT p.id_persona AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, 
-                       p.telefono AS Telefono, p.email AS Email,
+                       p.telefono AS Telefono, p.email AS Email, p.estado AS Estado,
                        s.contacto_emergencia AS ContactoEmergencia, s.observaciones AS Observaciones
                 FROM persona p
                 JOIN socio s ON p.id_persona = s.id_socio;";
