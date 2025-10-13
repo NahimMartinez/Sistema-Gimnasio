@@ -1,16 +1,23 @@
-﻿using Sistema_Gimnasio.Forms;
+﻿using Business;
+using FontAwesome.Sharp;
+using Sistema_Gimnasio.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
-using Business;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio.Controls
 {
     public partial class Clases : UserControl
     {
+        // Propiedad que indica el rol actual del usuario (por ejemplo, Admin, Coach, etc.)
+        public Roles CurrentRole { get; set; } = Roles.None;
+
+        // Diccionario que asocia columnas de la tabla con roles para control de acceso (ACL)
+        private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
+
         private readonly ClassService classService = new ClassService();
         private List<ClassViewModel> classList = new List<ClassViewModel>();
 
@@ -55,7 +62,9 @@ namespace Sistema_Gimnasio.Controls
                     Horario = c.Horario,
                     Estado = c.Estado ? "Activo" : "Inactivo"
                 }).ToList();
+
                 ApplyFilters();
+                BoardClass.AutoGenerateColumns = false;
             }
             catch (Exception ex)
             {
@@ -140,6 +149,9 @@ namespace Sistema_Gimnasio.Controls
 
         private void Clases_Load(object sender, EventArgs e)
         {
+            BuildAcl(); // Construye el diccionario de control de acceso (ACL)
+            ApplyAcl(); // Aplica el control de acceso según el rol actual
+
             if (string.IsNullOrWhiteSpace(TSearchClass.Text))
             {
                 TSearchClass.Text = "Buscar clase...";
@@ -210,6 +222,27 @@ namespace Sistema_Gimnasio.Controls
             public string Dia { get; set; }
             public string Horario { get; set; }
             public string Estado { get; set; }
+        }
+
+        // Construye el diccionario de control de acceso (ACL) para las columnas de acción.
+        private void BuildAcl()
+        {
+            // Solo el rol Admin puede editar y eliminar
+            Acl[colEdit] = Roles.Admin | Roles.Recep;
+            Acl[colDelete] = Roles.Admin | Roles.Recep;
+            // El rol Admin, Recepcionista y coach pueden ver
+            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;
+        }
+
+        // Aplica el control de acceso a las columnas de acción según el rol actual.
+        private void ApplyAcl()
+        {
+            foreach (var keyValue in Acl)
+                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
+
+            System.Diagnostics.Debug.WriteLine(
+  $"Role={CurrentRole}, colEditRefOk={ReferenceEquals(BoardClass.Columns["colEdit"], colEdit)}");
+
         }
     }
 }

@@ -271,7 +271,7 @@ namespace Sistema_Gimnasio
         private void ShowClases()
         {
             contentPanel.Controls.Clear();
-            var view = new Clases { Dock = DockStyle.Fill, BackColor = Color.White };
+            var view = new Clases { Dock = DockStyle.Fill, BackColor = Color.White, CurrentRole = CurrentRole };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Clases";
         }
