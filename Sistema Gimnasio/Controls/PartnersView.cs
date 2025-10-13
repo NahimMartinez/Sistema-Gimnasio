@@ -1,4 +1,5 @@
 ﻿using Business;
+using Data;
 using Entities;
 using FontAwesome.Sharp;
 using System;
@@ -166,21 +167,72 @@ namespace Sistema_Gimnasio
         // Evento que se ejecuta al hacer clic en una celda de la tabla.
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; // Ignora clics fuera de las filas de datos
-            var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value; // Obtiene el nombre del socio
+            if (e.RowIndex < 0) return; // Ignora clics fuera de las filas de datos            
             var col = BoardMember.Columns[e.ColumnIndex].Name; // Obtiene la columna clickeada
-            // Muestra un mensaje según la acción seleccionada
+            var dniCell = BoardMember.Rows[e.RowIndex].Cells["dni"].Value.ToString();
+
             if (col == "colEdit")
             {
-                MessageBox.Show($"Editar socio {name}");
+                // Obtener el DNI del usuario seleccionado
+                ; 
+                var parRepo = new PartnerRepository();
+                // Obtener el usuario completo
+                var partner = parRepo.GetByDni(dniCell);
+                // Abrir el formulario en modo edición
+                using (var fEditUser = new AddMemberForm(partner, false))
+                {
+                    if (fEditUser.ShowDialog() == DialogResult.OK)
+                    {
+                        // Recargar la grilla después de editar
+                        LoadPartners();
+                    }
+                }
             }
             else if (col == "colView")
             {
-                MessageBox.Show($"Ver socio {name}");
+                var parRepo = new PartnerRepository();
+                var partner = parRepo.GetByDni(dniCell);
+                using (var fViewUser = new AddMemberForm(partner, true)) // true para modo solo lectura
+                {
+                    fViewUser.ShowDialog(); // Solo mostrar, no editar
+                }
+
             }
             else if (col == "colDelete")
             {
-                MessageBox.Show($"Eliminar socio {name}");
+                var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
+                var cell = BoardMember.Rows[e.RowIndex].Cells["status"].Value?.ToString().Trim();
+                
+                var row = BoardMember.Rows[e.RowIndex];
+                if (row == null) return;
+
+                var p = row.DataBoundItem as Partner;
+                if (p == null) return;
+
+                bool s = p.Estado;
+                var repo = new PartnerRepository();
+                if (s)
+                {
+                    var confirm = MessageBox.Show($"¿Está seguro que desea desactivar el socio '{name}'?", "Confirmar desactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (confirm == DialogResult.Yes)
+                    {
+
+                        var repoD = repo.DisablePartner(dniCell);
+                        if (repoD == 0) MessageBox.Show("No se realizó la baja. Puede estar ya inactivo o no existe.");
+                        LoadPartners();
+
+                    }
+                }
+                else
+                {
+                    var confirm = MessageBox.Show($"¿Está seguro que desea activar el socio '{name}'?", "Confirmar activación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirm == DialogResult.Yes)
+                    {
+                        var repoE = repo.EnablePartner(dniCell);
+                        if (repoE == 0) MessageBox.Show("No se realizó la activación. Puede estar ya activo o no existe.");
+                        LoadPartners();
+                    }
+                }
             }
         }
         // Carga datos de ejemplo en la lista de socios.

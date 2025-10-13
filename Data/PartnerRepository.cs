@@ -54,42 +54,42 @@ namespace Data
             }
         }
 
-        public Partner GetByDni(long pDni)
+        public Partner GetByDni(string pDni)
         {
             const string sql = @"
-                SELECT p.id_partner AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, p.direccion AS Direccion, 
-                       p.telefono AS Telefono, p.email AS Email, p.fecha_nacimiento AS FechaNacimiento,
+                SELECT p.id_persona AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, 
+                       p.telefono AS Telefono, p.email AS Email,
                        s.contacto_emergencia AS ContactoEmergencia, s.observaciones AS Observaciones
                 FROM persona p
                 JOIN socio s ON s.id_socio = p.id_persona
                 WHERE p.dni = @dni;";
             using (var cn = new SqlConnection(Connection.chain))
             {
-                return cn.QueryFirstOrDefault<Partner>(sql, new { pDni });
+                return cn.QueryFirstOrDefault<Partner>(sql, new { dni = pDni });
             }
         }
 
-        public int DisablePartner(int pDni)
+        public int DisablePartner(string pDni)
         {
             const string sql = @"
                 UPDATE persona
                 SET estado = 0
-                WHERE dni = @Dni;";
+                WHERE dni = @dni;";
             using (var cn = new SqlConnection(Connection.chain))
             {
-                return cn.Execute(sql, new { pDni });
+                return cn.Execute(sql, new { dni = pDni });
             }
         }
 
-        public int EnablePartner(int pDni)
+        public int EnablePartner(string pDni)
         {
                        const string sql = @"
                 UPDATE persona
                 SET estado = 1
-                WHERE dni = @Dni;";
+                WHERE dni = @dni;";
             using (var cn = new SqlConnection(Connection.chain))
             {
-                return cn.Execute(sql, new { pDni });
+                return cn.Execute(sql, new { dni = pDni });
             }
         }
 
