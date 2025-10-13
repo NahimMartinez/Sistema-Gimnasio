@@ -3,6 +3,7 @@ using Business.Exceptions;
 using Entities;
 using System;
 using System.Windows.Forms;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio.Forms
 {
@@ -10,6 +11,7 @@ namespace Sistema_Gimnasio.Forms
     {
         private readonly InventoryService inventoryService = new InventoryService();
         private readonly InventoryCategoryService categoryService = new InventoryCategoryService();
+        public Roles CurrentRole { get; set; } = Roles.None;
 
         private Inventory editableItem;
 
@@ -19,6 +21,8 @@ namespace Sistema_Gimnasio.Forms
             ConfigureValidations();
             LoadCategories();
             this.Text = "Nuevo Artículo"; // Cambia el título de la ventana
+            this.Load += AddItemForm_Load;
+
         }
 
         // NUEVO CONSTRUCTOR PARA EDITAR
@@ -173,6 +177,27 @@ namespace Sistema_Gimnasio.Forms
 
             // Pone el foco (el cursor) de nuevo en el campo de nombre.
             txtNombre.Focus();
+        }
+
+        private void NewCategoryInventory_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new AddInventoryCategory())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+                    LoadCategories();
+                }
+            }
+        }
+
+        private void AddItemForm_Load(object sender, EventArgs e)
+        {
+            if (CurrentRole != Roles.Admin)
+            {
+                NewCategoryInventory.Visible = false;
+            }
         }
     }
 }

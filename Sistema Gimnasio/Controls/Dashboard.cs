@@ -115,31 +115,6 @@ namespace Sistema_Gimnasio.Controls
             CPMemberships.Titles.Clear();
         }
 
-        private void NewCategoryInventory_Click(object sender, EventArgs e)
-        {
-            //creo una instancia del formulario
-            using (var fNewItem = new AddInventoryCategory())
-            {
-                //muestro el formulario como un cuadro de dialogo
-                if (fNewItem.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
-        }
-
-        private void NewCategoryClass_Click(object sender, EventArgs e)
-        {
-            //creo una instancia del formulario
-            using (var fNewItem = new AddClassCategory())
-            {
-                //muestro el formulario como un cuadro de dialogo
-                if (fNewItem.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
-        }
 
         private void Dashboard_Load()
         {

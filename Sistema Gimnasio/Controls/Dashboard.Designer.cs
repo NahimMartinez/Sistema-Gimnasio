@@ -71,7 +71,6 @@ namespace Sistema_Gimnasio.Controls
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.NewCategoryInventory = new FontAwesome.Sharp.IconButton();
             this.NewCategoryClass = new FontAwesome.Sharp.IconButton();
             this.BBackup = new FontAwesome.Sharp.IconButton();
             this.panelHeader.SuspendLayout();
@@ -488,40 +487,6 @@ namespace Sistema_Gimnasio.Controls
             this.label1.TabIndex = 4;
             this.label1.Text = "Socios Recientes";
             // 
-            // NewCategoryInventory
-            // 
-            this.NewCategoryInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.NewCategoryInventory.FlatAppearance.BorderSize = 0;
-            this.NewCategoryInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewCategoryInventory.ForeColor = System.Drawing.Color.White;
-            this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.NewCategoryInventory.IconColor = System.Drawing.Color.Black;
-            this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.NewCategoryInventory.Location = new System.Drawing.Point(710, 85);
-            this.NewCategoryInventory.Name = "NewCategoryInventory";
-            this.NewCategoryInventory.Size = new System.Drawing.Size(135, 57);
-            this.NewCategoryInventory.TabIndex = 3;
-            this.NewCategoryInventory.Text = "Nueva Categoría Inventario";
-            this.NewCategoryInventory.UseVisualStyleBackColor = false;
-            this.NewCategoryInventory.Click += new System.EventHandler(this.NewCategoryInventory_Click);
-            // 
-            // NewCategoryClass
-            // 
-            this.NewCategoryClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.NewCategoryClass.FlatAppearance.BorderSize = 0;
-            this.NewCategoryClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewCategoryClass.ForeColor = System.Drawing.Color.White;
-            this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.NewCategoryClass.IconColor = System.Drawing.Color.Black;
-            this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.NewCategoryClass.Location = new System.Drawing.Point(710, 148);
-            this.NewCategoryClass.Name = "NewCategoryClass";
-            this.NewCategoryClass.Size = new System.Drawing.Size(135, 57);
-            this.NewCategoryClass.TabIndex = 6;
-            this.NewCategoryClass.Text = "Nueva Categoría Clase";
-            this.NewCategoryClass.UseVisualStyleBackColor = false;
-            this.NewCategoryClass.Click += new System.EventHandler(this.NewCategoryClass_Click);
-            // 
             // BBackup
             // 
             this.BBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -551,7 +516,6 @@ namespace Sistema_Gimnasio.Controls
             this.Controls.Add(this.NewCategoryClass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelRecentActivity);
-            this.Controls.Add(this.NewCategoryInventory);
             this.Controls.Add(this.panelCharts);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.panelHeader);
@@ -614,7 +578,6 @@ namespace Sistema_Gimnasio.Controls
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_alta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresosMensuales;
-        private FontAwesome.Sharp.IconButton NewCategoryInventory;
         private FontAwesome.Sharp.IconButton NewCategoryClass;
         private System.Windows.Forms.Label LChartPie;
         private System.Windows.Forms.DataVisualization.Charting.Chart CPMemberships;

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio.Forms
 {
@@ -13,6 +14,7 @@ namespace Sistema_Gimnasio.Forms
         private readonly UserService userService = new UserService();
         private readonly ClassService classService = new ClassService();
         private List<CheckBox> checkBoxesDias = new List<CheckBox>();
+        public Roles CurrentRole { get; set; } = Roles.None;
 
         // Almacena el ID de la clase si estamos en modo Editar o Ver. Es nulo si es modo Crear.
         private int? classIdFlag;
@@ -72,6 +74,11 @@ namespace Sistema_Gimnasio.Forms
                 CBCategoria.SelectedIndex = -1;
                 CBCoachs.SelectedIndex = -1;
             }
+            
+            if(CurrentRole != Roles.Admin){
+                NewCategoryClass.Visible = false;
+            }
+
         }
 
         // Configura el formulario para que sea de solo lectura.
@@ -270,6 +277,19 @@ namespace Sistema_Gimnasio.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void NewCategoryClass_Click(object sender, EventArgs e)
+        {
+            //creo una instancia del formulario
+            using (var fNewItem = new AddClassCategory())
+            {
+                //muestro el formulario como un cuadro de dialogo
+                if (fNewItem.ShowDialog() == DialogResult.OK)
+                {
+                    LoadActivities();
+                }
+            }
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBCategoria = new System.Windows.Forms.ComboBox();
             this.BSave = new FontAwesome.Sharp.IconButton();
             this.BLimpiar = new FontAwesome.Sharp.IconButton();
+            this.NewCategoryInventory = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -175,12 +176,30 @@ namespace Sistema_Gimnasio.Forms
             this.BLimpiar.UseVisualStyleBackColor = false;
             this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
             // 
+            // NewCategoryInventory
+            // 
+            this.NewCategoryInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.NewCategoryInventory.FlatAppearance.BorderSize = 0;
+            this.NewCategoryInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewCategoryInventory.ForeColor = System.Drawing.Color.White;
+            this.NewCategoryInventory.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.NewCategoryInventory.IconColor = System.Drawing.Color.White;
+            this.NewCategoryInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NewCategoryInventory.IconSize = 24;
+            this.NewCategoryInventory.Location = new System.Drawing.Point(362, 169);
+            this.NewCategoryInventory.Name = "NewCategoryInventory";
+            this.NewCategoryInventory.Size = new System.Drawing.Size(29, 30);
+            this.NewCategoryInventory.TabIndex = 29;
+            this.NewCategoryInventory.UseVisualStyleBackColor = false;
+            this.NewCategoryInventory.Click += new System.EventHandler(this.NewCategoryInventory_Click);
+            // 
             // AddItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(400, 327);
+            this.ClientSize = new System.Drawing.Size(418, 327);
+            this.Controls.Add(this.NewCategoryInventory);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.CBCategoria);
@@ -195,6 +214,7 @@ namespace Sistema_Gimnasio.Forms
             this.Name = "AddItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Item";
+            this.Load += new System.EventHandler(this.AddItemForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +232,6 @@ namespace Sistema_Gimnasio.Forms
         private System.Windows.Forms.ComboBox CBCategoria;
         private FontAwesome.Sharp.IconButton BSave;
         private FontAwesome.Sharp.IconButton BLimpiar;
+        private IconButton NewCategoryInventory;
     }
 }

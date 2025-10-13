@@ -52,6 +52,7 @@ namespace Sistema_Gimnasio.Forms
             this.DTHasta = new System.Windows.Forms.DateTimePicker();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.NewCategoryClass = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // CBCategoria
@@ -68,7 +69,7 @@ namespace Sistema_Gimnasio.Forms
             "Yoga",
             "Spinning",
             "Pilates"});
-            this.CBCategoria.Location = new System.Drawing.Point(195, 25);
+            this.CBCategoria.Location = new System.Drawing.Point(162, 50);
             this.CBCategoria.Name = "CBCategoria";
             this.CBCategoria.Size = new System.Drawing.Size(200, 28);
             this.CBCategoria.TabIndex = 34;
@@ -79,7 +80,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtCupo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCupo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtCupo.Location = new System.Drawing.Point(195, 134);
+            this.txtCupo.Location = new System.Drawing.Point(162, 159);
             this.txtCupo.MaxLength = 3;
             this.txtCupo.Name = "txtCupo";
             this.txtCupo.Size = new System.Drawing.Size(100, 27);
@@ -90,7 +91,7 @@ namespace Sistema_Gimnasio.Forms
             this.LDiasClases.AutoSize = true;
             this.LDiasClases.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LDiasClases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LDiasClases.Location = new System.Drawing.Point(419, 17);
+            this.LDiasClases.Location = new System.Drawing.Point(423, 51);
             this.LDiasClases.Name = "LDiasClases";
             this.LDiasClases.Size = new System.Drawing.Size(46, 23);
             this.LDiasClases.TabIndex = 31;
@@ -101,7 +102,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCupo.AutoSize = true;
             this.LCupo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LCupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCupo.Location = new System.Drawing.Point(86, 134);
+            this.LCupo.Location = new System.Drawing.Point(53, 159);
             this.LCupo.Name = "LCupo";
             this.LCupo.Size = new System.Drawing.Size(55, 23);
             this.LCupo.TabIndex = 30;
@@ -112,7 +113,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCategoria.AutoSize = true;
             this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCategoria.Location = new System.Drawing.Point(86, 26);
+            this.LCategoria.Location = new System.Drawing.Point(53, 51);
             this.LCategoria.Name = "LCategoria";
             this.LCategoria.Size = new System.Drawing.Size(88, 23);
             this.LCategoria.TabIndex = 29;
@@ -123,7 +124,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBLunes.AutoSize = true;
             this.CBLunes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBLunes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBLunes.Location = new System.Drawing.Point(422, 37);
+            this.CBLunes.Location = new System.Drawing.Point(426, 71);
             this.CBLunes.Name = "CBLunes";
             this.CBLunes.Size = new System.Drawing.Size(68, 24);
             this.CBLunes.TabIndex = 35;
@@ -135,7 +136,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBMartes.AutoSize = true;
             this.CBMartes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBMartes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBMartes.Location = new System.Drawing.Point(422, 62);
+            this.CBMartes.Location = new System.Drawing.Point(426, 96);
             this.CBMartes.Name = "CBMartes";
             this.CBMartes.Size = new System.Drawing.Size(76, 24);
             this.CBMartes.TabIndex = 36;
@@ -147,7 +148,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBMiercoles.AutoSize = true;
             this.CBMiercoles.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBMiercoles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBMiercoles.Location = new System.Drawing.Point(422, 87);
+            this.CBMiercoles.Location = new System.Drawing.Point(426, 121);
             this.CBMiercoles.Name = "CBMiercoles";
             this.CBMiercoles.Size = new System.Drawing.Size(95, 24);
             this.CBMiercoles.TabIndex = 37;
@@ -159,7 +160,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBJueves.AutoSize = true;
             this.CBJueves.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBJueves.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBJueves.Location = new System.Drawing.Point(422, 112);
+            this.CBJueves.Location = new System.Drawing.Point(426, 146);
             this.CBJueves.Name = "CBJueves";
             this.CBJueves.Size = new System.Drawing.Size(73, 24);
             this.CBJueves.TabIndex = 38;
@@ -171,7 +172,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBViernes.AutoSize = true;
             this.CBViernes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBViernes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBViernes.Location = new System.Drawing.Point(422, 137);
+            this.CBViernes.Location = new System.Drawing.Point(426, 171);
             this.CBViernes.Name = "CBViernes";
             this.CBViernes.Size = new System.Drawing.Size(79, 24);
             this.CBViernes.TabIndex = 39;
@@ -183,7 +184,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBSabado.AutoSize = true;
             this.CBSabado.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBSabado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBSabado.Location = new System.Drawing.Point(422, 162);
+            this.CBSabado.Location = new System.Drawing.Point(426, 196);
             this.CBSabado.Name = "CBSabado";
             this.CBSabado.Size = new System.Drawing.Size(82, 24);
             this.CBSabado.TabIndex = 40;
@@ -200,7 +201,7 @@ namespace Sistema_Gimnasio.Forms
             this.BSave.IconColor = System.Drawing.Color.White;
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
-            this.BSave.Location = new System.Drawing.Point(144, 263);
+            this.BSave.Location = new System.Drawing.Point(148, 297);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 41;
@@ -219,7 +220,7 @@ namespace Sistema_Gimnasio.Forms
             this.BLimpiar.IconColor = System.Drawing.Color.White;
             this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLimpiar.IconSize = 24;
-            this.BLimpiar.Location = new System.Drawing.Point(302, 263);
+            this.BLimpiar.Location = new System.Drawing.Point(306, 297);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 42;
@@ -233,7 +234,7 @@ namespace Sistema_Gimnasio.Forms
             this.LHora.AutoSize = true;
             this.LHora.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LHora.Location = new System.Drawing.Point(86, 169);
+            this.LHora.Location = new System.Drawing.Point(53, 194);
             this.LHora.Name = "LHora";
             this.LHora.Size = new System.Drawing.Size(103, 23);
             this.LHora.TabIndex = 43;
@@ -244,7 +245,7 @@ namespace Sistema_Gimnasio.Forms
             this.CBDomingo.AutoSize = true;
             this.CBDomingo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CBDomingo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.CBDomingo.Location = new System.Drawing.Point(422, 192);
+            this.CBDomingo.Location = new System.Drawing.Point(426, 226);
             this.CBDomingo.Name = "CBDomingo";
             this.CBDomingo.Size = new System.Drawing.Size(94, 24);
             this.CBDomingo.TabIndex = 45;
@@ -265,7 +266,7 @@ namespace Sistema_Gimnasio.Forms
             "Yoga",
             "Spinning",
             "Pilates"});
-            this.CBCoachs.Location = new System.Drawing.Point(195, 62);
+            this.CBCoachs.Location = new System.Drawing.Point(162, 87);
             this.CBCoachs.Name = "CBCoachs";
             this.CBCoachs.Size = new System.Drawing.Size(200, 28);
             this.CBCoachs.TabIndex = 47;
@@ -275,7 +276,7 @@ namespace Sistema_Gimnasio.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.label1.Location = new System.Drawing.Point(86, 63);
+            this.label1.Location = new System.Drawing.Point(53, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 23);
             this.label1.TabIndex = 46;
@@ -286,7 +287,7 @@ namespace Sistema_Gimnasio.Forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.label2.Location = new System.Drawing.Point(86, 211);
+            this.label2.Location = new System.Drawing.Point(53, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 23);
             this.label2.TabIndex = 48;
@@ -295,7 +296,7 @@ namespace Sistema_Gimnasio.Forms
             // DTDesde
             // 
             this.DTDesde.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTDesde.Location = new System.Drawing.Point(195, 169);
+            this.DTDesde.Location = new System.Drawing.Point(162, 194);
             this.DTDesde.Name = "DTDesde";
             this.DTDesde.Size = new System.Drawing.Size(89, 27);
             this.DTDesde.TabIndex = 50;
@@ -303,7 +304,7 @@ namespace Sistema_Gimnasio.Forms
             // DTHasta
             // 
             this.DTHasta.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTHasta.Location = new System.Drawing.Point(195, 211);
+            this.DTHasta.Location = new System.Drawing.Point(162, 236);
             this.DTHasta.Name = "DTHasta";
             this.DTHasta.Size = new System.Drawing.Size(89, 27);
             this.DTHasta.TabIndex = 51;
@@ -314,7 +315,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtPrecio.Location = new System.Drawing.Point(195, 101);
+            this.txtPrecio.Location = new System.Drawing.Point(162, 126);
             this.txtPrecio.MaxLength = 4;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 27);
@@ -325,18 +326,37 @@ namespace Sistema_Gimnasio.Forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.label3.Location = new System.Drawing.Point(86, 101);
+            this.label3.Location = new System.Drawing.Point(53, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 23);
             this.label3.TabIndex = 52;
             this.label3.Text = "Precio x dia:";
+            // 
+            // NewCategoryClass
+            // 
+            this.NewCategoryClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.NewCategoryClass.FlatAppearance.BorderSize = 0;
+            this.NewCategoryClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewCategoryClass.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.NewCategoryClass.ForeColor = System.Drawing.Color.White;
+            this.NewCategoryClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.NewCategoryClass.IconColor = System.Drawing.Color.White;
+            this.NewCategoryClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NewCategoryClass.IconSize = 24;
+            this.NewCategoryClass.Location = new System.Drawing.Point(368, 50);
+            this.NewCategoryClass.Name = "NewCategoryClass";
+            this.NewCategoryClass.Size = new System.Drawing.Size(27, 30);
+            this.NewCategoryClass.TabIndex = 54;
+            this.NewCategoryClass.UseVisualStyleBackColor = false;
+            this.NewCategoryClass.Click += new System.EventHandler(this.NewCategoryClass_Click);
             // 
             // AddClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(600, 322);
+            this.ClientSize = new System.Drawing.Size(600, 357);
+            this.Controls.Add(this.NewCategoryClass);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DTHasta);
@@ -394,5 +414,6 @@ namespace Sistema_Gimnasio.Forms
         private System.Windows.Forms.DateTimePicker DTHasta;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconButton NewCategoryClass;
     }
 }

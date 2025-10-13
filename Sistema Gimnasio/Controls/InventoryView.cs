@@ -1,17 +1,21 @@
 ﻿using Business;
+using FontAwesome.Sharp;
 using Sistema_Gimnasio.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
+using static Sistema_Gimnasio.Form1;
 
 namespace Sistema_Gimnasio
 {
     public partial class InventoryView : UserControl
     {
         private readonly InventoryService inventoryService = new InventoryService();
+        public Roles CurrentRole { get; set; } = Roles.None;
+        
+        private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
 
         private List<InventoryViewModel> inventoryList = new List<InventoryViewModel>();
 
@@ -42,6 +46,11 @@ namespace Sistema_Gimnasio
             };
             CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters();
             CBCategoria.SelectedIndexChanged += (s, e) => ApplyFilters();
+
+            this.Load += (s, e) => {
+                BuildAcl();
+                ApplyAcl();
+            };
         }
 
         // Carga los datos desde la base de datos y los prepara para la vista
@@ -203,7 +212,7 @@ namespace Sistema_Gimnasio
         // Abre el formulario para agregar un nuevo ítem
         private void BNewItem_Click(object sender, EventArgs e)
         {
-            using (var fNewItem = new AddItemForm())
+            using (var fNewItem = new AddItemForm() { CurrentRole = CurrentRole})
             {
                 if (fNewItem.ShowDialog() == DialogResult.OK)
                 {
@@ -245,6 +254,21 @@ namespace Sistema_Gimnasio
             public string FechaIngreso { get; set; }
             public string Categoria { get; set; }
             public string Estado { get; set; }
+        }
+
+        private void BuildAcl()
+        {
+            // Solo el rol Admin y recepcionista puede editar y eliminar
+            Acl[colEdit] = Roles.Admin | Roles.Recep; ;
+            Acl[colDelete] = Roles.Admin | Roles.Recep; ;
+            Acl[colView] = Roles.Admin | Roles.Recep;
+        }
+
+        // Aplica el control de acceso a las columnas de acción según el rol actual.
+        private void ApplyAcl()
+        {
+            foreach (var keyValue in Acl)
+                keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
         }
     }
 }

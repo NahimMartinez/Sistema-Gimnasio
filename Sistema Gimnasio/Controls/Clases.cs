@@ -204,7 +204,7 @@ namespace Sistema_Gimnasio.Controls
 
         private void BNewClass_Click(object sender, EventArgs e)
         {
-            using (var fNewClass = new AddClass())
+            using (var fNewClass = new AddClass() { CurrentRole = CurrentRole})
             {
                 if (fNewClass.ShowDialog() == DialogResult.OK)
                 {

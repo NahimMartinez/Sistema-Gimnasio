@@ -279,7 +279,7 @@ namespace Sistema_Gimnasio
         private void ShowInventario()
         {
             contentPanel.Controls.Clear();
-            var view = new InventoryView { Dock = DockStyle.Fill, BackColor = Color.White };
+            var view = new InventoryView { Dock = DockStyle.Fill, BackColor = Color.White, CurrentRole = CurrentRole };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Inventario";
         }
