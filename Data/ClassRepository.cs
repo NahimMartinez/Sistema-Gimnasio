@@ -83,8 +83,6 @@ namespace Data
 
         public Class GetById(int idClase)
         {
-            // --- CORRECCIÓN CLAVE: Se usan ALIAS (AS) para que los nombres de las columnas
-            // coincidan con las propiedades de la clase 'Class' en C#.
             const string sql = @"
             SELECT 
                 id_clase AS IdClase,
