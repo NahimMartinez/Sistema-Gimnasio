@@ -249,19 +249,14 @@ namespace Sistema_Gimnasio
             bool WantActivo = s.Equals("Activo", StringComparison.OrdinalIgnoreCase);
             bool WantInactivo = s.Equals("Inactivo", StringComparison.OrdinalIgnoreCase);
             bool WantAllS = s.Equals("Todos", StringComparison.OrdinalIgnoreCase);
-
-            bool IsActivo(Partner pP)
-            {
-                var val = pP.Estado;
-                return val == true;
-            }
+                        
 
             // Filtra la lista según el texto de búsqueda, estado y membresía
             var view = partnersList.Where(p =>
                (!hasQuery ||
                    (p.Nombre ?? "").ToLower().Contains(query) ||
-                   (p.Dni ?? "").ToLower().Contains(query)  &&
-               (WantAllS || (WantActivo && IsActivo(p)) || (WantInactivo && !IsActivo(p))))
+                   (p.Dni ?? "").ToLower().Contains(query))  &&
+               (WantAllS || (WantActivo && p.Estado) || (WantInactivo && !p.Estado))
            ).ToList();
 
             // Actualiza el datasource de la grilla
