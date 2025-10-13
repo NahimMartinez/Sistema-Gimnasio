@@ -9,16 +9,16 @@ namespace Business
 {
     public class ActivityService
     {
-        private readonly ActivityRepository _repository;
+        private readonly ActivityRepository repository;
 
         public ActivityService()
         {
-            _repository = new ActivityRepository();
+            repository = new ActivityRepository();
         }
 
         public List<Activity> GetActivities()
         {
-            return _repository.GetAll();
+            return repository.GetAll();
         }
 
         // --- MÉTODO NUEVO PARA CREAR LA ACTIVIDAD ---
@@ -33,7 +33,7 @@ namespace Business
             // 2. Llamar al repositorio para insertar en la BD
             try
             {
-                _repository.Insert(activity);
+                repository.Insert(activity);
             }
             catch (SqlException ex)
             {

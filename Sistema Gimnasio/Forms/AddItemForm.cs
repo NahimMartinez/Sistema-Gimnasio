@@ -8,10 +8,10 @@ namespace Sistema_Gimnasio.Forms
 {
     public partial class AddItemForm : Form
     {
-        private readonly InventoryService _inventoryService = new InventoryService();
-        private readonly InventoryCategoryService _categoryService = new InventoryCategoryService();
+        private readonly InventoryService inventoryService = new InventoryService();
+        private readonly InventoryCategoryService categoryService = new InventoryCategoryService();
 
-        private Inventory _editableItem;
+        private Inventory editableItem;
 
         public AddItemForm()
         {
@@ -32,8 +32,8 @@ namespace Sistema_Gimnasio.Forms
             // Buscamos el artículo en la BD y lo cargamos en el formulario
             try
             {
-                _editableItem = _inventoryService.GetInventoryById(idToEdit);
-                if (_editableItem != null)
+                editableItem = inventoryService.GetInventoryById(idToEdit);
+                if (editableItem != null)
                 {
                     LoadDataForEdit();
                 }
@@ -53,14 +53,14 @@ namespace Sistema_Gimnasio.Forms
         // MÉTODO para llenar el form con datos
         private void LoadDataForEdit()
         {
-            txtNombre.Text = _editableItem.Nombre;
-            txtCantidad.Text = _editableItem.Cantidad.ToString();
+            txtNombre.Text = editableItem.Nombre;
+            txtCantidad.Text = editableItem.Cantidad.ToString();
 
             // Seleccionamos la categoría correcta en el ComboBox
-            CBCategoria.SelectedValue = _editableItem.IdInventarioCategoria;
+            CBCategoria.SelectedValue = editableItem.IdInventarioCategoria;
 
             // La fecha de ingreso no se suele editar, la dejamos como está.
-            DTFechaIngreso.Value = _editableItem.FechaIngreso;
+            DTFechaIngreso.Value = editableItem.FechaIngreso;
             DTFechaIngreso.Enabled = false; // Deshabilitamos para que no se pueda cambiar
         }
 
@@ -68,7 +68,7 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                CBCategoria.DataSource = _categoryService.GetAllCategories();
+                CBCategoria.DataSource = categoryService.GetAllCategories();
                 CBCategoria.DisplayMember = "Nombre";
                 CBCategoria.ValueMember = "IdInventarioCategoria";
                 CBCategoria.SelectedIndex = -1;
@@ -89,7 +89,7 @@ namespace Sistema_Gimnasio.Forms
             try
             {
                 // Si _editableItem es NULL, estamos creando uno nuevo
-                if (_editableItem == null)
+                if (editableItem == null)
                 {
                     var newItem = new Inventory
                     {
@@ -97,18 +97,18 @@ namespace Sistema_Gimnasio.Forms
                         Cantidad = int.Parse(txtCantidad.Text),
                         IdInventarioCategoria = (int)CBCategoria.SelectedValue
                     };
-                    _inventoryService.CreateInventory(newItem);
+                    inventoryService.CreateInventory(newItem);
                     MessageBox.Show("Artículo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 // Si NO es NULL, estamos actualizando el existente
                 else
                 {
                     // Actualizamos el objeto que ya teníamos
-                    _editableItem.Nombre = txtNombre.Text.Trim();
-                    _editableItem.Cantidad = int.Parse(txtCantidad.Text);
-                    _editableItem.IdInventarioCategoria = (int)CBCategoria.SelectedValue;
+                    editableItem.Nombre = txtNombre.Text.Trim();
+                    editableItem.Cantidad = int.Parse(txtCantidad.Text);
+                    editableItem.IdInventarioCategoria = (int)CBCategoria.SelectedValue;
 
-                    _inventoryService.UpdateInventory(_editableItem);
+                    inventoryService.UpdateInventory(editableItem);
                     MessageBox.Show("Artículo actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

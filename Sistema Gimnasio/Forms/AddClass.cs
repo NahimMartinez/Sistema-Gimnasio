@@ -9,15 +9,15 @@ namespace Sistema_Gimnasio.Forms
 {
     public partial class AddClass : Form
     {
-        private readonly ActivityService _actividadService = new ActivityService();
-        private readonly UserService _userService = new UserService();
-        private readonly ClassService _classService = new ClassService();
+        private readonly ActivityService actividadService = new ActivityService();
+        private readonly UserService userService = new UserService();
+        private readonly ClassService classService = new ClassService();
         private List<CheckBox> checkBoxesDias = new List<CheckBox>();
 
         // Almacena el ID de la clase si estamos en modo Editar o Ver. Es nulo si es modo Crear.
-        private int? _classId;
+        private int? classIdFlag;
         // Bandera para determinar si el formulario es de solo lectura.
-        private bool _isViewOnly = false;
+        private bool isViewOnlyFlag = false;
 
         // Constructor para el modo CREAR una nueva clase.
         public AddClass()
@@ -31,8 +31,8 @@ namespace Sistema_Gimnasio.Forms
         {
             InitializeComponent();
             InitializeForm();
-            _classId = classId;
-            _isViewOnly = isViewOnly;
+            classIdFlag = classId;
+            isViewOnlyFlag = isViewOnly;
         }
 
         // Realiza la inicialización común para ambos constructores.
@@ -49,10 +49,10 @@ namespace Sistema_Gimnasio.Forms
             SetDayTags();
 
             // Si se proporcionó un ID de clase, entramos en modo Editar o Ver.
-            if (_classId.HasValue)
+            if (classIdFlag.HasValue)
             {
                 // Si además la bandera de solo-vista está activa.
-                if (_isViewOnly)
+                if (isViewOnlyFlag)
                 {
                     this.Text = "Ver Clase";
                     SetViewOnlyMode(); // Bloquea los controles.
@@ -99,7 +99,7 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                var clase = _classService.GetClassById(_classId.Value);
+                var clase = classService.GetClassById(classIdFlag.Value);
                 if (clase == null)
                 {
                     MessageBox.Show("Error: No se encontró la clase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,15 +166,15 @@ namespace Sistema_Gimnasio.Forms
                 }
 
                 // Decide si debe actualizar una clase existente o crear una nueva.
-                if (_classId.HasValue)
+                if (classIdFlag.HasValue)
                 {
-                    clase.IdClase = _classId.Value;
-                    _classService.UpdateClass(clase);
+                    clase.IdClase = classIdFlag.Value;
+                    classService.UpdateClass(clase);
                     MessageBox.Show("¡Clase actualizada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    _classService.CreateClass(clase);
+                    classService.CreateClass(clase);
                     MessageBox.Show("¡Clase creada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -219,7 +219,7 @@ namespace Sistema_Gimnasio.Forms
         // Limpia o resetea los campos del formulario.
         private void BLimpiar_Click(object sender, EventArgs e)
         {
-            if (_classId.HasValue)
+            if (classIdFlag.HasValue)
             {
                 LoadDataForEditing();
             }
@@ -240,7 +240,7 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                CBCategoria.DataSource = _actividadService.GetActivities();
+                CBCategoria.DataSource = actividadService.GetActivities();
                 CBCategoria.DisplayMember = "Nombre";
                 CBCategoria.ValueMember = "IdActividad";
             }
@@ -252,7 +252,7 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                CBCoachs.DataSource = _userService.GetAllCoaches();
+                CBCoachs.DataSource = userService.GetAllCoaches();
                 CBCoachs.DisplayMember = "NombreCompleto";
                 CBCoachs.ValueMember = "IdUsuario";
             }

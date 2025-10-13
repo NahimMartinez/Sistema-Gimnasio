@@ -9,7 +9,7 @@ namespace Sistema_Gimnasio.Forms
     public partial class AddClassCategory : Form
     {
         // Creamos una instancia del servicio de actividades
-        private readonly ActivityService _activityService = new ActivityService();
+        private readonly ActivityService activityService = new ActivityService();
 
         public AddClassCategory()
         {
@@ -29,7 +29,7 @@ namespace Sistema_Gimnasio.Forms
                 };
 
                 // 2. Llamamos al servicio para que lo guarde
-                _activityService.CreateActivity(newActivity);
+                activityService.CreateActivity(newActivity);
 
                 MessageBox.Show("Categoría de clase guardada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

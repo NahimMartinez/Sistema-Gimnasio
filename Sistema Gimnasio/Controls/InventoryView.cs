@@ -11,7 +11,7 @@ namespace Sistema_Gimnasio
 {
     public partial class InventoryView : UserControl
     {
-        private readonly InventoryService _inventoryService = new InventoryService();
+        private readonly InventoryService inventoryService = new InventoryService();
 
         private List<InventoryViewModel> inventoryList = new List<InventoryViewModel>();
 
@@ -49,7 +49,7 @@ namespace Sistema_Gimnasio
         {
             try
             {
-                var rawData = _inventoryService.GetAllInventoriesForView();
+                var rawData = inventoryService.GetAllInventoriesForView();
 
                 inventoryList = rawData.Select(item => new InventoryViewModel
                 {
@@ -188,7 +188,7 @@ namespace Sistema_Gimnasio
                     try
                     {
                         // Llamamos al servicio para cambiar el estado
-                        _inventoryService.ChangeInventoryStatus(selectedId);
+                        inventoryService.ChangeInventoryStatus(selectedId);
                         // Recargamos la grilla para ver el cambio de inmediato
                         LoadRealData();
                     }
