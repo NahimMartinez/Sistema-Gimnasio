@@ -17,6 +17,9 @@ namespace Sistema_Gimnasio.Forms
             InitializeComponent();
         }
 
-        
+        private void MembershipForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

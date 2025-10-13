@@ -71,7 +71,6 @@ namespace Sistema_Gimnasio.Controls
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.NewCategoryClass = new FontAwesome.Sharp.IconButton();
             this.BBackup = new FontAwesome.Sharp.IconButton();
             this.panelHeader.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
@@ -513,7 +512,6 @@ namespace Sistema_Gimnasio.Controls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.BBackup);
-            this.Controls.Add(this.NewCategoryClass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelRecentActivity);
             this.Controls.Add(this.panelCharts);
@@ -578,7 +576,6 @@ namespace Sistema_Gimnasio.Controls
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_alta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartIngresosMensuales;
-        private FontAwesome.Sharp.IconButton NewCategoryClass;
         private System.Windows.Forms.Label LChartPie;
         private System.Windows.Forms.DataVisualization.Charting.Chart CPMemberships;
         private IconButton BBackup;
