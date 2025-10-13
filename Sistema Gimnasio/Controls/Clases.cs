@@ -240,9 +240,6 @@ namespace Sistema_Gimnasio.Controls
             foreach (var keyValue in Acl)
                 keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
 
-            System.Diagnostics.Debug.WriteLine(
-  $"Role={CurrentRole}, colEditRefOk={ReferenceEquals(BoardClass.Columns["colEdit"], colEdit)}");
-
         }
     }
 }

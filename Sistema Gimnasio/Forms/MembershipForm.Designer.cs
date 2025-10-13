@@ -49,6 +49,8 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.LPayMethod = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
@@ -70,7 +72,7 @@
             this.LTotal.AutoSize = true;
             this.LTotal.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LTotal.Location = new System.Drawing.Point(615, 35);
+            this.LTotal.Location = new System.Drawing.Point(557, 3);
             this.LTotal.Name = "LTotal";
             this.LTotal.Size = new System.Drawing.Size(57, 20);
             this.LTotal.TabIndex = 2;
@@ -81,7 +83,7 @@
             this.LTotalSum.AutoSize = true;
             this.LTotalSum.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LTotalSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LTotalSum.Location = new System.Drawing.Point(678, 35);
+            this.LTotalSum.Location = new System.Drawing.Point(620, 3);
             this.LTotalSum.Name = "LTotalSum";
             this.LTotalSum.Size = new System.Drawing.Size(28, 20);
             this.LTotalSum.TabIndex = 5;
@@ -128,6 +130,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.LPayMethod);
+            this.panel4.Controls.Add(this.comboBox1);
             this.panel4.Controls.Add(this.BCancel);
             this.panel4.Controls.Add(this.BSave);
             this.panel4.Controls.Add(this.LTotalSum);
@@ -300,6 +304,31 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
+            // LPayMethod
+            // 
+            this.LPayMethod.AutoSize = true;
+            this.LPayMethod.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LPayMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LPayMethod.Location = new System.Drawing.Point(557, 33);
+            this.LPayMethod.Name = "LPayMethod";
+            this.LPayMethod.Size = new System.Drawing.Size(120, 20);
+            this.LPayMethod.TabIndex = 13;
+            this.LPayMethod.Text = "Metodo de Pago";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Efectivo",
+            "Tarjeta",
+            "Transferencia"});
+            this.comboBox1.Location = new System.Drawing.Point(557, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(130, 28);
+            this.comboBox1.TabIndex = 12;
+            // 
             // MembershipForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,5 +368,7 @@
         private System.Windows.Forms.ComboBox CBMembership;
         private FontAwesome.Sharp.IconButton BCancel;
         private FontAwesome.Sharp.IconButton BSave;
+        private System.Windows.Forms.Label LPayMethod;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
