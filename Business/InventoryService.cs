@@ -9,11 +9,11 @@ namespace Business
 {
     public class InventoryService
     {
-        private readonly InventoryRepository _repository;
+        private readonly InventoryRepository repository;
 
         public InventoryService()
         {
-            _repository = new InventoryRepository();
+            repository = new InventoryRepository();
         }
 
         public void CreateInventory(Inventory inventario)
@@ -38,7 +38,7 @@ namespace Business
             {
                 // Por defecto, un nuevo artículo siempre estará activo (Estado = true)
                 inventario.Estado = true;
-                _repository.InsertInventory(inventario);
+                repository.InsertInventory(inventario);
             }
             catch (SqlException ex)
             {
@@ -53,12 +53,12 @@ namespace Business
 
         public List<dynamic> GetAllInventoriesForView()
         {
-            return _repository.GetAllInventoriesForView();
+            return repository.GetAllInventoriesForView();
         }
 
         public Inventory GetInventoryById(int id)
         {
-            return _repository.GetById(id);
+            return repository.GetById(id);
         }
 
         // Guarda los cambios de un artículo
@@ -80,7 +80,7 @@ namespace Business
 
             try
             {
-                _repository.Update(inventario);
+                repository.Update(inventario);
             }
             catch (SqlException ex)
             {
@@ -95,7 +95,7 @@ namespace Business
 
         public void ChangeInventoryStatus(int id)
         {
-            _repository.ChangeStatus(id);
+            repository.ChangeStatus(id);
         }
     }
 }

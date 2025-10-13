@@ -8,7 +8,7 @@ namespace Sistema_Gimnasio.Forms
 {
     public partial class AddInventoryCategory : Form
     {
-        private readonly InventoryCategoryService _categoryService = new InventoryCategoryService();
+        private readonly InventoryCategoryService categoryService = new InventoryCategoryService();
 
         public AddInventoryCategory()
         {
@@ -29,7 +29,7 @@ namespace Sistema_Gimnasio.Forms
                 };
 
                 // Llama al servicio para que agrege la nueva categoría
-                _categoryService.CreateCategory(newCategory);
+                categoryService.CreateCategory(newCategory);
 
                 MessageBox.Show("Categoría guardada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
