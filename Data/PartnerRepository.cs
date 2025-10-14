@@ -93,6 +93,19 @@ namespace Data
             }
         }
 
-        
+        public int GetTotalActivePartners()
+        {
+            const string sql = @"
+            SELECT COUNT(*) 
+            FROM socio s
+            INNER JOIN persona p ON s.id_socio = p.id_persona
+            WHERE p.estado = 1;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.ExecuteScalar<int>(sql);
+            }
+        }
+
     }
 }

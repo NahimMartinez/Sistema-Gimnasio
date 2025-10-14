@@ -43,7 +43,7 @@ namespace Sistema_Gimnasio.Controls
             this.labelTitle = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.cardMembers = new System.Windows.Forms.Panel();
-            this.labelMembersCount = new System.Windows.Forms.Label();
+            this.labelPartnersCount = new System.Windows.Forms.Label();
             this.labelMembersTitle = new System.Windows.Forms.Label();
             this.iconPartner = new FontAwesome.Sharp.IconPictureBox();
             this.cardClasses = new System.Windows.Forms.Panel();
@@ -125,7 +125,7 @@ namespace Sistema_Gimnasio.Controls
             // 
             this.cardMembers.BackColor = System.Drawing.Color.White;
             this.cardMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cardMembers.Controls.Add(this.labelMembersCount);
+            this.cardMembers.Controls.Add(this.labelPartnersCount);
             this.cardMembers.Controls.Add(this.labelMembersTitle);
             this.cardMembers.Controls.Add(this.iconPartner);
             this.cardMembers.Location = new System.Drawing.Point(3, 3);
@@ -135,16 +135,16 @@ namespace Sistema_Gimnasio.Controls
             this.cardMembers.Size = new System.Drawing.Size(170, 110);
             this.cardMembers.TabIndex = 0;
             // 
-            // labelMembersCount
+            // labelPartnersCount
             // 
-            this.labelMembersCount.AutoSize = true;
-            this.labelMembersCount.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMembersCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.labelMembersCount.Location = new System.Drawing.Point(15, 15);
-            this.labelMembersCount.Name = "labelMembersCount";
-            this.labelMembersCount.Size = new System.Drawing.Size(69, 41);
-            this.labelMembersCount.TabIndex = 2;
-            this.labelMembersCount.Text = "248";
+            this.labelPartnersCount.AutoSize = true;
+            this.labelPartnersCount.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPartnersCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.labelPartnersCount.Location = new System.Drawing.Point(15, 15);
+            this.labelPartnersCount.Name = "labelPartnersCount";
+            this.labelPartnersCount.Size = new System.Drawing.Size(69, 41);
+            this.labelPartnersCount.TabIndex = 2;
+            this.labelPartnersCount.Text = "248";
             // 
             // labelMembersTitle
             // 
@@ -556,7 +556,7 @@ namespace Sistema_Gimnasio.Controls
         private System.Windows.Forms.Panel panelRecentActivity;
         private System.Windows.Forms.Label labelMembersTitle;
         private FontAwesome.Sharp.IconPictureBox iconPartner;
-        private System.Windows.Forms.Label labelMembersCount;
+        private System.Windows.Forms.Label labelPartnersCount;
         private System.Windows.Forms.Label labelClassesCount;
         private System.Windows.Forms.Label labelClassesTitle;
         private FontAwesome.Sharp.IconPictureBox iconClass;

@@ -16,6 +16,7 @@ namespace Sistema_Gimnasio.Controls
     public partial class Dashboard : UserControl
     {
         private readonly ClassService classService = new ClassService();
+        private readonly PartnerService partnerService = new PartnerService();
 
         public Dashboard()
         {
@@ -27,6 +28,9 @@ namespace Sistema_Gimnasio.Controls
 
             int totalClasses = classService.GetTotalActiveClasses();
             labelClassesCount.Text = totalClasses.ToString();
+
+            int totalPartners = partnerService.GetTotalActivePartnersService();
+            labelPartnersCount.Text = totalPartners.ToString();
         }
 
 
