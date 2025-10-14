@@ -99,5 +99,28 @@ namespace Data
                 cn.Execute(sql, new { IdInventario = idInventario });
             }
         }
+
+        public List<dynamic> GetInventoryCountByCategory()
+        {
+            const string sql = @"
+            SELECT 
+                ic.nombre AS Categoria, 
+                COUNT(i.id_inventario) AS Cantidad
+            FROM 
+                inventario i
+            INNER JOIN 
+                inventario_categoria ic ON i.id_categoria_inventario = ic.id_inventario_categoria
+            WHERE
+                i.estado = 1 -- Contar solo los artículos activos
+            GROUP BY 
+                ic.nombre
+            ORDER BY
+                Cantidad DESC; -- Ordena de mayor a menor para que el gráfico se vea mejor";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<dynamic>(sql).ToList();
+            }
+        }
     }
 }

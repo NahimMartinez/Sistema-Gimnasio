@@ -97,5 +97,10 @@ namespace Business
         {
             repository.ChangeStatus(id);
         }
+
+        public List<dynamic> GetInventoryCountByCategory()
+        {
+            return repository.GetInventoryCountByCategory();
+        }
     }
 }
