@@ -11,20 +11,18 @@ namespace Sistema_Gimnasio.Controls
     {
         private TableLayoutPanel tableLayout;
 
-        // <-- 2. Creamos una instancia del servicio que necesitamos
         private readonly InventoryService inventoryService = new InventoryService();
 
         public Reports()
         {
             InitializeComponent();
             InicializarLayout();
-            ConfigurarGraficoRadarCapacidad(); // Este se mantiene como estaba
-            ConfigurarGraficoRadarInventario(); // Este ahora será dinámico
+            ConfigurarGraficoRadarCapacidad(); 
+            ConfigurarGraficoRadarInventario();
         }
 
         private void InicializarLayout()
         {
-            // (Este método no cambia)
             tableLayout = new TableLayoutPanel();
             tableLayout.Dock = DockStyle.Fill;
             tableLayout.ColumnCount = 2;
@@ -42,7 +40,6 @@ namespace Sistema_Gimnasio.Controls
 
         public void ConfigurarGraficoRadarCapacidad()
         {
-            // (Este método no cambia, se mantiene estático como lo tenías)
             chartRadarClases.Series.Clear();
             chartRadarClases.Titles.Clear();
             chartRadarClases.ChartAreas.Clear();
@@ -61,10 +58,9 @@ namespace Sistema_Gimnasio.Controls
             series.Points.Add(new DataPoint(4, 30) { AxisLabel = "Spinning" });
             series.IsValueShownAsLabel = true;
             chartRadarClases.Series.Add(series);
-            // ... (resto de tu configuración original)
         }
 
-        // <-- 3. MÉTODO MODIFICADO PARA SER DINÁMICO
+
         public void ConfigurarGraficoRadarInventario()
         {
             // Limpiamos todo para asegurarnos de que no hay datos viejos
@@ -72,7 +68,6 @@ namespace Sistema_Gimnasio.Controls
             chartRadarInventario.Titles.Clear();
             chartRadarInventario.ChartAreas.Clear();
 
-            // Mantenemos toda tu configuración visual original
             ChartArea chartArea = new ChartArea();
             chartArea.BackColor = Color.WhiteSmoke;
             chartRadarInventario.ChartAreas.Add(chartArea);
@@ -113,7 +108,7 @@ namespace Sistema_Gimnasio.Controls
             }
             catch (Exception ex)
             {
-                // Si hay un error, lo mostramos de forma amigable
+                // Si hay un error, lo capturamos
                 MessageBox.Show("Error al cargar los datos del gráfico de inventario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 chartRadarInventario.Titles.Add("Error al cargar datos");
             }
