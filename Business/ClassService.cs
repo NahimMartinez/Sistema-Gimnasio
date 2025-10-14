@@ -102,5 +102,9 @@ namespace Business
                 }
             }
         }
+
+        public int GetTotalActiveClasses() {
+            return classRepo.GetTotalActiveClass();
+        }
     }
 }

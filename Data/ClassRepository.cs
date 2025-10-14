@@ -136,5 +136,16 @@ namespace Data
                 connection.Execute(sqlInsertDias, new { ClaseId = clase.IdClase, DiaId = dia.IdDia }, transaction);
             }
         }
+
+        public int GetTotalActiveClass() {
+
+            const string sql = "SELECT COUNT(*) FROM clase WHERE estado = 1";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                // ExecuteScalar<int> es para consultas que devuelven un único valor (un número, un texto, etc.).
+                return cn.ExecuteScalar<int>(sql);
+            }
+        }
     }
 }

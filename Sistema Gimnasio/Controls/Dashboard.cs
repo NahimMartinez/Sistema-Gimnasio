@@ -1,4 +1,5 @@
-﻿using Sistema_Gimnasio.Forms;
+﻿using Business;
+using Sistema_Gimnasio.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace Sistema_Gimnasio.Controls
 {
     public partial class Dashboard : UserControl
     {
+        private readonly ClassService classService = new ClassService();
+
         public Dashboard()
         {
             InitializeComponent();
@@ -21,6 +24,9 @@ namespace Sistema_Gimnasio.Controls
             LoadIngresosMensuales();
             LoadCPMemberships();
             Dashboard_Load();
+
+            int totalClasses = classService.GetTotalActiveClasses();
+            labelClassesCount.Text = totalClasses.ToString();
         }
 
 
