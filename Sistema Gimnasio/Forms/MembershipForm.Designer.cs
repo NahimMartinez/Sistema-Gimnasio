@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LClass = new System.Windows.Forms.Label();
             this.LTotal = new System.Windows.Forms.Label();
             this.LTotalSum = new System.Windows.Forms.Label();
@@ -38,6 +38,8 @@
             this.LMembership = new System.Windows.Forms.Label();
             this.CBMembership = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.LPayMethod = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BCancel = new FontAwesome.Sharp.IconButton();
             this.BSave = new FontAwesome.Sharp.IconButton();
             this.BoardClass = new System.Windows.Forms.DataGridView();
@@ -46,11 +48,7 @@
             this.cupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colView = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.LPayMethod = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.colAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
@@ -63,7 +61,7 @@
             this.LClass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LClass.Location = new System.Drawing.Point(12, 72);
             this.LClass.Name = "LClass";
-            this.LClass.Size = new System.Drawing.Size(50, 20);
+            this.LClass.Size = new System.Drawing.Size(40, 15);
             this.LClass.TabIndex = 1;
             this.LClass.Text = "Clases";
             // 
@@ -74,7 +72,7 @@
             this.LTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LTotal.Location = new System.Drawing.Point(557, 3);
             this.LTotal.Name = "LTotal";
-            this.LTotal.Size = new System.Drawing.Size(57, 20);
+            this.LTotal.Size = new System.Drawing.Size(45, 15);
             this.LTotal.TabIndex = 2;
             this.LTotal.Text = "Total: $";
             // 
@@ -85,7 +83,7 @@
             this.LTotalSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LTotalSum.Location = new System.Drawing.Point(620, 3);
             this.LTotalSum.Name = "LTotalSum";
-            this.LTotalSum.Size = new System.Drawing.Size(28, 20);
+            this.LTotalSum.Size = new System.Drawing.Size(22, 15);
             this.LTotalSum.TabIndex = 5;
             this.LTotalSum.Text = "0,0";
             // 
@@ -108,7 +106,7 @@
             this.LMembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LMembership.Location = new System.Drawing.Point(12, 11);
             this.LMembership.Name = "LMembership";
-            this.LMembership.Size = new System.Drawing.Size(83, 20);
+            this.LMembership.Size = new System.Drawing.Size(66, 15);
             this.LMembership.TabIndex = 9;
             this.LMembership.Text = "Membresía";
             // 
@@ -124,7 +122,7 @@
             "Diaria"});
             this.CBMembership.Location = new System.Drawing.Point(12, 34);
             this.CBMembership.Name = "CBMembership";
-            this.CBMembership.Size = new System.Drawing.Size(130, 28);
+            this.CBMembership.Size = new System.Drawing.Size(130, 23);
             this.CBMembership.TabIndex = 8;
             // 
             // panel4
@@ -141,6 +139,32 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(800, 100);
             this.panel4.TabIndex = 12;
+            // 
+            // LPayMethod
+            // 
+            this.LPayMethod.AutoSize = true;
+            this.LPayMethod.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LPayMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LPayMethod.Location = new System.Drawing.Point(557, 33);
+            this.LPayMethod.Name = "LPayMethod";
+            this.LPayMethod.Size = new System.Drawing.Size(95, 15);
+            this.LPayMethod.TabIndex = 13;
+            this.LPayMethod.Text = "Metodo de Pago";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Efectivo",
+            "Tarjeta Debito",
+            "Tarjeta Credito",
+            "Transferencia"});
+            this.comboBox1.Location = new System.Drawing.Point(557, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(130, 23);
+            this.comboBox1.TabIndex = 12;
             // 
             // BCancel
             // 
@@ -162,6 +186,7 @@
             this.BCancel.Text = "Cancelar";
             this.BCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCancel.UseVisualStyleBackColor = false;
+            this.BCancel.Click += new System.EventHandler(this.BCancel_Click);
             // 
             // BSave
             // 
@@ -183,27 +208,28 @@
             this.BSave.Text = "Guardar";
             this.BSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSave.UseVisualStyleBackColor = false;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click);
             // 
             // BoardClass
             // 
             this.BoardClass.AllowUserToAddRows = false;
             this.BoardClass.AllowUserToDeleteRows = false;
             this.BoardClass.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardClass.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardClass.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.BoardClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardClass.BackgroundColor = System.Drawing.Color.White;
             this.BoardClass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardClass.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardClass.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BoardClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.BoardClass.ColumnHeadersHeight = 38;
             this.BoardClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -212,17 +238,15 @@
             this.cupo,
             this.dia,
             this.hora,
-            this.colEdit,
-            this.colView,
-            this.colDelete});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardClass.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colAdd});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardClass.DefaultCellStyle = dataGridViewCellStyle6;
             this.BoardClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardClass.EnableHeadersVisualStyles = false;
             this.BoardClass.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -247,7 +271,7 @@
             // 
             // name
             // 
-            this.name.DataPropertyName = "nombre";
+            this.name.DataPropertyName = "Name";
             this.name.HeaderText = "Nombre";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
@@ -271,64 +295,20 @@
             // 
             // hora
             // 
-            this.hora.DataPropertyName = "hora";
+            this.hora.DataPropertyName = "Horario";
             this.hora.HeaderText = "Hora";
             this.hora.MinimumWidth = 6;
             this.hora.Name = "hora";
             this.hora.ReadOnly = true;
             // 
-            // colEdit
+            // colAdd
             // 
-            this.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colEdit.HeaderText = "";
-            this.colEdit.MinimumWidth = 6;
-            this.colEdit.Name = "colEdit";
-            this.colEdit.ReadOnly = true;
-            this.colEdit.Width = 50;
-            // 
-            // colView
-            // 
-            this.colView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colView.HeaderText = "";
-            this.colView.MinimumWidth = 6;
-            this.colView.Name = "colView";
-            this.colView.ReadOnly = true;
-            this.colView.Width = 50;
-            // 
-            // colDelete
-            // 
-            this.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colDelete.HeaderText = "";
-            this.colDelete.MinimumWidth = 6;
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
-            this.colDelete.Width = 50;
-            // 
-            // LPayMethod
-            // 
-            this.LPayMethod.AutoSize = true;
-            this.LPayMethod.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LPayMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LPayMethod.Location = new System.Drawing.Point(557, 33);
-            this.LPayMethod.Name = "LPayMethod";
-            this.LPayMethod.Size = new System.Drawing.Size(120, 20);
-            this.LPayMethod.TabIndex = 13;
-            this.LPayMethod.Text = "Metodo de Pago";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Efectivo",
-            "Tarjeta Debito",
-            "Tarjeta Credito",
-            "Transferencia"});
-            this.comboBox1.Location = new System.Drawing.Point(557, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(130, 28);
-            this.comboBox1.TabIndex = 12;
+            this.colAdd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colAdd.HeaderText = "";
+            this.colAdd.MinimumWidth = 6;
+            this.colAdd.Name = "colAdd";
+            this.colAdd.ReadOnly = true;
+            this.colAdd.Width = 50;
             // 
             // MembershipForm
             // 
@@ -362,9 +342,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cupo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn hora;
-        private System.Windows.Forms.DataGridViewImageColumn colEdit;
-        private System.Windows.Forms.DataGridViewImageColumn colView;
-        private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.DataGridViewImageColumn colAdd;
         private System.Windows.Forms.Label LMembership;
         private System.Windows.Forms.ComboBox CBMembership;
         private FontAwesome.Sharp.IconButton BCancel;
