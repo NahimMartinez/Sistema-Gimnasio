@@ -2,6 +2,7 @@
 using Data;
 using Entities;
 using FontAwesome.Sharp;
+using Sistema_Gimnasio.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -271,7 +272,7 @@ namespace Sistema_Gimnasio
             Acl[colEdit] = Roles.Admin | Roles.Recep; ;
             Acl[colDelete] = Roles.Admin | Roles.Recep; ;
             // El rol Admin y Recepcionista pueden ver
-            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;
+            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;            
         }
 
         // Aplica el control de acceso a las columnas de acción según el rol actual.
@@ -281,6 +282,21 @@ namespace Sistema_Gimnasio
                 keyValue.Key.Visible = (CurrentRole & keyValue.Value) != 0; // Solo muestra la columna si el rol tiene permiso
         }
 
-
+        private void BRenovation_Click(object sender, EventArgs e)
+        {
+            if (BoardMember.SelectedRows != null)
+            {
+                var idRow = Convert.ToInt32(BoardMember.CurrentRow.Cells["idPartner"].Value);
+                using (var fMembership = new MembershipForm(idRow))
+                {
+                    // Muestra el formulario como un cuadro de diálogo
+                    if (fMembership.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
+                    }
+                }
+            }
+            
+        }
     }
 }

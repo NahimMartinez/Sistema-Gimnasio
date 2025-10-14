@@ -322,7 +322,8 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Efectivo",
-            "Tarjeta",
+            "Tarjeta Debito",
+            "Tarjeta Credito",
             "Transferencia"});
             this.comboBox1.Location = new System.Drawing.Point(557, 56);
             this.comboBox1.Name = "comboBox1";
