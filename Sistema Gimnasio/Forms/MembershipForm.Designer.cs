@@ -114,12 +114,7 @@
             // 
             this.CBMembership.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBMembership.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBMembership.FormattingEnabled = true;
-            this.CBMembership.Items.AddRange(new object[] {
-            "Todos",
-            "Mensual",
-            "Semanal",
-            "Diaria"});
+            this.CBMembership.FormattingEnabled = true;            
             this.CBMembership.Location = new System.Drawing.Point(12, 34);
             this.CBMembership.Name = "CBMembership";
             this.CBMembership.Size = new System.Drawing.Size(130, 23);

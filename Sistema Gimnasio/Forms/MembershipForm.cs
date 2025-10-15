@@ -22,7 +22,7 @@ namespace Sistema_Gimnasio.Forms
         private readonly List<dynamic> classMembership = new List<dynamic>();
         private readonly List<dynamic> selectedClasses = new List<dynamic>();
         private readonly MembershipService membershipService = new MembershipService();
-
+        private bool fReady;
         public MembershipForm(int pIdPartner)
         {
             InitializeComponent();
@@ -34,6 +34,10 @@ namespace Sistema_Gimnasio.Forms
         private void MembershipForm_Load(object sender, EventArgs e)
         {
             LoadMembershipTypes();
+            CBMembership.SelectedIndexChanged += (s, ev) =>
+            {
+                if (fReady) UpdateTotalLabel();
+            };
         }
 
         private decimal UpdateTotalLabel()
@@ -143,15 +147,23 @@ namespace Sistema_Gimnasio.Forms
         {
             Close();
         }
-
+        private void LoadPayMethods()
+        {
+            // Aquí se cargarían los métodos de pago desde la base de datos o una lista predefinida
+            var paymentMethods = new List<string> { "Efectivo", "Tarjeta de Crédito", "Tarjeta de Débito", "Transferencia Bancaria" };
+            //CBPaymentMethod.DataSource = paymentMethods;
+            //CBPaymentMethod.SelectedIndex = -1; // No seleccionar nada por defecto
+        }
         private void LoadMembershipTypes()
         {
+            fReady = false;
             var types = membershipService.GetMembershipType();
             CBMembership.DataSource = null;              // limpia por si había Items            
             CBMembership.DisplayMember = "Nombre";
             CBMembership.ValueMember = "DuracionDias";
             CBMembership.DataSource = types;
-            CBMembership.SelectedIndex = -1; // No seleccionar nada por defecto
+            CBMembership.SelectedIndex = 2; // Por defecto mes
+            fReady = true;
         }
     }
 }
