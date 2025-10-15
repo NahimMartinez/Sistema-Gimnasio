@@ -1,11 +1,10 @@
-﻿using Entities;
-using System;
+﻿using Dapper;
+using Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+
 
 namespace Data
 {
@@ -21,6 +20,61 @@ namespace Data
                 return cn.Query<PaymentMethod>(sql).ToList();
         }
 
+        public int Insert(Payment payment)
+        {
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                cn.Open();
+                using (var tx = cn.BeginTransaction())
 
+                    try
+                    {
+                        var id = Insert(payment, cn, tx);
+                        tx.Commit();
+                        return id;
+                    }
+                    catch
+                    {
+                        tx.Rollback();
+                        throw;
+                    }
+            }
+        }
+
+        public int Insert(Payment payment, IDbConnection connection, IDbTransaction transaction)
+        {
+            const string sqlPago = @"
+                INSERT INTO pago (socio_id, tipo_pago_id, fecha, total, estado)
+                OUTPUT INSERTED.id_pago
+                VALUES (@SocioId, @TipoPagoId, @Fecha, @Total, @Estado);";
+
+            // Si querés DEFAULT GETDATE() en SQL, asegurate que payment.Fecha tenga DateTime.MinValue
+            if (payment.Fecha == default) payment.Fecha = System.DateTime.Now;
+
+            int newId = connection.ExecuteScalar<int>(sqlPago, new
+            {
+                payment.SocioId,
+                payment.TipoPagoId,
+                payment.Fecha,
+                payment.Total,
+                payment.Estado
+            }, transaction);
+
+            const string sqlDet = @"
+                INSERT INTO pago_detalle (pago_id, membresia_id, clase_id)
+                VALUES (@PagoId, @MembresiaId, @ClaseId);";
+
+            foreach (var d in payment.Detalles)
+            {
+                connection.Execute(sqlDet, new
+                {
+                    PagoId = newId,
+                    d.MembresiaId,
+                    d.ClaseId
+                }, transaction);
+            }
+
+            return newId;
+        }
     }
 }
