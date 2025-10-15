@@ -22,6 +22,7 @@ namespace Sistema_Gimnasio.Forms
         private readonly List<dynamic> classMembership = new List<dynamic>();
         private readonly List<dynamic> selectedClasses = new List<dynamic>();
         private readonly MembershipService membershipService = new MembershipService();
+        private readonly PaymentService paymentService = new PaymentService();
         private bool fReady;
         public MembershipForm(int pIdPartner)
         {
@@ -34,6 +35,7 @@ namespace Sistema_Gimnasio.Forms
         private void MembershipForm_Load(object sender, EventArgs e)
         {
             LoadMembershipTypes();
+            LoadPayMethods();
             CBMembership.SelectedIndexChanged += (s, ev) =>
             {
                 if (fReady) UpdateTotalLabel();
@@ -149,10 +151,11 @@ namespace Sistema_Gimnasio.Forms
         }
         private void LoadPayMethods()
         {
-            // Aquí se cargarían los métodos de pago desde la base de datos o una lista predefinida
-            var paymentMethods = new List<string> { "Efectivo", "Tarjeta de Crédito", "Tarjeta de Débito", "Transferencia Bancaria" };
-            //CBPaymentMethod.DataSource = paymentMethods;
-            //CBPaymentMethod.SelectedIndex = -1; // No seleccionar nada por defecto
+            var paymentMethods = paymentService.GetPaymentMethods();
+            CBPayMethod.DataSource = null;              // limpia por si había Items
+            CBPayMethod.DisplayMember = "Nombre";
+            CBPayMethod.DataSource = paymentMethods;
+            CBPayMethod.SelectedIndex = -1; // No seleccionar nada por defecto
         }
         private void LoadMembershipTypes()
         {

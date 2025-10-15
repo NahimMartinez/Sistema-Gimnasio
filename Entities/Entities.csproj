@@ -50,6 +50,7 @@
     <Compile Include="Membership.cs" />
     <Compile Include="MembershipType.cs" />
     <Compile Include="Partner.cs" />
+    <Compile Include="PaymentMethod.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
