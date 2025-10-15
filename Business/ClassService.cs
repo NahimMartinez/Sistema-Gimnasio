@@ -106,5 +106,17 @@ namespace Business
         public int GetTotalActiveClasses() {
             return classRepo.GetTotalActiveClass();
         }
+
+        public List<dynamic> GetAllClassesActive()
+        {
+            try
+            {
+                return classRepo.GetAllClassesActive();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la vista de clases.", ex);
+            }
+        }
     }
 }

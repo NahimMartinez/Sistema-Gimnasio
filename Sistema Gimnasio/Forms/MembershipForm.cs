@@ -19,7 +19,8 @@ namespace Sistema_Gimnasio.Forms
     public partial class MembershipForm : Form
     {
         private readonly ClassService classService = new ClassService();
-        private readonly List<Class> classMembership = new List<Class>();
+        private readonly List<dynamic> classMembership = new List<dynamic>();
+        private readonly List<dynamic> selectedClasses = new List<dynamic>();
 
         public MembershipForm(int pIdPartner)
         {
@@ -35,22 +36,28 @@ namespace Sistema_Gimnasio.Forms
 
         private void UpdateTotalLabel()
         {
-            decimal total = classMembership.Sum(c => c.Precio);
+            decimal total = 0m;
+            foreach (var c in selectedClasses)
+            {
+                var price = c.Precio;
+                if (price != null) total += Convert.ToDecimal(price);
+            }
             LTotalSum.Text = total.ToString("0.00");
         }
 
         private void LoadData()
         {
-            var data = classService.GetAllClassesForView();
+            var data = classService.GetAllClassesActive();
             var classMembership = data.Select(c => new 
             {
                 IdClase = c.IdClase,
                 Name = c.NombreActividad,
                 Cupo = c.Cupo.ToString(),
                 Dia = c.Dias,
-                Horario = c.Horario
+                Horario = c.Horario,
+                Precio = c.Precio.ToString("0.00"),
             }).ToList();
-
+            
             BoardClass.AutoGenerateColumns = false;
             BoardClass.DataSource = classMembership;
 
@@ -94,11 +101,24 @@ namespace Sistema_Gimnasio.Forms
             {
                 if (e.RowIndex < 0 || e.ColumnIndex != BoardClass.Columns["colAdd"].Index) return;
 
-                bool isCross = iconState.ContainsKey(e.RowIndex) && iconState[e.RowIndex];
-                iconState[e.RowIndex] = !isCross;
+                bool isSelected = iconState.ContainsKey(e.RowIndex) && iconState[e.RowIndex];
+                dynamic item = BoardClass.Rows[e.RowIndex].DataBoundItem;
 
-                BoardClass.Rows[e.RowIndex].Cells["colAdd"].Value = isCross ? bmpCheck : bmpCross;
-                BoardClass.Refresh();
+                int id = (int)item.IdClase;
+                if (!isSelected)
+                {
+                    if (!selectedClasses.Any(x => (int)x.IdClase == id))
+                        selectedClasses.Add(item);
+                }
+                else
+                {
+                    var rem = selectedClasses.FirstOrDefault(x => (int)x.IdClase == id);
+                    if (rem != null) selectedClasses.Remove(rem);
+                }
+
+                iconState[e.RowIndex] = !isSelected;
+                BoardClass.InvalidateRow(e.RowIndex);
+                UpdateTotalLabel();
             };
         }
 
