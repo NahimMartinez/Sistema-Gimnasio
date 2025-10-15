@@ -15,5 +15,7 @@ namespace Entities
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public bool Estado { get; set; }
+
+        public List<Class> Clases { get; set; } = new List<Class>();
     }
 }

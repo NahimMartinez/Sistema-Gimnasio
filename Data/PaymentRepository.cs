@@ -20,5 +20,7 @@ namespace Data
             using (var cn = new SqlConnection(Connection.chain))
                 return cn.Query<PaymentMethod>(sql).ToList();
         }
+
+
     }
 }
