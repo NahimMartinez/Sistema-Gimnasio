@@ -10,6 +10,6 @@ namespace Entities
     {
         public int IdTipo { get; set; }
         public string Nombre { get; set; }
-        public int Duracion { get; set; }
+        public int DuracionDias { get; set; }
     }
 }

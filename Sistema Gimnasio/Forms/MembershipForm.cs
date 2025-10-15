@@ -21,28 +21,34 @@ namespace Sistema_Gimnasio.Forms
         private readonly ClassService classService = new ClassService();
         private readonly List<dynamic> classMembership = new List<dynamic>();
         private readonly List<dynamic> selectedClasses = new List<dynamic>();
+        private readonly MembershipService membershipService = new MembershipService();
 
         public MembershipForm(int pIdPartner)
         {
             InitializeComponent();
             LoadData();
             SetupActionIcons();
+            this.Load += MembershipForm_Load;
         }
 
         private void MembershipForm_Load(object sender, EventArgs e)
         {
-
+            LoadMembershipTypes();
         }
 
-        private void UpdateTotalLabel()
+        private decimal UpdateTotalLabel()
         {
             decimal total = 0m;
+            var item = CBMembership.SelectedItem as MembershipType;
             foreach (var c in selectedClasses)
             {
                 var price = c.Precio;
                 if (price != null) total += Convert.ToDecimal(price);
             }
+            int dias = item?.DuracionDias ?? 1;
+            total = total * dias;
             LTotalSum.Text = total.ToString("0.00");
+            return total;
         }
 
         private void LoadData()
@@ -136,6 +142,16 @@ namespace Sistema_Gimnasio.Forms
         private void BCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LoadMembershipTypes()
+        {
+            var types = membershipService.GetMembershipType();
+            CBMembership.DataSource = null;              // limpia por si había Items            
+            CBMembership.DisplayMember = "Nombre";
+            CBMembership.ValueMember = "DuracionDias";
+            CBMembership.DataSource = types;
+            CBMembership.SelectedIndex = -1; // No seleccionar nada por defecto
         }
     }
 }
