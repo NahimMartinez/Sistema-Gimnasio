@@ -85,7 +85,7 @@
             this.LTotalSum.Name = "LTotalSum";
             this.LTotalSum.Size = new System.Drawing.Size(22, 15);
             this.LTotalSum.TabIndex = 5;
-            this.LTotalSum.Text = "0,0";
+            this.LTotalSum.Text = "0.00";
             // 
             // panel1
             // 

@@ -45,11 +45,13 @@
     <Compile Include="Class.cs" />
     <Compile Include="ClassDay.cs" />
     <Compile Include="Day.cs" />
+    <Compile Include="DetailedPayment.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryCategory.cs" />
     <Compile Include="Membership.cs" />
     <Compile Include="MembershipType.cs" />
     <Compile Include="Partner.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Rol.cs" />

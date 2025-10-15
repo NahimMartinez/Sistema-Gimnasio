@@ -24,6 +24,7 @@ namespace Sistema_Gimnasio.Forms
         private readonly MembershipService membershipService = new MembershipService();
         private readonly PaymentService paymentService = new PaymentService();
         private bool fReady;
+
         public MembershipForm(int pIdPartner)
         {
             InitializeComponent();
@@ -136,7 +137,7 @@ namespace Sistema_Gimnasio.Forms
 
         private void BSave_Click(object sender, EventArgs e)
         {
-            if (classMembership.Count == 0)
+            if (selectedClasses.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar al menos una clase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
