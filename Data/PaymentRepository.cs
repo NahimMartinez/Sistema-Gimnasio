@@ -13,7 +13,7 @@ namespace Data
         public List<PaymentMethod> GetPaymentMethods()
         {
             const string sql = @"
-                        SELECT id_tipo_pago AS IdTipoPago,
+                        SELECT id_tipo_pago AS IdMetodoPago,
                                nombre          AS Nombre
                         FROM tipo_pago;"; 
             using (var cn = new SqlConnection(Connection.chain))
@@ -46,7 +46,7 @@ namespace Data
             const string sqlPago = @"
                 INSERT INTO pago (socio_id, tipo_pago_id, fecha, total, estado)
                 OUTPUT INSERTED.id_pago
-                VALUES (@SocioId, @TipoPagoId, @Fecha, @Total, @Estado);";
+                VALUES (@IdSocio, @IdTipoPago, @Fecha, @Total, @Estado);";
 
             if (payment.Fecha == default) payment.Fecha = System.DateTime.Now;
 
@@ -61,13 +61,13 @@ namespace Data
 
             const string sqlDet = @"
                 INSERT INTO pago_detalle (pago_id, membresia_id, clase_id)
-                VALUES (@PagoId, @MembresiaId, @ClaseId);";
+                VALUES (@IdPago, @IdMembresia, @IdClase);";
 
             foreach (var d in payment.Detalles)
             {
                 connection.Execute(sqlDet, new
                 {
-                    PagoId = newId,
+                    IdPago = newId,
                     d.IdMembresia,
                     d.IdClase
                 }, transaction);

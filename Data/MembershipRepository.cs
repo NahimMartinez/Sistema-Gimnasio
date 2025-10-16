@@ -30,12 +30,12 @@ namespace Data
                 SELECT
                     m.id_membresia AS IdMembresia,
                     tm.nombre AS Tipo,
-                    s.nombre AS NombreSocio,
+                    s.nombre AS Nombre,
                     s.apellido AS ApellidoSocio,
                     m.fecha_inicio AS FechaInicio,
                     m.estado AS Estado
                 FROM membresia m
-                INNER JOIN tipo_membresia tm ON m.tipo_membresia_id = tm.id_tipo_membresia
+                INNER JOIN tipo_membresia tm ON m.tipo_id = tm.id_tipo
                 INNER JOIN socio s ON m.socio_id = s.id_socio;
             ";
 
@@ -63,16 +63,16 @@ namespace Data
         public int Insert(Membership membership, IDbConnection connection, IDbTransaction transaction)
         {
             const string sqlMembresia = @"
-                INSERT INTO membresia (socio_id, tipo_membresia_id, fecha_inicio, fecha_fin, estado)
+                INSERT INTO membresia (socio_id, tipo_id, fecha_inicio, estado)
                 OUTPUT INSERTED.id_membresia
-                VALUES (@SocioId, @TipoMembresiaId, @FechaInicio, @FechaFin, @Estado);";
+                VALUES (@IdSocio, @IdTipo, @FechaInicio, @Estado);";
 
             int newMembershipId = connection.ExecuteScalar<int>(sqlMembresia, membership, transaction);
 
-            const string sqlMembClase = "INSERT INTO membresia_clase (membresia_id, clase_id) VALUES (@MembresiaId, @ClaseId);";
+            const string sqlMembClase = "INSERT INTO membresia_clase (membresia_id, clase_id) VALUES (@IdMembresia, @IdClase);";
             foreach (var c in membership.Clases)
             {
-                connection.Execute(sqlMembClase, new { MembresiaId = newMembershipId, ClaseId = c.IdClase }, transaction);
+                connection.Execute(sqlMembClase, new { IdMembresia = newMembershipId, IdClase = c.IdClase }, transaction);
             }
             return newMembershipId; 
         }
@@ -80,8 +80,8 @@ namespace Data
         public Membership GetById(int idMembresia)
         {
             const string sql = @"
-                SELECT id_membresia AS IdMembresia, socio_id AS SocioId, tipo_membresia_id AS TipoMembresiaId,
-                       fecha_inicio AS FechaInicio, fecha_fin AS FechaFin, estado AS Estado
+                SELECT id_membresia AS IdMembresia, socio_id AS IdSocio, tipo_id AS IdTipo,
+                       fecha_inicio AS FechaInicio, estado AS Estado
                 FROM membresia
                 WHERE id_membresia = @IdMembresia;";
 
@@ -103,10 +103,9 @@ namespace Data
         {
             const string sqlUpdate = @"
                 UPDATE membresia SET
-                    socio_id = @SocioId,
-                    tipo_membresia_id = @TipoMembresiaId,
-                    fecha_inicio = @FechaInicio,
-                    fecha_fin = @FechaFin,
+                    socio_id = @IdSocio,
+                    tipo_id = @IdTipo,
+                    fecha_inicio = @FechaInicio,                    
                     estado = @Estado
                 WHERE id_membresia = @IdMembresia;";
 
@@ -115,10 +114,10 @@ namespace Data
             const string sqlDelete = "DELETE FROM membresia_clase WHERE membresia_id = @IdMembresia;";
             connection.Execute(sqlDelete, new { membership.IdMembresia }, transaction);
 
-            const string sqlInsertClase = "INSERT INTO membresia_clase (membresia_id, clase_id) VALUES (@MembresiaId, @ClaseId);";
+            const string sqlInsertClase = "INSERT INTO membresia_clase (membresia_id, clase_id) VALUES (@IdMembresia, @IdClase);";
             foreach (var c in membership.Clases)
             {
-                connection.Execute(sqlInsertClase, new { MembresiaId = membership.IdMembresia, ClaseId = c.IdClase }, transaction);
+                connection.Execute(sqlInsertClase, new { IdMembresia = membership.IdMembresia, IdClase = c.IdClase }, transaction);
             }
         }
 

@@ -72,6 +72,7 @@ namespace Sistema_Gimnasio
             // Convierte a lista local para filtrar
             partnersList = allPartner.Select(p => new Partner
             {
+                IdPersona = p.IdPersona,
                 Nombre = p.Nombre, 
                 Dni = p.Dni,                
                 Telefono = p.Telefono,

@@ -123,7 +123,7 @@ namespace Sistema_Gimnasio
             // 
             // idPartner
             // 
-            this.idPartner.DataPropertyName = "IdPartner"; 
+            this.idPartner.DataPropertyName = "IdPersona"; 
             this.idPartner.Name = "idPartner";
             this.idPartner.ReadOnly = true;
             this.idPartner.Visible = false; 

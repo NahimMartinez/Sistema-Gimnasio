@@ -10,7 +10,7 @@ namespace Entities
     {
         public int IdDetalle { get; set; }
        
-        
+        public int IdPago { get; set; }
         public int IdMembresia { get; set; }
         public int IdClase { get; set; }
     }
