@@ -60,7 +60,7 @@ namespace Data
             }
         }
 
-        public void Insert(Membership membership, IDbConnection connection, IDbTransaction transaction)
+        public int Insert(Membership membership, IDbConnection connection, IDbTransaction transaction)
         {
             const string sqlMembresia = @"
                 INSERT INTO membresia (socio_id, tipo_membresia_id, fecha_inicio, fecha_fin, estado)
@@ -74,6 +74,7 @@ namespace Data
             {
                 connection.Execute(sqlMembClase, new { MembresiaId = newMembershipId, ClaseId = c.IdClase }, transaction);
             }
+            return newMembershipId; 
         }
 
         public Membership GetById(int idMembresia)

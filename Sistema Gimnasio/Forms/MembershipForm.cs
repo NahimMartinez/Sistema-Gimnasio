@@ -141,9 +141,15 @@ namespace Sistema_Gimnasio.Forms
             {
                 MessageBox.Show("Debe seleccionar al menos una clase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }else if (CBPayMethod.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un metodo de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            MessageBox.Show("Se registro la membresia correctamente");
+
+
+            MessageBox.Show("Se registro la membresia correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BCancel_Click(object sender, EventArgs e)

@@ -48,13 +48,12 @@ namespace Data
                 OUTPUT INSERTED.id_pago
                 VALUES (@SocioId, @TipoPagoId, @Fecha, @Total, @Estado);";
 
-            // Si querés DEFAULT GETDATE() en SQL, asegurate que payment.Fecha tenga DateTime.MinValue
             if (payment.Fecha == default) payment.Fecha = System.DateTime.Now;
 
             int newId = connection.ExecuteScalar<int>(sqlPago, new
             {
-                payment.SocioId,
-                payment.TipoPagoId,
+                payment.IdSocio,
+                payment.IdTipoPago,
                 payment.Fecha,
                 payment.Total,
                 payment.Estado
@@ -69,8 +68,8 @@ namespace Data
                 connection.Execute(sqlDet, new
                 {
                     PagoId = newId,
-                    d.MembresiaId,
-                    d.ClaseId
+                    d.IdMembresia,
+                    d.IdClase
                 }, transaction);
             }
 

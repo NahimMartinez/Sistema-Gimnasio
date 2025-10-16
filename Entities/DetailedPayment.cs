@@ -9,9 +9,9 @@ namespace Entities
     public class DetailedPayment
     {
         public int IdDetalle { get; set; }
-        public int PagoId { get; set; }
+       
         
-        public int MembresiaId { get; set; }
-        public int ClaseId { get; set; }
+        public int IdMembresia { get; set; }
+        public int IdClase { get; set; }
     }
 }
