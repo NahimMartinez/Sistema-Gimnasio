@@ -21,6 +21,7 @@ namespace Business
 
         public (int membresiaId, int pagoId) Register(
         int socioId,
+        int usuarioId,
         int tipoMembresiaId,
         int tipoPagoId,
         IEnumerable<int> clasesIds,
@@ -41,6 +42,7 @@ namespace Business
                         var membership = new Membership
                         {
                             IdSocio = socioId,
+                            IdUsuario = usuarioId,
                             IdTipo = tipoMembresiaId,
                             FechaInicio = fechaInicio,
                             FechaFin = fechaInicio.AddDays(duracionDias),

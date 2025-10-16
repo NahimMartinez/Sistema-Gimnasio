@@ -11,7 +11,7 @@ namespace Entities
         public int IdMembresia { get; set; }
         public int IdSocio { get; set; }
         public int IdTipo { get; set; }
-        public int IdClase { get; set; }
+        public int IdUsuario { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public bool Estado { get; set; }

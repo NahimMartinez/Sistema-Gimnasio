@@ -63,9 +63,9 @@ namespace Data
         public int Insert(Membership membership, IDbConnection connection, IDbTransaction transaction)
         {
             const string sqlMembresia = @"
-                INSERT INTO membresia (socio_id, tipo_id, fecha_inicio, estado)
+                INSERT INTO membresia (socio_id, usuario_id, tipo_id, fecha_inicio, estado)
                 OUTPUT INSERTED.id_membresia
-                VALUES (@IdSocio, @IdTipo, @FechaInicio, @Estado);";
+                VALUES (@IdSocio, @IdUsuario ,@IdTipo, @FechaInicio, @Estado);";
 
             int newMembershipId = connection.ExecuteScalar<int>(sqlMembresia, membership, transaction);
 

@@ -26,11 +26,13 @@ namespace Sistema_Gimnasio.Forms
         private readonly PaymentService paymentService = new PaymentService();
         private bool fReady;
         private readonly int currentPartnerId;
+        private readonly int currentUserId;
 
         public MembershipForm(int pIdPartner)
         {
             InitializeComponent();
             currentPartnerId = pIdPartner;
+            
             LoadData();
             SetupActionIcons();
             this.Load += MembershipForm_Load;
@@ -164,6 +166,7 @@ namespace Sistema_Gimnasio.Forms
             {
                 var result = service.Register(
                     socioId: currentPartnerId,
+                    usuarioId: Program.CurrentUser.IdPersona,
                     tipoMembresiaId: tipoMembresia.IdTipo,
                     tipoPagoId: tipoPago.IdMetodoPago,
                     clasesIds: clasesIds,
@@ -178,17 +181,12 @@ namespace Sistema_Gimnasio.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al registrar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                MessageBox.Show(
-    $"socioId={currentPartnerId}\n" +
-    $"tipoMembresiaId={tipoMembresia.IdTipo}\n" +
-    $"tipoPagoId={tipoPago.IdMetodoPago}\n" +
-    $"total={total}",
-    "Verificación de valores");
             }
 
         }
