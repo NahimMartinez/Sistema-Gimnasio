@@ -164,7 +164,7 @@ namespace Data
                 INNER JOIN actividad a ON c.actividad_id = a.id_actividad
                 INNER JOIN usuario u ON c.usuario_id = u.id_usuario
                 INNER JOIN persona p ON u.id_usuario = p.id_persona
-                WHERE c.estado = 1
+                WHERE c.estado = 1 AND c.cupo > 0
             ";
 
             using (var cn = new SqlConnection(Connection.chain))
@@ -187,6 +187,16 @@ namespace Data
                 }
                 return classes;
             }
+        }
+
+        public void UpdateCapacity(int claseId, bool aumentar, IDbConnection connection, IDbTransaction transaction)
+        {
+            // 1. Actualiza la tabla principal 'clase'
+            string sqlUpdate = aumentar
+                ? @"UPDATE clase SET cupo = cupo + 1 WHERE id_clase = @IdClase;"
+                : @"UPDATE clase SET cupo = cupo - 1 WHERE id_clase = @IdClase AND cupo > 0;";
+            connection.Execute(sqlUpdate, new { IdClase = claseId }, transaction);
+
         }
     }
 }

@@ -118,5 +118,52 @@ namespace Business
                 throw new Exception("Error al obtener la vista de clases.", ex);
             }
         }
+
+        //ajustar la capacidad de una clase
+        public bool AdjustCapacity(int claseId, bool aumentar)
+        {
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                cn.Open();
+                using (var tx = cn.BeginTransaction())
+                {
+                    try
+                    {
+                        classRepo.UpdateCapacity(claseId, aumentar, cn, tx);
+                        tx.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        tx.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        //ajustar la capacidad de varias clases
+        public void AdjustCapacity(IEnumerable<int> claseIds, bool aumentar)
+        {
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                cn.Open();
+                using (var tx = cn.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var id in claseIds)
+                            classRepo.UpdateCapacity(id, aumentar, cn, tx);
+
+                        tx.Commit();
+                    }
+                    catch
+                    {
+                        tx.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }
