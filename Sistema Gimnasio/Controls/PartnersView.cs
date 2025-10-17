@@ -28,12 +28,13 @@ namespace Sistema_Gimnasio
         // Lista que almacena la información de los socios (simulada en este ejemplo)
         private List<Partner> partnersList = new List<Partner>();
 
+        private readonly MembershipService membershipService = new MembershipService();
+
         // Constructor: se ejecuta al crear el control.
         public PartnersView()
         {
             InitializeComponent(); // Inicializa los componentes gráficos.
-            WireFilters(); // Configura los filtros de búsqueda y estado.
-            LoadPartners(); // Carga datos de socio
+            WireFilters(); // Configura los filtros de búsqueda y estado.            
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
             this.Load += PartnersView_Load;
@@ -163,7 +164,16 @@ namespace Sistema_Gimnasio
             BuildAcl(); // Construye el diccionario de control de acceso (ACL)
             ApplyAcl(); // Aplica el control de acceso según el rol actual
 
-            
+            try
+            {
+                membershipService.synchronizeMembership();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al sincronizar membresías vencidas: {ex.Message}");
+            }
+            LoadPartners(); // Carga datos de socio
+
         }
 
         // Evento que se ejecuta al hacer clic en una celda de la tabla.

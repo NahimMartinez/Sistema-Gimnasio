@@ -197,6 +197,6 @@ namespace Data
                 : @"UPDATE clase SET cupo = cupo - 1 WHERE id_clase = @IdClase AND cupo > 0;";
             return cn.Execute(sqlUpdate, new { IdClase = claseId }, tr);
 
-        }
+        } 
     }
 }

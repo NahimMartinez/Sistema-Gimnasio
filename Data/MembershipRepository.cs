@@ -99,7 +99,7 @@ namespace Data
             }
         }
 
-        public void Update(Membership membership, IDbConnection connection, IDbTransaction transaction)
+        public void Update(Membership membership, IDbConnection cn, IDbTransaction tr)
         {
             const string sqlUpdate = @"
                 UPDATE membresia SET
@@ -109,15 +109,15 @@ namespace Data
                     estado = @Estado
                 WHERE id_membresia = @IdMembresia;";
 
-            connection.Execute(sqlUpdate, membership, transaction);
+            cn.Execute(sqlUpdate, membership, tr);
 
             const string sqlDelete = "DELETE FROM membresia_clase WHERE membresia_id = @IdMembresia;";
-            connection.Execute(sqlDelete, new { membership.IdMembresia }, transaction);
+            cn.Execute(sqlDelete, new { membership.IdMembresia }, tr);
 
             const string sqlInsertClase = "INSERT INTO membresia_clase (membresia_id, clase_id) VALUES (@IdMembresia, @IdClase);";
             foreach (var c in membership.Clases)
             {
-                connection.Execute(sqlInsertClase, new { IdMembresia = membership.IdMembresia, IdClase = c.IdClase }, transaction);
+                cn.Execute(sqlInsertClase, new { IdMembresia = membership.IdMembresia, IdClase = c.IdClase }, tr);
             }
         }
 
@@ -141,6 +141,44 @@ namespace Data
                 return cn.ExecuteScalar<int>(sql);
         }
 
+        public List<int> DesactiveMembership(IDbConnection cn, IDbTransaction tx)
+        {
+            // Obtenemos los ids de todas las membresías que vencieron hoy o antes
+            // y que todavía figuran como activas (estado = 1).
+            const string sqlExpiredIds = @"
+                        SELECT m.id_membresia 
+                        FROM membresia m
+                        INNER JOIN membresia_tipo mt ON m.tipo_id = mt.id_tipo
+                        WHERE m.estado = 1 
+                            AND DATEADD(day, mt.duracion_dias, m.fecha_inicio) < @Today";
+
+            var expiredMembershipIds = cn.Query<int>(sqlExpiredIds, new { Today = DateTime.Now.Date }, tx).ToList();
+
+            // Si no hay ninguna vencida, devolvemos una lista vacia
+            if (!expiredMembershipIds.Any())
+            {
+                return new List<int>();
+            }
+
+            // Obtenemos los id de las clases asociadas a las membresías vencidas
+            const string sqlClassIds = @"
+                        SELECT clase_id 
+                        FROM membresia_clase 
+                        WHERE membresia_id IN @Ids";
+
+            var classIdsToRelease = cn.Query<int>(sqlClassIds, new { Ids = expiredMembershipIds }, tx).ToList();
+
+            // Desactivar las membresías vencidas
+            const string sqlDeactivate = @"
+                        UPDATE membresia 
+                        SET estado = 0 
+                        WHERE id_membresia IN @Ids";
+
+            cn.Execute(sqlDeactivate, new { Ids = expiredMembershipIds }, tx);
+
+            // Devolvemos los id de las clases 
+            return classIdsToRelease;
+        }
 
     }
 }

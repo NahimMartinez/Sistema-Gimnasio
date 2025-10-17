@@ -87,5 +87,44 @@ namespace Business
                 }
             }
         }
+
+        public void synchronizeMembership()
+        {
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                cn.Open();
+                using (var tx = cn.BeginTransaction())
+                {
+                    try
+                    {
+                        
+                        List<int> classId = membershipRepository.DesactiveMembership(cn, tx);
+
+                        
+                        if (!classId.Any())
+                        {
+                            tx.Commit();
+                            return;
+                        }
+
+                        
+                        foreach (var idClase in classId)
+                        {
+                            
+                            classRepository.UpdateCapacity(idClase, true, cn, tx);
+                        }
+
+                        
+                        tx.Commit();
+                    }
+                    catch
+                    {
+                        
+                        tx.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }
