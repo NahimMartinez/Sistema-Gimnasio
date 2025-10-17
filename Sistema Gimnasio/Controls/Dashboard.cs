@@ -21,7 +21,7 @@ namespace Sistema_Gimnasio.Controls
         public Dashboard()
         {
             InitializeComponent();
-            LoadFakeData();
+            LoadRecentPartnersGrid();
             LoadIngresosMensuales();
             LoadCPMemberships();
             Dashboard_Load();
@@ -33,18 +33,30 @@ namespace Sistema_Gimnasio.Controls
             labelPartnersCount.Text = totalPartners.ToString();
         }
 
-
-        private void LoadFakeData()
+        private void LoadRecentPartnersGrid()
         {
-            // nombre socio, apellido socio, membresia, fecha alta
-            BoardRecent.Rows.Add("María", "Gómez", "Diaria", "13/09/2025");
-            BoardRecent.Rows.Add("Carlos", "Rodríguez", "Mensual", "12/09/2025");
-            BoardRecent.Rows.Add("Ana", "Martínez", "Semanal", "12/09/2025");
-            BoardRecent.Rows.Add("Juan", "Pérez", "Diaria", "10/09/2025");
-            BoardRecent.Rows.Add("Laura", "García", "Mensual", "09/09/2025");
-            BoardRecent.Rows.Add("Diego", "Fernández", "Semanal", "09/09/2025");
-        }
+            try
+            {
+                var recentPartnersRaw = partnerService.GetRecentPartnersService();
 
+                // Proyectamos los datos dinámicos a nuestro ViewModel limpio.
+                var recentPartnersView = recentPartnersRaw.Select(p => new RecentPartnerViewModel
+                {
+                    Nombre = p.Nombre,
+                    Apellido = p.Apellido,
+                    Membresia = p.Membresia,
+                    FechaIngreso = ((DateTime)p.FechaIngreso).ToString("dd/MM/yyyy") // Convertimos la fecha a un formato legible
+                }).ToList();
+
+                // Asignamos la lista limpia al DataSource.
+                BoardRecent.DataSource = recentPartnersView;
+                BoardRecent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los socios recientes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void BoardClass_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -144,6 +156,16 @@ namespace Sistema_Gimnasio.Controls
 
                 }
             }
+        }
+
+        // ViewModel para mostrar socios recientes
+        public class RecentPartnerViewModel
+        {
+            public string Nombre { get; set; }
+            public string Apellido { get; set; }
+            public string Membresia { get; set; }
+            [DisplayName("Fecha de Ingreso")]
+            public string FechaIngreso { get; set; }
         }
     }
 }
