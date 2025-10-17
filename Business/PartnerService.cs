@@ -66,5 +66,9 @@ namespace Business
         {
             return partners.GetTotalActivePartners();
         }
+        public List<Partner> GetRecentPartnersService()
+        {
+            return partners.GetRecentPartners();
+        }
     }
 }

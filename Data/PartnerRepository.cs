@@ -54,6 +54,38 @@ namespace Data
             }
         }
 
+        public List<Partner> GetRecentPartners() 
+        {
+            const string sql = @"
+                --nombre, apellido, fecha ingreso de persona
+                --membresia de tipo_membresia
+                SELECT TOP 10
+	                p.nombre AS 'Nombre',
+	                p.apellido AS 'Apellido',
+	                t.nombre AS 'Membresia',
+	                p.fecha_alta AS 'Fecha Ingreso'
+                FROM
+	                socio s
+                INNER JOIN
+	                persona p ON p.id_persona = s.id_socio
+                INNER JOIN 
+	                membresia m ON m.socio_id = s.id_socio
+                INNER JOIN
+	                membresia_tipo t ON t.id_tipo = m.tipo_id
+                WHERE 
+	                p.estado = 1
+                ORDER BY
+	                p.fecha_alta DESC;
+	
+                SELECT * FROM membresia;
+                SELECT * FROM membresia_tipo;
+                SELECT * FROM socio;";
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<Partner>(sql).ToList();
+            }
+        }
+
         public Partner GetByDni(string pDni)
         {
             const string sql = @"
