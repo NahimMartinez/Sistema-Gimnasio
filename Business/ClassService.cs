@@ -154,8 +154,9 @@ namespace Business
                     {
                         foreach (var id in claseIds)
                             classRepo.UpdateCapacity(id, aumentar, cn, tx);
-
+                        
                         tx.Commit();
+
                     }
                     catch
                     {

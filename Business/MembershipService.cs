@@ -13,6 +13,7 @@ namespace Business
     {
         private readonly MembershipRepository membershipRepository = new MembershipRepository();
         private readonly PaymentRepository PaymentRepository = new PaymentRepository();
+        private readonly ClassRepository classRepository = new ClassRepository();
 
         public List<MembershipType> GetMembershipType()
         {
@@ -52,6 +53,12 @@ namespace Business
 
                         int membresiaId = membershipRepository.Insert(membership, cn, tx); // usa OUTPUT INSERTED.id_membresia
 
+                        foreach (var id in clasesIds)
+                        {
+                            int affected = classRepository.UpdateCapacity(id, false, cn, tx);
+                            if (affected == 0)
+                                throw new InvalidOperationException($"La clase {id} no tiene cupo disponible.");
+                        }
                         // 2. Pago y detalle
                         var payment = new Payment
                         {

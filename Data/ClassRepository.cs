@@ -189,13 +189,13 @@ namespace Data
             }
         }
 
-        public void UpdateCapacity(int claseId, bool aumentar, IDbConnection connection, IDbTransaction transaction)
+        public int UpdateCapacity(int claseId, bool increase, IDbConnection cn, IDbTransaction tr)
         {
             // 1. Actualiza la tabla principal 'clase'
-            string sqlUpdate = aumentar
+            string sqlUpdate = increase
                 ? @"UPDATE clase SET cupo = cupo + 1 WHERE id_clase = @IdClase;"
                 : @"UPDATE clase SET cupo = cupo - 1 WHERE id_clase = @IdClase AND cupo > 0;";
-            connection.Execute(sqlUpdate, new { IdClase = claseId }, transaction);
+            return cn.Execute(sqlUpdate, new { IdClase = claseId }, tr);
 
         }
     }
