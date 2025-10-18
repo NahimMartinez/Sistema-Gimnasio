@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Sistema_Gimnasio.Controls
     {
         private readonly ClassService classService = new ClassService();
         private readonly PartnerService partnerService = new PartnerService();
+        private readonly PaymentService paymentService = new PaymentService();
 
         public Dashboard()
         {
@@ -31,8 +33,11 @@ namespace Sistema_Gimnasio.Controls
 
             int totalPartners = partnerService.GetTotalActivePartnersService();
             labelPartnersCount.Text = totalPartners.ToString();
-        }
 
+            decimal totalRevenue = paymentService.GetTotalGeneratedService();
+            labelRevenueAmount.Text = "$ " + totalRevenue;
+        }
+        
         private void LoadRecentPartnersGrid()
         {
             try
@@ -65,76 +70,92 @@ namespace Sistema_Gimnasio.Controls
 
         private void LoadIngresosMensuales()
         {
-            // Configurar el gráfico            
-            chartIngresosMensuales.ChartAreas[0].AxisX.Interval = 1;
-
-            // Datos fake de ingresos por mes (en miles)
-            var ingresos = new Dictionary<string, decimal>
+            try
             {
-                {"1", 8.5m}, {"2", 13.2m}, {"3", 10.1m},
-                {"4", 11.3m}, {"5", 12.8m}, {"6", 14.2m},
-                {"7", 15.5m}, {"8", 11.8m}, {"9", 0m},
-                {"10", 0m}, {"11", 0m}, {"12", 0m}
-            };
+                var ingresosData = paymentService.GetTotalXMonthService();
 
-            // Limpiar series existentes
-            chartIngresosMensuales.Series.Clear();
+                // Creamos un diccionario para los 12 meses, inicializados en 0.
+                var ingresosPorMes = new Dictionary<int, decimal>();
+                for (int i = 1; i <= 12; i++)
+                {
+                    ingresosPorMes.Add(i, 0m);
+                }
 
-            // Crear nueva serie
-            Series serie = new Series("Ingresos");
-            serie.ChartType = SeriesChartType.Column;
-            serie.IsValueShownAsLabel = false;
+                // Rellenamos el diccionario con los datos reales.
+                foreach (var ingreso in ingresosData)
+                {
+                    ingresosPorMes[(int)ingreso.Mes] = (decimal)ingreso.Total;
+                }
 
-            // Agregar datos
-            foreach (var ingreso in ingresos)
-            {
-                serie.Points.AddXY(ingreso.Key, ingreso.Value);
+                // Limpiamos y preparamos el gráfico.
+                chartIngresosMensuales.Series.Clear();
+                Series serie = new Series("Ingresos")
+                {
+                    ChartType = SeriesChartType.Column,
+                    Color = Color.FromArgb(65, 105, 225),
+                    IsValueShownAsLabel = false
+                };
+                chartIngresosMensuales.Series.Add(serie);
+
+                // Agregamos los 12 puntos al gráfico.
+                foreach (var mesData in ingresosPorMes)
+                {
+                    // Obtenemos el nombre abreviado del mes (Ene, Feb, etc.)
+                    string nombreMes = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(mesData.Key);
+                    // Agregamos el punto al gráfico, dividiendo por 1000 para mostrar en miles.
+                    serie.Points.AddXY(nombreMes, mesData.Value / 1000);
+                }
+
+                chartIngresosMensuales.ChartAreas[0].AxisY.Title = "Miles de $";
+                chartIngresosMensuales.ChartAreas[0].AxisX.Title = "Meses";
+                chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
+                chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "20");
+                chartIngresosMensuales.Legends.Clear();
             }
-
-            // Agregar serie al chart
-            chartIngresosMensuales.Series.Add(serie);
-
-            // Formatear ejes
-            chartIngresosMensuales.ChartAreas[0].AxisY.Title = "Miles de $";
-            chartIngresosMensuales.ChartAreas[0].AxisX.Title = "Meses";
-
-            // Personalizar colores
-            serie.Color = Color.FromArgb(65, 105, 225); // Color azul
-
-            // Formato de números en los ejes
-            chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
-
-            // Ajustar el ancho de las barras
-            chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el gráfico de ingresos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
 
         private void LoadCPMemberships()
         {
-            // Limpiar series existentes
-            CPMemberships.Series.Clear();
+            try
+            {
+                var data = partnerService.GetPartnerCountByMembershipTypeService();
 
-            // Crear nueva serie tipo Pie
-            Series serie = new Series("Socios por membresía");
-            serie.ChartType = SeriesChartType.Pie;
-            serie.IsValueShownAsLabel = true;
+                // Limpiamos el gráfico.
+                CPMemberships.Series.Clear();
+                CPMemberships.Titles.Clear();
+                CPMemberships.Legends.Clear();
 
-            // Hardcodear datos: cantidad de socios por membresía
-            serie.Points.AddXY("Diario", 20);
-            serie.Points.AddXY("Semanal", 49);
-            serie.Points.AddXY("Mensual", 213);
+                // Creamos la serie para el gráfico Pie.
+                Series serie = new Series(" ")
+                {
+                    ChartType = SeriesChartType.Pie,
+                    IsValueShownAsLabel = true, // Muestra el número en cada porción.
+                    Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                    LabelForeColor = Color.White,
+                    // Formato: "Nombre (Porcentaje%)"
+                    Label = "#AXISLABEL (#PERCENT{P0})"
+                };
 
-            // Colores personalizados
-            serie.Points[0].Color = Color.FromArgb(65, 105, 225); // Azul
-            serie.Points[1].Color = Color.FromArgb(60, 179, 113); // Verde
-            serie.Points[2].Color = Color.FromArgb(255, 165, 0); // Naranja
+                // Agregamos los datos de la base de datos a la serie.
+                foreach (var item in data)
+                {
+                    serie.Points.AddXY(item.Membresia, item.Cantidad);
+                }
 
-            // Agregar serie al chart
-            CPMemberships.Series.Add(serie);
+                // Añadimos la serie al gráfico.
+                CPMemberships.Series.Add(serie);
 
-            // Opcional: título del gráfico
-            CPMemberships.Titles.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el gráfico de membresías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

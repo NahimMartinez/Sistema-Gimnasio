@@ -16,5 +16,15 @@ namespace Business
         {
             return paymentRepository.GetPaymentMethods();
         }
+
+        public decimal GetTotalGeneratedService() 
+        {
+            return paymentRepository.GetTotalGenerated();
+        }
+
+        public List<dynamic> GetTotalXMonthService()
+        {
+            return paymentRepository.GetTotalXMonth(); 
+        }
     }
 }

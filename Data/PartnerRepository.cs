@@ -164,7 +164,29 @@ namespace Data
             }
         }
 
-        
+        public List<dynamic> GetPartnerCountByMembershipType()
+        {
+            const string sql = @"
+                SELECT
+                    mt.nombre AS Membresia,
+                    COUNT(s.id_socio) AS Cantidad
+                FROM
+                    socio s
+                INNER JOIN
+                    persona p ON s.id_socio = p.id_persona
+                INNER JOIN
+                    membresia m ON s.id_socio = m.socio_id
+                INNER JOIN
+                    membresia_tipo mt ON m.tipo_id = mt.id_tipo
+                WHERE
+                    p.estado = 1
+                GROUP BY
+                    mt.nombre;";
 
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<dynamic>(sql).ToList();
+            }
+        }
     }
 }

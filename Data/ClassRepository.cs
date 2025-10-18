@@ -197,6 +197,35 @@ namespace Data
                 : @"UPDATE clase SET cupo = cupo - 1 WHERE id_clase = @IdClase AND cupo > 0;";
             return cn.Execute(sqlUpdate, new { IdClase = claseId }, tr);
 
-        } 
+        }
+
+        public List<dynamic> GetPartnerCountByClass()
+        {
+            const string sql = @"
+                SELECT
+                    a.nombre AS Clase,
+                    COUNT(DISTINCT s.id_socio) AS CantidadSocios
+                FROM
+                    clase c
+                INNER JOIN
+                    actividad a ON c.actividad_id = a.id_actividad
+                INNER JOIN
+                    membresia_clase mc ON c.id_clase = mc.clase_id
+                INNER JOIN
+                    membresia m ON mc.membresia_id = m.id_membresia
+                INNER JOIN
+                    socio s ON m.socio_id = s.id_socio
+                WHERE
+                    c.estado = 1
+                GROUP BY
+                    a.nombre
+                ORDER BY
+                    CantidadSocios DESC;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<dynamic>(sql).ToList();
+            }
+        }
     }
 }

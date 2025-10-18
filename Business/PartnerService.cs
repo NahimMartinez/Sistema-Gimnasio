@@ -71,6 +71,9 @@ namespace Business
             return partners.GetRecentPartners();
         }
 
-        
+        public List<dynamic> GetPartnerCountByMembershipTypeService()
+        {
+            return partners.GetPartnerCountByMembershipType();
+        }
     }
 }
