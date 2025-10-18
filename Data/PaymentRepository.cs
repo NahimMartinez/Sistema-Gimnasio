@@ -75,5 +75,18 @@ namespace Data
 
             return newId;
         }
+
+        public decimal GetTotalGenerated() 
+        { 
+            const string sql = @"
+                            SELECT
+                                SUM(total)
+                            FROM
+                                pago";
+            using (var cn = new SqlConnection(Connection.chain)) 
+            {
+                return cn.ExecuteScalar<decimal>(sql);
+            }
+        }
     }
 }

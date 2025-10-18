@@ -17,6 +17,7 @@ namespace Sistema_Gimnasio.Controls
     {
         private readonly ClassService classService = new ClassService();
         private readonly PartnerService partnerService = new PartnerService();
+        private readonly PaymentService paymentService = new PaymentService();
 
         public Dashboard()
         {
@@ -31,8 +32,11 @@ namespace Sistema_Gimnasio.Controls
 
             int totalPartners = partnerService.GetTotalActivePartnersService();
             labelPartnersCount.Text = totalPartners.ToString();
-        }
 
+            decimal totalRevenue = paymentService.GetTotalGeneratedService();
+            labelRevenueAmount.Text = "$ " + totalRevenue;
+        }
+        
         private void LoadRecentPartnersGrid()
         {
             try
