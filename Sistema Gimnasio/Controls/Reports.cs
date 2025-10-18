@@ -10,6 +10,7 @@ namespace Sistema_Gimnasio.Controls
     public partial class Reports : UserControl
     {
         private readonly InventoryService inventoryService = new InventoryService();
+        private readonly ClassService classService = new ClassService();
 
         public Reports()
         {
@@ -19,6 +20,7 @@ namespace Sistema_Gimnasio.Controls
         private void Reports_Load(object sender, EventArgs e)
         {
             LoadInventoryDataIntoChart();
+            ConfigurarGraficoRadarCapacidad();
         }
 
         // Carga los datos dinámicos del inventario en el gráfico.
@@ -58,5 +60,57 @@ namespace Sistema_Gimnasio.Controls
             }
         }
 
+        public void ConfigurarGraficoRadarCapacidad()
+        {
+            // Limpiamos el gráfico para empezar de cero
+            chartRadarClases.Series.Clear();
+            chartRadarClases.Titles.Clear();
+            chartRadarClases.ChartAreas.Clear();
+
+            // Recreamos el área y el título
+            ChartArea chartArea = new ChartArea();
+            chartRadarClases.ChartAreas.Add(chartArea);
+            chartRadarClases.Titles.Add("Cantidad de alumnos por clase");
+            chartRadarClases.Titles[0].Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            // Creamos la serie
+            Series series = new Series("Capacidad")
+            {
+                ChartType = SeriesChartType.Radar,
+                BorderWidth = 3,
+                Color = Color.SteelBlue,
+                IsValueShownAsLabel = true,
+                LabelFormat = "# alumnos" // Tu formato original
+            };
+            chartRadarClases.Series.Add(series);
+
+            try
+            {
+                // Obtenemos los datos desde la base de datos
+                var data = classService.GetPartnerCountByClassService();
+
+                if (data.Count == 0)
+                {
+                    chartRadarClases.Titles.Add("No hay datos de clases para mostrar.");
+                    return;
+                }
+
+                // Agregamos los datos dinámicos al gráfico
+                foreach (var item in data)
+                {
+                    series.Points.Add(new DataPoint(0, (double)item.CantidadSocios) { AxisLabel = item.Clase });
+                }
+
+                // Ajustamos el eje Y dinámicamente
+                double maxValue = data.Max(item => (double)item.CantidadSocios);
+                chartArea.AxisY.Maximum = maxValue + (maxValue * 0.2); // 20% de margen
+                chartArea.AxisY.Interval = Math.Ceiling(maxValue / 4); // 4 divisiones en el eje
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el gráfico de socios por clase: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                chartRadarClases.Titles.Add("Error al cargar datos");
+            }
+        }
     }
 }

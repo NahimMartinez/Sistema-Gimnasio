@@ -166,5 +166,10 @@ namespace Business
                 }
             }
         }
+
+        public List<dynamic> GetPartnerCountByClassService()
+        {
+            return classRepo.GetPartnerCountByClass();
+        }
     }
 }
