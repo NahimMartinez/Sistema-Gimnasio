@@ -43,9 +43,15 @@ namespace Data
         public List<Partner> GetAllPartner()
         {
             const string sql = @"
-                SELECT p.id_persona AS IdPersona, p.nombre AS Nombre, p.apellido AS Apellido, p.dni AS Dni, 
-                       p.telefono AS Telefono, p.email AS Email, p.estado AS Estado,
-                       s.contacto_emergencia AS ContactoEmergencia, s.observaciones AS Observaciones
+                SELECT p.id_persona AS IdPersona, 
+                    p.nombre AS Nombre, 
+                    p.apellido AS Apellido, 
+                    p.dni AS Dni, 
+                    p.telefono AS Telefono, 
+                    p.email AS Email, 
+                    p.estado AS Estado,
+                    s.contacto_emergencia AS ContactoEmergencia, 
+                    s.observaciones AS Observaciones
                 FROM persona p
                 JOIN socio s ON p.id_persona = s.id_socio;";
             using (var cn = new SqlConnection(Connection.chain))
@@ -54,8 +60,32 @@ namespace Data
             }
         }
 
-            public List<dynamic> GetRecentPartners()
+        public List<PartnerDataGrid> GetPartnerView()
+        {
+            const string sql = @"
+                SELECT 
+                    p.id_persona AS IdPersona, 
+                    p.nombre AS Nombre, 
+                    p.apellido AS Apellido, 
+                    p.dni AS Dni,
+                    p.telefono AS Telefono, 
+                    tm.nombre AS Membresia,
+                    m.estado AS 'EstadoMembresia',
+                    DATEADD(DAY, tm.duracion_dias, m.fecha_inicio) AS FechaVencimiento,
+                    p.estado AS Estado
+                FROM persona p
+                JOIN socio s ON p.id_persona = s.id_socio
+                JOIN membresia m ON s.id_socio = m.socio_id
+                JOIN membresia_tipo tm ON m.tipo_id = tm.id_tipo;";
+
+            using (var cn = new SqlConnection(Connection.chain))
             {
+                return cn.Query<PartnerDataGrid>(sql).ToList();
+            }
+        }
+
+        public List<dynamic> GetRecentPartners()
+        {
                 const string sql = @"
                     SELECT TOP 10
                         p.nombre AS Nombre,
@@ -133,6 +163,8 @@ namespace Data
                 return cn.ExecuteScalar<int>(sql);
             }
         }
+
+        
 
     }
 }

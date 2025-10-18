@@ -57,9 +57,9 @@ namespace Business
             }
         }
 
-        public List<Partner> GetAllPartnerView()
+        public List<PartnerDataGrid> GetAllPartnerView()
         {
-            return partners.GetAllPartner();
+            return partners.GetPartnerView();
         }
 
         public int GetTotalActivePartnersService()
@@ -70,5 +70,7 @@ namespace Business
         {
             return partners.GetRecentPartners();
         }
+
+        
     }
 }

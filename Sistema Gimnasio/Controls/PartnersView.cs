@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Annotations;
 using System.Windows.Forms;
 using static Sistema_Gimnasio.Form1;
 
@@ -26,7 +27,7 @@ namespace Sistema_Gimnasio
         // Diccionario que asocia columnas de la tabla con roles para control de acceso (ACL)
         private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
         // Lista que almacena la información de los socios (simulada en este ejemplo)
-        private List<Partner> partnersList = new List<Partner>();
+        private List<PartnerDataGrid> partnersList = new List<PartnerDataGrid>();
 
         private readonly MembershipService membershipService = new MembershipService();
 
@@ -71,18 +72,19 @@ namespace Sistema_Gimnasio
             var partnerSup = new PartnerService(); // Servicio para obtener socios
             var allPartner = partnerSup.GetAllPartnerView(); // Obtiene todos los socios en formato lista
             // Convierte a lista local para filtrar
-            partnersList = allPartner.Select(p => new Partner
+            partnersList = allPartner.Select(p => new PartnerDataGrid
             {
-                IdPersona = p.IdPersona,
-                Nombre = p.Nombre, 
-                Dni = p.Dni,                
-                Telefono = p.Telefono,
-                //Membresia = m.Membresia,
-                Estado = p.Estado,
-            }).ToList();
-
-            BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente
-            
+                        IdPersona = p.IdPersona,
+                        Nombre = p.Nombre,
+                        Apellido = p.Apellido,
+                        Dni = p.Dni,
+                        Telefono = p.Telefono,
+                        Membresia = p.Membresia,           
+                        FechaVencimiento = p.FechaVencimiento,
+                        EstadoMembresia = p.EstadoMembresia,
+                        Estado = p.Estado
+                    }).ToList();
+            BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente            
             ApplyFilters(); // Muestra según filtros actuales
         }
 
@@ -111,7 +113,7 @@ namespace Sistema_Gimnasio
                 if (colName == "colView") { e.Value = bmpView; e.FormattingApplied = true; return; }
 
                 // Obtengo el bool desde el objeto enlazado
-                var item = BoardMember.Rows[e.RowIndex].DataBoundItem as Partner;
+                var item = BoardMember.Rows[e.RowIndex].DataBoundItem as PartnerDataGrid;
                 bool activo = item?.Estado == true;
 
                 // Botón eliminar/alta según estado real
@@ -123,7 +125,7 @@ namespace Sistema_Gimnasio
                 }
 
                 // Columna de estado: mostrar texto
-                if (colName == "status") // <-- cuidado: en minúsculas
+                if (colName == "status")
                 {
                     e.Value = activo ? "Activo" : "Inactivo";
                     e.FormattingApplied = true;
@@ -141,6 +143,15 @@ namespace Sistema_Gimnasio
                         row.DefaultCellStyle.ForeColor = BoardMember.DefaultCellStyle.ForeColor;
                         row.DefaultCellStyle.SelectionBackColor = BoardMember.DefaultCellStyle.SelectionBackColor;
                         row.DefaultCellStyle.SelectionForeColor = BoardMember.DefaultCellStyle.SelectionForeColor;
+                    }
+                }
+
+                if (colName == "estadoMembresia")
+                {
+                    if (item != null)
+                    {
+                        e.Value = item.EstadoMembresia ? "Vigente" : "Vencida";
+                        e.FormattingApplied = true;
                     }
                 }
             };
@@ -218,7 +229,7 @@ namespace Sistema_Gimnasio
                 var row = BoardMember.Rows[e.RowIndex];
                 if (row == null) return;
 
-                var p = row.DataBoundItem as Partner;
+                var p = row.DataBoundItem as PartnerDataGrid;
                 if (p == null) return;
 
                 bool s = p.Estado;
@@ -267,6 +278,7 @@ namespace Sistema_Gimnasio
             var view = partnersList.Where(p =>
                (!hasQuery ||
                    (p.Nombre ?? "").ToLower().Contains(query) ||
+                   (p.Apellido ?? "").ToLower().Contains(query) ||
                    (p.Dni ?? "").ToLower().Contains(query))  &&
                (WantAllS || (WantActivo && p.Estado) || (WantInactivo && !p.Estado))
            ).ToList();

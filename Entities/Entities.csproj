@@ -51,6 +51,7 @@
     <Compile Include="Membership.cs" />
     <Compile Include="MembershipType.cs" />
     <Compile Include="Partner.cs" />
+    <Compile Include="PartnerDataGrid.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="Person.cs" />

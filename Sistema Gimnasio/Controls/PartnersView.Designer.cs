@@ -40,6 +40,9 @@ namespace Sistema_Gimnasio
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membership = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoMembresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
@@ -92,9 +95,12 @@ namespace Sistema_Gimnasio
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idPartner,
             this.name,
+            this.lastName,
             this.dni,
             this.Telefono,
             this.membership,
+            this.fechaVencimiento,
+            this.estadoMembresia,
             this.status,
             this.colEdit,
             this.colView,
@@ -167,6 +173,31 @@ namespace Sistema_Gimnasio
             this.status.MinimumWidth = 6;
             this.status.Name = "status";
             this.status.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.lastName.DataPropertyName = "Apellido";
+            this.lastName.HeaderText = "Apellido";
+            this.lastName.MinimumWidth = 6;
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
+            // 
+            // fechaVencimiento
+            // 
+            this.fechaVencimiento.DataPropertyName = "FechaVencimiento";
+            this.fechaVencimiento.HeaderText = "Vencimiento";
+            this.fechaVencimiento.MinimumWidth = 6;
+            this.fechaVencimiento.Name = "fechaVencimiento";
+            this.fechaVencimiento.ReadOnly = true;
+
+            // 
+            // estadoMembresia
+            // 
+            this.estadoMembresia.DataPropertyName = "EstadoMembresia";
+            this.estadoMembresia.HeaderText = "Estado Membresía";
+            this.estadoMembresia.MinimumWidth = 6;
+            this.estadoMembresia.Name = "estadoMembresia";
+            this.estadoMembresia.ReadOnly = true;
             // 
             // colEdit
             // 
@@ -351,6 +382,9 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn membership;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoMembresia;
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
