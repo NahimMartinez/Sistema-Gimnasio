@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,47 +70,52 @@ namespace Sistema_Gimnasio.Controls
 
         private void LoadIngresosMensuales()
         {
-            // Configurar el gráfico            
-            chartIngresosMensuales.ChartAreas[0].AxisX.Interval = 1;
-
-            // Datos fake de ingresos por mes (en miles)
-            var ingresos = new Dictionary<string, decimal>
+            try
             {
-                {"1", 8.5m}, {"2", 13.2m}, {"3", 10.1m},
-                {"4", 11.3m}, {"5", 12.8m}, {"6", 14.2m},
-                {"7", 15.5m}, {"8", 11.8m}, {"9", 0m},
-                {"10", 0m}, {"11", 0m}, {"12", 0m}
-            };
+                // 1. Obtenemos los datos reales de la base de datos.
+                var ingresosData = paymentService.GetTotalXMonthService();
 
-            // Limpiar series existentes
-            chartIngresosMensuales.Series.Clear();
+                // 2. Creamos un diccionario para los 12 meses, inicializados en 0.
+                var ingresosPorMes = new Dictionary<int, decimal>();
+                for (int i = 1; i <= 12; i++)
+                {
+                    ingresosPorMes.Add(i, 0m);
+                }
 
-            // Crear nueva serie
-            Series serie = new Series("Ingresos");
-            serie.ChartType = SeriesChartType.Column;
-            serie.IsValueShownAsLabel = false;
+                // 3. Rellenamos el diccionario con los datos reales.
+                foreach (var ingreso in ingresosData)
+                {
+                    ingresosPorMes[(int)ingreso.Mes] = (decimal)ingreso.Total;
+                }
 
-            // Agregar datos
-            foreach (var ingreso in ingresos)
-            {
-                serie.Points.AddXY(ingreso.Key, ingreso.Value);
+                // 4. Limpiamos y preparamos el gráfico.
+                chartIngresosMensuales.Series.Clear();
+                Series serie = new Series("Ingresos")
+                {
+                    ChartType = SeriesChartType.Column,
+                    Color = Color.FromArgb(65, 105, 225),
+                    IsValueShownAsLabel = false
+                };
+                chartIngresosMensuales.Series.Add(serie);
+
+                // 5. Agregamos los 12 puntos al gráfico.
+                foreach (var mesData in ingresosPorMes)
+                {
+                    // Obtenemos el nombre abreviado del mes (Ene, Feb, etc.)
+                    string nombreMes = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(mesData.Key);
+                    // Agregamos el punto al gráfico, dividiendo por 1000 para mostrar en miles.
+                    serie.Points.AddXY(nombreMes, mesData.Value / 1000);
+                }
+
+                chartIngresosMensuales.ChartAreas[0].AxisY.Title = "Miles de $";
+                chartIngresosMensuales.ChartAreas[0].AxisX.Title = "Meses";
+                chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
+                chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "20");
             }
-
-            // Agregar serie al chart
-            chartIngresosMensuales.Series.Add(serie);
-
-            // Formatear ejes
-            chartIngresosMensuales.ChartAreas[0].AxisY.Title = "Miles de $";
-            chartIngresosMensuales.ChartAreas[0].AxisX.Title = "Meses";
-
-            // Personalizar colores
-            serie.Color = Color.FromArgb(65, 105, 225); // Color azul
-
-            // Formato de números en los ejes
-            chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
-
-            // Ajustar el ancho de las barras
-            chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "15");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el gráfico de ingresos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

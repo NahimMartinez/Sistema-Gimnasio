@@ -21,5 +21,10 @@ namespace Business
         {
             return paymentRepository.GetTotalGenerated();
         }
+
+        public List<dynamic> GetTotalXMonthService()
+        {
+            return paymentRepository.GetTotalXMonth(); 
+        }
     }
 }

@@ -88,5 +88,26 @@ namespace Data
                 return cn.ExecuteScalar<decimal>(sql);
             }
         }
+
+        public List<dynamic> GetTotalXMonth()
+        {
+            const string sql = @"
+                SELECT
+                    MONTH(fecha) AS Mes,
+                    SUM(total) AS Total
+                FROM
+                    pago
+                WHERE 
+                    YEAR(fecha) = YEAR(GETDATE())
+                GROUP BY
+                    MONTH(fecha)
+                ORDER BY
+                    Mes;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<dynamic>(sql).ToList();
+            }
+        }
     }
 }
