@@ -72,23 +72,22 @@ namespace Sistema_Gimnasio.Controls
         {
             try
             {
-                // 1. Obtenemos los datos reales de la base de datos.
                 var ingresosData = paymentService.GetTotalXMonthService();
 
-                // 2. Creamos un diccionario para los 12 meses, inicializados en 0.
+                // Creamos un diccionario para los 12 meses, inicializados en 0.
                 var ingresosPorMes = new Dictionary<int, decimal>();
                 for (int i = 1; i <= 12; i++)
                 {
                     ingresosPorMes.Add(i, 0m);
                 }
 
-                // 3. Rellenamos el diccionario con los datos reales.
+                // Rellenamos el diccionario con los datos reales.
                 foreach (var ingreso in ingresosData)
                 {
                     ingresosPorMes[(int)ingreso.Mes] = (decimal)ingreso.Total;
                 }
 
-                // 4. Limpiamos y preparamos el gráfico.
+                // Limpiamos y preparamos el gráfico.
                 chartIngresosMensuales.Series.Clear();
                 Series serie = new Series("Ingresos")
                 {
@@ -98,7 +97,7 @@ namespace Sistema_Gimnasio.Controls
                 };
                 chartIngresosMensuales.Series.Add(serie);
 
-                // 5. Agregamos los 12 puntos al gráfico.
+                // Agregamos los 12 puntos al gráfico.
                 foreach (var mesData in ingresosPorMes)
                 {
                     // Obtenemos el nombre abreviado del mes (Ene, Feb, etc.)
@@ -111,6 +110,7 @@ namespace Sistema_Gimnasio.Controls
                 chartIngresosMensuales.ChartAreas[0].AxisX.Title = "Meses";
                 chartIngresosMensuales.ChartAreas[0].AxisY.LabelStyle.Format = "{0}k";
                 chartIngresosMensuales.Series[0].SetCustomProperty("PixelPointWidth", "20");
+                chartIngresosMensuales.Legends.Clear();
             }
             catch (Exception ex)
             {
@@ -122,29 +122,40 @@ namespace Sistema_Gimnasio.Controls
 
         private void LoadCPMemberships()
         {
-            // Limpiar series existentes
-            CPMemberships.Series.Clear();
+            try
+            {
+                var data = partnerService.GetPartnerCountByMembershipTypeService();
 
-            // Crear nueva serie tipo Pie
-            Series serie = new Series("Socios por membresía");
-            serie.ChartType = SeriesChartType.Pie;
-            serie.IsValueShownAsLabel = true;
+                // Limpiamos el gráfico.
+                CPMemberships.Series.Clear();
+                CPMemberships.Titles.Clear();
+                CPMemberships.Legends.Clear();
 
-            // Hardcodear datos: cantidad de socios por membresía
-            serie.Points.AddXY("Diario", 20);
-            serie.Points.AddXY("Semanal", 49);
-            serie.Points.AddXY("Mensual", 213);
+                // Creamos la serie para el gráfico Pie.
+                Series serie = new Series(" ")
+                {
+                    ChartType = SeriesChartType.Pie,
+                    IsValueShownAsLabel = true, // Muestra el número en cada porción.
+                    Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                    LabelForeColor = Color.White,
+                    // Formato: "Nombre (Porcentaje%)"
+                    Label = "#AXISLABEL (#PERCENT{P0})"
+                };
 
-            // Colores personalizados
-            serie.Points[0].Color = Color.FromArgb(65, 105, 225); // Azul
-            serie.Points[1].Color = Color.FromArgb(60, 179, 113); // Verde
-            serie.Points[2].Color = Color.FromArgb(255, 165, 0); // Naranja
+                // Agregamos los datos de la base de datos a la serie.
+                foreach (var item in data)
+                {
+                    serie.Points.AddXY(item.Membresia, item.Cantidad);
+                }
 
-            // Agregar serie al chart
-            CPMemberships.Series.Add(serie);
+                // Añadimos la serie al gráfico.
+                CPMemberships.Series.Add(serie);
 
-            // Opcional: título del gráfico
-            CPMemberships.Titles.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el gráfico de membresías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
