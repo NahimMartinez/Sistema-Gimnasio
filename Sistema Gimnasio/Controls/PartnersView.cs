@@ -8,12 +8,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Annotations;
 using System.Windows.Forms;
 using static Sistema_Gimnasio.Form1;
+
+
 
 namespace Sistema_Gimnasio
 {
@@ -39,7 +42,8 @@ namespace Sistema_Gimnasio
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
             this.Load += PartnersView_Load;
-   
+            BoardMember.CellPainting += BoardMember_CellPainting;
+
 
         }
         private void WireFilters()
@@ -84,7 +88,8 @@ namespace Sistema_Gimnasio
                         EstadoMembresia = p.EstadoMembresia,
                         Estado = p.Estado
                     }).ToList();
-            BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente            
+            BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente
+            BoardMember.DataSource = partnersList;
             ApplyFilters(); // Muestra según filtros actuales
         }
 
@@ -307,19 +312,59 @@ namespace Sistema_Gimnasio
 
         private void BRenovation_Click(object sender, EventArgs e)
         {
-            if (BoardMember.SelectedRows != null)
+            if (BoardMember.SelectedRows == null) return;
+            int idRow = Convert.ToInt32(BoardMember.CurrentRow.Cells["idPartner"].Value);
+            using (var fMembership = new MembershipForm(idRow))
             {
-                var idRow = Convert.ToInt32(BoardMember.CurrentRow.Cells["idPartner"].Value);
-                using (var fMembership = new MembershipForm(idRow))
-                {
-                    // Muestra el formulario como un cuadro de diálogo
-                    if (fMembership.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
-                    }
-                }
+               // Muestra el formulario como un cuadro de diálogo
+               if (fMembership.ShowDialog() == DialogResult.OK)
+               {
+                   LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
+               }
             }
             
+            
         }
+
+        private void BoardMember_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (BoardMember.Columns[e.ColumnIndex].Name != "estadoMembresia") return;
+
+            e.Handled = true;
+            e.PaintBackground(e.CellBounds, true);
+
+            var item = BoardMember.Rows[e.RowIndex].DataBoundItem as PartnerDataGrid;
+            if (item == null) return;
+
+            bool activa = item.EstadoMembresia;
+            string texto = activa ? "Activa" : "Vencida";
+
+            Color back = activa ? Color.LightGreen : Color.LightCoral;
+            Color border = activa ? Color.SeaGreen : Color.Firebrick;
+            Color text = Color.Black;
+
+            var rect = new Rectangle(e.CellBounds.X + 8, e.CellBounds.Y + 6, e.CellBounds.Width - 40, e.CellBounds.Height - 20);
+            int r = 10; int d = r * 2;
+
+            using (var path = new GraphicsPath())
+            {
+                path.AddArc(rect.X, rect.Y, d, d, 180, 90);
+                path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
+                path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
+                path.AddArc(rect.X, rect.Bottom - d, d, d, 90, 90);
+                path.CloseFigure();
+
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using (var b = new SolidBrush(back)) e.Graphics.FillPath(b, path);
+                using (var p = new Pen(border, 1)) e.Graphics.DrawPath(p, path);
+            }
+
+            TextRenderer.DrawText(e.Graphics, texto, new Font("Segoe UI", 9, FontStyle.Bold),
+                                  rect, text, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+        }
+
+
+
     }
 }
