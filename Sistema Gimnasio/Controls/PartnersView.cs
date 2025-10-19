@@ -43,7 +43,7 @@ namespace Sistema_Gimnasio
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
             this.Load += PartnersView_Load;
             BoardMember.CellPainting += BoardMember_CellPainting;
-
+            
 
         }
         private void WireFilters()
@@ -179,7 +179,11 @@ namespace Sistema_Gimnasio
         {
             BuildAcl(); // Construye el diccionario de control de acceso (ACL)
             ApplyAcl(); // Aplica el control de acceso según el rol actual
-
+            if (CurrentRole == Roles.Coach)
+            {
+                BNewMember.Visible = false;
+                BRenovation.Visible = false;
+            }
             try
             {
                 membershipService.synchronizeMembership();

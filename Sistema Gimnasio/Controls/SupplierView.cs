@@ -76,7 +76,10 @@ namespace Sistema_Gimnasio
         {
             BuildAcl(); // Construye el diccionario de control de acceso (ACL)
             ApplyAcl(); // Aplica el control de acceso según el rol actual
-
+            if(CurrentRole != Roles.Admin)
+            {
+                BNewSupplier.Visible = false; // Oculta el botón de nuevo proveedor si no es Admin
+            }
             // Inicializa el texto de búsqueda con un placeholder si está vacío.
             if (string.IsNullOrWhiteSpace(TSearchSupplier.Text))
             {
