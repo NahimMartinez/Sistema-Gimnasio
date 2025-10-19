@@ -321,8 +321,7 @@ namespace Sistema_Gimnasio
                {
                    LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
                }
-            }
-            
+            }          
             
         }
 

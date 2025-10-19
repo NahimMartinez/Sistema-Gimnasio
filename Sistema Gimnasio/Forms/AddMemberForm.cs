@@ -98,13 +98,15 @@ namespace Sistema_Gimnasio
                     { MessageBox.Show("El teléfono ya existe.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning); TPhone.Focus(); return; }
                     */
                     int idPartner = partnerService.PartnerCreate(newPerson, newPartner);
+
                     MessageBox.Show("Socio agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    this.Hide();
+                    
                     using (var fMembership = new MembershipForm(idPartner))
                     {
-                        fMembership.ShowDialog();
+                        fMembership.ShowDialog(this);
                     }
+                    
                 }
                 else
                 {

@@ -75,13 +75,13 @@ namespace Data
                     p.estado AS Estado
                 FROM persona p
                 JOIN socio s ON p.id_persona = s.id_socio
-                JOIN membresia m ON m.id_membresia = (
+                LEFT JOIN membresia m ON m.id_membresia = (
                   SELECT TOP 1 id_membresia
                   FROM membresia
                   WHERE socio_id = s.id_socio
                   ORDER BY fecha_inicio DESC, id_membresia DESC
                 )                
-                JOIN membresia_tipo tm ON m.tipo_id = tm.id_tipo;";
+                LEFT JOIN membresia_tipo tm ON m.tipo_id = tm.id_tipo;";
 
             using (var cn = new SqlConnection(Connection.chain))
             {

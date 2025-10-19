@@ -181,7 +181,7 @@ namespace Sistema_Gimnasio.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
-
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception ex)
