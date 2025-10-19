@@ -281,7 +281,12 @@ namespace Sistema_Gimnasio
             bool WantActivo = s.Equals("Activo", StringComparison.OrdinalIgnoreCase);
             bool WantInactivo = s.Equals("Inactivo", StringComparison.OrdinalIgnoreCase);
             bool WantAllS = s.Equals("Todos", StringComparison.OrdinalIgnoreCase);
-                        
+
+            // Filtro de Membresía (Vigente/Vencida)
+            var m = CBMembership.SelectedItem?.ToString() ?? "Todos";
+            bool WantVigente = m.Equals("Vigente", StringComparison.OrdinalIgnoreCase);
+            bool WantVencida = m.Equals("Vencida", StringComparison.OrdinalIgnoreCase);
+            bool WantAllM = m.Equals("Todos", StringComparison.OrdinalIgnoreCase);
 
             // Filtra la lista según el texto de búsqueda, estado y membresía
             var view = partnersList.Where(p =>
@@ -289,7 +294,8 @@ namespace Sistema_Gimnasio
                    (p.Nombre ?? "").ToLower().Contains(query) ||
                    (p.Apellido ?? "").ToLower().Contains(query) ||
                    (p.Dni ?? "").ToLower().Contains(query))  &&
-               (WantAllS || (WantActivo && p.Estado) || (WantInactivo && !p.Estado))
+               (WantAllS || (WantActivo && p.Estado) || (WantInactivo && !p.Estado)) &&
+               (WantAllM || (WantVigente && p.EstadoMembresia) || (WantVencida && !p.EstadoMembresia))
            ).ToList();
 
             // Actualiza el datasource de la grilla

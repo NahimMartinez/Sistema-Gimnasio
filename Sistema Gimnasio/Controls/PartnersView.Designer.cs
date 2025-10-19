@@ -247,9 +247,8 @@ namespace Sistema_Gimnasio
             this.CBMembership.FormattingEnabled = true;
             this.CBMembership.Items.AddRange(new object[] {
             "Todos",
-            "Mensual",
-            "Semanal",
-            "Diaria"});
+            "Vigente",
+            "Vencida"});
             this.CBMembership.Location = new System.Drawing.Point(304, 66);
             this.CBMembership.Name = "CBMembership";
             this.CBMembership.Size = new System.Drawing.Size(130, 23);
