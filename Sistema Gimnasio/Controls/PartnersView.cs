@@ -161,16 +161,30 @@ namespace Sistema_Gimnasio
                 }
             };
         }
-        // Evento que se ejecuta al hacer clic en el botón para agregar un nuevo socio.
+
         private void BNewMember_Click(object sender, EventArgs e)
         {
-            // Crea una instancia del formulario para agregar socio
-            using (var fNewMember = new AddMemberForm())
+            using (var fNewItem = new AddMemberForm())
             {
-                // Muestra el formulario como un cuadro de diálogo
-                if (fNewMember.ShowDialog() == DialogResult.OK)
+                // Mostramos el primer formulario y esperamos a que se cierre.
+                if (fNewItem.ShowDialog() == DialogResult.OK)
                 {
-                   LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
+                    // Si el usuario guardó (DialogResult.OK), recogemos los datos.
+                    Person newPerson = fNewItem.NewPerson;
+                    Partner newPartner = fNewItem.NewPartner;
+
+                    // --- PASO 2: Asignar membresía y clases ---
+                    // Abrimos el segundo formulario, pasándole los datos del primero.
+                    using (var fMembership = new MembershipForm(newPerson, newPartner))
+                    {
+                        // Mostramos el formulario de membresía.
+                        if (fMembership.ShowDialog() == DialogResult.OK)
+                        {
+                            // Si la membresía también se guardó correctamente,
+                            // recargamos la lista de socios para ver al nuevo miembro.
+                            LoadPartners();
+                        }
+                    }
                 }
             }
         }
