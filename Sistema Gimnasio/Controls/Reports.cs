@@ -56,7 +56,7 @@ namespace Sistema_Gimnasio.Controls
 
             Title title = new Title(titleText, Docking.Top, new Font("Segoe UI", 12F, FontStyle.Bold), Color.DarkSlateGray)
             {
-                Position = new ElementPosition(5, 8, 90, 10)
+                Position = new ElementPosition(5, 15, 90, 10)
             };
             chart.Titles.Add(title);
 
