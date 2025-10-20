@@ -240,7 +240,15 @@ namespace Sistema_Gimnasio.Forms
                         duracionDias: duracionDias,
                         total: total
                     );
-                    
+                    try
+                    {
+                        paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                    }
+
                     MessageBox.Show(
                         $"Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
                         "Éxito",

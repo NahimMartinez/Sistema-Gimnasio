@@ -101,11 +101,13 @@ namespace Sistema_Gimnasio
             Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30); // Icono de ver
             Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30); // Icono de eliminar
             Bitmap bmpEnable = IconChar.UserCheck.ToBitmap(Color.Black, 30); // Icono de alta
+            Bitmap bmpViewPdf = IconChar.File.ToBitmap(Color.Black, 30);
 
             // Asigna los iconos a las columnas correspondientes.
             colEdit.Image = bmpEdit;
             colView.Image = bmpView;
             colDelete.Image = bmpDelete;
+            //colViewPdf.Image = bmpViewPdf;
 
             // Evento para mostrar los iconos en las celdas de acción.
             BoardMember.CellFormatting += (s, e) =>

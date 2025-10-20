@@ -157,6 +157,10 @@ namespace Sistema_Gimnasio.Controls
                 TSearchClass.Text = "Buscar clase...";
                 TSearchClass.ForeColor = Color.Gray;
             }
+
+            if (CurrentRole == Roles.Coach) { 
+                BNewClass.Visible = false;
+            }
         }
 
         private void SetupActionIcons()
