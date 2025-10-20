@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Entities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -107,6 +108,44 @@ namespace Data
             using (var cn = new SqlConnection(Connection.chain))
             {
                 return cn.Query<dynamic>(sql).ToList();
+            }
+        }
+
+        
+        public (PaymentPdfHeader header, List<PaymentPdfDetail> details) GetReceipt(int pagoId)
+        {
+            const string Sql = @"
+                        SELECT  p.id_pago AS PagoId, p.fecha, p.total,
+                                CONCAT(per.nombre,' ',per.apellido) AS SocioNombre,
+                                per.email AS SocioEmail,
+                                MAX(mt.nombre) AS Membresia
+                        FROM pago p
+                        JOIN socio s           ON s.id_socio     = p.socio_id
+                        JOIN persona per       ON per.id_persona = s.id_socio
+                        LEFT JOIN pago_detalle pd ON pd.pago_id  = p.id_pago
+                        LEFT JOIN membresia m      ON m.id_membresia = pd.membresia_id
+                        LEFT JOIN membresia_tipo mt ON mt.id_tipo    = m.tipo_id
+                        WHERE p.id_pago = @pagoId
+                        GROUP BY p.id_pago, p.fecha, p.total, per.nombre, per.apellido, per.email;
+
+                        SELECT  a.nombre AS ClaseNombre,
+                                c.precio AS Monto
+                        FROM pago_detalle pd
+                        JOIN clase c      ON c.id_clase      = pd.clase_id
+                        JOIN actividad a  ON a.id_actividad  = c.actividad_id
+                        WHERE pd.pago_id = @pagoId;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                cn.Open();
+                using (var multi = cn.QueryMultiple(Sql, new { pagoId }))
+                {
+                    var header = multi.ReadSingleOrDefault<PaymentPdfHeader>();
+                    if (header == null) throw new InvalidOperationException($"Pago #{pagoId} no encontrado.");
+
+                    var details = multi.Read<PaymentPdfDetail>().ToList();
+                    return (header, details);
+                }
             }
         }
     }

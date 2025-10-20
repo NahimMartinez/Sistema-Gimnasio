@@ -7,11 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 
 
@@ -188,6 +191,15 @@ namespace Sistema_Gimnasio.Forms
                     duracionDias: duracionDias,
                     total: total
                 );
+                
+                try
+                {
+                    paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                }
                 string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
                 MessageBox.Show(
                     $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
@@ -195,6 +207,7 @@ namespace Sistema_Gimnasio.Forms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+                
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -228,9 +241,6 @@ namespace Sistema_Gimnasio.Forms
                     MessageBox.Show($"Error al registrar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            
-
         }
 
         private void BCancel_Click(object sender, EventArgs e)
