@@ -87,8 +87,8 @@ namespace Sistema_Gimnasio
                     };
 
 
-
-                    /*// duplicados antes de crear
+                    /*
+                   // duplicados antes de crear
                     
                     if (partnerService.ExistsDni(newPartner.Dni, null))
                     { MessageBox.Show("El DNI ya existe.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning); TDni.Focus(); return; }
@@ -96,17 +96,23 @@ namespace Sistema_Gimnasio
                     { MessageBox.Show("El email ya existe.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning); TEmail.Focus(); return; }
                     if (partnerService.ExistsTelefono(newPartner.Telefono, null))
                     { MessageBox.Show("El teléfono ya existe.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning); TPhone.Focus(); return; }
+                    
                     */
-                    int idPartner = partnerService.PartnerCreate(newPerson, newPartner);
-
-                    MessageBox.Show("Socio agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    
-                    using (var fMembership = new MembershipForm(idPartner))
+                    this.Hide();
+                    using (var fMembership = new MembershipForm(newPerson, newPartner))
                     {
-                        fMembership.ShowDialog(this);
+                        
+                        if (fMembership.ShowDialog(this) == DialogResult.OK)
+                        {
+                            this.DialogResult = DialogResult.OK; 
+                        }
+                        else
+                        {
+                            this.DialogResult = DialogResult.Cancel;
+                        }                        
                     }
-                    
+                    this.Close();
+
                 }
                 else
                 {

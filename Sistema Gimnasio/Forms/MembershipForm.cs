@@ -24,15 +24,30 @@ namespace Sistema_Gimnasio.Forms
         private readonly List<dynamic> selectedClasses = new List<dynamic>();
         private readonly MembershipService membershipService = new MembershipService();
         private readonly PaymentService paymentService = new PaymentService();
+        private readonly PartnerService partnerService = new PartnerService();
         private bool fReady;
         private readonly int currentPartnerId;
         private readonly int currentUserId;
+        private Partner currentPartner;
+        private Person currentPerson;
+
 
         public MembershipForm(int pIdPartner)
         {
             InitializeComponent();
-            currentPartnerId = pIdPartner;
-            
+            currentPartnerId = pIdPartner;            
+            LoadData();
+            SetupActionIcons();
+            this.Load += MembershipForm_Load;
+        }
+
+        public MembershipForm(Person pPerson, Partner pPartner)
+        {
+            InitializeComponent();
+
+            currentPartner = pPartner;
+            currentPerson = pPerson;
+            currentPartnerId = 0;
             LoadData();
             SetupActionIcons();
             this.Load += MembershipForm_Load;
@@ -151,8 +166,6 @@ namespace Sistema_Gimnasio.Forms
                 MessageBox.Show("Debe seleccionar un metodo de pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-
             var tipoMembresia = (MembershipType)CBMembership.SelectedItem;
             var tipoPago = (PaymentMethod)CBPayMethod.SelectedItem;
             var clasesIds = selectedClasses.Select(c => (int)c.IdClase).ToList();
@@ -161,11 +174,12 @@ namespace Sistema_Gimnasio.Forms
             int duracionDias = tipoMembresia.DuracionDias;
 
             var service = new MembershipService();
-
-            try
+            string nameMembership = tipoMembresia.Nombre;
+            if (currentPartnerId == 0 )
             {
-                var result = service.Register(
-                    socioId: currentPartnerId,
+                var result = partnerService.RegisterFull(
+                    persona: currentPerson,
+                    socio: currentPartner,
                     usuarioId: Program.CurrentUser.IdPersona,
                     tipoMembresiaId: tipoMembresia.IdTipo,
                     tipoPagoId: tipoPago.IdMetodoPago,
@@ -174,9 +188,9 @@ namespace Sistema_Gimnasio.Forms
                     duracionDias: duracionDias,
                     total: total
                 );
-
+                string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
                 MessageBox.Show(
-                    $"Membresía #{result.membresiaId} y pago #{result.pagoId} registrados correctamente.",
+                    $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
                     "Éxito",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
@@ -184,17 +198,46 @@ namespace Sistema_Gimnasio.Forms
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al registrar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                try
+                {
+                    var result = service.Register(
+                        socioId: currentPartnerId,
+                        usuarioId: Program.CurrentUser.IdPersona,
+                        tipoMembresiaId: tipoMembresia.IdTipo,
+                        tipoPagoId: tipoPago.IdMetodoPago,
+                        clasesIds: clasesIds,
+                        fechaInicio: fechaInicio,
+                        duracionDias: duracionDias,
+                        total: total
+                    );
+                    
+                    MessageBox.Show(
+                        $"Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al registrar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
+            
 
         }
 
         private void BCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
+
         private void LoadPayMethods()
         {
             var paymentMethods = paymentService.GetPaymentMethods();

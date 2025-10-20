@@ -13,7 +13,7 @@ namespace Data
     public class PartnerRepository
     {
 
-        public void InsertPartner(int idPersona, Partner p, IDbConnection cn, IDbTransaction tr)
+        public int InsertPartner(int idPersona, Partner p, IDbConnection cn, IDbTransaction tr)
         {
             const string sql = @" 
                             INSERT INTO socio (id_socio, contacto_emergencia, observaciones)
@@ -21,6 +21,7 @@ namespace Data
             try
             {
                 cn.Execute(sql, new { IdPersona = idPersona, p.ContactoEmergencia, p.Observaciones }, tr);
+                return idPersona;
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {

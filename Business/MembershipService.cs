@@ -89,7 +89,7 @@ namespace Business
         }
 
         public void synchronizeMembership()
-        {
+        { 
             using (var cn = new SqlConnection(Connection.chain))
             {
                 cn.Open();
