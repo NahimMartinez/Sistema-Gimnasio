@@ -180,36 +180,50 @@ namespace Sistema_Gimnasio.Forms
             string nameMembership = tipoMembresia.Nombre;
             if (currentPartnerId == 0 )
             {
-                var result = partnerService.RegisterFull(
-                    persona: currentPerson,
-                    socio: currentPartner,
-                    usuarioId: Program.CurrentUser.IdPersona,
-                    tipoMembresiaId: tipoMembresia.IdTipo,
-                    tipoPagoId: tipoPago.IdMetodoPago,
-                    clasesIds: clasesIds,
-                    fechaInicio: fechaInicio,
-                    duracionDias: duracionDias,
-                    total: total
-                );
-                
                 try
                 {
-                    paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                    var result = partnerService.RegisterFull(
+                        persona: currentPerson,
+                        socio: currentPartner,
+                        usuarioId: Program.CurrentUser.IdPersona,
+                        tipoMembresiaId: tipoMembresia.IdTipo,
+                        tipoPagoId: tipoPago.IdMetodoPago,
+                        clasesIds: clasesIds,
+                        fechaInicio: fechaInicio,
+                        duracionDias: duracionDias,
+                        total: total
+                    );
+
+                    try
+                    {
+                        paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                    }
+
+                    string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
+                    MessageBox.Show(
+                        $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (Business.Exceptions.DuplicateFieldException ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Campo duplicado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
-                MessageBox.Show(
-                    $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             else
             {
