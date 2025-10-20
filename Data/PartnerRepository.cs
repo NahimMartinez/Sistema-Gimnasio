@@ -92,29 +92,37 @@ namespace Data
 
         public List<dynamic> GetRecentPartners()
         {
-                const string sql = @"
-                    SELECT TOP 10
-                        p.nombre AS Nombre,
-                        p.apellido AS Apellido,
-                        t.nombre AS Membresia,
-                        p.fecha_alta AS FechaIngreso
+            const string sql = @"
+                SELECT TOP 10
+                    p.nombre AS Nombre,
+                    p.apellido AS Apellido,
+                    membresia_reciente.NombreMembresia AS Membresia,
+                    p.fecha_alta AS FechaIngreso
+                FROM
+                    socio s
+                INNER JOIN
+                    persona p ON p.id_persona = s.id_socio
+                CROSS APPLY (
+                    SELECT TOP 1
+                        mt.nombre AS NombreMembresia
                     FROM
-                        socio s
+                        membresia m
                     INNER JOIN
-                        persona p ON p.id_persona = s.id_socio
-                    INNER JOIN 
-                        membresia m ON m.socio_id = s.id_socio
-                    INNER JOIN
-                        membresia_tipo t ON t.id_tipo = m.tipo_id
-                    WHERE 
-                        p.estado = 1
+                        membresia_tipo mt ON m.tipo_id = mt.id_tipo
+                    WHERE
+                        m.socio_id = s.id_socio
                     ORDER BY
-                        p.fecha_alta DESC;";
+                        m.fecha_inicio DESC
+                ) AS membresia_reciente
+                WHERE 
+                    p.estado = 1
+                ORDER BY
+                    p.fecha_alta DESC;";
 
-                using (var cn = new SqlConnection(Connection.chain))
-                {
-                    return cn.Query<dynamic>(sql).ToList();
-                }
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<dynamic>(sql).ToList();
+            }
         }
 
         public Partner GetByDni(string pDni)
