@@ -68,5 +68,10 @@ namespace Business
 
             return pdfPath;
         }
+
+        public int GetLastPaymentPartnerService(int pPartner)
+        {
+            return paymentRepository.GetLastPaymentPartner(pPartner);
+        }
     }
 }

@@ -148,5 +148,18 @@ namespace Data
                 }
             }
         }
+
+        public int GetLastPaymentPartner(int pPartner)
+        {
+            const string sql = @"
+                        SELECT TOP 1 p.id_pago
+                        FROM pago p
+                        INNER JOIN socio s ON s.id_socio = p.socio_id
+                        WHERE s.id_socio = @pPartner
+                        ORDER BY p.fecha DESC, p.id_pago DESC;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.QueryFirstOrDefault<int>(sql, new { pPartner });
+        }
     }
 }

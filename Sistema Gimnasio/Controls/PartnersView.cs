@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace Sistema_Gimnasio
         private List<PartnerDataGrid> partnersList = new List<PartnerDataGrid>();
 
         private readonly MembershipService membershipService = new MembershipService();
+
+        
 
         // Constructor: se ejecuta al crear el control.
         public PartnersView()
@@ -101,13 +104,13 @@ namespace Sistema_Gimnasio
             Bitmap bmpView = IconChar.Eye.ToBitmap(Color.Black, 30); // Icono de ver
             Bitmap bmpDelete = IconChar.Trash.ToBitmap(Color.Black, 30); // Icono de eliminar
             Bitmap bmpEnable = IconChar.UserCheck.ToBitmap(Color.Black, 30); // Icono de alta
-            Bitmap bmpViewPdf = IconChar.File.ToBitmap(Color.Black, 30);
+            Bitmap bmpViewPdf = IconChar.FilePdf.ToBitmap(Color.Black, 30);
 
             // Asigna los iconos a las columnas correspondientes.
             colEdit.Image = bmpEdit;
             colView.Image = bmpView;
             colDelete.Image = bmpDelete;
-            //colViewPdf.Image = bmpViewPdf;
+            colViewPdf.Image = bmpViewPdf;
 
             // Evento para mostrar los iconos en las celdas de acción.
             BoardMember.CellFormatting += (s, e) =>
@@ -118,6 +121,7 @@ namespace Sistema_Gimnasio
                 // Íconos fijos
                 if (colName == "colEdit") { e.Value = bmpEdit; e.FormattingApplied = true; return; }
                 if (colName == "colView") { e.Value = bmpView; e.FormattingApplied = true; return; }
+                if (colName == "colViewPdf") { e.Value = bmpViewPdf; e.FormattingApplied = true; return; }
 
                 // Obtengo el bool desde el objeto enlazado
                 var item = BoardMember.Rows[e.RowIndex].DataBoundItem as PartnerDataGrid;
@@ -282,8 +286,27 @@ namespace Sistema_Gimnasio
                     }
                 }
             }
+            else if (col == "colViewPdf")
+            {
+                var row = BoardMember.Rows[e.RowIndex];
+                var p = row.DataBoundItem as PartnerDataGrid;
+                if (p == null) return;
+
+                var paymentService = new PaymentService();
+
+                
+                var lastPayment = paymentService.GetLastPaymentPartnerService(p.IdPersona);
+                try
+                {
+                    paymentService.GenerateReceipt(lastPayment, autoPrint: true);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                }
+            }
         }
-        // Carga datos de ejemplo en la lista de socios.
+        
         
 
         // Aplica los filtros de búsqueda, estado y membresía a la lista de socios y actualiza la tabla.
@@ -326,7 +349,8 @@ namespace Sistema_Gimnasio
             Acl[colEdit] = Roles.Admin | Roles.Recep; ;
             Acl[colDelete] = Roles.Admin | Roles.Recep; ;
             // El rol Admin y Recepcionista pueden ver
-            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;            
+            Acl[colView] = Roles.Admin | Roles.Recep | Roles.Coach;
+            Acl[colViewPdf] = Roles.Admin | Roles.Recep;
         }
 
         // Aplica el control de acceso a las columnas de acción según el rol actual.
