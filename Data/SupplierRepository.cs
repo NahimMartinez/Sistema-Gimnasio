@@ -180,6 +180,15 @@ namespace Data
                 return count > 0;
             }
         }
+
+        public List<Supplier> GetAll()
+        {
+            const string sql = "SELECT id_proveedor AS IdProveedor, nombre AS Nombre FROM proveedor";
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<Supplier>(sql).ToList();
+            }
+        }
     }
 
 }

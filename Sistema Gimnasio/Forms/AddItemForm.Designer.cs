@@ -41,6 +41,8 @@ namespace Sistema_Gimnasio.Forms
             this.BSave = new FontAwesome.Sharp.IconButton();
             this.BLimpiar = new FontAwesome.Sharp.IconButton();
             this.NewCategoryInventory = new FontAwesome.Sharp.IconButton();
+            this.CBProveedor = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -49,7 +51,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidad.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtCantidad.Location = new System.Drawing.Point(156, 99);
+            this.txtCantidad.Location = new System.Drawing.Point(156, 100);
             this.txtCantidad.MaxLength = 5;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(200, 27);
@@ -71,7 +73,7 @@ namespace Sistema_Gimnasio.Forms
             this.LCantidad.AutoSize = true;
             this.LCantidad.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCantidad.Location = new System.Drawing.Point(30, 99);
+            this.LCantidad.Location = new System.Drawing.Point(30, 100);
             this.LCantidad.Name = "LCantidad";
             this.LCantidad.Size = new System.Drawing.Size(83, 23);
             this.LCantidad.TabIndex = 17;
@@ -93,7 +95,7 @@ namespace Sistema_Gimnasio.Forms
             this.LName.AutoSize = true;
             this.LName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.LName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LName.Location = new System.Drawing.Point(30, 65);
+            this.LName.Location = new System.Drawing.Point(30, 67);
             this.LName.Name = "LName";
             this.LName.Size = new System.Drawing.Size(77, 23);
             this.LName.TabIndex = 15;
@@ -105,7 +107,7 @@ namespace Sistema_Gimnasio.Forms
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.txtNombre.Location = new System.Drawing.Point(156, 65);
+            this.txtNombre.Location = new System.Drawing.Point(156, 67);
             this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(200, 27);
@@ -148,7 +150,7 @@ namespace Sistema_Gimnasio.Forms
             this.BSave.IconColor = System.Drawing.Color.White;
             this.BSave.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BSave.IconSize = 24;
-            this.BSave.Location = new System.Drawing.Point(34, 257);
+            this.BSave.Location = new System.Drawing.Point(34, 289);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(110, 30);
             this.BSave.TabIndex = 27;
@@ -167,7 +169,7 @@ namespace Sistema_Gimnasio.Forms
             this.BLimpiar.IconColor = System.Drawing.Color.White;
             this.BLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BLimpiar.IconSize = 24;
-            this.BLimpiar.Location = new System.Drawing.Point(246, 257);
+            this.BLimpiar.Location = new System.Drawing.Point(246, 289);
             this.BLimpiar.Name = "BLimpiar";
             this.BLimpiar.Size = new System.Drawing.Size(110, 30);
             this.BLimpiar.TabIndex = 28;
@@ -193,12 +195,45 @@ namespace Sistema_Gimnasio.Forms
             this.NewCategoryInventory.UseVisualStyleBackColor = false;
             this.NewCategoryInventory.Click += new System.EventHandler(this.NewCategoryInventory_Click);
             // 
+            // CBProveedor
+            // 
+            this.CBProveedor.BackColor = System.Drawing.Color.White;
+            this.CBProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBProveedor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.CBProveedor.FormattingEnabled = true;
+            this.CBProveedor.Items.AddRange(new object[] {
+            "Musculación",
+            "Crossfit",
+            "Funcional",
+            "Yoga",
+            "Spinning",
+            "Pilates"});
+            this.CBProveedor.Location = new System.Drawing.Point(156, 212);
+            this.CBProveedor.Name = "CBProveedor";
+            this.CBProveedor.Size = new System.Drawing.Size(200, 28);
+            this.CBProveedor.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.label1.Location = new System.Drawing.Point(30, 213);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 23);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Proveedor:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // AddItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(418, 327);
+            this.ClientSize = new System.Drawing.Size(407, 351);
+            this.Controls.Add(this.CBProveedor);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.NewCategoryInventory);
             this.Controls.Add(this.BLimpiar);
             this.Controls.Add(this.BSave);
@@ -233,5 +268,7 @@ namespace Sistema_Gimnasio.Forms
         private FontAwesome.Sharp.IconButton BSave;
         private FontAwesome.Sharp.IconButton BLimpiar;
         private IconButton NewCategoryInventory;
+        private System.Windows.Forms.ComboBox CBProveedor;
+        private System.Windows.Forms.Label label1;
     }
 }

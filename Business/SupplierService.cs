@@ -42,5 +42,10 @@ namespace Business
         {
             return supplierRepo.GetAllSuppliers();
         }
+
+        public List<Supplier> GetAllService()
+        {
+            return supplierRepo.GetAll();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Sistema_Gimnasio.Forms
     {
         private readonly InventoryService inventoryService = new InventoryService();
         private readonly InventoryCategoryService categoryService = new InventoryCategoryService();
+        private readonly SupplierService supplierService = new SupplierService();
         public Roles CurrentRole { get; set; } = Roles.None;
 
         private Inventory editableItem;
@@ -20,6 +21,7 @@ namespace Sistema_Gimnasio.Forms
             InitializeComponent();
             ConfigureValidations();
             LoadCategories();
+            LoadSuppliers();
             this.Text = "Nuevo Artículo"; // Cambia el título de la ventana
             this.Load += AddItemForm_Load;
 
@@ -80,6 +82,21 @@ namespace Sistema_Gimnasio.Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar las categorías: {ex.Message}", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadSuppliers()
+        {
+            try
+            {
+                CBProveedor.DataSource = supplierService.GetAllService();
+                CBProveedor.DisplayMember = "Nombre";
+                CBProveedor.ValueMember = "IdProveedor";
+                CBProveedor.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los proveedores: {ex.Message}", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -146,6 +163,11 @@ namespace Sistema_Gimnasio.Forms
                 MessageBox.Show("Por favor seleccione una categoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if (CBProveedor.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor seleccione un proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
         private void ConfigureValidations()
@@ -198,6 +220,15 @@ namespace Sistema_Gimnasio.Forms
             {
                 NewCategoryInventory.Visible = false;
             }
+
+            
         }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
