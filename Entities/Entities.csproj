@@ -54,6 +54,8 @@
     <Compile Include="PartnerDataGrid.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentMethod.cs" />
+    <Compile Include="PaymentPdfDetail.cs" />
+    <Compile Include="PaymentPdfHeader.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

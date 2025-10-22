@@ -93,7 +93,7 @@ namespace Data
         public List<dynamic> GetRecentPartners()
         {
             const string sql = @"
-                SELECT TOP 10
+                SELECT TOP 8
                     p.nombre AS Nombre,
                     p.apellido AS Apellido,
                     membresia_reciente.NombreMembresia AS Membresia,
@@ -117,7 +117,7 @@ namespace Data
                 WHERE 
                     p.estado = 1
                 ORDER BY
-                    p.fecha_alta DESC;";
+                    p.id_persona DESC;";
 
             using (var cn = new SqlConnection(Connection.chain))
             {

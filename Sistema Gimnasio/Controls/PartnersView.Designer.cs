@@ -46,6 +46,7 @@ namespace Sistema_Gimnasio
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colViewPdf = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.CBMembership = new System.Windows.Forms.ComboBox();
@@ -104,6 +105,7 @@ namespace Sistema_Gimnasio
             this.status,
             this.colEdit,
             this.colView,
+            this.colViewPdf,
             this.colDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -225,6 +227,15 @@ namespace Sistema_Gimnasio
             this.colDelete.Name = "colDelete";
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
+            // 
+            // colViewPdf
+            // 
+            this.colViewPdf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colViewPdf.HeaderText = "";
+            this.colViewPdf.MinimumWidth = 6;
+            this.colViewPdf.Name = "colViewPdf";
+            this.colViewPdf.ReadOnly = true;
+            this.colViewPdf.Width = 50;
             // 
             // CBStatus
             // 
@@ -387,6 +398,7 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.DataGridViewImageColumn colViewPdf;
         private DataGridViewTextBoxColumn idPartner;
         private DataGridViewTextBoxColumn Telefono;
         private FontAwesome.Sharp.IconButton BRenovation;

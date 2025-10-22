@@ -24,5 +24,7 @@ namespace Entities
         {
             Dias = new List<Day>();
         }
+
+        public Activity Actividad { get; set; }
     }
 }

@@ -7,11 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 
 
@@ -30,6 +33,10 @@ namespace Sistema_Gimnasio.Forms
         private readonly int currentUserId;
         private Partner currentPartner;
         private Person currentPerson;
+
+       
+        private readonly Dictionary<int, bool> iconState = new Dictionary<int, bool>();
+
 
 
         public MembershipForm(int pIdPartner)
@@ -60,6 +67,8 @@ namespace Sistema_Gimnasio.Forms
             CBMembership.SelectedIndexChanged += (s, ev) =>
             {
                 if (fReady) UpdateTotalLabel();
+                ApplyFilters();
+                
             };
         }
 
@@ -105,7 +114,7 @@ namespace Sistema_Gimnasio.Forms
             // Asigna los iconos a las columnas correspondientes.
             
             colAdd.Image = bmpCheck;
-            var iconState = new Dictionary<int, bool>();
+            //var iconState = new Dictionary<int, bool>();
 
             BoardClass.CellFormatting += (s, e) => 
             {
@@ -177,26 +186,50 @@ namespace Sistema_Gimnasio.Forms
             string nameMembership = tipoMembresia.Nombre;
             if (currentPartnerId == 0 )
             {
-                var result = partnerService.RegisterFull(
-                    persona: currentPerson,
-                    socio: currentPartner,
-                    usuarioId: Program.CurrentUser.IdPersona,
-                    tipoMembresiaId: tipoMembresia.IdTipo,
-                    tipoPagoId: tipoPago.IdMetodoPago,
-                    clasesIds: clasesIds,
-                    fechaInicio: fechaInicio,
-                    duracionDias: duracionDias,
-                    total: total
-                );
-                string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
-                MessageBox.Show(
-                    $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                try
+                {
+                    var result = partnerService.RegisterFull(
+                        persona: currentPerson,
+                        socio: currentPartner,
+                        usuarioId: Program.CurrentUser.IdPersona,
+                        tipoMembresiaId: tipoMembresia.IdTipo,
+                        tipoPagoId: tipoPago.IdMetodoPago,
+                        clasesIds: clasesIds,
+                        fechaInicio: fechaInicio,
+                        duracionDias: duracionDias,
+                        total: total
+                    );
+
+                    try
+                    {
+                        paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                    }
+
+                    string nameComplete = $"{currentPerson.Nombre} {currentPerson.Apellido}";
+                    MessageBox.Show(
+                        $"Socio {nameComplete}, Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (Business.Exceptions.DuplicateFieldException ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Campo duplicado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -213,7 +246,15 @@ namespace Sistema_Gimnasio.Forms
                         duracionDias: duracionDias,
                         total: total
                     );
-                    
+                    try
+                    {
+                        paymentService.GenerateReceipt(result.pagoId, autoPrint: true);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
+                    }
+
                     MessageBox.Show(
                         $"Membresía {nameMembership} y pago #{result.pagoId} registrados correctamente.",
                         "Éxito",
@@ -228,9 +269,6 @@ namespace Sistema_Gimnasio.Forms
                     MessageBox.Show($"Error al registrar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            
-
         }
 
         private void BCancel_Click(object sender, EventArgs e)
@@ -258,5 +296,45 @@ namespace Sistema_Gimnasio.Forms
             CBMembership.SelectedIndex = 2; // Por defecto mes
             fReady = true;
         }
+
+        private void ApplyFilters()
+        {
+            if (CBMembership.SelectedItem == null || !(CBMembership.SelectedItem is MembershipType))
+                return;
+            MembershipType m = (MembershipType)CBMembership.SelectedItem;
+            var allMembershipClass = classService.GetAllClassesActive().Select(c => new
+            {
+                IdClase = c.IdClase,
+                Name = c.NombreActividad,
+                Cupo = c.Cupo.ToString(),
+                Dia = c.Dias,
+                Horario = c.Horario,
+                Precio = c.Precio.ToString("0.00"),
+            }).ToList();
+
+            
+            if (m.Nombre.Equals("Diario", StringComparison.OrdinalIgnoreCase))
+            {
+                var culture = System.Globalization.CultureInfo.GetCultureInfo("es-ES");
+                string today = DateTime.Now.ToString("dddd", culture);
+                var filtered = allMembershipClass
+                    .Where(c => c.Dia.IndexOf(today, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToList();
+                BoardClass.DataSource = filtered;
+            }
+            else
+            {
+                BoardClass.DataSource = allMembershipClass;
+                
+            }
+
+            selectedClasses.Clear();
+            iconState.Clear();
+            BoardClass.ClearSelection();
+            UpdateTotalLabel();
+
+
+        }
+
     }
 }
