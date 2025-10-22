@@ -222,12 +222,14 @@ namespace Sistema_Gimnasio.Forms
 
             // Deselecciona cualquier categoría en el ComboBox.
             CBCategoria.SelectedIndex = -1;
+            CBProveedor.SelectedIndex = -1;
 
             // Restaura la fecha actual en el selector de fecha.
             DTFechaIngreso.Value = DateTime.Now;
 
             // Pone el foco (el cursor) de nuevo en el campo de nombre.
             txtNombre.Focus();
+
         }
 
         private void NewCategoryInventory_Click(object sender, EventArgs e)
