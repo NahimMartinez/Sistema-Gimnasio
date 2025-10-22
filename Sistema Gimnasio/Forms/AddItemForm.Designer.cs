@@ -224,7 +224,6 @@ namespace Sistema_Gimnasio.Forms
             this.label1.Size = new System.Drawing.Size(92, 23);
             this.label1.TabIndex = 35;
             this.label1.Text = "Proveedor:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // AddItemForm
             // 

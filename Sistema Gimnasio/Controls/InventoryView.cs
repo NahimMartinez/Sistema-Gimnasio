@@ -67,6 +67,8 @@ namespace Sistema_Gimnasio
                     Cantidad = item.Cantidad.ToString(),
                     FechaIngreso = item.FechaIngreso,
                     Categoria = item.Categoria,
+                    // Si no tiene proveedor, mostramos "----------"
+                    Proveedor = string.IsNullOrWhiteSpace(Convert.ToString(item.Proveedor)) ? "----------" : Convert.ToString(item.Proveedor),
                     Estado = (item.Estado == true) ? "Activo" : "Inactivo"
                 }).ToList();
 
@@ -239,7 +241,9 @@ namespace Sistema_Gimnasio
             BoardInventory.Rows.Clear();
             foreach (var i in filtered)
             {
-                int rowIndex = BoardInventory.Rows.Add(i.Name, i.Cantidad, i.FechaIngreso, i.Categoria, i.Estado);
+                // Agregar el proveedor antes del estado para que coincida con las columnas del diseñador
+                var prov = string.IsNullOrWhiteSpace(i.Proveedor) ? "----------" : i.Proveedor;
+                int rowIndex = BoardInventory.Rows.Add(i.Name, i.Cantidad, i.FechaIngreso, i.Categoria, prov, i.Estado);
                 // Guardamos el ID en el Tag de la fila para poder usarlo después en los clics
                 BoardInventory.Rows[rowIndex].Tag = i.Id;
             }
@@ -253,6 +257,8 @@ namespace Sistema_Gimnasio
             public string Cantidad { get; set; }
             public string FechaIngreso { get; set; }
             public string Categoria { get; set; }
+
+            public string Proveedor { get; set; }
             public string Estado { get; set; }
         }
 

@@ -33,6 +33,7 @@ namespace Sistema_Gimnasio.Forms
             InitializeComponent();
             ConfigureValidations();
             LoadCategories();
+            LoadSuppliers();
             this.Text = "Editar Artículo"; // Cambia el título de la ventana
 
             // Buscamos el artículo en la BD y lo cargamos en el formulario
@@ -65,7 +66,18 @@ namespace Sistema_Gimnasio.Forms
             // Seleccionamos la categoría correcta en el ComboBox
             CBCategoria.SelectedValue = editableItem.IdInventarioCategoria;
 
-            // La fecha de ingreso no se suele editar, la dejamos como está.
+            // Seleccionamos el proveedor. Si el IdProveedor es 0 o no existe en la lista,
+            // se mostrará el placeholder (IdProveedor = 0, Nombre = "----------").
+            try
+            {
+                CBProveedor.SelectedValue = editableItem.IdProveedor;
+            }
+            catch
+            {
+                // en caso de algún desajuste por tipos, intentamos seleccionar 0 (placeholder)
+                CBProveedor.SelectedValue = 0;
+            }
+
             DTFechaIngreso.Value = editableItem.FechaIngreso;
             DTFechaIngreso.Enabled = false; // Deshabilitamos para que no se pueda cambiar
         }
@@ -89,7 +101,22 @@ namespace Sistema_Gimnasio.Forms
         {
             try
             {
-                CBProveedor.DataSource = supplierService.GetAllService();
+                var suppliers = supplierService.GetAllService();
+
+                var placeholder = new Supplier { IdProveedor = 0, Nombre = "----------" };
+
+                if (suppliers == null)
+                {
+                    suppliers = new System.Collections.Generic.List<Supplier>();
+                }
+
+                // Si no existe ya un proveedor con Id 0, insertamos el placeholder al inicio
+                if (!suppliers.Exists(s => s.IdProveedor == 0))
+                {
+                    suppliers.Insert(0, placeholder);
+                }
+
+                CBProveedor.DataSource = suppliers;
                 CBProveedor.DisplayMember = "Nombre";
                 CBProveedor.ValueMember = "IdProveedor";
                 CBProveedor.SelectedIndex = -1;
@@ -116,7 +143,8 @@ namespace Sistema_Gimnasio.Forms
                     {
                         Nombre = txtNombre.Text.Trim(),
                         Cantidad = int.Parse(txtCantidad.Text),
-                        IdInventarioCategoria = (int)CBCategoria.SelectedValue
+                        IdInventarioCategoria = (int)CBCategoria.SelectedValue,
+                        IdProveedor = (int)CBProveedor.SelectedValue,
                     };
                     inventoryService.CreateInventory(newItem);
                     MessageBox.Show("Artículo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,6 +156,7 @@ namespace Sistema_Gimnasio.Forms
                     editableItem.Nombre = txtNombre.Text.Trim();
                     editableItem.Cantidad = int.Parse(txtCantidad.Text);
                     editableItem.IdInventarioCategoria = (int)CBCategoria.SelectedValue;
+                    editableItem.IdProveedor = (int)CBProveedor.SelectedValue;
 
                     inventoryService.UpdateInventory(editableItem);
                     MessageBox.Show("Artículo actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -219,16 +248,7 @@ namespace Sistema_Gimnasio.Forms
             if (CurrentRole != Roles.Admin)
             {
                 NewCategoryInventory.Visible = false;
-            }
-
-            
+            }           
         }
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

@@ -19,11 +19,14 @@ namespace Data
                     ic.nombre                         AS Categoria,
                     i.cantidad                        AS Cantidad,
                     FORMAT(i.fecha_ingreso, 'dd/MM/yyyy') AS FechaIngreso,
+                    p.nombre                          AS Proveedor,
                     i.estado                          AS Estado
                 FROM 
                     inventario i
                 INNER JOIN 
-                    inventario_categoria ic ON i.id_categoria_inventario = ic.id_inventario_categoria;
+                    inventario_categoria ic ON i.id_categoria_inventario = ic.id_inventario_categoria
+                LEFT JOIN
+                    proveedor p ON i.proveedor_id = p.id_proveedor;
             ";
 
             using (var cn = new SqlConnection(Connection.chain))
@@ -37,8 +40,8 @@ namespace Data
         public void InsertInventory(Inventory inventario)
         {
             const string sql = @"
-                INSERT INTO inventario (id_categoria_inventario, nombre, cantidad, estado)
-                VALUES (@IdInventarioCategoria, @Nombre, @Cantidad, @Estado);
+                INSERT INTO inventario (id_categoria_inventario, nombre, cantidad, estado, proveedor_id)
+                VALUES (@IdInventarioCategoria, @Nombre, @Cantidad, @Estado, @IdProveedor);
             ";
             // La fecha de ingreso se asigna automaticamente
 
@@ -57,7 +60,8 @@ namespace Data
                 nombre AS Nombre,
                 cantidad AS Cantidad,
                 fecha_ingreso AS FechaIngreso,
-                estado AS Estado
+                estado AS Estado,
+                proveedor_id AS IdProveedor
             FROM inventario 
             WHERE id_inventario = @IdInventario;";
 
@@ -75,7 +79,8 @@ namespace Data
             UPDATE inventario SET
                 nombre = @Nombre,
                 cantidad = @Cantidad,
-                id_categoria_inventario = @IdInventarioCategoria
+                id_categoria_inventario = @IdInventarioCategoria,
+                proveedor_id = @IdProveedor
                 -- No actualizamos el estado aquí, eso se hará por separado
             WHERE id_inventario = @IdInventario;";
 
