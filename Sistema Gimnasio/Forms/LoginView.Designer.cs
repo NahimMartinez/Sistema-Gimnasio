@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using FontAwesome.Sharp;
-using Presentation;
 namespace Sistema_Gimnasio
 {
     partial class LoginView

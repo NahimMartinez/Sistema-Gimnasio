@@ -1,5 +1,4 @@
 ﻿using FontAwesome.Sharp;
-using Presentation;
 using System.Windows.Forms;
 
 namespace Sistema_Gimnasio

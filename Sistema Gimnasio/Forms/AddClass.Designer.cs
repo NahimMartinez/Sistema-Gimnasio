@@ -1,5 +1,4 @@
-﻿using Presentation;
-
+﻿
 namespace Sistema_Gimnasio.Forms
 {
     partial class AddClass

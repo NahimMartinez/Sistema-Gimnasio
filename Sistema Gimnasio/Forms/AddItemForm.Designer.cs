@@ -1,5 +1,4 @@
-﻿using Presentation;
-using FontAwesome.Sharp;
+﻿using FontAwesome.Sharp;
 namespace Sistema_Gimnasio.Forms
 {
     partial class AddItemForm

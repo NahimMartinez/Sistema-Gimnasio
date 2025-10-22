@@ -186,7 +186,6 @@
     <Compile Include="Controls\SupplierView.Designer.cs">
       <DependentUpon>SupplierView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UITheme.cs" />
     <EmbeddedResource Include="Controls\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
