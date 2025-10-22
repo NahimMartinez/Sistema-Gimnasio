@@ -34,6 +34,10 @@ namespace Sistema_Gimnasio.Forms
         private Partner currentPartner;
         private Person currentPerson;
 
+       
+        private readonly Dictionary<int, bool> iconState = new Dictionary<int, bool>();
+
+
 
         public MembershipForm(int pIdPartner)
         {
@@ -63,6 +67,8 @@ namespace Sistema_Gimnasio.Forms
             CBMembership.SelectedIndexChanged += (s, ev) =>
             {
                 if (fReady) UpdateTotalLabel();
+                ApplyFilters();
+                
             };
         }
 
@@ -108,7 +114,7 @@ namespace Sistema_Gimnasio.Forms
             // Asigna los iconos a las columnas correspondientes.
             
             colAdd.Image = bmpCheck;
-            var iconState = new Dictionary<int, bool>();
+            //var iconState = new Dictionary<int, bool>();
 
             BoardClass.CellFormatting += (s, e) => 
             {
@@ -290,5 +296,45 @@ namespace Sistema_Gimnasio.Forms
             CBMembership.SelectedIndex = 2; // Por defecto mes
             fReady = true;
         }
+
+        private void ApplyFilters()
+        {
+            if (CBMembership.SelectedItem == null || !(CBMembership.SelectedItem is MembershipType))
+                return;
+            MembershipType m = (MembershipType)CBMembership.SelectedItem;
+            var allMembershipClass = classService.GetAllClassesActive().Select(c => new
+            {
+                IdClase = c.IdClase,
+                Name = c.NombreActividad,
+                Cupo = c.Cupo.ToString(),
+                Dia = c.Dias,
+                Horario = c.Horario,
+                Precio = c.Precio.ToString("0.00"),
+            }).ToList();
+
+            
+            if (m.Nombre.Equals("Diario", StringComparison.OrdinalIgnoreCase))
+            {
+                var culture = System.Globalization.CultureInfo.GetCultureInfo("es-ES");
+                string today = DateTime.Now.ToString("dddd", culture);
+                var filtered = allMembershipClass
+                    .Where(c => c.Dia.IndexOf(today, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToList();
+                BoardClass.DataSource = filtered;
+            }
+            else
+            {
+                BoardClass.DataSource = allMembershipClass;
+                
+            }
+
+            selectedClasses.Clear();
+            iconState.Clear();
+            BoardClass.ClearSelection();
+            UpdateTotalLabel();
+
+
+        }
+
     }
 }
