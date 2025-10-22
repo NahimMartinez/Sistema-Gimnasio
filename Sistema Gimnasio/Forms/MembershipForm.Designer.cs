@@ -83,7 +83,7 @@
             this.LTotalSum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LTotalSum.Location = new System.Drawing.Point(620, 3);
             this.LTotalSum.Name = "LTotalSum";
-            this.LTotalSum.Size = new System.Drawing.Size(22, 15);
+            this.LTotalSum.Size = new System.Drawing.Size(28, 15);
             this.LTotalSum.TabIndex = 5;
             this.LTotalSum.Text = "0.00";
             // 
@@ -150,7 +150,7 @@
             // 
             this.CBPayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBPayMethod.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBPayMethod.FormattingEnabled = true;            
+            this.CBPayMethod.FormattingEnabled = true;
             this.CBPayMethod.Location = new System.Drawing.Point(557, 56);
             this.CBPayMethod.Name = "CBPayMethod";
             this.CBPayMethod.Size = new System.Drawing.Size(130, 23);
@@ -309,6 +309,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Name = "MembershipForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Membresia";
             this.Load += new System.EventHandler(this.MembershipForm_Load);
             this.panel1.ResumeLayout(false);
