@@ -81,8 +81,19 @@ namespace Sistema_Gimnasio.Forms
                 var price = c.Precio;
                 if (price != null) total += Convert.ToDecimal(price);
             }
-            int dias = item?.DuracionDias ?? 1;
-            total = total * dias;
+            int dias = item.DuracionDias;
+            switch (dias)
+            {
+                case 1:
+                    total *= dias;
+                    break;
+                case 7:
+                    total *= dias * 0.9m;
+                    break;
+                case 30:
+                    total *= dias * 0.8m;
+                    break;
+            }            
             LTotalSum.Text = total.ToString("0.00");
             return total;
         }
@@ -92,11 +103,11 @@ namespace Sistema_Gimnasio.Forms
             var data = classService.GetAllClassesActive();
             var classMembership = data.Select(c => new 
             {
-                IdClase = c.IdClase,
+                c.IdClase,
                 Name = c.NombreActividad,
                 Cupo = c.Cupo.ToString(),
                 Dia = c.Dias,
-                Horario = c.Horario,
+                c.Horario,
                 Precio = c.Precio.ToString("0.00"),
             }).ToList();
             
@@ -304,11 +315,11 @@ namespace Sistema_Gimnasio.Forms
             MembershipType m = (MembershipType)CBMembership.SelectedItem;
             var allMembershipClass = classService.GetAllClassesActive().Select(c => new
             {
-                IdClase = c.IdClase,
+                c.IdClase,
                 Name = c.NombreActividad,
                 Cupo = c.Cupo.ToString(),
                 Dia = c.Dias,
-                Horario = c.Horario,
+                c.Horario,
                 Precio = c.Precio.ToString("0.00"),
             }).ToList();
 
