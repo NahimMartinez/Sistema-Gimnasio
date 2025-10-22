@@ -39,9 +39,7 @@ namespace Sistema_Gimnasio
             this.BtnUsers = new FontAwesome.Sharp.IconButton();
             this.BtnPartners = new FontAwesome.Sharp.IconButton();
             this.BSupplier = new FontAwesome.Sharp.IconButton();
-            this.PSubMenuSupplier = new System.Windows.Forms.Panel();
             this.BProvList = new System.Windows.Forms.Button();
-            this.BPurchaseOrders = new System.Windows.Forms.Button();
             this.BActivity = new FontAwesome.Sharp.IconButton();
             this.BInventory = new FontAwesome.Sharp.IconButton();
             this.BReports = new FontAwesome.Sharp.IconButton();
@@ -53,10 +51,8 @@ namespace Sistema_Gimnasio
             this.LBrand2 = new System.Windows.Forms.Label();
             this.LogoDot = new FontAwesome.Sharp.IconPictureBox();
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.hideTimer = new System.Windows.Forms.Timer(this.components);
             this.Sidebar.SuspendLayout();
             this.MenuFlow.SuspendLayout();
-            this.PSubMenuSupplier.SuspendLayout();
             this.PanelUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PUser)).BeginInit();
             this.PanelBrand.SuspendLayout();
@@ -83,7 +79,6 @@ namespace Sistema_Gimnasio
             this.MenuFlow.Controls.Add(this.BtnUsers);
             this.MenuFlow.Controls.Add(this.BtnPartners);
             this.MenuFlow.Controls.Add(this.BSupplier);
-            this.MenuFlow.Controls.Add(this.PSubMenuSupplier);
             this.MenuFlow.Controls.Add(this.BActivity);
             this.MenuFlow.Controls.Add(this.BInventory);
             this.MenuFlow.Controls.Add(this.BReports);
@@ -203,22 +198,6 @@ namespace Sistema_Gimnasio
             this.BSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSupplier.UseVisualStyleBackColor = true;
-            this.BSupplier.MouseLeave += new System.EventHandler(this.BSupplier_MouseLeave);
-            this.BSupplier.MouseHover += new System.EventHandler(this.BSupplier_MouseHover);
-            // 
-            // PSubMenuSupplier
-            // 
-            this.PSubMenuSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(31)))), ((int)(((byte)(56)))));
-            this.PSubMenuSupplier.Controls.Add(this.BProvList);
-            this.PSubMenuSupplier.Controls.Add(this.BPurchaseOrders);
-            this.PSubMenuSupplier.Location = new System.Drawing.Point(0, 250);
-            this.PSubMenuSupplier.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.PSubMenuSupplier.Name = "PSubMenuSupplier";
-            this.PSubMenuSupplier.Padding = new System.Windows.Forms.Padding(48, 0, 0, 0);
-            this.PSubMenuSupplier.Size = new System.Drawing.Size(451, 103);
-            this.PSubMenuSupplier.TabIndex = 5;
-            this.PSubMenuSupplier.Visible = false;
-            this.PSubMenuSupplier.MouseLeave += new System.EventHandler(this.PSubMenuSupplier_MouseLeave);
             // 
             // BProvList
             // 
@@ -234,23 +213,6 @@ namespace Sistema_Gimnasio
             this.BProvList.TabIndex = 0;
             this.BProvList.Text = "             Lista de proveedores";
             this.BProvList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BProvList.Click += new System.EventHandler(this.BProvList_Click);
-            // 
-            // BPurchaseOrders
-            // 
-            this.BPurchaseOrders.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BPurchaseOrders.FlatAppearance.BorderSize = 0;
-            this.BPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BPurchaseOrders.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.BPurchaseOrders.ForeColor = System.Drawing.Color.White;
-            this.BPurchaseOrders.Location = new System.Drawing.Point(0, 52);
-            this.BPurchaseOrders.Margin = new System.Windows.Forms.Padding(4);
-            this.BPurchaseOrders.Name = "BPurchaseOrders";
-            this.BPurchaseOrders.Size = new System.Drawing.Size(400, 49);
-            this.BPurchaseOrders.TabIndex = 1;
-            this.BPurchaseOrders.Text = "             Órdenes de compra";
-            this.BPurchaseOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BPurchaseOrders.Click += new System.EventHandler(this.BPurchaseOrders_Click);
             // 
             // BActivity
             // 
@@ -424,11 +386,6 @@ namespace Sistema_Gimnasio
             this.contentPanel.Size = new System.Drawing.Size(835, 768);
             this.contentPanel.TabIndex = 1;
             // 
-            // hideTimer
-            // 
-            this.hideTimer.Interval = 150;
-            this.hideTimer.Tick += new System.EventHandler(this.HideTimer_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -443,7 +400,6 @@ namespace Sistema_Gimnasio
             this.Text = "GymManager Pro";
             this.Sidebar.ResumeLayout(false);
             this.MenuFlow.ResumeLayout(false);
-            this.PSubMenuSupplier.ResumeLayout(false);
             this.PanelUser.ResumeLayout(false);
             this.PanelUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PUser)).EndInit();
@@ -474,10 +430,7 @@ namespace Sistema_Gimnasio
         private System.Windows.Forms.ImageList MenuIcons;
         private Panel contentPanel;
         private System.Windows.Forms.FlowLayoutPanel MenuFlow;
-        private System.Windows.Forms.Panel PSubMenuSupplier;
         private System.Windows.Forms.Button BProvList;
-        private System.Windows.Forms.Button BPurchaseOrders;
-        private System.Windows.Forms.Timer hideTimer;
     }
 }
 

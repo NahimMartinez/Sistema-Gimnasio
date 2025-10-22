@@ -132,14 +132,6 @@ namespace Sistema_Gimnasio
                 SetActive(first);            // Establece apariencia visual de activo
                 Navigate((string)first.Tag); // Navega al módulo correspondiente
             }
-
-            // Configuración inicial del submenú de Proveedores
-            PSubMenuSupplier.Visible = false;   // Inicialmente oculto
-            hideTimer.Interval = 120;           // Intervalo del timer en milisegundos
-            hideTimer.Tick += HideTimer_Tick;   // Suscribe evento del timer
-
-            // Eventos para mostrar/ocultar submenú al interactuar con el botón
-            BSupplier.MouseEnter += BSupplier_MouseHover;
         }
 
         // Establece el rol actual y refresca la interfaz de usuario
@@ -215,6 +207,7 @@ namespace Sistema_Gimnasio
                 case "classes": ShowClases(); break;
                 case "inventory": ShowInventario(); break;
                 case "reports": ShowReports(); break;
+                case "supplier" : ShowSuppliers(); break;
             }
         }
 
@@ -304,71 +297,6 @@ namespace Sistema_Gimnasio
             };
             contentPanel.Controls.Add(view);
             this.Text = "GymManager Pro - Proveedores";
-        }
-
-        private void ShowPurchaseOrders()
-        {
-            contentPanel.Controls.Clear();
-            var view = new PurchaseOrderView { Dock = DockStyle.Fill, BackColor = Color.White };
-            contentPanel.Controls.Add(view);
-            this.Text = "GymManager Pro - Órdenes de compra";
-        }
-
-        // === MANEJO DEL SUBMENÚ DE PROVEEDORES ===
-
-        // Muestra el submenú al hacer hover sobre el botón de proveedores
-        private void BSupplier_MouseHover(object sender, EventArgs e)
-        {
-            PSubMenuSupplier.Visible = true;
-            hideTimer.Stop();  // Detiene el timer de ocultamiento automático
-        }
-
-        // Inicia timer para ocultar submenú al salir del botón principal
-        private void BSupplier_MouseLeave(object sender, EventArgs e)
-        {
-            hideTimer.Start();
-        }
-
-        // Inicia timer para ocultar submenú al salir del panel del submenú
-        private void PSubMenuSupplier_MouseLeave(object sender, EventArgs e)
-        {
-            hideTimer.Start();
-        }
-
-        // Evento del timer que verifica si debe ocultar el submenú
-        private void HideTimer_Tick(object sender, EventArgs e)
-        {
-            OcultarSiCursorFuera();
-        }
-
-        // Oculta el submenú si el cursor no está sobre el botón principal o el submenú
-        private void OcultarSiCursorFuera()
-        {
-            var cursor = Cursor.Position;
-            var btnRect = BSupplier.RectangleToScreen(BSupplier.ClientRectangle);
-            var subRect = PSubMenuSupplier.RectangleToScreen(PSubMenuSupplier.ClientRectangle);
-
-            if (!btnRect.Contains(cursor) && !subRect.Contains(cursor))
-            {
-                PSubMenuSupplier.Visible = false;
-                hideTimer.Stop();
-            }
-        }
-
-        // === EVENTOS DE CLICK DEL SUBMENÚ ===
-
-        private void BProvList_Click(object sender, EventArgs e)
-        {
-            ShowSuppliers();           // Muestra vista de proveedores
-            SetActive(BSupplier);      // Marca botón principal como activo
-            PSubMenuSupplier.Visible = false;  // Oculta submenú después de la selección
-        }
-
-        private void BPurchaseOrders_Click(object sender, EventArgs e)
-        {
-            ShowPurchaseOrders();      // Muestra vista de órdenes de compra
-            SetActive(BSupplier);      // Marca botón principal como activo
-            PSubMenuSupplier.Visible = false;  // Oculta submenú después de la selección
         }
 
     }
