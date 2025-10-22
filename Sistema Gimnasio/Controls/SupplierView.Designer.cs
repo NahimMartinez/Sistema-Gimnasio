@@ -35,21 +35,26 @@
             this.BoardSupplier = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.typeSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TSearchSupplier = new System.Windows.Forms.TextBox();
             this.BNewSupplier = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBStatus = new System.Windows.Forms.ComboBox();
             this.LStatus = new System.Windows.Forms.Label();
             this.BSearchPurcharse = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPageInfo = new System.Windows.Forms.Label();
+            this.btnNextPage = new FontAwesome.Sharp.IconButton();
+            this.btnPrevPage = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LTilteSupplier
@@ -59,7 +64,7 @@
             this.LTilteSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTilteSupplier.Location = new System.Drawing.Point(15, 12);
             this.LTilteSupplier.Name = "LTilteSupplier";
-            this.LTilteSupplier.Size = new System.Drawing.Size(149, 32);
+            this.LTilteSupplier.Size = new System.Drawing.Size(118, 25);
             this.LTilteSupplier.TabIndex = 0;
             this.LTilteSupplier.Text = "Proveedores";
             // 
@@ -124,7 +129,7 @@
             this.cuit.DataPropertyName = "Cuit";
             this.cuit.HeaderText = "CUIT";
             this.cuit.MinimumWidth = 6;
-            this.cuit.Name = "cuit";           
+            this.cuit.Name = "cuit";
             // 
             // email
             // 
@@ -174,6 +179,10 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
+            // typeSupplier
+            // 
+            this.typeSupplier.Name = "typeSupplier";
+            // 
             // TSearchSupplier
             // 
             this.TSearchSupplier.BackColor = System.Drawing.Color.White;
@@ -182,7 +191,7 @@
             this.TSearchSupplier.ForeColor = System.Drawing.Color.Gray;
             this.TSearchSupplier.Location = new System.Drawing.Point(15, 66);
             this.TSearchSupplier.Name = "TSearchSupplier";
-            this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
+            this.TSearchSupplier.Size = new System.Drawing.Size(145, 23);
             this.TSearchSupplier.TabIndex = 2;
             this.TSearchSupplier.Text = "Buscar proveedor...";
             // 
@@ -232,7 +241,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(166, 65);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
             this.CBStatus.TabIndex = 7;
             // 
             // LStatus
@@ -242,7 +251,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(163, 47);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
             this.LStatus.TabIndex = 8;
             this.LStatus.Text = "Estado";
             // 
@@ -251,13 +260,69 @@
             this.BSearchPurcharse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BSearchPurcharse.Location = new System.Drawing.Point(15, 330);
             this.BSearchPurcharse.Name = "BSearchPurcharse";
-            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 22);
+            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 20);
             this.BSearchPurcharse.TabIndex = 9;
             this.BSearchPurcharse.Text = "Buscar Orden de Compra...";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblPageInfo);
+            this.panel2.Controls.Add(this.btnNextPage);
+            this.panel2.Controls.Add(this.btnPrevPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 489);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(762, 61);
+            this.panel2.TabIndex = 11;
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.TabIndex = 12;
+            this.lblPageInfo.Text = "Página 1 de 1";
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.BackColor = System.Drawing.Color.White;
+            this.btnNextPage.FlatAppearance.BorderSize = 0;
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNextPage.IconSize = 40;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(26, 26);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevPage.BackColor = System.Drawing.Color.White;
+            this.btnPrevPage.FlatAppearance.BorderSize = 0;
+            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrevPage.IconSize = 40;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
+            this.btnPrevPage.TabIndex = 10;
+            this.btnPrevPage.UseVisualStyleBackColor = false;
             // 
             // SupplierView
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BoardSupplier);
             this.Controls.Add(this.panel1);
             this.Name = "SupplierView";
@@ -265,6 +330,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BoardSupplier)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -288,5 +355,9 @@
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
         private System.Windows.Forms.ComboBox CBStatus;
         private System.Windows.Forms.Label LStatus;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblPageInfo;
+        private FontAwesome.Sharp.IconButton btnNextPage;
+        private FontAwesome.Sharp.IconButton btnPrevPage;
     }
 }

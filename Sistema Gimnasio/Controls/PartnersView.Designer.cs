@@ -30,9 +30,9 @@ namespace Sistema_Gimnasio
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTiltePartne = new System.Windows.Forms.Label();
             this.BoardMember = new System.Windows.Forms.DataGridView();
             this.idPartner = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +59,10 @@ namespace Sistema_Gimnasio
             this.btnNextPage = new FontAwesome.Sharp.IconButton();
             this.btnPrevPage = new FontAwesome.Sharp.IconButton();
             this.BRenovation = new FontAwesome.Sharp.IconButton();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LTiltePartne
@@ -70,7 +72,7 @@ namespace Sistema_Gimnasio
             this.LTiltePartne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTiltePartne.Location = new System.Drawing.Point(14, 12);
             this.LTiltePartne.Name = "LTiltePartne";
-            this.LTiltePartne.Size = new System.Drawing.Size(206, 32);
+            this.LTiltePartne.Size = new System.Drawing.Size(162, 25);
             this.LTiltePartne.TabIndex = 0;
             this.LTiltePartne.Text = "Gestión de Socios";
             // 
@@ -79,21 +81,21 @@ namespace Sistema_Gimnasio
             this.BoardMember.AllowUserToAddRows = false;
             this.BoardMember.AllowUserToDeleteRows = false;
             this.BoardMember.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.BoardMember.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.BoardMember.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.BoardMember.BackgroundColor = System.Drawing.Color.White;
             this.BoardMember.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BoardMember.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.BoardMember.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BoardMember.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.BoardMember.ColumnHeadersHeight = 38;
             this.BoardMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BoardMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -110,14 +112,14 @@ namespace Sistema_Gimnasio
             this.colView,
             this.colViewPdf,
             this.colDelete});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BoardMember.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BoardMember.DefaultCellStyle = dataGridViewCellStyle9;
             this.BoardMember.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoardMember.EnableHeadersVisualStyles = false;
             this.BoardMember.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
@@ -251,7 +253,7 @@ namespace Sistema_Gimnasio
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
             this.CBStatus.TabIndex = 2;
             // 
             // CBMembership
@@ -265,7 +267,7 @@ namespace Sistema_Gimnasio
             "Vencida"});
             this.CBMembership.Location = new System.Drawing.Point(304, 66);
             this.CBMembership.Name = "CBMembership";
-            this.CBMembership.Size = new System.Drawing.Size(130, 28);
+            this.CBMembership.Size = new System.Drawing.Size(130, 23);
             this.CBMembership.TabIndex = 3;
             // 
             // TSearchPartner
@@ -276,7 +278,7 @@ namespace Sistema_Gimnasio
             this.TSearchPartner.ForeColor = System.Drawing.Color.Gray;
             this.TSearchPartner.Location = new System.Drawing.Point(18, 66);
             this.TSearchPartner.Name = "TSearchPartner";
-            this.TSearchPartner.Size = new System.Drawing.Size(144, 27);
+            this.TSearchPartner.Size = new System.Drawing.Size(144, 23);
             this.TSearchPartner.TabIndex = 5;
             this.TSearchPartner.Text = "Buscar socio...";
             // 
@@ -287,7 +289,7 @@ namespace Sistema_Gimnasio
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -298,7 +300,7 @@ namespace Sistema_Gimnasio
             this.LMembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LMembership.Location = new System.Drawing.Point(301, 48);
             this.LMembership.Name = "LMembership";
-            this.LMembership.Size = new System.Drawing.Size(83, 20);
+            this.LMembership.Size = new System.Drawing.Size(66, 15);
             this.LMembership.TabIndex = 7;
             this.LMembership.Text = "Membresía";
             // 
@@ -326,9 +328,6 @@ namespace Sistema_Gimnasio
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblPageInfo);
-            this.panel1.Controls.Add(this.btnNextPage);
-            this.panel1.Controls.Add(this.btnPrevPage);
             this.panel1.Controls.Add(this.BRenovation);
             this.panel1.Controls.Add(this.LTiltePartne);
             this.panel1.Controls.Add(this.BNewMember);
@@ -348,11 +347,11 @@ namespace Sistema_Gimnasio
             // 
             this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPageInfo.AutoSize = true;
-            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.lblPageInfo.Location = new System.Drawing.Point(344, 67);
+            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
             this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(98, 20);
+            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
             this.lblPageInfo.TabIndex = 12;
             this.lblPageInfo.Text = "Página 1 de 1";
             // 
@@ -365,8 +364,8 @@ namespace Sistema_Gimnasio
             this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
             this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnNextPage.IconSize = 18;
-            this.btnNextPage.Location = new System.Drawing.Point(480, 64);
+            this.btnNextPage.IconSize = 40;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(26, 26);
             this.btnNextPage.TabIndex = 11;
@@ -382,8 +381,8 @@ namespace Sistema_Gimnasio
             this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
             this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPrevPage.IconSize = 18;
-            this.btnPrevPage.Location = new System.Drawing.Point(448, 64);
+            this.btnPrevPage.IconSize = 40;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
             this.btnPrevPage.Name = "btnPrevPage";
             this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
             this.btnPrevPage.TabIndex = 10;
@@ -411,11 +410,23 @@ namespace Sistema_Gimnasio
             this.BRenovation.UseVisualStyleBackColor = false;
             this.BRenovation.Click += new System.EventHandler(this.BRenovation_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblPageInfo);
+            this.panel2.Controls.Add(this.btnNextPage);
+            this.panel2.Controls.Add(this.btnPrevPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 489);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(762, 61);
+            this.panel2.TabIndex = 10;
+            // 
             // PartnersView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BoardMember);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -425,6 +436,8 @@ namespace Sistema_Gimnasio
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -457,5 +470,6 @@ namespace Sistema_Gimnasio
         private FontAwesome.Sharp.IconButton btnPrevPage;
         private FontAwesome.Sharp.IconButton btnNextPage;
         private System.Windows.Forms.Label lblPageInfo;
+        private Panel panel2;
     }
 }

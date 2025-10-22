@@ -33,13 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloInventaryManagment = new System.Windows.Forms.Label();
             this.BoardInventory = new System.Windows.Forms.DataGridView();
-            this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.TSearchInventory = new System.Windows.Forms.TextBox();
-            this.LStatus = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.CBCategoria = new System.Windows.Forms.ComboBox();
-            this.LCategoria = new System.Windows.Forms.Label();
-            this.BNewItem = new FontAwesome.Sharp.IconButton();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +42,20 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.TSearchInventory = new System.Windows.Forms.TextBox();
+            this.LStatus = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CBCategoria = new System.Windows.Forms.ComboBox();
+            this.LCategoria = new System.Windows.Forms.Label();
+            this.BNewItem = new FontAwesome.Sharp.IconButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPageInfo = new System.Windows.Forms.Label();
+            this.btnNextPage = new FontAwesome.Sharp.IconButton();
+            this.btnPrevPage = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardInventory)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LTituloInventaryManagment
@@ -60,7 +65,7 @@
             this.LTituloInventaryManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloInventaryManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloInventaryManagment.Name = "LTituloInventaryManagment";
-            this.LTituloInventaryManagment.Size = new System.Drawing.Size(249, 32);
+            this.LTituloInventaryManagment.Size = new System.Drawing.Size(196, 25);
             this.LTituloInventaryManagment.TabIndex = 0;
             this.LTituloInventaryManagment.Text = "Gestión de Inventario";
             // 
@@ -117,109 +122,6 @@
             this.BoardInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardInventory.Size = new System.Drawing.Size(762, 450);
             this.BoardInventory.TabIndex = 1;
-            // 
-            // CBStatus
-            // 
-            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBStatus.FormattingEnabled = true;
-            this.CBStatus.Items.AddRange(new object[] {
-            "Todos",
-            "Activo",
-            "Inactivo"});
-            this.CBStatus.Location = new System.Drawing.Point(168, 66);
-            this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
-            this.CBStatus.TabIndex = 2;
-            // 
-            // TSearchInventory
-            // 
-            this.TSearchInventory.BackColor = System.Drawing.Color.White;
-            this.TSearchInventory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearchInventory.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearchInventory.ForeColor = System.Drawing.Color.Gray;
-            this.TSearchInventory.Location = new System.Drawing.Point(18, 66);
-            this.TSearchInventory.Name = "TSearchInventory";
-            this.TSearchInventory.Size = new System.Drawing.Size(144, 27);
-            this.TSearchInventory.TabIndex = 5;
-            this.TSearchInventory.Text = "Buscar item...";
-            // 
-            // LStatus
-            // 
-            this.LStatus.AutoSize = true;
-            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LStatus.Location = new System.Drawing.Point(165, 48);
-            this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
-            this.LStatus.TabIndex = 6;
-            this.LStatus.Text = "Estado";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.CBCategoria);
-            this.panel1.Controls.Add(this.LCategoria);
-            this.panel1.Controls.Add(this.LTituloInventaryManagment);
-            this.panel1.Controls.Add(this.BNewItem);
-            this.panel1.Controls.Add(this.TSearchInventory);
-            this.panel1.Controls.Add(this.CBStatus);
-            this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.panel1.Size = new System.Drawing.Size(762, 100);
-            this.panel1.TabIndex = 9;
-            // 
-            // CBCategoria
-            // 
-            this.CBCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBCategoria.FormattingEnabled = true;
-            this.CBCategoria.Items.AddRange(new object[] {
-            "Todos",
-            "Maquinas",
-            "Mancuernas",
-            "Barras",
-            "Discos",
-            "Accesorios"});
-            this.CBCategoria.Location = new System.Drawing.Point(304, 66);
-            this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(130, 28);
-            this.CBCategoria.TabIndex = 11;
-            // 
-            // LCategoria
-            // 
-            this.LCategoria.AutoSize = true;
-            this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LCategoria.Location = new System.Drawing.Point(301, 48);
-            this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(74, 20);
-            this.LCategoria.TabIndex = 12;
-            this.LCategoria.Text = "Categoría";
-            // 
-            // BNewItem
-            // 
-            this.BNewItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewItem.FlatAppearance.BorderSize = 0;
-            this.BNewItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewItem.ForeColor = System.Drawing.Color.White;
-            this.BNewItem.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.BNewItem.IconColor = System.Drawing.Color.White;
-            this.BNewItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BNewItem.IconSize = 20;
-            this.BNewItem.Location = new System.Drawing.Point(623, 64);
-            this.BNewItem.Name = "BNewItem";
-            this.BNewItem.Size = new System.Drawing.Size(127, 26);
-            this.BNewItem.TabIndex = 9;
-            this.BNewItem.Text = "Nuevo item";
-            this.BNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BNewItem.UseVisualStyleBackColor = false;
-            this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
             // 
             // name
             // 
@@ -295,11 +197,170 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.CBStatus.Location = new System.Drawing.Point(168, 66);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.TabIndex = 2;
+            // 
+            // TSearchInventory
+            // 
+            this.TSearchInventory.BackColor = System.Drawing.Color.White;
+            this.TSearchInventory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchInventory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchInventory.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchInventory.Location = new System.Drawing.Point(18, 66);
+            this.TSearchInventory.Name = "TSearchInventory";
+            this.TSearchInventory.Size = new System.Drawing.Size(144, 23);
+            this.TSearchInventory.TabIndex = 5;
+            this.TSearchInventory.Text = "Buscar item...";
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(165, 48);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.TabIndex = 6;
+            this.LStatus.Text = "Estado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.CBCategoria);
+            this.panel1.Controls.Add(this.LCategoria);
+            this.panel1.Controls.Add(this.LTituloInventaryManagment);
+            this.panel1.Controls.Add(this.BNewItem);
+            this.panel1.Controls.Add(this.TSearchInventory);
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.panel1.Size = new System.Drawing.Size(762, 100);
+            this.panel1.TabIndex = 9;
+            // 
+            // CBCategoria
+            // 
+            this.CBCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBCategoria.FormattingEnabled = true;
+            this.CBCategoria.Items.AddRange(new object[] {
+            "Todos",
+            "Maquinas",
+            "Mancuernas",
+            "Barras",
+            "Discos",
+            "Accesorios"});
+            this.CBCategoria.Location = new System.Drawing.Point(304, 66);
+            this.CBCategoria.Name = "CBCategoria";
+            this.CBCategoria.Size = new System.Drawing.Size(130, 23);
+            this.CBCategoria.TabIndex = 11;
+            // 
+            // LCategoria
+            // 
+            this.LCategoria.AutoSize = true;
+            this.LCategoria.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LCategoria.Location = new System.Drawing.Point(301, 48);
+            this.LCategoria.Name = "LCategoria";
+            this.LCategoria.Size = new System.Drawing.Size(58, 15);
+            this.LCategoria.TabIndex = 12;
+            this.LCategoria.Text = "Categoría";
+            // 
+            // BNewItem
+            // 
+            this.BNewItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewItem.FlatAppearance.BorderSize = 0;
+            this.BNewItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewItem.ForeColor = System.Drawing.Color.White;
+            this.BNewItem.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewItem.IconColor = System.Drawing.Color.White;
+            this.BNewItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewItem.IconSize = 20;
+            this.BNewItem.Location = new System.Drawing.Point(623, 64);
+            this.BNewItem.Name = "BNewItem";
+            this.BNewItem.Size = new System.Drawing.Size(127, 26);
+            this.BNewItem.TabIndex = 9;
+            this.BNewItem.Text = "Nuevo item";
+            this.BNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewItem.UseVisualStyleBackColor = false;
+            this.BNewItem.Click += new System.EventHandler(this.BNewItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblPageInfo);
+            this.panel2.Controls.Add(this.btnNextPage);
+            this.panel2.Controls.Add(this.btnPrevPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 489);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(762, 61);
+            this.panel2.TabIndex = 11;
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.TabIndex = 12;
+            this.lblPageInfo.Text = "Página 1 de 1";
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.BackColor = System.Drawing.Color.White;
+            this.btnNextPage.FlatAppearance.BorderSize = 0;
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNextPage.IconSize = 40;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(26, 26);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevPage.BackColor = System.Drawing.Color.White;
+            this.btnPrevPage.FlatAppearance.BorderSize = 0;
+            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrevPage.IconSize = 40;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
+            this.btnPrevPage.TabIndex = 10;
+            this.btnPrevPage.UseVisualStyleBackColor = false;
+            // 
             // InventoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BoardInventory);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -309,6 +370,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BoardInventory)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -333,5 +396,9 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblPageInfo;
+        private FontAwesome.Sharp.IconButton btnNextPage;
+        private FontAwesome.Sharp.IconButton btnPrevPage;
     }
 }

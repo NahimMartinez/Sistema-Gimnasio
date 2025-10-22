@@ -33,11 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LTituloClases = new System.Windows.Forms.Label();
             this.BoardClass = new System.Windows.Forms.DataGridView();
-            this.CBStatus = new System.Windows.Forms.ComboBox();
-            this.TSearchClass = new System.Windows.Forms.TextBox();
-            this.LStatus = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.BNewClass = new FontAwesome.Sharp.IconButton();
             this.id_clase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coach = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +43,18 @@
             this.colEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.colView = new System.Windows.Forms.DataGridViewImageColumn();
             this.colDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.TSearchClass = new System.Windows.Forms.TextBox();
+            this.LStatus = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.BNewClass = new FontAwesome.Sharp.IconButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPageInfo = new System.Windows.Forms.Label();
+            this.btnNextPage = new FontAwesome.Sharp.IconButton();
+            this.btnPrevPage = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LTituloClases
@@ -59,7 +64,7 @@
             this.LTituloClases.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloClases.Location = new System.Drawing.Point(14, 12);
             this.LTituloClases.Name = "LTituloClases";
-            this.LTituloClases.Size = new System.Drawing.Size(205, 32);
+            this.LTituloClases.Size = new System.Drawing.Size(161, 25);
             this.LTituloClases.TabIndex = 0;
             this.LTituloClases.Text = "Gestión de Clases";
             // 
@@ -117,79 +122,6 @@
             this.BoardClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.BoardClass.Size = new System.Drawing.Size(762, 450);
             this.BoardClass.TabIndex = 1;
-            // 
-            // CBStatus
-            // 
-            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CBStatus.FormattingEnabled = true;
-            this.CBStatus.Items.AddRange(new object[] {
-            "Todos",
-            "Activo",
-            "Inactivo"});
-            this.CBStatus.Location = new System.Drawing.Point(168, 66);
-            this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
-            this.CBStatus.TabIndex = 2;
-            // 
-            // TSearchClass
-            // 
-            this.TSearchClass.BackColor = System.Drawing.Color.White;
-            this.TSearchClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TSearchClass.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TSearchClass.ForeColor = System.Drawing.Color.Gray;
-            this.TSearchClass.Location = new System.Drawing.Point(18, 66);
-            this.TSearchClass.Name = "TSearchClass";
-            this.TSearchClass.Size = new System.Drawing.Size(144, 27);
-            this.TSearchClass.TabIndex = 5;
-            this.TSearchClass.Text = "Buscar clase...";
-            // 
-            // LStatus
-            // 
-            this.LStatus.AutoSize = true;
-            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.LStatus.Location = new System.Drawing.Point(165, 48);
-            this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
-            this.LStatus.TabIndex = 6;
-            this.LStatus.Text = "Estado";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.LTituloClases);
-            this.panel1.Controls.Add(this.BNewClass);
-            this.panel1.Controls.Add(this.TSearchClass);
-            this.panel1.Controls.Add(this.CBStatus);
-            this.panel1.Controls.Add(this.LStatus);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.panel1.Size = new System.Drawing.Size(762, 100);
-            this.panel1.TabIndex = 9;
-            // 
-            // BNewClass
-            // 
-            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
-            this.BNewClass.FlatAppearance.BorderSize = 0;
-            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.BNewClass.ForeColor = System.Drawing.Color.White;
-            this.BNewClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.BNewClass.IconColor = System.Drawing.Color.White;
-            this.BNewClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BNewClass.IconSize = 20;
-            this.BNewClass.Location = new System.Drawing.Point(614, 64);
-            this.BNewClass.Name = "BNewClass";
-            this.BNewClass.Size = new System.Drawing.Size(136, 26);
-            this.BNewClass.TabIndex = 9;
-            this.BNewClass.Text = "Nueva clase";
-            this.BNewClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BNewClass.UseVisualStyleBackColor = false;
-            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
             // 
             // id_clase
             // 
@@ -273,11 +205,140 @@
             this.colDelete.ReadOnly = true;
             this.colDelete.Width = 50;
             // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Todos",
+            "Activo",
+            "Inactivo"});
+            this.CBStatus.Location = new System.Drawing.Point(168, 66);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.TabIndex = 2;
+            // 
+            // TSearchClass
+            // 
+            this.TSearchClass.BackColor = System.Drawing.Color.White;
+            this.TSearchClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TSearchClass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.TSearchClass.ForeColor = System.Drawing.Color.Gray;
+            this.TSearchClass.Location = new System.Drawing.Point(18, 66);
+            this.TSearchClass.Name = "TSearchClass";
+            this.TSearchClass.Size = new System.Drawing.Size(144, 23);
+            this.TSearchClass.TabIndex = 5;
+            this.TSearchClass.Text = "Buscar clase...";
+            // 
+            // LStatus
+            // 
+            this.LStatus.AutoSize = true;
+            this.LStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.LStatus.Location = new System.Drawing.Point(165, 48);
+            this.LStatus.Name = "LStatus";
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.TabIndex = 6;
+            this.LStatus.Text = "Estado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.LTituloClases);
+            this.panel1.Controls.Add(this.BNewClass);
+            this.panel1.Controls.Add(this.TSearchClass);
+            this.panel1.Controls.Add(this.CBStatus);
+            this.panel1.Controls.Add(this.LStatus);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.panel1.Size = new System.Drawing.Size(762, 100);
+            this.panel1.TabIndex = 9;
+            // 
+            // BNewClass
+            // 
+            this.BNewClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BNewClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.BNewClass.FlatAppearance.BorderSize = 0;
+            this.BNewClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BNewClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.BNewClass.ForeColor = System.Drawing.Color.White;
+            this.BNewClass.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.BNewClass.IconColor = System.Drawing.Color.White;
+            this.BNewClass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BNewClass.IconSize = 20;
+            this.BNewClass.Location = new System.Drawing.Point(614, 64);
+            this.BNewClass.Name = "BNewClass";
+            this.BNewClass.Size = new System.Drawing.Size(136, 26);
+            this.BNewClass.TabIndex = 9;
+            this.BNewClass.Text = "Nueva clase";
+            this.BNewClass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BNewClass.UseVisualStyleBackColor = false;
+            this.BNewClass.Click += new System.EventHandler(this.BNewClass_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblPageInfo);
+            this.panel2.Controls.Add(this.btnNextPage);
+            this.panel2.Controls.Add(this.btnPrevPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 489);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(762, 61);
+            this.panel2.TabIndex = 11;
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.TabIndex = 12;
+            this.lblPageInfo.Text = "Página 1 de 1";
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.BackColor = System.Drawing.Color.White;
+            this.btnNextPage.FlatAppearance.BorderSize = 0;
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNextPage.IconSize = 40;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(26, 26);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevPage.BackColor = System.Drawing.Color.White;
+            this.btnPrevPage.FlatAppearance.BorderSize = 0;
+            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrevPage.IconSize = 40;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
+            this.btnPrevPage.TabIndex = 10;
+            this.btnPrevPage.UseVisualStyleBackColor = false;
+            // 
             // Clases
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BoardClass);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -287,6 +348,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BoardClass)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +373,9 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblPageInfo;
+        private FontAwesome.Sharp.IconButton btnNextPage;
+        private FontAwesome.Sharp.IconButton btnPrevPage;
     }
 }

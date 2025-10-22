@@ -48,8 +48,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBRol = new System.Windows.Forms.ComboBox();
             this.LRol = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPageInfo = new System.Windows.Forms.Label();
+            this.btnNextPage = new FontAwesome.Sharp.IconButton();
+            this.btnPrevPage = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // LTituloUserManagment
@@ -59,7 +64,7 @@
             this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(231, 32);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -194,7 +199,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 28);
+            this.CBStatus.Size = new System.Drawing.Size(130, 23);
             this.CBStatus.TabIndex = 2;
             // 
             // TSearch
@@ -205,7 +210,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 27);
+            this.TSearch.Size = new System.Drawing.Size(144, 23);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar usuario...";
             // 
@@ -216,7 +221,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(54, 20);
+            this.LStatus.Size = new System.Drawing.Size(42, 15);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -270,7 +275,7 @@
             "Recepcionista"});
             this.CBRol.Location = new System.Drawing.Point(304, 66);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(130, 28);
+            this.CBRol.Size = new System.Drawing.Size(130, 23);
             this.CBRol.TabIndex = 10;
             // 
             // LRol
@@ -280,15 +285,71 @@
             this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LRol.Location = new System.Drawing.Point(301, 48);
             this.LRol.Name = "LRol";
-            this.LRol.Size = new System.Drawing.Size(31, 20);
+            this.LRol.Size = new System.Drawing.Size(24, 15);
             this.LRol.TabIndex = 11;
             this.LRol.Text = "Rol";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblPageInfo);
+            this.panel2.Controls.Add(this.btnNextPage);
+            this.panel2.Controls.Add(this.btnPrevPage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 489);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(762, 61);
+            this.panel2.TabIndex = 11;
+            // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.TabIndex = 12;
+            this.lblPageInfo.Text = "Página 1 de 1";
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.BackColor = System.Drawing.Color.White;
+            this.btnNextPage.FlatAppearance.BorderSize = 0;
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNextPage.IconSize = 40;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(26, 26);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevPage.BackColor = System.Drawing.Color.White;
+            this.btnPrevPage.FlatAppearance.BorderSize = 0;
+            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrevPage.IconSize = 40;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
+            this.btnPrevPage.TabIndex = 10;
+            this.btnPrevPage.UseVisualStyleBackColor = false;
+            // 
             // UsersManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.BoardUsers);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -298,6 +359,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BoardUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +384,9 @@
         private System.Windows.Forms.DataGridViewImageColumn colEdit;
         private System.Windows.Forms.DataGridViewImageColumn colView;
         private System.Windows.Forms.DataGridViewImageColumn colDelete;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblPageInfo;
+        private FontAwesome.Sharp.IconButton btnNextPage;
+        private FontAwesome.Sharp.IconButton btnPrevPage;
     }
 }
