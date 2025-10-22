@@ -35,6 +35,11 @@ namespace Sistema_Gimnasio
 
         private readonly MembershipService membershipService = new MembershipService();
 
+        // Paginación
+        private int currentPage = 1;
+        private int pageSize = 20; // puedes ajustar este valor o exponerlo
+        private int totalPages = 1;
+
         
 
         // Constructor: se ejecuta al crear el control.
@@ -55,9 +60,9 @@ namespace Sistema_Gimnasio
             CBStatus.SelectedIndex = 0; // Todos
             CBMembership.SelectedIndex = 0; // Todos
 
-            CBStatus.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar el estado.
-            CBMembership.SelectedIndexChanged += (s, e) => ApplyFilters(); // Filtra al cambiar la membresía.
-            TSearchPartner.TextChanged += (s, e) => ApplyFilters(); // Filtra al escribir en la caja de búsqueda.
+            CBStatus.SelectedIndexChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al cambiar el estado.
+            CBMembership.SelectedIndexChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al cambiar la membresía.
+            TSearchPartner.TextChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al escribir en la caja de búsqueda.
 
             TSearchPartner.GotFocus += (s, e) => {
                 if (TSearchPartner.Text == "Buscar socio...")
@@ -93,6 +98,9 @@ namespace Sistema_Gimnasio
                     }).ToList();
             BoardMember.AutoGenerateColumns = false; // No generar columnas automáticamente
             BoardMember.DataSource = partnersList;
+
+            // Reiniciar paginación al cargar todos
+            currentPage = 1;
             ApplyFilters(); // Muestra según filtros actuales
         }
 
@@ -328,7 +336,7 @@ namespace Sistema_Gimnasio
             bool WantAllM = m.Equals("Todos", StringComparison.OrdinalIgnoreCase);
 
             // Filtra la lista según el texto de búsqueda, estado y membresía
-            var view = partnersList.Where(p =>
+            var filtered = partnersList.Where(p =>
                (!hasQuery ||
                    (p.Nombre ?? "").ToLower().Contains(query) ||
                    (p.Apellido ?? "").ToLower().Contains(query) ||
@@ -337,10 +345,46 @@ namespace Sistema_Gimnasio
                (WantAllM || (WantVigente && p.EstadoMembresia) || (WantVencida && !p.EstadoMembresia))
            ).ToList();
 
+            // Calcula paginación
+            totalPages = Math.Max(1, (int)Math.Ceiling((double)filtered.Count / pageSize));
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            var paged = filtered.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
             // Actualiza el datasource de la grilla
             BoardMember.DataSource = null;
-            BoardMember.DataSource = view;
+            BoardMember.DataSource = paged;
 
+            // Actualiza controles de paginación si existen
+            try
+            {
+                if (lblPageInfo != null)
+                    lblPageInfo.Text = $"Página {currentPage} de {totalPages}";
+                if (btnPrevPage != null)
+                    btnPrevPage.Enabled = currentPage > 1;
+                if (btnNextPage != null)
+                    btnNextPage.Enabled = currentPage < totalPages;
+            }
+            catch { }
+        }
+
+        private void btnPrevPage_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                ApplyFilters();
+            }
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                ApplyFilters();
+            }
         }
 
         private void BuildAcl()
