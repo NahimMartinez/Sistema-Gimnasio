@@ -23,6 +23,20 @@ namespace Data
                 return cn.Query<MembershipType>(sql).ToList();
         }
 
+        public bool InactiveMembership(int socioId)
+        {
+            const string sql = @"
+                SELECT TOP 1 estado
+                FROM membresia
+                WHERE socio_id = @IdSocio
+                ORDER BY fecha_inicio DESC;";
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                int estado = cn.QuerySingle<int>(sql, new { IdSocio = socioId });
+                return estado == 0;
+            }
+        }
+
         // Trae todas las membresías con su tipo y clases asociadas
         public List<dynamic> GetAllMembershipsForView()
         {

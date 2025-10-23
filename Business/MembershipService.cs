@@ -19,7 +19,10 @@ namespace Business
         {
             return membershipRepository.GetMembershipType();
         }
-
+        public bool InactiveMembershipService(int socioId)
+        {
+            return membershipRepository.InactiveMembership(socioId);
+        }
         public (int membresiaId, int pagoId) Register(
         int socioId,
         int usuarioId,

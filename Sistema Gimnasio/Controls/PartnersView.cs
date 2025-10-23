@@ -408,15 +408,25 @@ namespace Sistema_Gimnasio
         {
             if (BoardMember.SelectedRows == null) return;
             int idRow = Convert.ToInt32(BoardMember.CurrentRow.Cells["idPartner"].Value);
-            using (var fMembership = new MembershipForm(idRow))
+            bool inactive = membershipService.InactiveMembershipService(idRow);
+            if (inactive)
+            {                
+                using (var fMembership = new MembershipForm(idRow))
+                {
+                    // Muestra el formulario como un cuadro de diálogo
+                    if (fMembership.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
+                    }
+                }
+            }
+            else
             {
-               // Muestra el formulario como un cuadro de diálogo
-               if (fMembership.ShowDialog() == DialogResult.OK)
-               {
-                   LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
-               }
-            }          
-            
+                MessageBox.Show("La membresía seleccionada aún está vigente.","Información",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+                );
+            }
         }
 
         private void BoardMember_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -431,7 +441,7 @@ namespace Sistema_Gimnasio
             if (item == null) return;
 
             bool activa = item.EstadoMembresia;
-            string texto = activa ? "Activa" : "Vencida";
+            string texto = activa ? "Vigente" : "Vencida";
 
             Color back = activa ? Color.LightGreen : Color.LightCoral;
             Color border = activa ? Color.SeaGreen : Color.Firebrick;
