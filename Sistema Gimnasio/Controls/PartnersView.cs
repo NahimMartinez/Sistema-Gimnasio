@@ -260,8 +260,7 @@ namespace Sistema_Gimnasio
             }
             else if (col == "colDelete")
             {
-                var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;
-                var cell = BoardMember.Rows[e.RowIndex].Cells["status"].Value?.ToString().Trim();
+                var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;                
                 
                 var row = BoardMember.Rows[e.RowIndex];
                 if (row == null) return;

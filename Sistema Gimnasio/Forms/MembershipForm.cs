@@ -29,8 +29,7 @@ namespace Sistema_Gimnasio.Forms
         private readonly PaymentService paymentService = new PaymentService();
         private readonly PartnerService partnerService = new PartnerService();
         private bool fReady;
-        private readonly int currentPartnerId;
-        private readonly int currentUserId;
+        private readonly int currentPartnerId;        
         private Partner currentPartner;
         private Person currentPerson;
 
