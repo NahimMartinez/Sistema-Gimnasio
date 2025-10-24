@@ -224,97 +224,124 @@ namespace Sistema_Gimnasio
 
         }
 
-        // Evento que se ejecuta al hacer clic en una celda de la tabla.
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; // Ignora clics fuera de las filas de datos            
-            var col = BoardMember.Columns[e.ColumnIndex].Name; // Obtiene la columna clickeada
-            var dniCell = BoardMember.Rows[e.RowIndex].Cells["dni"].Value.ToString();
+            // 1. Validar que el clic fue en una fila de datos válida (no en la cabecera)
+            if (e.RowIndex < 0) return;
 
-            if (col == "colEdit")
+            // 2. Obtener la fila y el objeto de datos del socio correspondiente
+            var row = BoardMember.Rows[e.RowIndex];
+            var partnerData = row.DataBoundItem as PartnerDataGrid;
+            if (partnerData == null) return;
+
+            // 3. Obtener el nombre de la columna en la que se hizo clic
+            var columnName = BoardMember.Columns[e.ColumnIndex].Name;
+
+            // 4. Ejecutar la acción correspondiente a la columna
+            try
             {
-                // Obtener el DNI del usuario seleccionado
-                ; 
-                var parRepo = new PartnerRepository();
-                // Obtener el usuario completo
-                var partner = parRepo.GetByDni(dniCell);
-                // Abrir el formulario en modo edición
-                using (var fEditUser = new AddMemberForm(partner, false))
+                switch (columnName)
                 {
-                    if (fEditUser.ShowDialog() == DialogResult.OK)
-                    {
-                        // Recargar la grilla después de editar
-                        LoadPartners();
-                    }
+                    case "colEdit":
+                        var partnerRepoEdit = new PartnerRepository();
+                        var partnerToEdit = partnerRepoEdit.GetByDni(partnerData.Dni);
+                        if (partnerToEdit == null)
+                        {
+                            MessageBox.Show("No se encontró al socio para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        using (var formEditPartner = new AddMemberForm(partnerToEdit, false))
+                        {
+                            if (formEditPartner.ShowDialog() == DialogResult.OK)
+                            {
+                                LoadPartners(); // Recargar la grilla si se guardaron cambios
+                            }
+                        }
+                        break;
+
+                    case "colView":
+                        var partnerRepoView = new PartnerRepository();
+                        var partnerToView = partnerRepoView.GetByDni(partnerData.Dni);
+                        if (partnerToView == null)
+                        {
+                            MessageBox.Show("No se encontró al socio para visualizar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        using (var formViewPartner = new AddMemberForm(partnerToView, true))
+                        {
+                            formViewPartner.ShowDialog();
+                        }
+                        break;
+
+                    case "colDelete":
+                        string actionText = partnerData.Estado ? "desactivar" : "activar";
+                        var confirmationResult = MessageBox.Show(string.Format("¿Está seguro que desea {0} al socio '{1} {2}'?", actionText, partnerData.Nombre, partnerData.Apellido),
+                                                                 "Confirmar " + actionText,
+                                                                 MessageBoxButtons.YesNo,
+                                                                 partnerData.Estado ? MessageBoxIcon.Warning : MessageBoxIcon.Question);
+
+                        if (confirmationResult == DialogResult.Yes)
+                        {
+                            var partnerRepoToggle = new PartnerRepository();
+                            int result = 0;
+                            if (partnerData.Estado)
+                            {
+                                result = partnerRepoToggle.DisablePartner(partnerData.Dni);
+                            }
+                            else
+                            {
+                                result = partnerRepoToggle.EnablePartner(partnerData.Dni);
+                            }
+
+                            if (result == 0) MessageBox.Show(string.Format("No se pudo {0} al socio.", actionText), "Operación Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            LoadPartners(); // Recargar siempre para reflejar el cambio
+                        }
+                        break;
+
+                    case "colViewPdf":
+                        // Llama al servicio que genera TODOS los PDFs para el Id del socio.
+                        var paymentService = new PaymentService();
+
+                        using (var fbd = new FolderBrowserDialog())
+                        {
+                            fbd.Description = "Seleccione la carpeta donde se guardarán los comprobantes del socio.";
+                            if (fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                            {
+                                try
+                                {
+                                    int generated = paymentService.GenerateAllPaymentReceiptsForPartner(partnerData.IdPersona, fbd.SelectedPath);
+
+                                    if (generated == 0)
+                                    {
+                                        MessageBox.Show("No se generaron comprobantes para este socio.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"{generated} comprobante(s) fueron generados exitosamente en la carpeta seleccionada.", "Proceso Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"Ocurrió un error al generar los comprobantes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Debug.WriteLine("Error al generar comprobantes de pago: " + ex);
+                                }
+                            }
+                        }
+                        break;
                 }
             }
-            else if (col == "colView")
+            catch (Exception ex)
             {
-                var parRepo = new PartnerRepository();
-                var partner = parRepo.GetByDni(dniCell);
-                using (var fViewUser = new AddMemberForm(partner, true)) // true para modo solo lectura
-                {
-                    fViewUser.ShowDialog(); // Solo mostrar, no editar
-                }
-
-            }
-            else if (col == "colDelete")
-            {
-                var name = BoardMember.Rows[e.RowIndex].Cells["name"].Value;                
-                
-                var row = BoardMember.Rows[e.RowIndex];
-                if (row == null) return;
-
-                var p = row.DataBoundItem as PartnerDataGrid;
-                if (p == null) return;
-
-                bool s = p.Estado;
-                var repo = new PartnerRepository();
-                if (s)
-                {
-                    var confirm = MessageBox.Show($"¿Está seguro que desea desactivar el socio '{name}'?", "Confirmar desactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (confirm == DialogResult.Yes)
-                    {
-
-                        var repoD = repo.DisablePartner(dniCell);
-                        if (repoD == 0) MessageBox.Show("No se realizó la baja. Puede estar ya inactivo o no existe.");
-                        LoadPartners();
-
-                    }
-                }
-                else
-                {
-                    var confirm = MessageBox.Show($"¿Está seguro que desea activar el socio '{name}'?", "Confirmar activación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirm == DialogResult.Yes)
-                    {
-                        var repoE = repo.EnablePartner(dniCell);
-                        if (repoE == 0) MessageBox.Show("No se realizó la activación. Puede estar ya activo o no existe.");
-                        LoadPartners();
-                    }
-                }
-            }
-            else if (col == "colViewPdf")
-            {
-                var row = BoardMember.Rows[e.RowIndex];
-                var p = row.DataBoundItem as PartnerDataGrid;
-                if (p == null) return;
-
-                var paymentService = new PaymentService();
-
-                
-                var lastPayment = paymentService.GetLastPaymentPartnerService(p.IdPersona);
-                try
-                {
-                    paymentService.GenerateReceipt(lastPayment, autoPrint: true);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("Error en imprimir el pdf: " + ex.Message);
-                }
+                // Un manejador de errores central para cualquier excepción inesperada.
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Debug.WriteLine("Error en BoardMember_CellClick: " + ex.ToString());
             }
         }
-        
-        
+
+
 
         // Aplica los filtros de búsqueda, estado y membresía a la lista de socios y actualiza la tabla.
         private void ApplyFilters()

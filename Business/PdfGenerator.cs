@@ -165,5 +165,88 @@ namespace Business
             return filePath;
 
         }
+
+        //sobrecarga del metodo para usarlo desde instancias
+        public void GeneratePaymentReceipt(string filePath, int pagoId, string socioNombre, string nameMembership, DateTime fecha, decimal total, IList<PaymentPdfDetail> detalles)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
+
+                    var fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18);
+                    var fontHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
+                    var fontSub = FontFactory.GetFont(FontFactory.HELVETICA, 11);
+                    var fontTableHeader = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.WHITE);
+                    var fontTableCell = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+                    var fontTotal = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
+
+                    // --- Título ---
+                    Paragraph title = new Paragraph("Comprobante de Pago", fontTitle);
+                    title.Alignment = Element.ALIGN_CENTER;
+                    title.SpacingAfter = 20f;
+                    doc.Add(title);
+
+                    // --- Tabla de Información ---
+                    PdfPTable infoTable = new PdfPTable(2);
+                    infoTable.WidthPercentage = 100;
+                    infoTable.SetWidths(new float[] { 1f, 3f });
+                    infoTable.DefaultCell.Border = Rectangle.NO_BORDER;
+
+                    infoTable.AddCell(new Phrase("Pago N°:", fontHeader));
+                    infoTable.AddCell(new Phrase(pagoId.ToString(), fontSub));
+                    infoTable.AddCell(new Phrase("Socio:", fontHeader));
+                    infoTable.AddCell(new Phrase(socioNombre, fontSub));
+                    infoTable.AddCell(new Phrase("Membresía:", fontHeader));
+                    infoTable.AddCell(new Phrase(nameMembership, fontSub));
+                    infoTable.AddCell(new Phrase("Fecha:", fontHeader));
+                    infoTable.AddCell(new Phrase(fecha.ToString("dd/MM/yyyy"), fontSub));
+
+                    infoTable.SpacingAfter = 25f;
+                    doc.Add(infoTable);
+
+                    // --- Tabla de Detalles ---
+                    PdfPTable table = new PdfPTable(2);
+                    table.WidthPercentage = 100;
+                    table.SetWidths(new float[] { 3f, 1f });
+
+                    PdfPCell h1 = new PdfPCell(new Phrase("Clase", fontTableHeader)) { BackgroundColor = new BaseColor(60, 60, 60), HorizontalAlignment = Element.ALIGN_CENTER, Padding = 5f };
+                    PdfPCell h2 = new PdfPCell(new Phrase("Monto por dia", fontTableHeader)) { BackgroundColor = new BaseColor(60, 60, 60), HorizontalAlignment = Element.ALIGN_CENTER, Padding = 5f };
+                    table.AddCell(h1);
+                    table.AddCell(h2);
+
+                    foreach (var d in detalles)
+                    {
+                        table.AddCell(new Phrase(d.ClaseNombre, fontTableCell));
+                        PdfPCell amountCell = new PdfPCell(new Phrase($"${d.Monto:F2}", fontTableCell)) { HorizontalAlignment = Element.ALIGN_RIGHT };
+                        table.AddCell(amountCell);
+                    }
+
+                    // --- Total ---
+                    PdfPCell totalLabel = new PdfPCell(new Phrase("Total", fontTotal)) { HorizontalAlignment = Element.ALIGN_RIGHT, Border = Rectangle.NO_BORDER, PaddingTop = 8f, PaddingRight = 10f };
+                    PdfPCell totalValue = new PdfPCell(new Phrase($"${total:F2}", fontTotal)) { HorizontalAlignment = Element.ALIGN_RIGHT, Border = Rectangle.NO_BORDER, PaddingTop = 8f };
+                    table.AddCell(totalLabel);
+                    table.AddCell(totalValue);
+
+                    doc.Add(table);
+                    doc.Add(new Paragraph(" "));
+
+                    // --- Pie de Página ---
+                    var line = new iTextSharp.text.pdf.draw.LineSeparator(1f, 100f, BaseColor.GRAY, Element.ALIGN_CENTER, -1f);
+                    doc.Add(new Chunk(line));
+                    Paragraph footer = new Paragraph("\nGracias por su pago.", fontSub) { Alignment = Element.ALIGN_CENTER };
+                    doc.Add(footer);
+
+                    doc.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"No se pudo generar el PDF en la ruta: {filePath}", ex);
+            }
+        }
     }
 }

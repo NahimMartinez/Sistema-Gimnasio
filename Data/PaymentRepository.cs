@@ -161,5 +161,20 @@ namespace Data
             using (var cn = new SqlConnection(Connection.chain))
                 return cn.QueryFirstOrDefault<int>(sql, new { pPartner });
         }
+
+        public List<int> GetAllPaymentIdsByPartner(int partnerId)
+        {
+            // Esta consulta trae todos los IDs de pago para un socio específico, ordenados por fecha.
+            const string sql = @"
+            SELECT id_pago 
+            FROM pago 
+            WHERE socio_id = @IdSocio 
+            ORDER BY fecha;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<int>(sql, new { IdSocio = partnerId }).ToList();
+            }
+        }
     }
 }
