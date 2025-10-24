@@ -166,10 +166,13 @@ namespace Data
         {
             // Esta consulta trae todos los IDs de pago para un socio específico, ordenados por fecha.
             const string sql = @"
-            SELECT id_pago 
-            FROM pago 
-            WHERE socio_id = @IdSocio 
-            ORDER BY fecha;";
+            SELECT p.id_pago
+            FROM pago p
+            INNER JOIN pago_detalle dp ON p.id_pago = dp.pago_id
+            INNER JOIN membresia m ON dp.membresia_id = m.id_membresia
+            WHERE p.socio_id = @IdSocio AND m.estado = 1
+            GROUP BY p.id_pago, p.fecha
+            ORDER BY p.fecha;";
 
             using (var cn = new SqlConnection(Connection.chain))
             {
