@@ -71,18 +71,21 @@ namespace Data
                     p.dni AS Dni,
                     p.telefono AS Telefono, 
                     tm.nombre AS Membresia,
-                    m.estado AS 'EstadoMembresia',
-                    DATEADD(DAY, tm.duracion_dias, m.fecha_inicio) AS FechaVencimiento,
+                    msel.estado AS 'EstadoMembresia',
+                    DATEADD(DAY, tm.duracion_dias, msel.fecha_inicio) AS FechaVencimiento,
                     p.estado AS Estado
                 FROM persona p
                 JOIN socio s ON p.id_persona = s.id_socio
-                LEFT JOIN membresia m ON m.id_membresia = (
-                  SELECT TOP 1 id_membresia
-                  FROM membresia
-                  WHERE socio_id = s.id_socio
-                  ORDER BY fecha_inicio DESC, id_membresia DESC
-                )                
-                LEFT JOIN membresia_tipo tm ON m.tipo_id = tm.id_tipo;";
+                OUTER APPLY (
+                    SELECT TOP 1 m.*
+                    FROM membresia m
+                    WHERE m.socio_id = s.id_socio
+                    ORDER BY 
+                        CASE WHEN m.estado = 1 THEN 0 ELSE 1 END,
+                        m.fecha_inicio DESC,
+                        m.id_membresia DESC
+                ) mSel             
+                LEFT JOIN membresia_tipo tm ON msel.tipo_id = tm.id_tipo;";
 
             using (var cn = new SqlConnection(Connection.chain))
             {
