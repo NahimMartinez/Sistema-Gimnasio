@@ -194,5 +194,21 @@ namespace Data
             return classIdsToRelease;
         }
 
+        public List<int> GetActiveClassesByPartner(int partnerId)
+        {
+            const string sql = @"
+        SELECT DISTINCT c.id_clase
+        FROM membresia m
+        JOIN membresia_clase mc ON mc.membresia_id = m.id_membresia
+        JOIN clase c ON c.id_clase = mc.clase_id
+        WHERE m.socio_id = @partnerId
+          AND m.estado = 1;";
+
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<int>(sql, new { partnerId }).ToList();
+            }
+        }
+
     }
 }

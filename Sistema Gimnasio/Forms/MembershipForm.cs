@@ -96,11 +96,18 @@ namespace Sistema_Gimnasio.Forms
             LTotalSum.Text = total.ToString("0.00");
             return total;
         }
-
-        private void LoadData()
+        private List<dynamic> GetAvailableClasses()
         {
-            var data = classService.GetAllClassesActive();
-            var classMembership = data.Select(c => new 
+            var classes = classService.GetAllClassesActive();
+
+            if (currentPartnerId > 0)
+            {
+                var active = membershipService.GetActiveClassesByPartner(currentPartnerId); // List<int>
+                if (active?.Count > 0)
+                    classes = classes.Where(c => !active.Contains(c.IdClase)).ToList();
+            }
+
+            return classes.Select(c => new
             {
                 c.IdClase,
                 Name = c.NombreActividad,
@@ -108,10 +115,15 @@ namespace Sistema_Gimnasio.Forms
                 Dia = c.Dias,
                 c.Horario,
                 Precio = c.Precio.ToString("0.00"),
-            }).ToList();
+            }).ToList<dynamic>();
+        }
+
+        private void LoadData()
+        {
+            
             
             BoardClass.AutoGenerateColumns = false;
-            BoardClass.DataSource = classMembership;
+            BoardClass.DataSource = GetAvailableClasses();
 
         }
 
@@ -312,17 +324,8 @@ namespace Sistema_Gimnasio.Forms
             if (CBMembership.SelectedItem == null || !(CBMembership.SelectedItem is MembershipType))
                 return;
             MembershipType m = (MembershipType)CBMembership.SelectedItem;
-            var allMembershipClass = classService.GetAllClassesActive().Select(c => new
-            {
-                c.IdClase,
-                Name = c.NombreActividad,
-                Cupo = c.Cupo.ToString(),
-                Dia = c.Dias,
-                c.Horario,
-                Precio = c.Precio.ToString("0.00"),
-            }).ToList();
+            var allMembershipClass = GetAvailableClasses();
 
-            
             if (m.Nombre.Equals("Diario", StringComparison.OrdinalIgnoreCase))
             {
                 var culture = System.Globalization.CultureInfo.GetCultureInfo("es-ES");

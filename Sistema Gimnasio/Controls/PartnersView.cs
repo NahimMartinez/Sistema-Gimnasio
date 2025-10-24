@@ -407,25 +407,15 @@ namespace Sistema_Gimnasio
         {
             if (BoardMember.SelectedRows == null) return;
             int idRow = Convert.ToInt32(BoardMember.CurrentRow.Cells["idPartner"].Value);
-            bool inactive = membershipService.InactiveMembershipService(idRow);
-            if (inactive)
-            {                
-                using (var fMembership = new MembershipForm(idRow))
-                {
-                    // Muestra el formulario como un cuadro de diálogo
-                    if (fMembership.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("La membresía seleccionada aún está vigente.","Información",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-                );
-            }
+             using (var fMembership = new MembershipForm(idRow))
+              {
+                 // Muestra el formulario como un cuadro de diálogo
+                 if (fMembership.ShowDialog() == DialogResult.OK)
+                 {
+                    LoadPartners(); // Recarga la lista de socios si se agregó uno nuevo
+                 }
+              }
+            
         }
 
         private void BoardMember_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

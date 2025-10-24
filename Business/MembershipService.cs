@@ -129,5 +129,10 @@ namespace Business
                 }
             }
         }
+
+        public List<int> GetActiveClassesByPartner(int pPartnerId)
+        {
+            return membershipRepository.GetActiveClassesByPartner(pPartnerId);
+        }
     }
 }
