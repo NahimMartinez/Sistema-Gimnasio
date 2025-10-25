@@ -82,15 +82,15 @@ namespace Business
         }
 
         public (int personaId, int socioId, int membresiaId, int pagoId) RegisterFull(
-    Person persona,
-    Partner socio,
-    int usuarioId,
-    int tipoMembresiaId,
-    int tipoPagoId,
-    IEnumerable<int> clasesIds,
-    DateTime fechaInicio,
-    int duracionDias,
-    decimal total)
+        Person persona,
+        Partner socio,
+        int usuarioId,
+        int tipoMembresiaId,
+        int tipoPagoId,
+        IEnumerable<int> clasesIds,
+        DateTime fechaInicio,
+        int duracionDias,
+        decimal total)
         {
             using (var cn = new SqlConnection(Connection.chain))
             {

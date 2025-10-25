@@ -30,14 +30,14 @@ namespace Sistema_Gimnasio
 
         // Diccionario que asocia columnas de la tabla con roles para control de acceso (ACL)
         private readonly Dictionary<DataGridViewColumn, Roles> Acl = new Dictionary<DataGridViewColumn, Roles>();
-        // Lista que almacena la información de los socios (simulada en este ejemplo)
+        // Lista que almacena la información de los socios
         private List<PartnerDataGrid> partnersList = new List<PartnerDataGrid>();
 
         private readonly MembershipService membershipService = new MembershipService();
 
         // Paginación
         private int currentPage = 1;
-        private int pageSize = 20; // puedes ajustar este valor o exponerlo
+        private int pageSize = 20; 
         private int totalPages = 1;
 
         
@@ -187,7 +187,7 @@ namespace Sistema_Gimnasio
                     Person newPerson = fNewItem.NewPerson;
                     Partner newPartner = fNewItem.NewPartner;
 
-                    // --- PASO 2: Asignar membresía y clases ---
+                    // Asignar membresía y clases
                     // Abrimos el segundo formulario, pasándole los datos del primero.
                     using (var fMembership = new MembershipForm(newPerson, newPartner))
                     {
@@ -337,7 +337,7 @@ namespace Sistema_Gimnasio
             {
                 // Un manejador de errores central para cualquier excepción inesperada.
                 MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Debug.WriteLine("Error en BoardMember_CellClick: " + ex.ToString());
+                Debug.WriteLine("Error en Datagrid: " + ex.ToString());
             }
         }
 
