@@ -1,6 +1,7 @@
 ﻿using Business;
 using Entities;
 using System;
+using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
@@ -10,6 +11,7 @@ namespace Sistema_Gimnasio
     {
         private readonly Partner editingPartner = null;
         private readonly PartnerService partnerService = new PartnerService();
+        private readonly PersonService personService = new PersonService();
 
         // Propiedades públicas para que el formulario que lo llama pueda recoger los datos.
         public Person NewPerson { get; private set; }
@@ -26,6 +28,9 @@ namespace Sistema_Gimnasio
             TLastName.KeyPress += TLastName_KeyPress;
             TDni.KeyPress += TDni_KeyPress;
             TPhone.KeyPress += TPhone_KeyPress;
+            this.TDni.Leave += new EventHandler(this.TDni_Leave);
+            this.TEmail.Leave += new EventHandler(this.TEmail_Leave);
+            this.TPhone.Leave += new EventHandler(this.TPhone_Leave);
 
             if (partnerEdit != null)
             {
@@ -61,6 +66,7 @@ namespace Sistema_Gimnasio
             {
                 if (editingPartner == null) // MODO CREAR
                 {
+                   
                     // 1. Creamos los objetos con los datos del formulario.
                     NewPerson = new Person()
                     {
@@ -104,6 +110,65 @@ namespace Sistema_Gimnasio
                 MessageBox.Show($"Ocurrió un error. {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void TDni_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string dni = TDni.Text.Trim();
+                if (personService.ExistsDni(dni))
+                {
+                    MessageBox.Show("El DNI ya está registrado.", "Duplicado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TDni.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar DNI: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TEmail_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string email = TEmail.Text.Trim();
+                if (personService.ExistsEmail(email))
+                {
+                    MessageBox.Show("El correo electrónico ya está registrado.", "Duplicado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TEmail.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar correo electrónico: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void TPhone_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string phone = TPhone.Text.Trim();
+                if (personService.ExistsPhone(phone))
+                {
+                    MessageBox.Show("El teléfono ya está registrado.", "Duplicado",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TPhone.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar teléfono: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void BClean_Click(object sender, EventArgs e)
         {

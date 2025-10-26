@@ -133,5 +133,28 @@ namespace Data
             using (var cn = new SqlConnection(Connection.chain))
                 return cn.QuerySingle<int>(sql, new { Telefono = telefono, ExcludeId = excludeId }) > 0;
         }
+
+        public bool ExistsDni(string dni)
+        {
+            const string sql = "SELECT COUNT(1) FROM persona WHERE dni = @Dni";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.QuerySingle<int>(sql, new { Dni = dni }) > 0;
+        }
+
+        public bool ExistsEmail(string email)
+        {
+            const string sql = "SELECT COUNT(1) FROM persona WHERE email = @Email";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.QuerySingle<int>(sql, new { Email = email}) > 0;
+        }
+        public bool ExistsPhone(string phone)
+        {
+            const string sql = "SELECT COUNT(1) FROM persona WHERE telefono = @Telefono";
+            using (var cn = new SqlConnection(Connection.chain))
+                return cn.QuerySingle<int>(sql, new { Telefono = phone }) > 0;
+        }
+
+
+
     }
 }

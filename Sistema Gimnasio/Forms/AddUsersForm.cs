@@ -247,6 +247,8 @@ namespace Sistema_Gimnasio
             {
                 if (editingUser == null)
                 {
+
+
                     // Crear nuevo usuario (se hashea automáticamente)
                     var newPerson = new Person()
                     {
