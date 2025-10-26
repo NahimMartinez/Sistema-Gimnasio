@@ -49,7 +49,7 @@ namespace Sistema_Gimnasio
             WireFilters(); // Configura los filtros de búsqueda y estado.            
             BoardMember.CellClick += BoardMember_CellClick;
             SetupActionIcons(); // Configura los iconos de acción (editar, ver, eliminar).
-            this.Load += PartnersView_Load;
+            this.Load += PartnersView_Load; 
             BoardMember.CellPainting += BoardMember_CellPainting;
             
 
@@ -60,10 +60,12 @@ namespace Sistema_Gimnasio
             CBStatus.SelectedIndex = 0; // Todos
             CBMembership.SelectedIndex = 0; // Todos
 
+            // Si cambian los combosbox o el texto, resetea a página 1 y vuelve a filtrar.
             CBStatus.SelectedIndexChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al cambiar el estado.
             CBMembership.SelectedIndexChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al cambiar la membresía.
             TSearchPartner.TextChanged += (s, e) => { currentPage = 1; ApplyFilters(); }; // Filtra al escribir en la caja de búsqueda.
 
+            // Placeholder simple para la caja de texto.
             TSearchPartner.GotFocus += (s, e) => {
                 if (TSearchPartner.Text == "Buscar socio...")
                 {
@@ -123,7 +125,7 @@ namespace Sistema_Gimnasio
             // Evento para mostrar los iconos en las celdas de acción.
             BoardMember.CellFormatting += (s, e) =>
             {
-                if (e.RowIndex < 0) return;
+                if (e.RowIndex < 0) return; //Ignora encabezados
                 var colName = BoardMember.Columns[e.ColumnIndex].Name;
 
                 // Íconos fijos
@@ -153,11 +155,13 @@ namespace Sistema_Gimnasio
                     var row = BoardMember.Rows[e.RowIndex];
                     if (!activo)
                     {
+                        //Colores para inactivo
                         row.DefaultCellStyle.BackColor = Color.MistyRose;
                         row.DefaultCellStyle.ForeColor = Color.DarkRed;
                     }
                     else
                     {
+                        // Colores por defecto para activo
                         row.DefaultCellStyle.BackColor = BoardMember.DefaultCellStyle.BackColor;
                         row.DefaultCellStyle.ForeColor = BoardMember.DefaultCellStyle.ForeColor;
                         row.DefaultCellStyle.SelectionBackColor = BoardMember.DefaultCellStyle.SelectionBackColor;
@@ -214,6 +218,7 @@ namespace Sistema_Gimnasio
             }
             try
             {
+                //Actualiza las membresías vencidas al cargar la vista
                 membershipService.synchronizeMembership();
             }
             catch (Exception ex)
@@ -226,18 +231,18 @@ namespace Sistema_Gimnasio
 
         private void BoardMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Validar que el clic fue en una fila de datos válida (no en la cabecera)
+            //Validar que el clic fue en una fila de datos válida (no en la cabecera)
             if (e.RowIndex < 0) return;
 
-            // 2. Obtener la fila y el objeto de datos del socio correspondiente
+            //Obtener la fila y el objeto de datos del socio correspondiente
             var row = BoardMember.Rows[e.RowIndex];
             var partnerData = row.DataBoundItem as PartnerDataGrid;
             if (partnerData == null) return;
 
-            // 3. Obtener el nombre de la columna en la que se hizo clic
+            //Obtener el nombre de la columna en la que se hizo clic
             var columnName = BoardMember.Columns[e.ColumnIndex].Name;
 
-            // 4. Ejecutar la acción correspondiente a la columna
+            //Ejecutar la acción correspondiente a la columna
             try
             {
                 switch (columnName)
