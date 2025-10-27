@@ -216,7 +216,7 @@ namespace Data
                 INNER JOIN
                     socio s ON m.socio_id = s.id_socio
                 WHERE
-                    c.estado = 1
+                    c.estado = 1 AND m.estado = 1
                 GROUP BY
                     a.nombre
                 ORDER BY
