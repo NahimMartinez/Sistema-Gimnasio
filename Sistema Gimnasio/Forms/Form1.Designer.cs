@@ -46,7 +46,7 @@ namespace Sistema_Gimnasio
             this.PanelUser = new System.Windows.Forms.Panel();
             this.LRole = new System.Windows.Forms.Label();
             this.LUser = new System.Windows.Forms.Label();
-            this.PUser = new System.Windows.Forms.PictureBox();
+            this.PUser = new FontAwesome.Sharp.IconPictureBox();
             this.PanelBrand = new System.Windows.Forms.Panel();
             this.LBrand2 = new System.Windows.Forms.Label();
             this.LogoDot = new FontAwesome.Sharp.IconPictureBox();
@@ -423,7 +423,7 @@ namespace Sistema_Gimnasio
         private FontAwesome.Sharp.IconButton BInventory;
         private FontAwesome.Sharp.IconButton BReports;
         private System.Windows.Forms.Panel PanelUser;
-        private System.Windows.Forms.PictureBox PUser;
+        private FontAwesome.Sharp.IconPictureBox PUser;
         private System.Windows.Forms.Label LUser;
         private System.Windows.Forms.Label LRole;
         private System.Windows.Forms.Label LBrand2;
