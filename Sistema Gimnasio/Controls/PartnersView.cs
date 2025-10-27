@@ -468,7 +468,7 @@ namespace Sistema_Gimnasio
             Color border = activa ? Color.SeaGreen : Color.Firebrick;
             Color text = Color.Black;
 
-            var rect = new Rectangle(e.CellBounds.X + 8, e.CellBounds.Y + 6, e.CellBounds.Width - 40, e.CellBounds.Height - 20);
+            var rect = new Rectangle(e.CellBounds.X + 8, e.CellBounds.Y + 6, e.CellBounds.Width - 40, e.CellBounds.Height - 10);
             int r = 10; int d = r * 2;
 
             using (var path = new GraphicsPath())
