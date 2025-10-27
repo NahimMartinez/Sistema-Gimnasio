@@ -31,24 +31,7 @@ namespace Business
                 var fontTableCell = FontFactory.GetFont(FontFactory.HELVETICA, 10); // Un poco más pequeño para más espacio
                 var fontTotal = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
 
-                // --- 1. MEJORA: Logotipo y Título ---
-                // Intenta cargar un logo. Si no existe, simplemente lo omite.
-                try
-                {
-                    // Cambia "path/to/your/logo.png" por la ruta real de tu logo
-                    string logoPath = "path/to/your/logo.png";
-                    if (File.Exists(logoPath))
-                    {
-                        Image logo = Image.GetInstance(logoPath);
-                        logo.ScaleToFit(120f, 60f); // Ajusta el tamaño
-                        logo.Alignment = Element.ALIGN_RIGHT;
-                        doc.Add(logo);
-                    }
-                }
-                catch (Exception)
-                {
-                    // Opcional: registrar el error si el logo no se carga
-                }
+                
 
                 Paragraph title = new Paragraph("Comprobante de Pago", fontTitle);
                 title.Alignment = Element.ALIGN_CENTER;

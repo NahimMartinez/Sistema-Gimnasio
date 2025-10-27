@@ -64,7 +64,7 @@
             this.LTilteSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTilteSupplier.Location = new System.Drawing.Point(15, 12);
             this.LTilteSupplier.Name = "LTilteSupplier";
-            this.LTilteSupplier.Size = new System.Drawing.Size(118, 25);
+            this.LTilteSupplier.Size = new System.Drawing.Size(149, 32);
             this.LTilteSupplier.TabIndex = 0;
             this.LTilteSupplier.Text = "Proveedores";
             // 
@@ -181,7 +181,9 @@
             // 
             // typeSupplier
             // 
+            this.typeSupplier.MinimumWidth = 6;
             this.typeSupplier.Name = "typeSupplier";
+            this.typeSupplier.Width = 125;
             // 
             // TSearchSupplier
             // 
@@ -191,7 +193,7 @@
             this.TSearchSupplier.ForeColor = System.Drawing.Color.Gray;
             this.TSearchSupplier.Location = new System.Drawing.Point(15, 66);
             this.TSearchSupplier.Name = "TSearchSupplier";
-            this.TSearchSupplier.Size = new System.Drawing.Size(145, 23);
+            this.TSearchSupplier.Size = new System.Drawing.Size(145, 27);
             this.TSearchSupplier.TabIndex = 2;
             this.TSearchSupplier.Text = "Buscar proveedor...";
             // 
@@ -241,7 +243,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(166, 65);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 7;
             // 
             // LStatus
@@ -251,7 +253,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(163, 47);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 8;
             this.LStatus.Text = "Estado";
             // 
@@ -260,7 +262,7 @@
             this.BSearchPurcharse.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BSearchPurcharse.Location = new System.Drawing.Point(15, 330);
             this.BSearchPurcharse.Name = "BSearchPurcharse";
-            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 20);
+            this.BSearchPurcharse.Size = new System.Drawing.Size(145, 22);
             this.BSearchPurcharse.TabIndex = 9;
             this.BSearchPurcharse.Text = "Buscar Orden de Compra...";
             // 
@@ -281,9 +283,9 @@
             this.lblPageInfo.AutoSize = true;
             this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Location = new System.Drawing.Point(490, 4);
             this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.Size = new System.Drawing.Size(196, 41);
             this.lblPageInfo.TabIndex = 12;
             this.lblPageInfo.Text = "Página 1 de 1";
             // 

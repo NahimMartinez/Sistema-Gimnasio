@@ -65,7 +65,7 @@
             this.LTituloInventaryManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloInventaryManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloInventaryManagment.Name = "LTituloInventaryManagment";
-            this.LTituloInventaryManagment.Size = new System.Drawing.Size(196, 25);
+            this.LTituloInventaryManagment.Size = new System.Drawing.Size(249, 32);
             this.LTituloInventaryManagment.TabIndex = 0;
             this.LTituloInventaryManagment.Text = "Gestión de Inventario";
             // 
@@ -208,7 +208,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // TSearchInventory
@@ -219,7 +219,7 @@
             this.TSearchInventory.ForeColor = System.Drawing.Color.Gray;
             this.TSearchInventory.Location = new System.Drawing.Point(18, 66);
             this.TSearchInventory.Name = "TSearchInventory";
-            this.TSearchInventory.Size = new System.Drawing.Size(144, 23);
+            this.TSearchInventory.Size = new System.Drawing.Size(144, 27);
             this.TSearchInventory.TabIndex = 5;
             this.TSearchInventory.Text = "Buscar item...";
             // 
@@ -230,7 +230,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -265,7 +265,7 @@
             "Accesorios"});
             this.CBCategoria.Location = new System.Drawing.Point(304, 66);
             this.CBCategoria.Name = "CBCategoria";
-            this.CBCategoria.Size = new System.Drawing.Size(130, 23);
+            this.CBCategoria.Size = new System.Drawing.Size(130, 28);
             this.CBCategoria.TabIndex = 11;
             // 
             // LCategoria
@@ -275,7 +275,7 @@
             this.LCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LCategoria.Location = new System.Drawing.Point(301, 48);
             this.LCategoria.Name = "LCategoria";
-            this.LCategoria.Size = new System.Drawing.Size(58, 15);
+            this.LCategoria.Size = new System.Drawing.Size(74, 20);
             this.LCategoria.TabIndex = 12;
             this.LCategoria.Text = "Categoría";
             // 
@@ -317,9 +317,9 @@
             this.lblPageInfo.AutoSize = true;
             this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Location = new System.Drawing.Point(499, 5);
             this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.Size = new System.Drawing.Size(196, 41);
             this.lblPageInfo.TabIndex = 12;
             this.lblPageInfo.Text = "Página 1 de 1";
             // 
@@ -357,7 +357,7 @@
             // 
             // InventoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.panel2);
