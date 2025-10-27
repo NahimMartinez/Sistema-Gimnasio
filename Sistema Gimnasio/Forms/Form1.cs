@@ -141,6 +141,28 @@ namespace Sistema_Gimnasio
             CurrentUser = username;
             ApplyAcl(CurrentRole); // Recalcula visibilidad de botones según nuevo rol
             UpdateLabels();        // Actualiza etiquetas que muestran usuario y rol
+            UpdateUserIcon();      // Actualiza el ícono del usuario según el rol
+        }
+
+        // Actualiza el ícono del usuario según el rol actual
+        private void UpdateUserIcon()
+        {
+            // 1. Establece un ícono por defecto
+            PUser.IconChar = IconChar.UserCircle; // Ícono neutral
+
+            // 2. Asigna un ícono específico basado en el rol
+            switch (CurrentRole)
+            {
+                case Roles.Admin:
+                    PUser.IconChar = IconChar.UserShield; // Ícono para Administrador
+                    break;
+                case Roles.Recep:
+                    PUser.IconChar = IconChar.ConciergeBell;    // Ícono para Recepcionista
+                    break;
+                case Roles.Coach:
+                    PUser.IconChar = IconChar.ClipboardList;   // Ícono para Coach/Instructor
+                    break;
+            }
         }
 
         // Actualiza las etiquetas de la interfaz con información del usuario actual

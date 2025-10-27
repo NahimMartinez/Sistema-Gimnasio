@@ -39,7 +39,6 @@ namespace Sistema_Gimnasio
             this.BtnUsers = new FontAwesome.Sharp.IconButton();
             this.BtnPartners = new FontAwesome.Sharp.IconButton();
             this.BSupplier = new FontAwesome.Sharp.IconButton();
-            this.BProvList = new System.Windows.Forms.Button();
             this.BActivity = new FontAwesome.Sharp.IconButton();
             this.BInventory = new FontAwesome.Sharp.IconButton();
             this.BReports = new FontAwesome.Sharp.IconButton();
@@ -50,6 +49,7 @@ namespace Sistema_Gimnasio
             this.PanelBrand = new System.Windows.Forms.Panel();
             this.LBrand2 = new System.Windows.Forms.Label();
             this.LogoDot = new FontAwesome.Sharp.IconPictureBox();
+            this.BProvList = new System.Windows.Forms.Button();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.Sidebar.SuspendLayout();
             this.MenuFlow.SuspendLayout();
@@ -111,7 +111,7 @@ namespace Sistema_Gimnasio
             this.BDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.BDashboard.Name = "BDashboard";
             this.BDashboard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BDashboard.Size = new System.Drawing.Size(443, 52);
+            this.BDashboard.Size = new System.Drawing.Size(0, 52);
             this.BDashboard.TabIndex = 0;
             this.BDashboard.Text = "    Dashboard";
             this.BDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -142,7 +142,7 @@ namespace Sistema_Gimnasio
             this.BtnUsers.Margin = new System.Windows.Forms.Padding(4);
             this.BtnUsers.Name = "BtnUsers";
             this.BtnUsers.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BtnUsers.Size = new System.Drawing.Size(443, 52);
+            this.BtnUsers.Size = new System.Drawing.Size(0, 52);
             this.BtnUsers.TabIndex = 1;
             this.BtnUsers.Text = "    Usuarios";
             this.BtnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,7 +167,7 @@ namespace Sistema_Gimnasio
             this.BtnPartners.Margin = new System.Windows.Forms.Padding(4);
             this.BtnPartners.Name = "BtnPartners";
             this.BtnPartners.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BtnPartners.Size = new System.Drawing.Size(443, 52);
+            this.BtnPartners.Size = new System.Drawing.Size(0, 52);
             this.BtnPartners.TabIndex = 2;
             this.BtnPartners.Text = "    Socios";
             this.BtnPartners.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,27 +192,12 @@ namespace Sistema_Gimnasio
             this.BSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.BSupplier.Name = "BSupplier";
             this.BSupplier.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BSupplier.Size = new System.Drawing.Size(443, 52);
+            this.BSupplier.Size = new System.Drawing.Size(0, 52);
             this.BSupplier.TabIndex = 4;
             this.BSupplier.Text = "    Proveedores";
             this.BSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSupplier.UseVisualStyleBackColor = true;
-            // 
-            // BProvList
-            // 
-            this.BProvList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BProvList.FlatAppearance.BorderSize = 0;
-            this.BProvList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BProvList.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.BProvList.ForeColor = System.Drawing.Color.White;
-            this.BProvList.Location = new System.Drawing.Point(0, 0);
-            this.BProvList.Margin = new System.Windows.Forms.Padding(4);
-            this.BProvList.Name = "BProvList";
-            this.BProvList.Size = new System.Drawing.Size(396, 49);
-            this.BProvList.TabIndex = 0;
-            this.BProvList.Text = "             Lista de proveedores";
-            this.BProvList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BActivity
             // 
@@ -228,11 +213,11 @@ namespace Sistema_Gimnasio
             this.BActivity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BActivity.ImageKey = "classes";
             this.BActivity.ImageList = this.MenuIcons;
-            this.BActivity.Location = new System.Drawing.Point(4, 364);
+            this.BActivity.Location = new System.Drawing.Point(4, 254);
             this.BActivity.Margin = new System.Windows.Forms.Padding(4);
             this.BActivity.Name = "BActivity";
             this.BActivity.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BActivity.Size = new System.Drawing.Size(443, 52);
+            this.BActivity.Size = new System.Drawing.Size(0, 52);
             this.BActivity.TabIndex = 5;
             this.BActivity.Text = "    Clases";
             this.BActivity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,11 +238,11 @@ namespace Sistema_Gimnasio
             this.BInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BInventory.ImageKey = "inventory";
             this.BInventory.ImageList = this.MenuIcons;
-            this.BInventory.Location = new System.Drawing.Point(4, 424);
+            this.BInventory.Location = new System.Drawing.Point(4, 314);
             this.BInventory.Margin = new System.Windows.Forms.Padding(4);
             this.BInventory.Name = "BInventory";
             this.BInventory.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BInventory.Size = new System.Drawing.Size(443, 52);
+            this.BInventory.Size = new System.Drawing.Size(0, 52);
             this.BInventory.TabIndex = 6;
             this.BInventory.Text = "    Inventario";
             this.BInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,11 +263,11 @@ namespace Sistema_Gimnasio
             this.BReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BReports.ImageKey = "reports";
             this.BReports.ImageList = this.MenuIcons;
-            this.BReports.Location = new System.Drawing.Point(4, 484);
+            this.BReports.Location = new System.Drawing.Point(4, 374);
             this.BReports.Margin = new System.Windows.Forms.Padding(4);
             this.BReports.Name = "BReports";
             this.BReports.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.BReports.Size = new System.Drawing.Size(443, 52);
+            this.BReports.Size = new System.Drawing.Size(0, 52);
             this.BReports.TabIndex = 7;
             this.BReports.Text = "    Reportes";
             this.BReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -329,6 +314,11 @@ namespace Sistema_Gimnasio
             // 
             // PUser
             // 
+            this.PUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.PUser.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.PUser.IconColor = System.Drawing.Color.White;
+            this.PUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.PUser.IconSize = 43;
             this.PUser.Location = new System.Drawing.Point(20, 30);
             this.PUser.Margin = new System.Windows.Forms.Padding(4);
             this.PUser.Name = "PUser";
@@ -375,6 +365,21 @@ namespace Sistema_Gimnasio
             this.LogoDot.Size = new System.Drawing.Size(39, 36);
             this.LogoDot.TabIndex = 0;
             this.LogoDot.TabStop = false;
+            // 
+            // BProvList
+            // 
+            this.BProvList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BProvList.FlatAppearance.BorderSize = 0;
+            this.BProvList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BProvList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.BProvList.ForeColor = System.Drawing.Color.White;
+            this.BProvList.Location = new System.Drawing.Point(0, 0);
+            this.BProvList.Margin = new System.Windows.Forms.Padding(4);
+            this.BProvList.Name = "BProvList";
+            this.BProvList.Size = new System.Drawing.Size(396, 49);
+            this.BProvList.TabIndex = 0;
+            this.BProvList.Text = "             Lista de proveedores";
+            this.BProvList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // contentPanel
             // 
