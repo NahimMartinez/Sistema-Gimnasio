@@ -120,6 +120,7 @@ namespace Data
                 WHERE 
                     p.estado = 1
                 ORDER BY
+                    p.fecha_alta DESC,
                     p.id_persona DESC;";
 
             using (var cn = new SqlConnection(Connection.chain))
