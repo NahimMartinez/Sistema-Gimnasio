@@ -56,6 +56,10 @@ namespace Sistema_Gimnasio.Controls
                 // Asignamos la lista limpia al DataSource.
                 BoardRecent.DataSource = recentPartnersView;
                 BoardRecent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                BoardRecent.ReadOnly = true;
+                BoardRecent.AllowUserToAddRows = false;
+                BoardRecent.RowHeadersVisible = false;
+                BoardRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
             catch (Exception ex)
             {
