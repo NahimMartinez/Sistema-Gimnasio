@@ -64,7 +64,7 @@
             this.LTituloUserManagment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTituloUserManagment.Location = new System.Drawing.Point(14, 12);
             this.LTituloUserManagment.Name = "LTituloUserManagment";
-            this.LTituloUserManagment.Size = new System.Drawing.Size(181, 25);
+            this.LTituloUserManagment.Size = new System.Drawing.Size(231, 32);
             this.LTituloUserManagment.TabIndex = 0;
             this.LTituloUserManagment.Text = "Gestión de Usuarios";
             // 
@@ -199,7 +199,7 @@
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // TSearch
@@ -210,7 +210,7 @@
             this.TSearch.ForeColor = System.Drawing.Color.Gray;
             this.TSearch.Location = new System.Drawing.Point(18, 66);
             this.TSearch.Name = "TSearch";
-            this.TSearch.Size = new System.Drawing.Size(144, 23);
+            this.TSearch.Size = new System.Drawing.Size(144, 27);
             this.TSearch.TabIndex = 5;
             this.TSearch.Text = "Buscar usuario...";
             // 
@@ -221,7 +221,7 @@
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -275,7 +275,7 @@
             "Recepcionista"});
             this.CBRol.Location = new System.Drawing.Point(304, 66);
             this.CBRol.Name = "CBRol";
-            this.CBRol.Size = new System.Drawing.Size(130, 23);
+            this.CBRol.Size = new System.Drawing.Size(130, 28);
             this.CBRol.TabIndex = 10;
             // 
             // LRol
@@ -285,7 +285,7 @@
             this.LRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LRol.Location = new System.Drawing.Point(301, 48);
             this.LRol.Name = "LRol";
-            this.LRol.Size = new System.Drawing.Size(24, 15);
+            this.LRol.Size = new System.Drawing.Size(31, 20);
             this.LRol.TabIndex = 11;
             this.LRol.Text = "Rol";
             // 
@@ -306,9 +306,9 @@
             this.lblPageInfo.AutoSize = true;
             this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
+            this.lblPageInfo.Location = new System.Drawing.Point(490, 5);
             this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
+            this.lblPageInfo.Size = new System.Drawing.Size(196, 41);
             this.lblPageInfo.TabIndex = 12;
             this.lblPageInfo.Text = "Página 1 de 1";
             // 
@@ -346,7 +346,7 @@
             // 
             // UsersManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.panel2);

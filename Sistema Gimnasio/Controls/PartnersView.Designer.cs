@@ -55,10 +55,10 @@ namespace Sistema_Gimnasio
             this.LMembership = new System.Windows.Forms.Label();
             this.BNewMember = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BRenovation = new FontAwesome.Sharp.IconButton();
             this.lblPageInfo = new System.Windows.Forms.Label();
             this.btnNextPage = new FontAwesome.Sharp.IconButton();
             this.btnPrevPage = new FontAwesome.Sharp.IconButton();
-            this.BRenovation = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.BoardMember)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@ namespace Sistema_Gimnasio
             this.LTiltePartne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.LTiltePartne.Location = new System.Drawing.Point(14, 12);
             this.LTiltePartne.Name = "LTiltePartne";
-            this.LTiltePartne.Size = new System.Drawing.Size(162, 25);
+            this.LTiltePartne.Size = new System.Drawing.Size(206, 32);
             this.LTiltePartne.TabIndex = 0;
             this.LTiltePartne.Text = "Gestión de Socios";
             // 
@@ -253,7 +253,7 @@ namespace Sistema_Gimnasio
             "Inactivo"});
             this.CBStatus.Location = new System.Drawing.Point(168, 66);
             this.CBStatus.Name = "CBStatus";
-            this.CBStatus.Size = new System.Drawing.Size(130, 23);
+            this.CBStatus.Size = new System.Drawing.Size(130, 28);
             this.CBStatus.TabIndex = 2;
             // 
             // CBMembership
@@ -267,7 +267,7 @@ namespace Sistema_Gimnasio
             "Vencida"});
             this.CBMembership.Location = new System.Drawing.Point(304, 66);
             this.CBMembership.Name = "CBMembership";
-            this.CBMembership.Size = new System.Drawing.Size(130, 23);
+            this.CBMembership.Size = new System.Drawing.Size(130, 28);
             this.CBMembership.TabIndex = 3;
             // 
             // TSearchPartner
@@ -278,7 +278,7 @@ namespace Sistema_Gimnasio
             this.TSearchPartner.ForeColor = System.Drawing.Color.Gray;
             this.TSearchPartner.Location = new System.Drawing.Point(18, 66);
             this.TSearchPartner.Name = "TSearchPartner";
-            this.TSearchPartner.Size = new System.Drawing.Size(144, 23);
+            this.TSearchPartner.Size = new System.Drawing.Size(144, 27);
             this.TSearchPartner.TabIndex = 5;
             this.TSearchPartner.Text = "Buscar socio...";
             // 
@@ -289,7 +289,7 @@ namespace Sistema_Gimnasio
             this.LStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LStatus.Location = new System.Drawing.Point(165, 48);
             this.LStatus.Name = "LStatus";
-            this.LStatus.Size = new System.Drawing.Size(42, 15);
+            this.LStatus.Size = new System.Drawing.Size(54, 20);
             this.LStatus.TabIndex = 6;
             this.LStatus.Text = "Estado";
             // 
@@ -300,7 +300,7 @@ namespace Sistema_Gimnasio
             this.LMembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LMembership.Location = new System.Drawing.Point(301, 48);
             this.LMembership.Name = "LMembership";
-            this.LMembership.Size = new System.Drawing.Size(66, 15);
+            this.LMembership.Size = new System.Drawing.Size(83, 20);
             this.LMembership.TabIndex = 7;
             this.LMembership.Text = "Membresía";
             // 
@@ -343,52 +343,6 @@ namespace Sistema_Gimnasio
             this.panel1.Size = new System.Drawing.Size(762, 100);
             this.panel1.TabIndex = 9;
             // 
-            // lblPageInfo
-            // 
-            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPageInfo.AutoSize = true;
-            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            this.lblPageInfo.Location = new System.Drawing.Point(528, 13);
-            this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(158, 32);
-            this.lblPageInfo.TabIndex = 12;
-            this.lblPageInfo.Text = "Página 1 de 1";
-            // 
-            // btnNextPage
-            // 
-            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextPage.BackColor = System.Drawing.Color.White;
-            this.btnNextPage.FlatAppearance.BorderSize = 0;
-            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
-            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnNextPage.IconSize = 40;
-            this.btnNextPage.Location = new System.Drawing.Point(724, 19);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(26, 26);
-            this.btnNextPage.TabIndex = 11;
-            this.btnNextPage.UseVisualStyleBackColor = false;
-            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
-            // 
-            // btnPrevPage
-            // 
-            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrevPage.BackColor = System.Drawing.Color.White;
-            this.btnPrevPage.FlatAppearance.BorderSize = 0;
-            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnPrevPage.IconSize = 40;
-            this.btnPrevPage.Location = new System.Drawing.Point(692, 19);
-            this.btnPrevPage.Name = "btnPrevPage";
-            this.btnPrevPage.Size = new System.Drawing.Size(26, 26);
-            this.btnPrevPage.TabIndex = 10;
-            this.btnPrevPage.UseVisualStyleBackColor = false;
-            this.btnPrevPage.Click += new System.EventHandler(this.btnPrevPage_Click);
-            // 
             // BRenovation
             // 
             this.BRenovation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -410,6 +364,52 @@ namespace Sistema_Gimnasio
             this.BRenovation.UseVisualStyleBackColor = false;
             this.BRenovation.Click += new System.EventHandler(this.BRenovation_Click);
             // 
+            // lblPageInfo
+            // 
+            this.lblPageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageInfo.AutoSize = true;
+            this.lblPageInfo.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblPageInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            this.lblPageInfo.Location = new System.Drawing.Point(490, 8);
+            this.lblPageInfo.Name = "lblPageInfo";
+            this.lblPageInfo.Size = new System.Drawing.Size(196, 41);
+            this.lblPageInfo.TabIndex = 12;
+            this.lblPageInfo.Text = "Página 1 de 1";
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPage.BackColor = System.Drawing.Color.White;
+            this.btnNextPage.FlatAppearance.BorderSize = 0;
+            this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPage.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            this.btnNextPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnNextPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNextPage.IconSize = 45;
+            this.btnNextPage.Location = new System.Drawing.Point(724, 12);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(26, 40);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrevPage.BackColor = System.Drawing.Color.White;
+            this.btnPrevPage.FlatAppearance.BorderSize = 0;
+            this.btnPrevPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevPage.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            this.btnPrevPage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.btnPrevPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPrevPage.IconSize = 45;
+            this.btnPrevPage.Location = new System.Drawing.Point(692, 12);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(26, 40);
+            this.btnPrevPage.TabIndex = 10;
+            this.btnPrevPage.UseVisualStyleBackColor = false;
+            this.btnPrevPage.Click += new System.EventHandler(this.btnPrevPage_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblPageInfo);
@@ -423,7 +423,7 @@ namespace Sistema_Gimnasio
             // 
             // PartnersView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.panel2);
