@@ -45,7 +45,7 @@ namespace Business
             var pdfPath = PdfGenerator.GenerarComprobantePDF(
                 pagoId: h.PagoId,
                 socioNombre: h.SocioNombre,
-                nameMembership: h.Membresia ?? "-",
+                nameMembership: h.Membresia,
                 fecha: h.Fecha,
                 total: h.Total,
                 detalles: detail
