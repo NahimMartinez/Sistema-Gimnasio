@@ -86,6 +86,7 @@ namespace Business
                 bool zebra = false;
                 var colorZebra = new BaseColor(245, 245, 245); // Un gris muy claro
 
+
                 foreach (var d in detalles)
                 {
                     PdfPCell c1 = new PdfPCell(new Phrase(d.ClaseNombre, fontTableCell));
@@ -128,8 +129,20 @@ namespace Business
 
                 // --- 5. MEJORA: Línea Separadora Limpia ---
                 // Celda que abarca 4 columnas solo con borde superior
-                PdfPCell totalLabel = new PdfPCell(new Phrase("Total", fontTotal)) { HorizontalAlignment = Element.ALIGN_RIGHT, Border = Rectangle.NO_BORDER, PaddingTop = 8f, PaddingRight = 10f, Colspan = 4 }; 
-                PdfPCell totalValue = new PdfPCell(new Phrase($"${total:F2}", fontTotal)) { HorizontalAlignment = Element.ALIGN_RIGHT, Border = Rectangle.NO_BORDER, PaddingTop = 8f };
+                PdfPCell totalLabel = new PdfPCell(new Phrase("Total", fontTotal))
+                {
+                    Colspan = 4,
+                    HorizontalAlignment = Element.ALIGN_RIGHT,
+                    Border =Rectangle.TOP_BORDER,
+                    PaddingTop = 8f,
+                    PaddingRight = 10f
+                };
+                PdfPCell totalValue = new PdfPCell(new Phrase($"${total:F2}", fontTotal))
+                {
+                    HorizontalAlignment = Element.ALIGN_RIGHT,
+                    Border = Rectangle.TOP_BORDER,
+                    PaddingTop = 8f
+                };
                 table.AddCell(totalLabel);
                 table.AddCell(totalValue);
 
