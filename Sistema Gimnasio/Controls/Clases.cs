@@ -105,8 +105,17 @@ namespace Sistema_Gimnasio.Controls
 
                 if (colName == "colDelete")
                 {
-                    string action = currentStatus == "Activo" ? "desactivar" : "activar";
-                    DialogResult result = MessageBox.Show($"¿Está seguro de que desea {action} la clase '{className}'?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    string action = currentStatus == "Activo" ? "desactivar" : "activar";                    
+                    // Determina el botón con foco basado en la condición
+                    var defaultButton = (currentStatus == "Activo")
+                                        ? MessageBoxDefaultButton.Button2  // Foco en "No" si es "desactivar"
+                                        : MessageBoxDefaultButton.Button1; // Foco en "Sí" si es "activar"
+
+                    DialogResult result = MessageBox.Show($"¿Está seguro de que desea {action} la clase '{className}'?",
+                                                          "Confirmar Acción",
+                                                          MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Question, 
+                                                          defaultButton); 
 
                     if (result == DialogResult.Yes)
                     {

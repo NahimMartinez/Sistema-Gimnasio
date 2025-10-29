@@ -184,15 +184,20 @@ namespace Sistema_Gimnasio
             }
             else if (col == "colDelete")
             {
-                // --- LÓGICA PARA LA BAJA/ALTA ---
                 string action = status.Equals("Activo") ? "dar de baja" : "dar de alta";
                 string actionVerb = status.Equals("Activo") ? "Baja" : "Alta";
+
+                // Determina el botón con foco basado en el estado
+                var defaultButton = status.Equals("Activo")
+                                    ? MessageBoxDefaultButton.Button2  // Foco en "No" si es "dar de baja"
+                                    : MessageBoxDefaultButton.Button1; // Foco en "Sí" si es "dar de alta"
 
                 // Preguntamos al usuario para confirmar la acción
                 var confirmResult = MessageBox.Show($"¿Está seguro de que desea {action} el artículo '{name}'?",
                                                      $"Confirmar {actionVerb}",
                                                      MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
+                                                     MessageBoxIcon.Question,
+                                                     defaultButton); // <-- Foco dinámico aplicado
 
                 if (confirmResult == DialogResult.Yes)
                 {

@@ -282,10 +282,16 @@ namespace Sistema_Gimnasio
 
                     case "colDelete":
                         string actionText = partnerData.Estado ? "desactivar" : "activar";
+                        
+                        var icon = partnerData.Estado ? MessageBoxIcon.Warning : MessageBoxIcon.Question;
+                        
+                        var defaultButton = partnerData.Estado ? MessageBoxDefaultButton.Button2 : MessageBoxDefaultButton.Button1;
+                        
                         var confirmationResult = MessageBox.Show(string.Format("¿Está seguro que desea {0} al socio '{1} {2}'?", actionText, partnerData.Nombre, partnerData.Apellido),
-                                                                 "Confirmar " + actionText,
-                                                                 MessageBoxButtons.YesNo,
-                                                                 partnerData.Estado ? MessageBoxIcon.Warning : MessageBoxIcon.Question);
+                                                                      "Confirmar " + actionText,
+                                                                      MessageBoxButtons.YesNo,
+                                                                      icon,
+                                                                      defaultButton); // <-- Aquí se aplica el foco dinámico
 
                         if (confirmationResult == DialogResult.Yes)
                         {
