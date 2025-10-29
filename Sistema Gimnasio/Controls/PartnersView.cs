@@ -285,7 +285,7 @@ namespace Sistema_Gimnasio
                         var confirmationResult = MessageBox.Show(string.Format("¿Está seguro que desea {0} al socio '{1} {2}'?", actionText, partnerData.Nombre, partnerData.Apellido),
                                                                  "Confirmar " + actionText,
                                                                  MessageBoxButtons.YesNo,
-                                                                 partnerData.Estado ? MessageBoxIcon.Warning : MessageBoxIcon.Question);
+                                                                 partnerData.Estado ? MessageBoxIcon.Warning : MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                         if (confirmationResult == DialogResult.Yes)
                         {

@@ -218,7 +218,7 @@ namespace Sistema_Gimnasio
                 if (s)
                 {
                     var confirm = MessageBox.Show($"¿Dar de baja a {name}?",
-                                                                  "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                                                  "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (confirm == DialogResult.Yes)
                     {
                         var repo = new Data.UserRepository();

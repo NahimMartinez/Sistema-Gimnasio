@@ -183,7 +183,7 @@ namespace Sistema_Gimnasio
                 var repo = new SupplierRepository();
                 if (s)
                 {
-                    var confirm = MessageBox.Show($"¿Está seguro que desea desactivar el proveedor '{name}'?", "Confirmar desactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var confirm = MessageBox.Show($"¿Está seguro que desea desactivar el proveedor '{name}'?", "Confirmar desactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                     if (confirm == DialogResult.Yes)
                     {
 

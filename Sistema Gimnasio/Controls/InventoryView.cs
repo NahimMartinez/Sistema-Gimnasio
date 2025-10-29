@@ -192,7 +192,7 @@ namespace Sistema_Gimnasio
                 var confirmResult = MessageBox.Show($"¿Está seguro de que desea {action} el artículo '{name}'?",
                                                      $"Confirmar {actionVerb}",
                                                      MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
+                                                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (confirmResult == DialogResult.Yes)
                 {

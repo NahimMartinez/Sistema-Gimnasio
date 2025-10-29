@@ -106,7 +106,7 @@ namespace Sistema_Gimnasio.Controls
                 if (colName == "colDelete")
                 {
                     string action = currentStatus == "Activo" ? "desactivar" : "activar";
-                    DialogResult result = MessageBox.Show($"¿Está seguro de que desea {action} la clase '{className}'?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show($"¿Está seguro de que desea {action} la clase '{className}'?", "Confirmar Acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                     if (result == DialogResult.Yes)
                     {
