@@ -1,6 +1,9 @@
 ﻿using Business;
+using Data;
 using Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
@@ -52,8 +55,24 @@ namespace Sistema_Gimnasio
             // Si es solo lectura, deshabilito inputs y oculto acciones.
             if (readOnly)
             {
+                ClassService serviceClass = new ClassService();
                 ActivateReadOnly();
                 this.Text = "Ver Socio";
+                this.LListClass.Visible = true;
+                this.LClassIns.Visible = true;
+                var classList = serviceClass.GetClassesName(partnerEdit.IdPersona);
+
+                if (classList == null || classList.Count == 0)
+                {
+                    // Si la lista es nula o no tiene elementos, asigna el mensaje predeterminado.
+                    this.LListClass.Text = "Sin clases activas";
+                }
+                else
+                {
+                    // Si la lista tiene elementos, únelos en una cadena separada por comas.
+                    this.LListClass.Text = string.Join(", ", classList);
+                }
+
             }
         }
 

@@ -227,5 +227,23 @@ namespace Data
                 return cn.Query<dynamic>(sql).ToList();
             }
         }
+
+        public List<string> GetClassesName(int partnerId)
+        {
+            const string sql = @"
+                SELECT  a.nombre
+                FROM membresia m
+                JOIN membresia_clase mc  ON mc.membresia_id = m.id_membresia
+                JOIN clase c             ON c.id_clase   = mc.clase_id 
+                JOIN actividad a ON c.actividad_id = a.id_actividad
+                WHERE m.socio_id = @SocioId
+                  AND m.estado = 1
+                ORDER BY a.nombre;";
+            using (var cn = new SqlConnection(Connection.chain))
+            {
+                return cn.Query<string>(sql, new { SocioId = partnerId }).ToList();
+
+            }
+        }  
     }
 }

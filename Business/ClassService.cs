@@ -171,5 +171,10 @@ namespace Business
         {
             return classRepo.GetPartnerCountByClass();
         }
+
+        public List<string> GetClassesName(int pPartnerId)
+        {
+            return classRepo.GetClassesName(pPartnerId);
+        }
     }
 }

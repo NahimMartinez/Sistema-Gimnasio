@@ -1,4 +1,6 @@
-﻿namespace Sistema_Gimnasio
+﻿using System;
+
+namespace Sistema_Gimnasio
 {
     partial class AddMemberForm
     {
@@ -44,6 +46,8 @@
             this.TObservation = new System.Windows.Forms.TextBox();
             this.BSave = new FontAwesome.Sharp.IconButton();
             this.BClean = new FontAwesome.Sharp.IconButton();
+            this.LClassIns = new System.Windows.Forms.Label();
+            this.LListClass = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TName
@@ -52,7 +56,7 @@
             this.TName.Location = new System.Drawing.Point(40, 40);
             this.TName.MaxLength = 60;
             this.TName.Name = "TName";
-            this.TName.Size = new System.Drawing.Size(300, 27);
+            this.TName.Size = new System.Drawing.Size(300, 23);
             this.TName.TabIndex = 0;
             // 
             // TLastName
@@ -62,7 +66,7 @@
             this.TLastName.Location = new System.Drawing.Point(430, 40);
             this.TLastName.MaxLength = 60;
             this.TLastName.Name = "TLastName";
-            this.TLastName.Size = new System.Drawing.Size(330, 27);
+            this.TLastName.Size = new System.Drawing.Size(330, 23);
             this.TLastName.TabIndex = 1;
             // 
             // LName
@@ -71,7 +75,7 @@
             this.LName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LName.Location = new System.Drawing.Point(40, 20);
             this.LName.Name = "LName";
-            this.LName.Size = new System.Drawing.Size(64, 20);
+            this.LName.Size = new System.Drawing.Size(51, 15);
             this.LName.TabIndex = 2;
             this.LName.Text = "Nombre";
             // 
@@ -82,7 +86,7 @@
             this.LLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LLastName.Location = new System.Drawing.Point(430, 20);
             this.LLastName.Name = "LLastName";
-            this.LLastName.Size = new System.Drawing.Size(66, 20);
+            this.LLastName.Size = new System.Drawing.Size(51, 15);
             this.LLastName.TabIndex = 3;
             this.LLastName.Text = "Apellido";
             // 
@@ -92,7 +96,7 @@
             this.LDni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LDni.Location = new System.Drawing.Point(40, 76);
             this.LDni.Name = "LDni";
-            this.LDni.Size = new System.Drawing.Size(35, 20);
+            this.LDni.Size = new System.Drawing.Size(27, 15);
             this.LDni.TabIndex = 4;
             this.LDni.Text = "DNI";
             // 
@@ -103,7 +107,7 @@
             this.LPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LPhone.Location = new System.Drawing.Point(430, 76);
             this.LPhone.Name = "LPhone";
-            this.LPhone.Size = new System.Drawing.Size(67, 20);
+            this.LPhone.Size = new System.Drawing.Size(53, 15);
             this.LPhone.TabIndex = 5;
             this.LPhone.Text = "Teléfono";
             // 
@@ -113,7 +117,7 @@
             this.LEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LEmail.Location = new System.Drawing.Point(40, 132);
             this.LEmail.Name = "LEmail";
-            this.LEmail.Size = new System.Drawing.Size(46, 20);
+            this.LEmail.Size = new System.Drawing.Size(36, 15);
             this.LEmail.TabIndex = 6;
             this.LEmail.Text = "Email";
             // 
@@ -124,7 +128,7 @@
             this.LContactE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LContactE.Location = new System.Drawing.Point(430, 132);
             this.LContactE.Name = "LContactE";
-            this.LContactE.Size = new System.Drawing.Size(172, 20);
+            this.LContactE.Size = new System.Drawing.Size(137, 15);
             this.LContactE.TabIndex = 7;
             this.LContactE.Text = "Contacto de emergencia";
             // 
@@ -134,7 +138,7 @@
             this.LObservation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
             this.LObservation.Location = new System.Drawing.Point(40, 188);
             this.LObservation.Name = "LObservation";
-            this.LObservation.Size = new System.Drawing.Size(105, 20);
+            this.LObservation.Size = new System.Drawing.Size(84, 15);
             this.LObservation.TabIndex = 8;
             this.LObservation.Text = "Observaciones";
             // 
@@ -144,7 +148,7 @@
             this.TDni.Location = new System.Drawing.Point(40, 94);
             this.TDni.MaxLength = 12;
             this.TDni.Name = "TDni";
-            this.TDni.Size = new System.Drawing.Size(300, 27);
+            this.TDni.Size = new System.Drawing.Size(300, 23);
             this.TDni.TabIndex = 9;
             // 
             // TPhone
@@ -154,7 +158,7 @@
             this.TPhone.Location = new System.Drawing.Point(430, 94);
             this.TPhone.MaxLength = 20;
             this.TPhone.Name = "TPhone";
-            this.TPhone.Size = new System.Drawing.Size(330, 27);
+            this.TPhone.Size = new System.Drawing.Size(330, 23);
             this.TPhone.TabIndex = 10;
             // 
             // TEmail
@@ -163,7 +167,7 @@
             this.TEmail.Location = new System.Drawing.Point(40, 150);
             this.TEmail.MaxLength = 100;
             this.TEmail.Name = "TEmail";
-            this.TEmail.Size = new System.Drawing.Size(300, 27);
+            this.TEmail.Size = new System.Drawing.Size(300, 23);
             this.TEmail.TabIndex = 11;
             // 
             // TContactE
@@ -173,7 +177,7 @@
             this.TContactE.Location = new System.Drawing.Point(430, 150);
             this.TContactE.MaxLength = 100;
             this.TContactE.Name = "TContactE";
-            this.TContactE.Size = new System.Drawing.Size(330, 27);
+            this.TContactE.Size = new System.Drawing.Size(330, 23);
             this.TContactE.TabIndex = 12;
             // 
             // TObservation
@@ -233,12 +237,36 @@
             this.BClean.UseVisualStyleBackColor = false;
             this.BClean.Click += new System.EventHandler(this.BClean_Click);
             // 
+            // LClassIns
+            // 
+            this.LClassIns.AutoSize = true;
+            this.LClassIns.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.LClassIns.Location = new System.Drawing.Point(39, 432);
+            this.LClassIns.Name = "LClassIns";
+            this.LClassIns.Size = new System.Drawing.Size(127, 21);
+            this.LClassIns.TabIndex = 17;
+            this.LClassIns.Text = "Clases inscriptas:";
+            this.LClassIns.Visible = false;
+            // 
+            // LListClass
+            // 
+            this.LListClass.AutoSize = true;
+            this.LListClass.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.LListClass.Location = new System.Drawing.Point(163, 432);
+            this.LListClass.Name = "LListClass";
+            this.LListClass.Size = new System.Drawing.Size(132, 21);
+            this.LListClass.TabIndex = 18;
+            this.LListClass.Text = "Aca van las clases";
+            this.LListClass.Visible = false;
+            // 
             // AddMemberForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(804, 481);
+            this.Controls.Add(this.LListClass);
+            this.Controls.Add(this.LClassIns);
             this.Controls.Add(this.BClean);
             this.Controls.Add(this.BSave);
             this.Controls.Add(this.TObservation);
@@ -283,5 +311,7 @@
         private System.Windows.Forms.TextBox TObservation;
         private FontAwesome.Sharp.IconButton BSave;
         private FontAwesome.Sharp.IconButton BClean;
+        private System.Windows.Forms.Label LClassIns;
+        private System.Windows.Forms.Label LListClass;
     }
 }
