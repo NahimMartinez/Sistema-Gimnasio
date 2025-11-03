@@ -22,6 +22,11 @@ namespace Sistema_Gimnasio.Forms
             ConfigureValidations();
             LoadCategories();
             LoadSuppliers();
+
+            // Establece la fecha máxima permitida al día de hoy y por defecto muestra hoy
+            DTFechaIngreso.MaxDate = DateTime.Today;
+            DTFechaIngreso.Value = DateTime.Today;
+
             this.Text = "Nuevo Artículo"; // Cambia el título de la ventana
             this.Load += AddItemForm_Load;
 
@@ -34,6 +39,10 @@ namespace Sistema_Gimnasio.Forms
             ConfigureValidations();
             LoadCategories();
             LoadSuppliers();
+
+            // Aseguramos que la fecha seleccionable no pueda ser mayor al día de hoy
+            DTFechaIngreso.MaxDate = DateTime.Today;
+
             this.Text = "Editar Artículo"; // Cambia el título de la ventana
 
             // Buscamos el artículo en la BD y lo cargamos en el formulario
@@ -78,8 +87,11 @@ namespace Sistema_Gimnasio.Forms
                 CBProveedor.SelectedValue = 0;
             }
 
+            // Cargamos la fecha tal cual viene de la base de datos (se asume válida)
             DTFechaIngreso.Value = editableItem.FechaIngreso;
-            DTFechaIngreso.Enabled = false; // Deshabilitamos para que no se pueda cambiar
+            // Permitimos editar la fecha pero solo hasta la fecha actual (MaxDate ya establecido)
+            DTFechaIngreso.Enabled = true;
+            DTFechaIngreso.MaxDate = DateTime.Today;
         }
 
         private void LoadCategories()
@@ -145,6 +157,7 @@ namespace Sistema_Gimnasio.Forms
                         Cantidad = int.Parse(txtCantidad.Text),
                         IdInventarioCategoria = (int)CBCategoria.SelectedValue,
                         IdProveedor = (int)CBProveedor.SelectedValue,
+                        FechaIngreso = DTFechaIngreso.Value.Date
                     };
                     inventoryService.CreateInventory(newItem);
                     MessageBox.Show("Artículo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -157,6 +170,8 @@ namespace Sistema_Gimnasio.Forms
                     editableItem.Cantidad = int.Parse(txtCantidad.Text);
                     editableItem.IdInventarioCategoria = (int)CBCategoria.SelectedValue;
                     editableItem.IdProveedor = (int)CBProveedor.SelectedValue;
+                    // Actualizamos la fecha de ingreso desde el control (se permite editar pero no en el futuro)
+                    editableItem.FechaIngreso = DTFechaIngreso.Value.Date;
 
                     inventoryService.UpdateInventory(editableItem);
                     MessageBox.Show("Artículo actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -197,6 +212,14 @@ namespace Sistema_Gimnasio.Forms
                 MessageBox.Show("Por favor seleccione un proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            // Validación: la fecha no puede ser mayor al día actual
+            if (DTFechaIngreso.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("La fecha de ingreso no puede ser mayor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
         private void ConfigureValidations()
@@ -225,7 +248,7 @@ namespace Sistema_Gimnasio.Forms
             CBProveedor.SelectedIndex = -1;
 
             // Restaura la fecha actual en el selector de fecha.
-            DTFechaIngreso.Value = DateTime.Now;
+            DTFechaIngreso.Value = DateTime.Today;
 
             // Pone el foco (el cursor) de nuevo en el campo de nombre.
             txtNombre.Focus();
