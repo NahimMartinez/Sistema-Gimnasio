@@ -80,8 +80,8 @@ namespace Data
                 nombre = @Nombre,
                 cantidad = @Cantidad,
                 id_categoria_inventario = @IdInventarioCategoria,
-                proveedor_id = @IdProveedor
-                -- No actualizamos el estado aquí, eso se hará por separado
+                proveedor_id = @IdProveedor,
+                fecha_ingreso = @FechaIngreso
             WHERE id_inventario = @IdInventario;";
 
             using (var cn = new SqlConnection(Connection.chain))
